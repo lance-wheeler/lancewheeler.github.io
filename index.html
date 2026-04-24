@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lance Wheeler — Product Owner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080808;
+    --surface: #0f0f0f;
+    --card: #141414;
+    --border: #1e1e1e;
+    --orange: #e8622a;
+    --orange-dim: rgba(232,98,42,0.12);
+    --teal: #2ab8c8;
+    --teal-dim: rgba(42,184,200,0.1);
+    --text: #f2f0ed;
+    --muted: #666;
+    --subtle: #333;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s; }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(232,98,42,0.5); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform 0.15s ease-out, width 0.25s, height 0.25s; }
+  body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; background: var(--teal); }
+  body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: rgba(42,184,200,0.4); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s;
+  }
+  nav.scrolled { background: rgba(8,8,8,0.97); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange); padding: 8px 20px; text-decoration: none; transition: all 0.2s; }
+  .nav-cta:hover { background: var(--orange); color: #000; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(30,30,30,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(30,30,30,0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute; top: 20%; left: 10%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,98,42,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow-2 {
+    position: absolute; bottom: 10%; right: 5%; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(42,184,200,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: var(--font-display); font-size: clamp(72px, 12vw, 160px);
+    line-height: 0.9; letter-spacing: 2px; color: var(--text);
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-name .highlight { color: var(--orange); }
+  .hero-title {
+    font-family: var(--font-body); font-size: clamp(16px, 2.5vw, 24px);
+    font-weight: 600; color: var(--muted); margin-top: 20px; max-width: 600px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 56px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .stat-item { border-left: 2px solid var(--orange); padding-left: 16px; }
+  .stat-num { font-family: var(--font-display); font-size: 40px; color: var(--text); line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+  .hero-actions {
+    display: flex; gap: 16px; margin-top: 48px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 1s forwards;
+  }
+  .btn-primary {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    background: var(--orange); color: #000; padding: 14px 32px; text-decoration: none;
+    font-weight: 500; transition: all 0.2s; border: none; cursor: none;
+  }
+  .btn-primary:hover { background: #ff7a3d; transform: translateY(-2px); }
+  .btn-secondary {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; color: var(--text); padding: 14px 32px; text-decoration: none;
+    font-weight: 500; transition: all 0.2s; border: 1px solid var(--subtle); cursor: none;
+  }
+  .btn-secondary:hover { border-color: var(--text); transform: translateY(-2px); }
+  .scroll-indicator {
+    position: absolute; bottom: 32px; left: 48px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    letter-spacing: 2px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+  }
+  .scroll-line { width: 40px; height: 1px; background: var(--muted); }
+
+  /* SECTION COMMON */
+  section { padding: 100px 48px; }
+  .section-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(42px, 6vw, 80px); line-height: 0.95; color: var(--text); margin-bottom: 8px; }
+  .section-sub { font-size: 16px; color: var(--muted); max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* STORY / TIMELINE */
+  #story { background: var(--surface); position: relative; overflow: hidden; }
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .story-left p { color: #aaa; line-height: 1.8; font-size: 15px; margin-bottom: 16px; }
+  .story-left p strong { color: var(--text); }
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--orange), var(--teal)); }
+  .tl-item { position: relative; margin-bottom: 32px; cursor: default; }
+  .tl-item::before { content: ''; position: absolute; left: -28px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); border: 2px solid var(--bg); transition: transform 0.2s, background 0.2s; }
+  .tl-item:hover::before { transform: scale(1.6); background: var(--teal); }
+  .tl-date { font-family: var(--font-mono); font-size: 11px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .tl-title { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .tl-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .promo-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--orange-dim); border: 1px solid rgba(232,98,42,0.2); color: var(--orange); font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; margin-top: 6px; }
+
+  /* CERTIFICATIONS */
+  #certs { background: var(--bg); }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--border); }
+  .cert-card {
+    background: var(--card); padding: 32px; position: relative; overflow: hidden;
+    transition: background 0.3s; cursor: default;
+  }
+  .cert-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--orange-dim), transparent); opacity: 0; transition: opacity 0.3s; }
+  .cert-card:hover { background: #1a1a1a; }
+  .cert-card:hover::before { opacity: 1; }
+  .cert-card.teal-card::before { background: linear-gradient(135deg, var(--teal-dim), transparent); }
+  .cert-icon { font-size: 28px; margin-bottom: 16px; }
+  .cert-name { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+  .cert-org { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .cert-date { font-family: var(--font-mono); font-size: 10px; color: var(--orange); letter-spacing: 1px; }
+  .cert-card.teal-card .cert-date { color: var(--teal); }
+  .cert-badge { position: absolute; top: 16px; right: 16px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--orange); color: var(--orange); }
+  .cert-card.teal-card .cert-badge { border-color: var(--teal); color: var(--teal); }
+
+  /* SKILLS */
+  #skills { background: var(--surface); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .skill-category { margin-bottom: 36px; }
+  .skill-cat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag { font-family: var(--font-mono); font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); color: #aaa; letter-spacing: 0.5px; transition: all 0.2s; cursor: default; }
+  .skill-tag:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .skills-right { }
+  .feature-card { background: var(--card); border: 1px solid var(--border); padding: 36px; margin-bottom: 16px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .feature-card:hover { border-color: var(--orange); }
+  .feature-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--orange), var(--teal)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .feature-card:hover::after { transform: scaleX(1); }
+  .feature-num { font-family: var(--font-display); font-size: 48px; color: var(--border); line-height: 1; margin-bottom: 8px; }
+  .feature-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .feature-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* BACKLOG DEMO */
+  #demo { background: var(--bg); }
+  .demo-wrapper { background: var(--card); border: 1px solid var(--border); overflow: hidden; }
+  .demo-toolbar { background: var(--surface); padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+  .demo-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .demo-title-bar { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: 8px; }
+  .kanban { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .kanban-col { padding: 20px; border-right: 1px solid var(--border); }
+  .kanban-col:last-child { border-right: none; }
+  .col-header { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .col-count { background: var(--border); width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--muted); }
+  .kanban-card { background: var(--surface); border: 1px solid var(--border); padding: 14px; margin-bottom: 10px; cursor: grab; transition: all 0.2s; }
+  .kanban-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .kanban-card.dragging { opacity: 0.4; cursor: grabbing; }
+  .card-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
+  .tag-feature { background: rgba(232,98,42,0.15); color: var(--orange); border: 1px solid rgba(232,98,42,0.2); }
+  .tag-bug { background: rgba(200,42,42,0.15); color: #e85a5a; border: 1px solid rgba(200,42,42,0.2); }
+  .tag-debt { background: rgba(42,184,200,0.1); color: var(--teal); border: 1px solid rgba(42,184,200,0.2); }
+  .tag-research { background: rgba(140,100,220,0.1); color: #a78bfa; border: 1px solid rgba(140,100,220,0.2); }
+  .card-title { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 10px; }
+  .card-points { font-family: var(--font-mono); font-size: 10px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+  .points-badge { background: var(--border); padding: 2px 8px; font-size: 10px; }
+  .demo-note { padding: 14px 20px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-align: center; }
+
+  /* PORTFOLIO */
+  #work { background: var(--surface); }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .work-card { background: var(--card); padding: 40px; transition: background 0.3s; cursor: default; position: relative; overflow: hidden; }
+  .work-card:hover { background: #191919; }
+  .work-card-accent { position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--orange); transition: height 0.4s; }
+  .work-card:hover .work-card-accent { height: 100%; }
+  .work-card.teal .work-card-accent { background: var(--teal); }
+  .work-platform { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .work-title { font-family: var(--font-body); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .work-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .work-tag { font-family: var(--font-mono); font-size: 10px; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+
+  /* CONTACT */
+  #contact { background: var(--bg); text-align: center; }
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .contact-inner .section-title { font-size: clamp(48px, 8vw, 100px); }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 48px; }
+  .contact-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; transition: all 0.2s; }
+  .contact-link:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .contact-link.primary { background: var(--orange); color: #000; border-color: var(--orange); }
+  .contact-link.primary:hover { background: #ff7a3d; border-color: #ff7a3d; color: #000; }
+
+  /* FOOTER */
+  footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; color: var(--muted); }
+  .footer-logo span { color: var(--orange); }
+  .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--subtle); }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+
+  /* DRAG OVER */
+  .kanban-col.drag-over { background: rgba(232,98,42,0.04); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    #hero { padding: 100px 24px 60px; }
+    .story-grid, .skills-layout, .work-grid { grid-template-columns: 1fr; gap: 48px; }
+    .kanban { grid-template-columns: 1fr 1fr; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">LW<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#certs">Credentials</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#demo">Think Like a PO</a></li>
+    <li><a href="#work">Work</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" class="nav-cta">Connect on LinkedIn</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-eyebrow">Product Owner · A-CSPO · Stellar MLS</div>
+  <h1 class="hero-name">LANCE<br/><span class="highlight">WHEELER</span></h1>
+  <p class="hero-title">I build products that deliver real value — not just features. Bridging strategy, teams, and technology across real estate platforms serving 80,000+ professionals.</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">4×</div>
+      <div class="stat-label">Promoted at Stellar MLS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">80K+</div>
+      <div class="stat-label">Professionals served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Products owned</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years of growth</div>
+    </div>
+  </div>
+  <div class="hero-actions">
+    <a href="#story" class="btn-primary">See My Story</a>
+    <a href="#contact" class="btn-secondary">Get in Touch</a>
+  </div>
+  <div class="scroll-indicator">
+    <span class="scroll-line"></span>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="reveal">
+    <div class="section-tag">Origin Story</div>
+    <h2 class="section-title">FROM HELP DESK<br/>TO PRODUCT OWNER</h2>
+    <p class="section-sub">Four promotions. One company. A story about showing up, owning outcomes, and building something real from the ground up.</p>
+  </div>
+  <div class="story-grid">
+    <div class="story-left reveal">
+      <p>I didn't start in product. I started at the <strong>support desk</strong> at Stellar MLS — diagnosing issues, learning every corner of the platform, and building a reputation for getting things done.</p>
+      <p>Over 3+ years, I earned four promotions by taking ownership beyond my job title. Every time there was a gap between what the business needed and what was getting built, <strong>I stepped into it</strong>.</p>
+      <p>Today I manage a <strong>9-product portfolio</strong> serving 80,000+ real estate professionals — owning everything from requirement gathering and QA, to vendor relationships, compliance initiatives, and internal AI enablement.</p>
+      <p>The title changed. The mindset was always the same: <strong>own the value, not the output.</strong></p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-date">Feb 2017 – Mar 2022</div>
+        <div class="tl-title">Lead IT Specialist — Elite Realty Inc.</div>
+        <div class="tl-desc">Go-to internal IT resource. Hardware, software, networking, and daily operations for a real estate office environment.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sep 2022</div>
+        <div class="tl-title">Joined Stellar MLS — Support Center Technician</div>
+        <div class="tl-desc">Started on the front lines — learning the platforms, the users, and the gaps between them.</div>
+        <span class="promo-badge">🚀 Promotion 1</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023</div>
+        <div class="tl-title">Growing Ownership Across Products</div>
+        <div class="tl-desc">Began taking on product ownership responsibilities — QA, documentation, and release coordination across multiple platforms.</div>
+        <span class="promo-badge">🚀 Promotion 2 · Promotion 3</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2024 – Present</div>
+        <div class="tl-title">Product Owner — 9-Product Portfolio</div>
+        <div class="tl-desc">3 primary + 6 secondary products. Leading NAR compliance, AI chatbot governance, billing systems, and more across platforms serving 80,000+ professionals.</div>
+        <span class="promo-badge">🚀 Promotion 4</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">April 2026</div>
+        <div class="tl-title">A-CSPO Certified</div>
+        <div class="tl-desc">Advanced Certified Scrum Product Owner® earned through Scrum Alliance. Adding AI for Product Owners microcredential the same week.</div>
+        <span class="promo-badge" style="background:rgba(42,184,200,0.1);border-color:rgba(42,184,200,0.3);color:var(--teal);">🎯 Dual Credential</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="reveal">
+    <div class="section-tag">Credentials</div>
+    <h2 class="section-title">CERTIFIED &<br/>VERIFIED</h2>
+    <p class="section-sub">Every credential backed by real application — not just study materials.</p>
+  </div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-badge">New 2026</div>
+      <div class="cert-icon">🏆</div>
+      <div class="cert-name">Advanced Certified Scrum Product Owner®</div>
+      <div class="cert-org">Scrum Alliance</div>
+      <div class="cert-date">April 24, 2026 · ID: 001591935</div>
+    </div>
+    <div class="cert-card teal-card">
+      <div class="cert-badge">New 2026</div>
+      <div class="cert-icon">🤖</div>
+      <div class="cert-name">AI for Product Owners — Microcredential</div>
+      <div class="cert-org">Scrum Alliance</div>
+      <div class="cert-date">April 21, 2026 · ID: 001591935</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📋</div>
+      <div class="cert-name">Certified Scrum Product Owner®</div>
+      <div class="cert-org">Scrum Alliance</div>
+      <div class="cert-date">Active</div>
+    </div>
+    <div class="cert-card teal-card">
+      <div class="cert-icon">🔄</div>
+      <div class="cert-name">Certified ScrumMaster®</div>
+      <div class="cert-org">Scrum Alliance</div>
+      <div class="cert-date">Active</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🧠</div>
+      <div class="cert-name">AI Project / Product Management Certificate</div>
+      <div class="cert-org">Duke University</div>
+      <div class="cert-date">Completed</div>
+    </div>
+    <div class="cert-card teal-card">
+      <div class="cert-icon">🖥️</div>
+      <div class="cert-name">CompTIA A+</div>
+      <div class="cert-org">CompTIA</div>
+      <div class="cert-date">Certified</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div class="cert-name">Google Analytics Individual Qualification</div>
+      <div class="cert-org">Google</div>
+      <div class="cert-date">Certified</div>
+    </div>
+    <div class="cert-card teal-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-name">Google IT Support Professional Certificate</div>
+      <div class="cert-org">Google</div>
+      <div class="cert-date">Certified</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-tag">Capabilities</div>
+    <h2 class="section-title">WHAT I<br/>BRING</h2>
+    <p class="section-sub">A rare blend of technical depth, product thinking, and communication that gets things shipped.</p>
+  </div>
+  <div class="skills-layout">
+    <div class="reveal">
+      <div class="skill-category">
+        <div class="skill-cat-label">Product Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Backlog Ownership</span>
+          <span class="skill-tag">Requirements Gathering</span>
+          <span class="skill-tag">QA / UAT</span>
+          <span class="skill-tag">Release Management</span>
+          <span class="skill-tag">Vendor Management</span>
+          <span class="skill-tag">Product Analytics</span>
+          <span class="skill-tag">Change Management</span>
+          <span class="skill-tag">Stakeholder Alignment</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">Technical / Domain</div>
+        <div class="skill-tags">
+          <span class="skill-tag">API & Data Coordination</span>
+          <span class="skill-tag">RESO Data Standards</span>
+          <span class="skill-tag">Field Mapping</span>
+          <span class="skill-tag">AI Knowledge Ops</span>
+          <span class="skill-tag">Billing Systems</span>
+          <span class="skill-tag">Training Enablement</span>
+          <span class="skill-tag">MLS Platforms</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Monday.com</span>
+          <span class="skill-tag">Zendesk</span>
+          <span class="skill-tag">Salesforce</span>
+          <span class="skill-tag">StaxBill</span>
+          <span class="skill-tag">Matrix</span>
+          <span class="skill-tag">Snagit</span>
+          <span class="skill-tag">MS Dynamics CRM</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <div class="feature-title">I own value, not output</div>
+        <div class="feature-desc">Features shipped mean nothing if they don't solve the right problem. Every backlog decision I make runs through: does this actually help the user? Does it serve the business?</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <div class="feature-title">Facilitation is a superpower</div>
+        <div class="feature-desc">I know how to run a room — drawing out real requirements, managing competing stakeholder priorities, and turning messy discussions into clear decisions and actionable stories.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <div class="feature-title">Technical enough to be dangerous</div>
+        <div class="feature-desc">API coordination, data standards, field mapping, AI governance — I can speak the language of devs without losing the thread of business value. That bridge matters more than most people realize.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE BACKLOG DEMO -->
+<section id="demo">
+  <div class="reveal">
+    <div class="section-tag">Interactive Demo</div>
+    <h2 class="section-title">THINK LIKE<br/>A PO</h2>
+    <p class="section-sub">This is a real working backlog. Drag cards between columns — this is how I think about product work every day.</p>
+  </div>
+  <div class="demo-wrapper reveal">
+    <div class="demo-toolbar">
+      <div class="demo-dot" style="background:#ff5f57"></div>
+      <div class="demo-dot" style="background:#ffbd2e"></div>
+      <div class="demo-dot" style="background:#28c840"></div>
+      <div class="demo-title-bar">GearUp App — Sprint 4 Backlog</div>
+    </div>
+    <div class="kanban" id="kanban">
+      <div class="kanban-col" data-col="backlog">
+        <div class="col-header" style="color:var(--muted)">Backlog <span class="col-count" id="count-backlog">3</span></div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-research">Research</span></div>
+          <div class="card-title">User interviews — why do buyers abandon the AR view?</div>
+          <div class="card-points"><span>Discovery</span><span class="points-badge">3 pts</span></div>
+        </div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-debt">Tech Debt</span></div>
+          <div class="card-title">Refactor VIN lookup to reduce latency under 200ms</div>
+          <div class="card-points"><span>Backend</span><span class="points-badge">5 pts</span></div>
+        </div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-feature">Feature</span></div>
+          <div class="card-title">Add saved builds to My Garage with share link</div>
+          <div class="card-points"><span>Frontend</span><span class="points-badge">8 pts</span></div>
+        </div>
+      </div>
+      <div class="kanban-col" data-col="ready">
+        <div class="col-header" style="color:var(--teal)">Ready <span class="col-count" id="count-ready">2</span></div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-feature">Feature</span></div>
+          <div class="card-title">Cross-retailer price comparison — top 3 results</div>
+          <div class="card-points"><span>Core</span><span class="points-badge">5 pts</span></div>
+        </div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-bug">Bug</span></div>
+          <div class="card-title">AR overlay misaligns on wide-body kits — fix hitbox</div>
+          <div class="card-points"><span>iOS / Android</span><span class="points-badge">3 pts</span></div>
+        </div>
+      </div>
+      <div class="kanban-col" data-col="progress">
+        <div class="col-header" style="color:var(--orange)">In Progress <span class="col-count" id="count-progress">2</span></div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-feature">Feature</span></div>
+          <div class="card-title">Community feed — post your build with tagged parts</div>
+          <div class="card-points"><span>Social</span><span class="points-badge">13 pts</span></div>
+        </div>
+        <div class="kanban-card" draggable="true">
+          <div><span class="card-tag tag-debt">Tech Debt</span></div>
+          <div class="card-title">Allocate 20% sprint capacity to debt reduction</div>
+          <div class="card-points"><span>All teams</span><span class="points-badge">Ongoing</span></div>
+        </div>
+      </div>
+      <div class="kanban-col" data-col="done">
+        <div class="col-header" style="color:#4ade80">Done <span class="col-count" id="count-done">1</span></div>
+        <div class="kanban-card" draggable="true" style="opacity:0.6">
+          <div><span class="card-tag tag-feature">Feature</span></div>
+          <div class="card-title">VIN checker — guaranteed fitment validation on load</div>
+          <div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-note">✦ Drag cards between columns — try it. This backlog is from a real product concept built during A-CSPO training.</div>
+  </div>
+</section>
+
+<!-- WORK HIGHLIGHTS -->
+<section id="work">
+  <div class="reveal">
+    <div class="section-tag">Selected Work</div>
+    <h2 class="section-title">PRODUCTS<br/>I'VE OWNED</h2>
+    <p class="section-sub">A sample of the platforms, initiatives, and systems I've driven at Stellar MLS.</p>
+  </div>
+  <div class="work-grid reveal">
+    <div class="work-card">
+      <div class="work-card-accent"></div>
+      <div class="work-platform">Stellar MLS · Billing</div>
+      <div class="work-title">StaxBill Payment Gateway</div>
+      <div class="work-desc">Full Product Owner for StaxBill and its payment gateway. Coordinated annual billing enhancements with accounting, marketing, vendors, and executive leadership through sandbox-to-production release cycles.</div>
+      <div class="work-tags"><span class="work-tag">Billing</span><span class="work-tag">Vendor Mgmt</span><span class="work-tag">Release Mgmt</span></div>
+    </div>
+    <div class="work-card teal">
+      <div class="work-card-accent"></div>
+      <div class="work-platform">Stellar MLS · Compliance</div>
+      <div class="work-title">NAR Settlement Compliance Initiative</div>
+      <div class="work-desc">Led an enterprise-wide compliance rollout — driving audit, documentation, rules updates, training materials, and platform changes across forms, fields, website content, and remarks restrictions.</div>
+      <div class="work-tags"><span class="work-tag">Compliance</span><span class="work-tag">Documentation</span><span class="work-tag">Training</span></div>
+    </div>
+    <div class="work-card teal">
+      <div class="work-card-accent"></div>
+      <div class="work-platform">Stellar MLS · Data</div>
+      <div class="work-title">RESO Data Dictionary & API Coordination</div>
+      <div class="work-desc">Built Matrix field-mapping and metadata documentation, directed API data-pull coordination, and helped develop the RESO Data Dictionary while participating in industry workgroup and duplication subgroup meetings.</div>
+      <div class="work-tags"><span class="work-tag">API</span><span class="work-tag">Data Standards</span><span class="work-tag">RESO</span></div>
+    </div>
+    <div class="work-card">
+      <div class="work-card-accent"></div>
+      <div class="work-platform">Stellar MLS · AI Enablement</div>
+      <div class="work-title">Internal AI Chatbot Governance</div>
+      <div class="work-desc">Own governance and content quality for internal AI platforms supporting 10+ departments. Maintain source documentation, coordinate feedback workflows in Monday.com, and continuously improve answer accuracy.</div>
+      <div class="work-tags"><span class="work-tag">AI</span><span class="work-tag">Governance</span><span class="work-tag">Knowledge Ops</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-tag">Let's Connect</div>
+    <h2 class="section-title">LET'S<br/>TALK.</h2>
+    <p class="section-sub" style="margin:0 auto 0; text-align:center;">I'm always open to conversations about product, agile, real estate tech, or what's next. Reach out on LinkedIn or drop a message.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" class="contact-link primary">LinkedIn Profile</a>
+      <a href="https://bcert.me/sqpyljcil" target="_blank" class="contact-link">Verify A-CSPO</a>
+      <a href="mailto:Lancebusiness044@gmail.com" class="contact-link">Email Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LW<span>.</span></div>
+  <div class="footer-copy">© 2026 Lance Wheeler · Built different.</div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
+  animateRing();
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Kanban drag & drop
+  let draggedCard = null;
+  function updateCounts() {
+    document.querySelectorAll('.kanban-col').forEach(col => {
+      const id = 'count-' + col.dataset.col;
+      const el = document.getElementById(id);
+      if (el) el.textContent = col.querySelectorAll('.kanban-card').length;
+    });
+  }
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    card.addEventListener('dragstart', () => { draggedCard = card; setTimeout(() => card.classList.add('dragging'), 0); });
+    card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedCard = null; updateCounts(); });
+  });
+  document.querySelectorAll('.kanban-col').forEach(col => {
+    col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('drag-over'); });
+    col.addEventListener('dragleave', () => col.classList.remove('drag-over'));
+    col.addEventListener('drop', e => {
+      e.preventDefault(); col.classList.remove('drag-over');
+      if (draggedCard) { col.appendChild(draggedCard); updateCounts(); }
+    });
+  });
+
+  // Animated counters
+  function animateCounter(el, target, suffix) {
+    let start = 0; const duration = 1800;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const val = Math.floor(progress * target);
+      el.textContent = (suffix === 'K+') ? (val >= 80 ? '80K+' : val + 'K+') : val + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const nums = e.target.querySelectorAll('.stat-num');
+        const data = [['4', '×'], ['80', 'K+'], ['9', ''], ['3', '+']];
+        nums.forEach((num, i) => {
+          animateCounter(num, parseInt(data[i][0]), data[i][1]);
+        });
+        statsObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
+</script>
+</body>
+</html>
