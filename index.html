@@ -367,6 +367,79 @@
 
   /* PROTOTYPE IFRAME — embeds the live GearUp app */
   .prototype-stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+
+  /* Stat ribbon */
+  .gu-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    margin: 50px 0 60px; max-width: 1100px; margin-left: auto; margin-right: auto;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .gu-stat { padding: 28px 18px; text-align: center; border-right: 1px solid var(--border); }
+  .gu-stat:last-child { border-right: none; }
+  .gu-stat-num { font-family: var(--font-display); font-size: clamp(36px, 4vw, 52px); color: var(--orange); letter-spacing: 1px; line-height: 1; }
+  .gu-stat-suffix { font-size: 0.45em; color: var(--text-soft); margin-left: 2px; letter-spacing: 0; }
+  .gu-stat-label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 8px; letter-spacing: 1.5px; text-transform: uppercase; }
+  @media (max-width: 720px) {
+    .gu-stats { grid-template-columns: repeat(2, 1fr); }
+    .gu-stat:nth-child(2) { border-right: none; }
+    .gu-stat:nth-child(1), .gu-stat:nth-child(2) { border-bottom: 1px solid var(--border); }
+  }
+
+  /* Quote card */
+  .gu-quote-card {
+    position: relative;
+    background: linear-gradient(135deg, var(--orange-dim), transparent 70%);
+    border-left: 3px solid var(--orange);
+    padding: 22px 24px 18px 28px; margin-bottom: 28px;
+    border-radius: 0 12px 12px 0;
+  }
+  .gu-quote-mark {
+    position: absolute; top: -8px; left: 14px;
+    font-family: var(--font-display); font-size: 64px; color: var(--orange); line-height: 1;
+    opacity: 0.3;
+  }
+  .gu-quote-text {
+    font-family: var(--font-body); font-size: 18px; font-weight: 700;
+    color: var(--text); line-height: 1.4; font-style: italic;
+    margin-bottom: 8px !important;
+  }
+  .gu-quote-cite {
+    font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* Live badge above prototype */
+  .prototype-live-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+    color: var(--orange); padding: 6px 14px;
+    border: 1px solid var(--orange); border-radius: 20px;
+    background: var(--orange-dim); margin-bottom: -8px;
+  }
+  .gu-live-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
+    animation: livePulse 1.6s ease-out infinite;
+  }
+  @keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+
+  /* Flow tip below phone */
+  .prototype-flow-tip {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; justify-content: center;
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-soft);
+    background: var(--card); padding: 10px 16px; border-radius: 8px;
+    border: 1px solid var(--border); max-width: 100%;
+  }
+  .gu-flow-step {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%; background: var(--orange); color: #000;
+    font-weight: 700; font-size: 10px; margin-right: 4px;
+  }
+  .gu-flow-arrow { color: var(--orange); margin: 0 2px; }
   .prototype-frame {
     position: relative;
     width: 100%;
@@ -374,12 +447,12 @@
     height: 860px;
     border-radius: 28px;
     overflow: hidden;
-    background: linear-gradient(135deg, #F1EFE8 0%, #E6EADF 100%);
+    background: var(--card);
     box-shadow:
       0 30px 80px rgba(0,0,0,0.45),
       0 0 0 1px rgba(232,98,42,0.15),
       0 0 60px rgba(232,98,42,0.12);
-    transition: box-shadow 0.4s, transform 0.4s;
+    transition: box-shadow 0.4s, transform 0.4s, background 0.3s;
   }
   .prototype-frame::before {
     content: ''; position: absolute; inset: -2px;
@@ -398,15 +471,16 @@
   .prototype-iframe {
     width: 100%; height: 100%;
     border: none; display: block;
-    background: linear-gradient(135deg, #F1EFE8 0%, #E6EADF 100%);
+    background: var(--card);
   }
   .prototype-fullscreen {
-    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
-    text-decoration: none; letter-spacing: 1px; text-transform: uppercase;
-    padding: 8px 14px; border: 1px solid var(--border); border-radius: 6px;
-    transition: all 0.2s;
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-soft);
+    text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 10px 18px; border: 1px solid var(--border); border-radius: 6px;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    background: var(--card);
   }
-  .prototype-fullscreen:hover { border-color: var(--orange); color: var(--orange); }
+  .prototype-fullscreen:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); transform: translateY(-1px); }
   @media (max-width: 900px) {
     .prototype-frame { height: 760px; max-width: 420px; }
   }
@@ -640,7 +714,8 @@
   .contact-inner { max-width: 640px; margin: 0 auto; }
   .contact-inner .section-title { font-size: clamp(48px, 8vw, 100px); }
   .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 48px; }
-  .contact-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); color: var(--text-soft); text-decoration: none; transition: all 0.2s; cursor: none; display: inline-flex; align-items: center; gap: 8px; }
+  .contact-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); color: var(--text-soft); background: transparent; text-decoration: none; transition: all 0.2s; cursor: none; display: inline-flex; align-items: center; gap: 8px; line-height: 1; }
+  button.contact-link { font: inherit; font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; appearance: none; -webkit-appearance: none; }
   .contact-link:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
   .contact-link.primary { background: var(--orange); color: #000; border-color: var(--orange); }
   .contact-link.primary:hover { background: #ff7a3d; border-color: #ff7a3d; color: #000; }
@@ -1156,10 +1231,24 @@
     <h2 class="section-title">GEARUP APP<br/>SHOWCASE</h2>
     <p class="section-sub">A real product I led during my A-CSPO training — taken from sticky-note workflow to fully interactive prototype, all under serious time pressure.</p>
   </div>
+
+  <!-- Stat ribbon -->
+  <div class="gu-stats reveal">
+    <div class="gu-stat"><div class="gu-stat-num">20<span class="gu-stat-suffix">min</span></div><div class="gu-stat-label">Original time limit</div></div>
+    <div class="gu-stat"><div class="gu-stat-num">7+</div><div class="gu-stat-label">Interactive screens built</div></div>
+    <div class="gu-stat"><div class="gu-stat-num">4</div><div class="gu-stat-label">AR wheel styles · live swap</div></div>
+    <div class="gu-stat"><div class="gu-stat-num">100<span class="gu-stat-suffix">%</span></div><div class="gu-stat-label">Functional · not a mockup</div></div>
+  </div>
+
   <div class="gearup-layout reveal">
     <div class="gearup-info">
+      <div class="gu-quote-card">
+        <div class="gu-quote-mark">"</div>
+        <p class="gu-quote-text">I loved your product prototype!</p>
+        <div class="gu-quote-cite">— Richard K. Cheng, Certified Scrum Trainer®</div>
+      </div>
       <p>During my Advanced Certified Scrum Product Owner course, our team was given a <strong>20-minute time limit</strong> to map out a product workflow on sticky notes. That was the assignment. Most teams stopped there.</p>
-      <p>I went further. After class, I took our team's vision and <strong>built out a complete interactive prototype</strong> — branded UI, multiple screens, working navigation, product browsing, AR wheel preview, VIN scanning, and a live community feed. The trainer, Richard Cheng, called it out specifically: <em>"I loved your product prototype!"</em></p>
+      <p>I went further. After class, I took our team's vision and <strong>built out a complete interactive prototype</strong> — branded UI, multiple screens, working navigation, product browsing, AR wheel preview, VIN scanning, and a live community feed.</p>
       <h3>The Product</h3>
       <p>GearUp is a mobile app for car owners and enthusiasts to compare and shop modifications, with AR visualization, VIN-based fitment, and cross-retailer price comparison.</p>
       <h3>My Role</h3>
@@ -1170,6 +1259,9 @@
       <p class="gearup-tryit">↓ Try it live — fully interactive prototype</p>
     </div>
     <div class="prototype-stage">
+      <div class="prototype-live-badge">
+        <span class="gu-live-dot"></span> LIVE PROTOTYPE
+      </div>
       <div class="prototype-frame">
         <iframe
           src="gearup-prototype.html"
@@ -1178,7 +1270,14 @@
           class="prototype-iframe"
         ></iframe>
       </div>
-      <a href="gearup-prototype.html" target="_blank" rel="noopener" class="prototype-fullscreen">↗ Open prototype full-screen</a>
+      <div class="prototype-flow-tip">
+        <span class="gu-flow-step">1</span>Tap a product
+        <span class="gu-flow-arrow">→</span>
+        <span class="gu-flow-step">2</span>View in AR
+        <span class="gu-flow-arrow">→</span>
+        <span class="gu-flow-step">3</span>Swap wheels
+      </div>
+      <a href="gearup-prototype.html" target="_blank" rel="noopener" class="prototype-fullscreen" id="prototypeFullscreen">↗ Open prototype full-screen</a>
     </div>
   </div>
 </section>
@@ -1486,16 +1585,39 @@
   const themeBtn = document.getElementById('themeToggle');
   const moonIcon = document.getElementById('moonIcon');
   const sunIcon = document.getElementById('sunIcon');
-  const savedTheme = (typeof Storage !== 'undefined' && localStorage.getItem) ? null : null;
+  function broadcastThemeToIframes(t) {
+    document.querySelectorAll('iframe').forEach(f => {
+      try { f.contentWindow.postMessage({ type: 'theme', theme: t }, '*'); } catch (e) {}
+    });
+  }
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     if (t === 'light') { moonIcon.style.display = 'none'; sunIcon.style.display = 'block'; }
     else { moonIcon.style.display = 'block'; sunIcon.style.display = 'none'; }
+    broadcastThemeToIframes(t);
   }
   themeBtn.addEventListener('click', () => {
     const cur = document.documentElement.getAttribute('data-theme');
     setTheme(cur === 'dark' ? 'light' : 'dark');
   });
+  // When iframe asks for current theme on load, send it
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'request-theme') {
+      const t = document.documentElement.getAttribute('data-theme') || 'dark';
+      try { e.source.postMessage({ type: 'theme', theme: t }, '*'); } catch (err) {}
+    }
+  });
+
+  // Update prototype full-screen link with current theme so new tab matches
+  const protoLink = document.getElementById('prototypeFullscreen');
+  if (protoLink) {
+    function syncProtoLink() {
+      const t = document.documentElement.getAttribute('data-theme') || 'dark';
+      protoLink.href = `gearup-prototype.html?theme=${t}`;
+    }
+    syncProtoLink();
+    new MutationObserver(syncProtoLink).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
 
   // Navbar scroll
   window.addEventListener('scroll', () => {
