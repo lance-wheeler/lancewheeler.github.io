@@ -4,126 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GearUp — Interactive Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ============= THEME VARIABLES ============= */
+  /* ============================================================
+     DESIGN SYSTEM — refined for professional polish
+     ============================================================ */
   :root {
-    --gu-bg-grad-1: #F1EFE8;
-    --gu-bg-grad-2: #E6EADF;
-    --gu-page-text: #2C2C2A;
-    --gu-phone-bg: #ffffff;
-    --gu-phone-border: #18181c;
-    --gu-text-primary: #1a1a1c;
-    --gu-text-secondary: #5F5E5A;
-    --gu-text-tertiary: #9a9990;
+    /* Page chrome */
+    --gu-bg-grad-1: #F4F1EA;
+    --gu-bg-grad-2: #E5E2D9;
+    --gu-page-text: #1a1a1c;
+
+    /* Phone */
+    --gu-phone-bg: #FAFAF8;
+    --gu-phone-border: #15151a;
+    --gu-phone-shadow: rgba(0,0,0,0.28);
+
+    /* Text scale */
+    --gu-text-primary: #15151a;
+    --gu-text-secondary: #5a5a62;
+    --gu-text-tertiary: #9a9aa3;
+    --gu-text-quaternary: #c4c4cc;
+
+    /* Surfaces */
     --gu-card-bg: #ffffff;
-    --gu-card-border: #E6E5DD;
-    --gu-card-shadow: rgba(0,0,0,0.04);
-    --gu-card-hover-shadow: rgba(24,95,165,0.12);
-    --gu-input-bg: #F7F6F1;
-    --gu-thumb-bg: #F4F2EB;
-    --gu-soft-bg: #F1EFE8;
-    --gu-accent-blue: #185FA5;
-    --gu-accent-blue-dark: #0C447C;
-    --gu-accent-blue-light: #E6F1FB;
-    --gu-accent-blue-bg: #C4DDF5;
-    --gu-accent-orange: #D85A30;
-    --gu-accent-orange-soft: #FCE8DD;
-    --gu-success-bg: #EAF3DE;
-    --gu-success-text: #3B6D11;
-    --gu-warning-bg: #FFF4E0;
+    --gu-card-border: #ECEAE3;
+    --gu-card-shadow: rgba(15,15,20,0.04);
+    --gu-card-hover-shadow: rgba(15,15,20,0.10);
+    --gu-input-bg: #F5F3EE;
+    --gu-soft-bg: #F8F6F1;
+    --gu-thumb-bg: #F0EDE5;
+    --gu-thumb-grad-1: #F4F1EA;
+    --gu-thumb-grad-2: #E8E4DA;
+    --gu-divider: #EFEDE6;
+
+    /* Brand */
+    --gu-brand-blue: #1763CB;
+    --gu-brand-blue-dark: #0B3F89;
+    --gu-brand-blue-soft: #EAF2FC;
+    --gu-brand-blue-bg: #C5DCF6;
+    --gu-brand-orange: #E2602F;
+    --gu-brand-orange-dark: #B7461C;
+    --gu-brand-orange-soft: #FCEAE0;
+
+    /* Status */
+    --gu-success-bg: #E5F2D8;
+    --gu-success-text: #2F6612;
+    --gu-success-strong: #4A9B1E;
+    --gu-warning-bg: #FFF3DB;
     --gu-warning-text: #8C5A0F;
-    --gu-divider: #ECEAE2;
-    --gu-shadow-phone: rgba(0,0,0,0.25);
-    --gu-skeleton: #EAE8E0;
-  }
-  [data-theme="dark"] {
-    --gu-bg-grad-1: #0d0d11;
-    --gu-bg-grad-2: #18181f;
-    --gu-page-text: #e8e8ea;
-    --gu-phone-bg: #15151a;
-    --gu-phone-border: #2a2a32;
-    --gu-text-primary: #f0f0f2;
-    --gu-text-secondary: #a8a8ad;
-    --gu-text-tertiary: #6c6c72;
-    --gu-card-bg: #1e1e25;
-    --gu-card-border: #2a2a32;
-    --gu-card-shadow: rgba(0,0,0,0.3);
-    --gu-card-hover-shadow: rgba(232,98,42,0.18);
-    --gu-input-bg: #14141a;
-    --gu-thumb-bg: #0e0e12;
-    --gu-soft-bg: #14141a;
-    --gu-accent-blue: #4a9eff;
-    --gu-accent-blue-dark: #82c0ff;
-    --gu-accent-blue-light: #1a2638;
-    --gu-accent-blue-bg: #233650;
-    --gu-accent-orange: #e8622a;
-    --gu-accent-orange-soft: #2d1810;
-    --gu-success-bg: #1d2e15;
-    --gu-success-text: #8fc16e;
-    --gu-warning-bg: #2d2412;
-    --gu-warning-text: #d4a85e;
-    --gu-divider: #25252c;
-    --gu-shadow-phone: rgba(0,0,0,0.6);
-    --gu-skeleton: #1e1e25;
+    --gu-error-bg: #FCE5E1;
+    --gu-error-text: #B7311E;
+
+    /* AR / Cinematic backgrounds */
+    --gu-ar-grad-1: #2a1a14;
+    --gu-ar-grad-2: #110907;
+
+    /* Effects */
+    --gu-skeleton: linear-gradient(90deg, #EFEDE6 0%, #F8F6F1 50%, #EFEDE6 100%);
+    --gu-skeleton-anim: 1.4s ease-in-out infinite;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [data-theme="dark"] {
+    --gu-bg-grad-1: #08080a;
+    --gu-bg-grad-2: #15151a;
+    --gu-page-text: #e8e8ea;
+
+    --gu-phone-bg: #101015;
+    --gu-phone-border: #2a2a32;
+    --gu-phone-shadow: rgba(0,0,0,0.6);
+
+    --gu-text-primary: #f5f5f7;
+    --gu-text-secondary: #a8a8b0;
+    --gu-text-tertiary: #6c6c74;
+    --gu-text-quaternary: #3c3c44;
+
+    --gu-card-bg: #18181f;
+    --gu-card-border: #26262e;
+    --gu-card-shadow: rgba(0,0,0,0.3);
+    --gu-card-hover-shadow: rgba(232,98,42,0.18);
+    --gu-input-bg: #0f0f14;
+    --gu-soft-bg: #14141a;
+    --gu-thumb-bg: #0d0d12;
+    --gu-thumb-grad-1: #14141a;
+    --gu-thumb-grad-2: #0a0a0e;
+    --gu-divider: #1f1f26;
+
+    --gu-brand-blue: #4fa0ff;
+    --gu-brand-blue-dark: #82c0ff;
+    --gu-brand-blue-soft: #112236;
+    --gu-brand-blue-bg: #1c3a5e;
+    --gu-brand-orange: #ee6f3a;
+    --gu-brand-orange-dark: #f5895d;
+    --gu-brand-orange-soft: #2d1812;
+
+    --gu-success-bg: #1d2d12;
+    --gu-success-text: #94c46e;
+    --gu-success-strong: #a4d472;
+    --gu-warning-bg: #2d2412;
+    --gu-warning-text: #d4a85e;
+    --gu-error-bg: #2d1410;
+    --gu-error-text: #f08272;
+
+    --gu-ar-grad-1: #1a1015;
+    --gu-ar-grad-2: #0a0608;
+  }
+
+  /* ============================================================
+     RESET + BASE
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: linear-gradient(135deg, var(--gu-bg-grad-1) 0%, var(--gu-bg-grad-2) 100%);
     min-height: 100%; height: 100%;
     color: var(--gu-page-text);
     overflow: hidden;
     transition: background 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
     display: flex; align-items: center; justify-content: center;
     padding: 20px 16px;
   }
+  button { font-family: inherit; }
 
-  /* ============= PHONE FRAME ============= */
+  /* ============================================================
+     PHONE FRAME — refined iPhone
+     ============================================================ */
   .stage { max-width: 420px; margin: 0 auto; width: 100%; }
   .phone {
     width: 100%; max-width: 390px; margin: 0 auto;
     background: var(--gu-phone-bg);
-    border-radius: 44px;
-    border: 9px solid var(--gu-phone-border);
-    box-shadow: 0 20px 60px var(--gu-shadow-phone), 0 0 0 1px rgba(0,0,0,0.04);
+    border-radius: 50px;
+    border: 8px solid var(--gu-phone-border);
+    box-shadow:
+      0 25px 60px var(--gu-phone-shadow),
+      0 0 0 1px rgba(0,0,0,0.04),
+      inset 0 0 0 1px rgba(255,255,255,0.03);
     overflow: hidden;
     position: relative;
-    height: min(800px, calc(100vh - 40px));
+    height: min(820px, calc(100vh - 40px));
     aspect-ratio: 9 / 19;
     transition: background 0.3s, border-color 0.3s;
   }
-  .notch {
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 110px; height: 24px;
-    background: var(--gu-phone-border);
-    border-radius: 0 0 16px 16px; z-index: 100;
-    transition: background 0.3s;
+  .dynamic-island {
+    position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 28px;
+    background: #000;
+    border-radius: 18px;
+    z-index: 100;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.4);
   }
   .status-bar {
-    position: absolute; top: 4px; left: 0; right: 0;
-    padding: 6px 28px 0;
+    position: absolute; top: 0; left: 0; right: 0; height: 50px;
+    padding: 16px 28px 0;
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; font-weight: 600;
+    font-size: 14px; font-weight: 600;
     color: var(--gu-text-primary);
     z-index: 99;
     pointer-events: none;
+    letter-spacing: -0.2px;
   }
-  .status-icons { display: flex; gap: 5px; align-items: center; font-size: 10px; }
+  .status-icons { display: flex; gap: 5px; align-items: center; color: var(--gu-text-primary); }
 
-  /* ============= SCREENS ============= */
+  /* ============================================================
+     SCREENS
+     ============================================================ */
   .screen {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 56px;
-    padding: 36px 18px 12px;
+    top: 0; left: 0; right: 0; bottom: 64px;
+    padding: 50px 18px 16px;
     display: none;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: var(--gu-phone-bg);
     transition: background 0.3s;
   }
-  .screen.active { display: block; animation: screenIn 0.32s cubic-bezier(.2,.7,.3,1); }
+  .screen.active { display: block; animation: screenIn 0.34s cubic-bezier(.2,.7,.3,1); }
   .screen::-webkit-scrollbar { display: none; }
   .screen { -ms-overflow-style: none; scrollbar-width: none; }
   @keyframes screenIn {
@@ -131,512 +192,798 @@
     to { opacity: 1; transform: translateX(0); }
   }
 
-  /* ============= COMMON COMPONENTS ============= */
+  /* ============================================================
+     COMMON COMPONENTS
+     ============================================================ */
   .header {
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 14px; padding-top: 8px;
+    margin-bottom: 18px; padding-top: 4px;
   }
   .logo {
-    font-size: 22px; font-weight: 800;
-    letter-spacing: -0.6px;
-    color: var(--gu-accent-blue);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px; font-weight: 700;
+    letter-spacing: -0.8px;
+    color: var(--gu-brand-blue);
     cursor: pointer;
     user-select: none;
   }
-  .logo span { color: var(--gu-accent-orange); }
+  .logo span { color: var(--gu-brand-orange); }
+  .h1 {
+    font-size: 24px; font-weight: 800; letter-spacing: -0.8px;
+    color: var(--gu-text-primary); margin-bottom: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .h2 {
+    font-size: 18px; font-weight: 700; letter-spacing: -0.4px;
+    color: var(--gu-text-primary); margin-bottom: 12px;
+  }
+
+  /* Avatars */
   .avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gu-accent-blue-bg) 0%, var(--gu-accent-blue-light) 100%);
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gu-brand-orange) 0%, var(--gu-brand-blue) 100%);
     display: flex; align-items: center; justify-content: center;
     font-size: 13px; font-weight: 700;
-    color: var(--gu-accent-blue-dark);
+    color: #fff;
     cursor: pointer;
-    border: 2px solid var(--gu-card-bg);
-    box-shadow: 0 1px 3px var(--gu-card-shadow);
+    box-shadow: 0 2px 6px var(--gu-card-shadow);
     transition: transform 0.15s;
+    border: 2px solid var(--gu-phone-bg);
   }
   .avatar:hover { transform: scale(1.05); }
+
+  /* Icon buttons */
   .icon-btn {
-    width: 32px; height: 32px; border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     background: var(--gu-soft-bg);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; border: none; padding: 0;
-    transition: background 0.15s, transform 0.15s;
+    cursor: pointer; border: 1px solid var(--gu-card-border);
+    padding: 0;
+    transition: all 0.15s;
     position: relative;
+    color: var(--gu-text-primary);
   }
-  .icon-btn:hover { background: var(--gu-input-bg); transform: scale(1.05); }
-  .icon-btn svg { width: 16px; height: 16px; }
+  .icon-btn:hover { background: var(--gu-input-bg); transform: translateY(-1px); }
+  .icon-btn:active { transform: translateY(0) scale(0.95); }
+  .icon-btn svg { width: 17px; height: 17px; }
   .icon-btn .badge {
-    position: absolute; top: -2px; right: -2px;
-    background: var(--gu-accent-orange); color: #fff;
-    font-size: 8px; font-weight: 700;
-    width: 14px; height: 14px; border-radius: 50%;
+    position: absolute; top: -3px; right: -3px;
+    background: var(--gu-brand-orange); color: #fff;
+    font-size: 9px; font-weight: 700;
+    min-width: 16px; height: 16px; padding: 0 4px;
+    border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     border: 2px solid var(--gu-phone-bg);
   }
   .header-actions { display: flex; gap: 8px; align-items: center; }
+
+  /* Back button */
   .back-btn {
     font-size: 14px; font-weight: 600;
     color: var(--gu-text-primary);
     cursor: pointer; background: none; border: none;
     padding: 6px 0; font-family: inherit;
     display: flex; align-items: center; gap: 4px;
+    transition: color 0.15s;
   }
-  .back-btn:hover { color: var(--gu-accent-blue); }
+  .back-btn:hover { color: var(--gu-brand-blue); }
+  .back-btn svg { width: 18px; height: 18px; }
 
-  /* ============= VEHICLE CARD ============= */
+  /* ============================================================
+     VEHICLE CARD
+     ============================================================ */
   .vehicle-card {
-    background: linear-gradient(135deg, var(--gu-accent-blue-light) 0%, var(--gu-accent-blue-light) 100%);
-    border: 1px solid var(--gu-accent-blue-bg);
-    border-radius: 14px; padding: 13px 14px;
-    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--gu-brand-blue-dark) 0%, var(--gu-brand-blue) 100%);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
     display: flex; justify-content: space-between; align-items: center;
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
   }
-  .vehicle-card:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(24,95,165,0.12); }
+  .vehicle-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 10%, rgba(255,255,255,0.18), transparent 50%);
+    pointer-events: none;
+  }
+  .vehicle-card:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(11,63,137,0.32); }
   .vehicle-label {
-    font-size: 9px; color: var(--gu-accent-blue);
-    margin-bottom: 3px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
+    font-size: 9px; opacity: 0.7;
+    margin-bottom: 4px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    position: relative;
   }
   .vehicle-name {
-    font-size: 15px; font-weight: 700;
-    color: var(--gu-accent-blue-dark);
+    font-size: 16px; font-weight: 700; position: relative;
+    letter-spacing: -0.3px;
   }
   .vehicle-sub {
-    font-size: 11px; color: var(--gu-accent-blue);
-    opacity: 0.75; margin-top: 1px;
+    font-size: 11px; opacity: 0.8; margin-top: 2px;
+    position: relative; font-weight: 500;
   }
+  .vehicle-mini-stats {
+    display: flex; gap: 11px; margin-top: 6px;
+    position: relative;
+  }
+  .vmini { font-size: 10px; opacity: 0.85; font-weight: 600; }
+  .vmini b { font-size: 12px; font-weight: 800; opacity: 1; }
   .vehicle-thumb {
-    width: 44px; height: 44px; border-radius: 10px;
-    background: var(--gu-card-bg);
+    width: 56px; height: 56px; border-radius: 12px;
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+    flex-shrink: 0; position: relative;
+    border: 1px solid rgba(255,255,255,0.18);
   }
 
-  /* ============= SEARCH ============= */
-  .search-wrap { position: relative; margin-bottom: 12px; }
+  /* ============================================================
+     SEARCH
+     ============================================================ */
+  .search-wrap { position: relative; margin-bottom: 14px; }
   .search {
-    width: 100%; padding: 12px 16px 12px 40px;
+    width: 100%; padding: 13px 16px 13px 44px;
     border: 1px solid var(--gu-card-border);
-    border-radius: 12px;
-    font-size: 14px;
+    border-radius: 14px;
+    font-size: 14px; font-weight: 500;
     background: var(--gu-input-bg);
     font-family: inherit;
     color: var(--gu-text-primary);
-    transition: border-color 0.15s, background 0.15s;
+    transition: all 0.15s;
   }
+  .search::placeholder { color: var(--gu-text-tertiary); }
   .search:focus {
     outline: none;
-    border-color: var(--gu-accent-blue);
+    border-color: var(--gu-brand-blue);
     background: var(--gu-card-bg);
+    box-shadow: 0 0 0 3px var(--gu-brand-blue-soft);
   }
   .search-icon {
-    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-    width: 16px; height: 16px;
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 17px; height: 17px;
     color: var(--gu-text-tertiary);
     pointer-events: none;
   }
+  .search-clear {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gu-text-tertiary); color: var(--gu-card-bg);
+    display: none; align-items: center; justify-content: center;
+    cursor: pointer; border: none; font-size: 11px; font-weight: 700;
+  }
+  .search-clear.show { display: flex; }
 
-  /* ============= CATEGORIES ============= */
+  /* ============================================================
+     CATEGORIES
+     ============================================================ */
   .categories {
-    display: flex; gap: 7px; margin-bottom: 14px;
+    display: flex; gap: 8px; margin-bottom: 18px;
     overflow-x: auto; padding-bottom: 4px;
   }
   .categories::-webkit-scrollbar { display: none; }
   .cat {
-    padding: 7px 13px; border-radius: 18px;
-    font-size: 12px; font-weight: 600;
+    padding: 9px 14px; border-radius: 22px;
+    font-size: 12.5px; font-weight: 600;
     white-space: nowrap;
     border: 1px solid var(--gu-card-border);
     color: var(--gu-text-secondary);
     background: var(--gu-card-bg);
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.18s;
     font-family: inherit;
+    display: flex; align-items: center; gap: 6px;
   }
-  .cat:hover { border-color: var(--gu-accent-blue); color: var(--gu-accent-blue); }
+  .cat:hover { border-color: var(--gu-brand-blue); color: var(--gu-brand-blue); }
   .cat.active {
-    background: var(--gu-accent-blue);
-    color: #ffffff;
-    border-color: var(--gu-accent-blue);
+    background: var(--gu-text-primary);
+    color: var(--gu-card-bg);
+    border-color: var(--gu-text-primary);
+    box-shadow: 0 4px 12px var(--gu-card-shadow);
   }
-  .cat-icon { margin-right: 5px; font-size: 13px; }
+  .cat-icon { font-size: 14px; line-height: 1; }
 
-  /* ============= SECTION HEADERS ============= */
+  /* ============================================================
+     SECTION HEADERS
+     ============================================================ */
   .section-label {
     font-size: 13px; font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 12px; letter-spacing: -0.2px;
     color: var(--gu-text-primary);
     display: flex; justify-content: space-between; align-items: center;
   }
   .section-link {
-    font-size: 11px; color: var(--gu-accent-blue);
+    font-size: 11px; color: var(--gu-brand-blue);
     font-weight: 600; cursor: pointer;
-    text-transform: uppercase; letter-spacing: 0.5px;
+    text-transform: none; letter-spacing: 0;
+    display: flex; align-items: center; gap: 3px;
   }
   .section-link:hover { text-decoration: underline; }
 
-  /* ============= PRODUCT CARDS ============= */
+  /* Featured promo strip */
+  .promo-strip {
+    background: linear-gradient(135deg, var(--gu-brand-orange) 0%, var(--gu-brand-orange-dark) 100%);
+    border-radius: 14px; padding: 14px 16px;
+    margin-bottom: 14px; color: #fff;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .promo-strip::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 50%, rgba(255,255,255,0.18), transparent 60%);
+  }
+  .promo-text { position: relative; }
+  .promo-eyebrow {
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    opacity: 0.9; margin-bottom: 2px; text-transform: uppercase;
+  }
+  .promo-title {
+    font-size: 14px; font-weight: 800; letter-spacing: -0.3px;
+  }
+  .promo-arrow {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; flex-shrink: 0;
+  }
+
+  /* ============================================================
+     PRODUCT CARDS
+     ============================================================ */
   .product-card {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 14px; padding: 11px;
-    margin-bottom: 8px;
-    display: flex; gap: 11px;
+    border-radius: 16px; padding: 12px;
+    margin-bottom: 10px;
+    display: flex; gap: 12px;
     cursor: pointer;
-    transition: all 0.18s;
+    transition: all 0.2s cubic-bezier(.2,.7,.3,1);
     position: relative;
   }
   .product-card:hover {
-    border-color: var(--gu-accent-blue);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px var(--gu-card-hover-shadow);
+    border-color: var(--gu-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--gu-card-hover-shadow);
   }
+  .product-card:active { transform: translateY(0) scale(0.99); }
   .product-thumb {
-    width: 70px; height: 70px; border-radius: 10px;
-    background: var(--gu-thumb-bg);
+    width: 76px; height: 76px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--gu-thumb-grad-1), var(--gu-thumb-grad-2));
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
     position: relative;
+    border: 1px solid var(--gu-card-border);
   }
-  .product-info { flex: 1; min-width: 0; }
+  .product-info { flex: 1; min-width: 0; padding-top: 2px; }
   .product-top {
     display: flex; justify-content: space-between; align-items: flex-start;
     gap: 6px;
   }
+  .product-brand {
+    font-size: 9.5px; font-weight: 700;
+    color: var(--gu-text-tertiary);
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 1px;
+  }
   .product-name {
     font-size: 13.5px; font-weight: 700;
-    color: var(--gu-text-primary); line-height: 1.3;
+    color: var(--gu-text-primary); line-height: 1.25;
+    letter-spacing: -0.2px;
   }
-  .product-desc {
-    font-size: 11px;
-    color: var(--gu-text-secondary);
-    margin-top: 2px;
+  .product-rating {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 10.5px; color: var(--gu-text-secondary);
+    margin-top: 4px; font-weight: 500;
   }
+  .product-rating .stars { color: #fbbf24; letter-spacing: 0.5px; }
   .ar-badge {
-    background: var(--gu-success-bg);
-    color: var(--gu-success-text);
-    font-size: 9px; padding: 2px 7px;
-    border-radius: 4px; white-space: nowrap;
+    background: var(--gu-text-primary);
+    color: var(--gu-card-bg);
+    font-size: 9px; padding: 3px 7px;
+    border-radius: 5px; white-space: nowrap;
     font-weight: 700; letter-spacing: 0.4px;
     flex-shrink: 0;
+    display: flex; align-items: center; gap: 3px;
   }
   .price-row {
     display: flex; justify-content: space-between; align-items: center;
-    margin-top: 7px;
+    margin-top: 8px;
   }
   .price {
-    font-size: 15px; font-weight: 800;
+    font-size: 16px; font-weight: 800;
     color: var(--gu-text-primary);
+    letter-spacing: -0.4px;
   }
   .price-old {
     font-size: 11px;
     color: var(--gu-text-tertiary);
     text-decoration: line-through;
-    margin-left: 5px;
+    margin-left: 6px;
+    font-weight: 500;
+  }
+  .price-save {
+    font-size: 9.5px; font-weight: 700;
+    color: var(--gu-success-strong);
+    background: var(--gu-success-bg);
+    padding: 2px 6px; border-radius: 4px;
+    margin-left: 6px;
+    text-transform: uppercase; letter-spacing: 0.5px;
   }
   .retailers {
     font-size: 10px;
     color: var(--gu-text-secondary);
     background: var(--gu-soft-bg);
-    padding: 3px 7px; border-radius: 4px;
-    font-weight: 500;
-  }
-  .product-pin {
-    position: absolute; top: 8px; right: 8px;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--gu-card-bg);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.15s;
+    padding: 4px 8px; border-radius: 5px;
+    font-weight: 600;
     border: 1px solid var(--gu-card-border);
-    color: var(--gu-text-tertiary);
-    font-size: 14px;
   }
-  .product-pin:hover { transform: scale(1.1); }
-  .product-pin.liked { color: var(--gu-accent-orange); }
 
-  /* ============= PRODUCT DETAIL ============= */
+  /* Loading skeleton */
+  .skeleton-card {
+    background: var(--gu-card-bg);
+    border: 1px solid var(--gu-card-border);
+    border-radius: 16px; padding: 12px;
+    margin-bottom: 10px;
+    display: flex; gap: 12px;
+  }
+  .skel {
+    background: var(--gu-skeleton);
+    background-size: 200% 100%;
+    animation: skelShine 1.4s ease-in-out infinite;
+    border-radius: 6px;
+  }
+  @keyframes skelShine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ============================================================
+     PRODUCT DETAIL
+     ============================================================ */
   .detail-hero {
-    width: 100%; aspect-ratio: 16 / 11;
-    background: linear-gradient(135deg, var(--gu-thumb-bg), var(--gu-soft-bg));
-    border-radius: 16px; margin-bottom: 14px;
+    width: 100%; aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--gu-thumb-grad-1), var(--gu-thumb-grad-2));
+    border-radius: 18px; margin-bottom: 14px;
     display: flex; align-items: center; justify-content: center;
     position: relative;
     border: 1px solid var(--gu-card-border);
+    overflow: hidden;
   }
-  .detail-name {
-    font-size: 19px; font-weight: 800;
-    color: var(--gu-text-primary);
-    margin-bottom: 4px; line-height: 1.2;
+  .detail-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.08), transparent 60%);
   }
-  .detail-sub {
-    font-size: 12px; color: var(--gu-text-secondary);
-    margin-bottom: 14px;
+  .detail-tags {
+    position: absolute; top: 12px; left: 12px;
+    display: flex; gap: 6px; flex-wrap: wrap;
   }
-  .fit-row {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--gu-success-bg);
-    color: var(--gu-success-text);
-    padding: 9px 12px; border-radius: 10px;
-    font-size: 11px; font-weight: 700;
-    margin-bottom: 14px;
+  .detail-tag {
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    color: #fff; font-size: 10px; font-weight: 700;
+    padding: 4px 9px; border-radius: 5px;
+    letter-spacing: 0.4px;
+    display: flex; align-items: center; gap: 3px;
   }
-  .fit-row svg { width: 14px; height: 14px; flex-shrink: 0; }
-  .ar-cta {
-    width: 100%; padding: 14px;
-    background: linear-gradient(135deg, var(--gu-accent-blue), var(--gu-accent-blue-dark));
-    color: #fff; border: none; border-radius: 12px;
-    font-size: 14px; font-weight: 700;
-    cursor: pointer; font-family: inherit;
-    margin-bottom: 14px;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: transform 0.15s, box-shadow 0.15s;
+  .detail-tag.fit { background: rgba(74,155,30,0.92); }
+  .detail-360 {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    color: #fff; font-size: 11px; font-weight: 600;
+    padding: 6px 11px; border-radius: 18px;
+    display: flex; align-items: center; gap: 5px;
   }
-  .ar-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(24,95,165,0.32); }
-  .price-comparison-title {
+  .detail-brand {
     font-size: 11px; font-weight: 700;
     color: var(--gu-text-tertiary);
-    text-transform: uppercase; letter-spacing: 1px;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .detail-name {
+    font-size: 21px; font-weight: 800;
+    color: var(--gu-text-primary);
+    margin-bottom: 6px; line-height: 1.2;
+    letter-spacing: -0.6px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .detail-rating-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+    font-size: 12px; color: var(--gu-text-secondary);
+  }
+  .detail-rating-row .stars { color: #fbbf24; font-size: 13px; letter-spacing: 0.5px; }
+  .detail-rating-row .verified { color: var(--gu-success-strong); font-weight: 600; }
+  .detail-price-block {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .detail-price {
+    font-size: 28px; font-weight: 800; letter-spacing: -1px;
+    color: var(--gu-text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .detail-price-old {
+    font-size: 14px; color: var(--gu-text-tertiary);
+    text-decoration: line-through;
+  }
+  .detail-save {
+    background: var(--gu-success-strong); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 4px 8px; border-radius: 5px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+
+  .ar-cta {
+    width: 100%; padding: 15px;
+    background: var(--gu-text-primary);
+    color: var(--gu-card-bg); border: none; border-radius: 14px;
+    font-size: 14px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all 0.18s;
+    letter-spacing: -0.2px;
+  }
+  .ar-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px var(--gu-card-hover-shadow); }
+  .ar-cta:active { transform: translateY(0) scale(0.99); }
+
+  /* Specs / metadata strip */
+  .specs-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 18px;
+  }
+  .spec-item {
+    background: var(--gu-soft-bg);
+    border: 1px solid var(--gu-card-border);
+    border-radius: 10px;
+    padding: 10px 8px; text-align: center;
+  }
+  .spec-icon {
+    font-size: 16px; margin-bottom: 4px;
+  }
+  .spec-label {
+    font-size: 9px; font-weight: 700;
+    color: var(--gu-text-tertiary);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .spec-value {
+    font-size: 11px; font-weight: 700;
+    color: var(--gu-text-primary); margin-top: 2px;
+  }
+
+  /* Section title (price comp) */
+  .section-title-sm {
+    font-size: 11px; font-weight: 700;
+    color: var(--gu-text-tertiary);
+    text-transform: uppercase; letter-spacing: 1.2px;
     margin-bottom: 10px; margin-top: 4px;
   }
+
+  /* Retailer cards */
   .retailer-card {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 12px; padding: 11px 13px;
-    margin-bottom: 7px;
+    border-radius: 12px; padding: 12px 14px;
+    margin-bottom: 8px;
     display: flex; justify-content: space-between; align-items: center;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.18s;
   }
   .retailer-card:hover {
-    border-color: var(--gu-accent-blue);
+    border-color: var(--gu-text-primary);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--gu-card-hover-shadow);
   }
   .retailer-card.best {
     background: var(--gu-success-bg);
-    border-color: var(--gu-success-text);
+    border-color: var(--gu-success-strong);
   }
   .retailer-name {
     font-size: 13px; font-weight: 700;
-    color: var(--gu-text-primary);
+    color: var(--gu-text-primary); display: flex; align-items: center; gap: 6px;
+    letter-spacing: -0.2px;
   }
   .retailer-card.best .retailer-name { color: var(--gu-success-text); }
+  .best-badge {
+    font-size: 8.5px; font-weight: 800; letter-spacing: 0.6px;
+    background: var(--gu-success-strong); color: #fff;
+    padding: 2px 6px; border-radius: 4px;
+    text-transform: uppercase;
+  }
   .retailer-meta {
     font-size: 10.5px; color: var(--gu-text-secondary);
-    margin-top: 1px;
+    margin-top: 2px;
   }
   .retailer-card.best .retailer-meta { color: var(--gu-success-text); opacity: 0.85; }
   .retailer-price {
-    font-size: 15px; font-weight: 800;
-    color: var(--gu-text-primary);
+    font-size: 16px; font-weight: 800;
+    color: var(--gu-text-primary); letter-spacing: -0.4px;
   }
   .retailer-card.best .retailer-price { color: var(--gu-success-text); }
 
-  /* ============= AR VIEW ============= */
+  /* Reviews preview */
+  .review-preview {
+    background: var(--gu-soft-bg);
+    border: 1px solid var(--gu-card-border);
+    border-radius: 12px; padding: 12px;
+    margin-bottom: 10px;
+  }
+  .review-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .review-author {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; font-weight: 700;
+    color: var(--gu-text-primary);
+  }
+  .review-mini-avatar {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gu-brand-orange), var(--gu-brand-blue));
+    color: #fff; font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .review-stars { color: #fbbf24; font-size: 11px; letter-spacing: 0.5px; }
+  .review-text {
+    font-size: 12px; color: var(--gu-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ============================================================
+     AR VIEW
+     ============================================================ */
   .ar-stage {
-    width: 100%; aspect-ratio: 16 / 10;
-    background: linear-gradient(180deg, #5d4738 0%, #3d2e22 100%);
-    border-radius: 14px;
+    width: 100%; aspect-ratio: 16 / 11;
+    background: linear-gradient(180deg, var(--gu-ar-grad-1) 0%, var(--gu-ar-grad-2) 100%);
+    border-radius: 16px;
     position: relative; overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     border: 1px solid var(--gu-card-border);
   }
   .ar-floor {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 30%;
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.4));
+    position: absolute; bottom: 0; left: 0; right: 0; height: 35%;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.55));
   }
   .ar-grid {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+    position: absolute; bottom: 0; left: -10%; right: -10%; height: 55%;
     background-image:
-      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 25px 25px;
-    transform: perspective(120px) rotateX(60deg);
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    transform: perspective(140px) rotateX(62deg);
     transform-origin: bottom;
+  }
+  .ar-spotlight {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 70%; height: 70%;
+    background: radial-gradient(ellipse at center top, rgba(255,255,255,0.12), transparent 60%);
+    pointer-events: none;
   }
   .ar-car-svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
   .ar-status {
-    position: absolute; top: 8px; left: 8px;
-    background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
-    color: #fff; padding: 5px 10px; border-radius: 16px;
-    font-size: 9px; font-weight: 700;
-    display: flex; align-items: center; gap: 5px;
-    letter-spacing: 0.5px;
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+    color: #fff; padding: 6px 11px; border-radius: 18px;
+    font-size: 9.5px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+    letter-spacing: 0.6px;
+    border: 1px solid rgba(255,255,255,0.1);
   }
   .ar-live-dot {
-    width: 6px; height: 6px; border-radius: 50%;
+    width: 7px; height: 7px; border-radius: 50%;
     background: #4ade80;
     animation: liveDot 1.4s infinite;
   }
   @keyframes liveDot {
     0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.7); }
-    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 7px rgba(74,222,128,0); }
   }
-  .ar-camera-btn {
-    position: absolute; top: 8px; right: 8px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
+  .ar-fitment {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(0,0,0,0.65); backdrop-filter: blur(10px);
+    color: #fff; padding: 6px 11px; border-radius: 18px;
+    font-size: 10px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .ar-fitment-pct {
+    color: #4ade80; font-weight: 800; font-size: 11px;
+  }
+  .ar-controls {
+    position: absolute; top: 12px; right: 12px;
+    display: flex; gap: 6px;
+  }
+  .ar-control-btn {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
     color: #fff; display: flex; align-items: center; justify-content: center;
-    border: none; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+    transition: background 0.15s;
   }
+  .ar-control-btn:hover { background: rgba(0,0,0,0.75); }
   .wheel-options-title {
     font-size: 11px; font-weight: 700;
     color: var(--gu-text-tertiary);
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
   }
   .wheel-options {
-    display: flex; gap: 8px; margin-bottom: 12px;
+    display: flex; gap: 9px; margin-bottom: 14px;
     overflow-x: auto; padding-bottom: 4px;
   }
   .wheel-options::-webkit-scrollbar { display: none; }
   .wheel-opt {
-    flex-shrink: 0; width: 64px; padding: 8px 6px;
+    flex-shrink: 0; width: 72px; padding: 9px 7px;
     border: 2px solid var(--gu-card-border);
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
     text-align: center;
     background: var(--gu-card-bg);
-    transition: all 0.15s;
+    transition: all 0.18s;
   }
+  .wheel-opt:hover { border-color: var(--gu-text-primary); transform: translateY(-1px); }
   .wheel-opt.selected {
-    border-color: var(--gu-accent-orange);
-    background: var(--gu-accent-orange-soft);
+    border-color: var(--gu-brand-orange);
+    background: var(--gu-brand-orange-soft);
+    box-shadow: 0 4px 12px rgba(226,96,47,0.18);
   }
   .wheel-opt-thumb {
-    width: 40px; height: 40px; margin: 0 auto 4px;
+    width: 44px; height: 44px; margin: 0 auto 5px;
     display: flex; align-items: center; justify-content: center;
   }
   .wheel-opt-name {
-    font-size: 9px; font-weight: 700;
+    font-size: 9.5px; font-weight: 700;
     color: var(--gu-text-primary); line-height: 1.2;
+  }
+  .wheel-opt-price {
+    font-size: 8.5px; color: var(--gu-text-tertiary);
+    font-weight: 600; margin-top: 1px;
   }
   .ar-info-card {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 12px; padding: 11px;
+    border-radius: 14px; padding: 12px;
     display: flex; justify-content: space-between; align-items: center;
   }
   .ar-info-name {
-    font-size: 13px; font-weight: 700;
+    font-size: 13.5px; font-weight: 700;
     color: var(--gu-text-primary);
+    letter-spacing: -0.2px;
   }
   .ar-info-price {
     font-size: 11px; color: var(--gu-text-secondary);
     margin-top: 2px;
   }
   .ar-info-cta {
-    background: var(--gu-accent-orange);
+    background: var(--gu-brand-orange);
     color: #fff; border: none;
-    padding: 8px 14px; border-radius: 10px;
-    font-size: 11px; font-weight: 700;
+    padding: 9px 16px; border-radius: 11px;
+    font-size: 12px; font-weight: 700;
     cursor: pointer; font-family: inherit;
-    transition: transform 0.15s;
+    transition: all 0.15s;
+    letter-spacing: -0.1px;
   }
-  .ar-info-cta:hover { transform: scale(1.04); }
+  .ar-info-cta:hover { background: var(--gu-brand-orange-dark); transform: translateY(-1px); }
 
-  /* ============= GARAGE ============= */
+  /* ============================================================
+     GARAGE
+     ============================================================ */
   .garage-hero {
     position: relative; width: 100%; aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, var(--gu-accent-blue-dark) 0%, var(--gu-accent-blue) 100%);
-    border-radius: 14px; margin-bottom: 12px;
+    background: linear-gradient(135deg, #1a2638 0%, #0a3a6e 60%, #1763CB 100%);
+    border-radius: 16px; margin-bottom: 14px;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 14px; color: #fff;
     overflow: hidden;
   }
+  [data-theme="dark"] .garage-hero { background: linear-gradient(135deg, #0c1a2e 0%, #102d52 60%, #1763CB 100%); }
   .garage-hero::before {
     content: ''; position: absolute; inset: 0;
     background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 50%);
   }
-  .garage-veh-name { position: relative; font-size: 17px; font-weight: 800; }
-  .garage-veh-meta { position: relative; font-size: 11px; opacity: 0.85; margin-top: 2px; }
+  .garage-hero-svg {
+    position: absolute; top: 50%; right: -10%;
+    transform: translateY(-50%);
+    opacity: 0.85;
+  }
+  .garage-veh-name {
+    position: relative; font-size: 20px; font-weight: 800;
+    letter-spacing: -0.4px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .garage-veh-meta { position: relative; font-size: 11.5px; opacity: 0.85; margin-top: 2px; font-weight: 500; }
   .garage-stats {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 8px; margin-bottom: 14px;
+    gap: 8px; margin-bottom: 16px;
   }
   .garage-stat {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    padding: 11px 8px; border-radius: 10px;
+    padding: 12px 8px; border-radius: 12px;
     text-align: center;
   }
   .garage-stat-num {
-    font-size: 18px; font-weight: 800;
-    color: var(--gu-accent-blue);
+    font-size: 19px; font-weight: 800;
+    color: var(--gu-brand-blue);
+    letter-spacing: -0.4px;
+    font-family: 'Space Grotesk', sans-serif;
   }
   .garage-stat-label {
-    font-size: 9px; font-weight: 600;
+    font-size: 9px; font-weight: 700;
     color: var(--gu-text-secondary);
-    text-transform: uppercase; letter-spacing: 0.5px;
-    margin-top: 2px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-top: 3px;
   }
   .add-vehicle-btn {
-    width: 100%; padding: 11px;
+    width: 100%; padding: 13px;
     border: 1.5px dashed var(--gu-card-border);
     border-radius: 12px;
     background: var(--gu-soft-bg);
     color: var(--gu-text-secondary);
-    font-size: 12px; font-weight: 600;
+    font-size: 12.5px; font-weight: 600;
     cursor: pointer; font-family: inherit;
-    transition: all 0.15s;
+    transition: all 0.18s;
     display: flex; align-items: center; justify-content: center; gap: 6px;
   }
   .add-vehicle-btn:hover {
-    border-color: var(--gu-accent-blue);
-    color: var(--gu-accent-blue);
-    background: var(--gu-accent-blue-light);
+    border-color: var(--gu-brand-blue);
+    color: var(--gu-brand-blue);
+    background: var(--gu-brand-blue-soft);
   }
 
   .installed-mod {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 12px; padding: 11px 13px;
+    border-radius: 12px; padding: 12px 14px;
     margin-bottom: 8px;
-    display: flex; gap: 11px; align-items: center;
+    display: flex; gap: 12px; align-items: center;
+    transition: all 0.15s;
   }
+  .installed-mod:hover { border-color: var(--gu-text-primary); transform: translateY(-1px); }
   .mod-thumb {
-    width: 40px; height: 40px; border-radius: 8px;
-    background: var(--gu-thumb-bg);
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--gu-thumb-grad-1), var(--gu-thumb-grad-2));
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--gu-card-border);
   }
-  .mod-info { flex: 1; }
+  .mod-info { flex: 1; min-width: 0; }
   .mod-name {
-    font-size: 12.5px; font-weight: 700;
-    color: var(--gu-text-primary);
+    font-size: 13px; font-weight: 700;
+    color: var(--gu-text-primary); letter-spacing: -0.2px;
   }
   .mod-meta {
-    font-size: 10px; color: var(--gu-text-secondary);
-    margin-top: 1px;
+    font-size: 10.5px; color: var(--gu-text-secondary);
+    margin-top: 2px; font-weight: 500;
   }
   .mod-status {
-    font-size: 9px; font-weight: 700;
+    font-size: 9px; font-weight: 800;
     background: var(--gu-success-bg);
     color: var(--gu-success-text);
-    padding: 3px 7px; border-radius: 4px;
-    text-transform: uppercase; letter-spacing: 0.4px;
+    padding: 4px 8px; border-radius: 5px;
+    text-transform: uppercase; letter-spacing: 0.6px;
   }
 
-  /* ============= COMMUNITY FEED ============= */
+  /* ============================================================
+     COMMUNITY FEED
+     ============================================================ */
   .feed-stories {
-    display: flex; gap: 11px; padding-bottom: 8px;
-    margin-bottom: 14px; overflow-x: auto;
+    display: flex; gap: 12px; padding-bottom: 8px;
+    margin-bottom: 16px; overflow-x: auto;
   }
   .feed-stories::-webkit-scrollbar { display: none; }
   .story {
     flex-shrink: 0; text-align: center; cursor: pointer;
   }
   .story-ring {
-    width: 56px; height: 56px; border-radius: 50%;
-    padding: 2px;
-    background: linear-gradient(135deg, var(--gu-accent-orange), var(--gu-accent-blue));
+    width: 60px; height: 60px; border-radius: 50%;
+    padding: 2.5px;
+    background: linear-gradient(135deg, var(--gu-brand-orange), var(--gu-brand-blue));
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 4px;
-    transition: transform 0.15s;
+    margin-bottom: 5px;
+    transition: transform 0.18s;
   }
   .story:hover .story-ring { transform: scale(1.05); }
   .story-inner {
@@ -644,174 +991,236 @@
     background: var(--gu-thumb-bg);
     display: flex; align-items: center; justify-content: center;
     font-size: 22px;
-    border: 2px solid var(--gu-card-bg);
+    border: 2.5px solid var(--gu-phone-bg);
   }
   .story-label {
     font-size: 10px; color: var(--gu-text-secondary);
-    max-width: 60px;
+    max-width: 60px; font-weight: 600;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
+  .story.your-build .story-ring {
+    background: var(--gu-card-border);
+    padding: 2px;
+  }
+  .story.your-build .story-inner { color: var(--gu-text-tertiary); font-size: 24px; }
 
+  /* Posts */
   .post {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 14px; padding: 12px;
-    margin-bottom: 10px;
+    border-radius: 16px; padding: 14px;
+    margin-bottom: 12px;
   }
-  .post-header { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+  .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .post-avatar {
-    width: 34px; height: 34px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gu-accent-orange), var(--gu-accent-blue));
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gu-brand-orange), var(--gu-brand-blue));
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; color: #fff;
+    font-size: 13px; font-weight: 700; color: #fff;
     flex-shrink: 0;
   }
   .post-user-info { flex: 1; min-width: 0; }
+  .post-user-row {
+    display: flex; align-items: center; gap: 5px;
+  }
   .post-user-name {
-    font-size: 12.5px; font-weight: 700;
-    color: var(--gu-text-primary);
+    font-size: 13px; font-weight: 700;
+    color: var(--gu-text-primary); letter-spacing: -0.2px;
+  }
+  .post-verified {
+    color: var(--gu-brand-blue); font-size: 11px;
   }
   .post-meta {
-    font-size: 10.5px; color: var(--gu-text-secondary);
+    font-size: 11px; color: var(--gu-text-secondary);
+    margin-top: 1px; font-weight: 500;
+  }
+  .post-more {
+    color: var(--gu-text-tertiary); cursor: pointer;
+    padding: 4px; font-size: 16px;
   }
   .post-image {
     width: 100%; aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, var(--gu-thumb-bg), var(--gu-soft-bg));
-    border-radius: 10px; margin-bottom: 9px;
+    background: linear-gradient(135deg, var(--gu-thumb-grad-1), var(--gu-thumb-grad-2));
+    border-radius: 12px; margin-bottom: 10px;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
     position: relative;
+    border: 1px solid var(--gu-card-border);
   }
   .post-caption {
-    font-size: 12px; color: var(--gu-text-primary);
-    line-height: 1.4; margin-bottom: 9px;
+    font-size: 13px; color: var(--gu-text-primary);
+    line-height: 1.5; margin-bottom: 9px;
   }
   .post-tags {
-    display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;
+    display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 11px;
   }
   .post-tag {
-    font-size: 10px; color: var(--gu-accent-blue);
-    background: var(--gu-accent-blue-light);
-    padding: 3px 8px; border-radius: 5px;
+    font-size: 10.5px; color: var(--gu-brand-blue);
+    background: var(--gu-brand-blue-soft);
+    padding: 4px 9px; border-radius: 5px;
     font-weight: 600;
   }
+  .post-tag:hover { background: var(--gu-brand-blue-bg); }
+  .post-build-callout {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--gu-soft-bg);
+    border: 1px solid var(--gu-card-border);
+    border-radius: 10px;
+    padding: 9px 11px; margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .post-build-callout:hover { border-color: var(--gu-text-primary); }
+  .post-build-icon {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--gu-text-primary); color: var(--gu-card-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .post-build-text { flex: 1; }
+  .post-build-title {
+    font-size: 11.5px; font-weight: 700;
+    color: var(--gu-text-primary);
+  }
+  .post-build-sub {
+    font-size: 10px; color: var(--gu-text-secondary);
+    margin-top: 1px;
+  }
   .post-actions {
-    display: flex; gap: 14px; padding-top: 9px;
+    display: flex; gap: 16px; padding-top: 10px;
     border-top: 1px solid var(--gu-divider);
   }
   .post-action {
-    display: flex; align-items: center; gap: 4px;
+    display: flex; align-items: center; gap: 5px;
     font-size: 12px; color: var(--gu-text-secondary);
     font-weight: 600;
     cursor: pointer; user-select: none;
     transition: color 0.15s;
   }
-  .post-action:hover { color: var(--gu-accent-orange); }
-  .post-action.liked { color: var(--gu-accent-orange); }
-  .post-action svg { width: 14px; height: 14px; }
+  .post-action:hover { color: var(--gu-brand-orange); }
+  .post-action.liked { color: var(--gu-brand-orange); }
+  .post-action svg { width: 16px; height: 16px; }
 
-  /* ============= NOTIFICATIONS ============= */
-  .notif-section { margin-bottom: 16px; }
+  /* ============================================================
+     NOTIFICATIONS
+     ============================================================ */
+  .notif-section { margin-bottom: 18px; }
   .notif-section-title {
-    font-size: 10px; font-weight: 700;
+    font-size: 10.5px; font-weight: 700;
     color: var(--gu-text-tertiary);
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    margin-bottom: 10px;
   }
   .notif {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
-    border-radius: 12px; padding: 11px 13px;
+    border-radius: 12px; padding: 12px 14px;
     margin-bottom: 7px;
-    display: flex; gap: 11px;
-    cursor: pointer; transition: background 0.15s;
+    display: flex; gap: 12px; align-items: flex-start;
+    cursor: pointer; transition: all 0.15s;
   }
-  .notif.unread { background: var(--gu-accent-blue-light); border-color: var(--gu-accent-blue-bg); }
-  .notif:hover { background: var(--gu-soft-bg); }
-  .notif.unread:hover { background: var(--gu-accent-blue-light); }
+  .notif.unread {
+    background: var(--gu-brand-blue-soft);
+    border-color: var(--gu-brand-blue-bg);
+  }
+  .notif:hover { border-color: var(--gu-text-primary); transform: translateY(-1px); }
   .notif-icon {
-    width: 36px; height: 36px; border-radius: 50%;
+    width: 38px; height: 38px; border-radius: 10px;
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
+    font-size: 17px;
   }
   .notif-icon.price { background: var(--gu-success-bg); }
-  .notif-icon.community { background: var(--gu-accent-orange-soft); }
-  .notif-icon.system { background: var(--gu-accent-blue-light); }
-  .notif-content { flex: 1; min-width: 0; }
+  .notif-icon.community { background: var(--gu-brand-orange-soft); }
+  .notif-icon.system { background: var(--gu-brand-blue-soft); }
+  .notif-icon.deal { background: var(--gu-warning-bg); }
+  .notif-content { flex: 1; min-width: 0; padding-top: 1px; }
   .notif-title {
     font-size: 12.5px; font-weight: 700;
     color: var(--gu-text-primary); line-height: 1.3;
+    letter-spacing: -0.2px;
   }
   .notif-body {
-    font-size: 11px; color: var(--gu-text-secondary);
+    font-size: 11.5px; color: var(--gu-text-secondary);
     margin-top: 2px; line-height: 1.4;
   }
   .notif-time {
     font-size: 10px; color: var(--gu-text-tertiary);
-    margin-top: 4px; font-weight: 500;
+    margin-top: 5px; font-weight: 600;
   }
   .notif-unread-dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gu-accent-orange);
-    flex-shrink: 0; margin-top: 6px;
+    background: var(--gu-brand-orange);
+    flex-shrink: 0; margin-top: 7px;
   }
 
-  /* ============= WISHLIST ============= */
+  /* ============================================================
+     EMPTY STATE
+     ============================================================ */
   .empty-state {
-    text-align: center; padding: 40px 20px;
+    text-align: center; padding: 50px 20px;
     color: var(--gu-text-secondary);
   }
   .empty-icon {
-    font-size: 48px; margin-bottom: 12px; opacity: 0.4;
+    font-size: 52px; margin-bottom: 14px; opacity: 0.5;
   }
   .empty-title {
     font-size: 15px; font-weight: 700;
     color: var(--gu-text-primary); margin-bottom: 6px;
   }
-  .empty-text { font-size: 12px; line-height: 1.5; }
+  .empty-text { font-size: 12.5px; line-height: 1.5; max-width: 240px; margin: 0 auto; }
 
-  /* ============= PROFILE / SETTINGS ============= */
+  /* ============================================================
+     PROFILE
+     ============================================================ */
   .profile-header {
     text-align: center; padding: 20px 0 18px;
     border-bottom: 1px solid var(--gu-divider);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .profile-avatar-lg {
-    width: 76px; height: 76px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gu-accent-orange), var(--gu-accent-blue));
+    width: 84px; height: 84px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gu-brand-orange), var(--gu-brand-blue));
     display: flex; align-items: center; justify-content: center;
-    font-size: 28px; font-weight: 700; color: #fff;
-    margin: 0 auto 10px;
-    border: 3px solid var(--gu-card-bg);
-    box-shadow: 0 6px 16px var(--gu-card-shadow);
+    font-size: 30px; font-weight: 700; color: #fff;
+    margin: 0 auto 12px;
+    border: 3px solid var(--gu-phone-bg);
+    box-shadow: 0 6px 18px var(--gu-card-shadow);
   }
   .profile-name {
-    font-size: 17px; font-weight: 800;
+    font-size: 19px; font-weight: 800;
     color: var(--gu-text-primary);
+    letter-spacing: -0.4px;
+    font-family: 'Space Grotesk', sans-serif;
   }
   .profile-handle {
-    font-size: 12px; color: var(--gu-text-secondary);
-    margin-top: 2px;
+    font-size: 12.5px; color: var(--gu-text-secondary);
+    margin-top: 3px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
   }
   .profile-stats {
-    display: flex; justify-content: center; gap: 24px;
-    margin-top: 12px;
+    display: flex; justify-content: center; gap: 32px;
+    margin-top: 14px;
   }
-  .profile-stat-item { text-align: center; }
+  .profile-stat-item { text-align: center; cursor: pointer; }
   .profile-stat-num {
-    font-size: 16px; font-weight: 800;
+    font-size: 17px; font-weight: 800;
     color: var(--gu-text-primary);
+    letter-spacing: -0.4px;
+    font-family: 'Space Grotesk', sans-serif;
   }
   .profile-stat-label {
     font-size: 10px; color: var(--gu-text-secondary);
-    text-transform: uppercase; letter-spacing: 0.5px;
-    margin-top: 2px;
+    text-transform: uppercase; letter-spacing: 0.7px;
+    margin-top: 3px; font-weight: 600;
   }
-  .settings-list { background: var(--gu-card-bg); border-radius: 12px; border: 1px solid var(--gu-card-border); overflow: hidden; }
+  .settings-list {
+    background: var(--gu-card-bg); border-radius: 14px;
+    border: 1px solid var(--gu-card-border); overflow: hidden;
+  }
   .settings-item {
-    padding: 12px 14px;
-    display: flex; align-items: center; gap: 12px;
+    padding: 13px 15px;
+    display: flex; align-items: center; gap: 13px;
     cursor: pointer;
     transition: background 0.15s;
     border-bottom: 1px solid var(--gu-divider);
@@ -819,182 +1228,229 @@
   .settings-item:last-child { border-bottom: none; }
   .settings-item:hover { background: var(--gu-soft-bg); }
   .settings-icon {
-    width: 30px; height: 30px; border-radius: 8px;
+    width: 32px; height: 32px; border-radius: 9px;
     background: var(--gu-soft-bg);
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 14px;
+    flex-shrink: 0; font-size: 15px;
   }
-  .settings-label { flex: 1; font-size: 13px; font-weight: 600; color: var(--gu-text-primary); }
-  .settings-arrow { color: var(--gu-text-tertiary); font-size: 16px; }
+  .settings-label { flex: 1; font-size: 13px; font-weight: 600; color: var(--gu-text-primary); letter-spacing: -0.1px; }
+  .settings-arrow { color: var(--gu-text-tertiary); font-size: 18px; line-height: 1; }
   .settings-toggle {
-    width: 36px; height: 20px; border-radius: 10px;
+    width: 38px; height: 22px; border-radius: 11px;
     background: var(--gu-card-border);
     position: relative; cursor: pointer;
     transition: background 0.2s;
   }
   .settings-toggle::after {
     content: ''; position: absolute; top: 2px; left: 2px;
-    width: 16px; height: 16px; border-radius: 50%;
+    width: 18px; height: 18px; border-radius: 50%;
     background: #fff; transition: transform 0.2s;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
-  .settings-toggle.on { background: var(--gu-accent-orange); }
+  .settings-toggle.on { background: var(--gu-brand-orange); }
   .settings-toggle.on::after { transform: translateX(16px); }
 
-  /* ============= BOTTOM NAV ============= */
+  /* ============================================================
+     BOTTOM NAV
+     ============================================================ */
   .bottom-nav {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 56px;
+    position: absolute; bottom: 0; left: 0; right: 0; height: 64px;
     background: var(--gu-card-bg);
     border-top: 1px solid var(--gu-divider);
     display: flex; align-items: center; justify-content: space-around;
-    padding: 0 8px 4px;
+    padding: 0 8px 8px;
     z-index: 50;
     transition: background 0.3s, border-color 0.3s;
+    backdrop-filter: blur(20px);
   }
   .nav-item {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    gap: 2px; padding: 6px 0;
+    gap: 3px; padding: 8px 0;
     cursor: pointer;
     color: var(--gu-text-tertiary);
-    transition: color 0.15s;
+    transition: color 0.18s;
     border: none; background: none;
     font-family: inherit;
+    position: relative;
   }
-  .nav-item.active { color: var(--gu-accent-orange); }
-  .nav-item svg { width: 19px; height: 19px; }
+  .nav-item.active { color: var(--gu-brand-orange); }
+  .nav-item.active::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 30px; height: 3px; background: var(--gu-brand-orange);
+    border-radius: 0 0 3px 3px;
+  }
+  .nav-item svg { width: 20px; height: 20px; transition: transform 0.18s; }
+  .nav-item.active svg { transform: translateY(-1px); }
   .nav-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 0.2px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1px;
+  }
+  .ar-special {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gu-brand-orange), var(--gu-brand-orange-dark));
+    display: flex; align-items: center; justify-content: center;
+    margin-top: -10px; color: #fff !important;
+    box-shadow: 0 4px 14px rgba(226,96,47,0.4);
   }
 
-  /* ============= SPLASH SCREEN ============= */
+  /* ============================================================
+     SPLASH SCREEN
+     ============================================================ */
   .splash {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, var(--gu-accent-blue-dark) 0%, var(--gu-accent-blue) 50%, var(--gu-accent-orange) 100%);
+    background: linear-gradient(135deg, #0B3F89 0%, #1763CB 45%, #E2602F 100%);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     z-index: 200;
     color: #fff;
     transition: opacity 0.6s, visibility 0.6s;
   }
+  .splash::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.18), transparent 60%);
+  }
   .splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
   .splash-logo {
-    font-size: 52px; font-weight: 900;
-    letter-spacing: -1px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 56px; font-weight: 700;
+    letter-spacing: -2px;
     animation: splashIn 0.6s 0.1s both;
+    position: relative;
   }
   .splash-tag {
-    font-size: 13px; opacity: 0.85;
-    margin-top: 6px; font-weight: 500;
-    letter-spacing: 1.5px; text-transform: uppercase;
+    font-size: 13px; opacity: 0.92;
+    margin-top: 6px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
     animation: splashIn 0.6s 0.3s both;
+    position: relative;
   }
   .splash-loader {
-    width: 36px; height: 36px;
-    border: 3px solid rgba(255,255,255,0.25);
+    width: 38px; height: 38px;
+    border: 3px solid rgba(255,255,255,0.2);
     border-top-color: #fff;
     border-radius: 50%;
-    margin-top: 28px;
+    margin-top: 30px;
     animation: spin 0.9s linear infinite;
+    position: relative;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes splashIn {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ============= TOAST ============= */
+  /* ============================================================
+     TOAST
+     ============================================================ */
   .toast {
-    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+    position: fixed; bottom: 88px; left: 50%; transform: translateX(-50%) translateY(20px);
     background: var(--gu-text-primary);
-    color: var(--gu-card-bg);
-    padding: 11px 18px; border-radius: 22px;
-    font-size: 12px; font-weight: 600;
+    color: var(--gu-phone-bg);
+    padding: 12px 20px; border-radius: 24px;
+    font-size: 12.5px; font-weight: 600;
     z-index: 999;
     opacity: 0; pointer-events: none;
     transition: all 0.3s;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.3);
     max-width: 290px; text-align: center;
+    letter-spacing: -0.1px;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* ============= VIN ONBOARDING ============= */
+  /* ============================================================
+     VIN ONBOARDING
+     ============================================================ */
   .onboard-title {
-    font-size: 22px; font-weight: 800;
+    font-size: 24px; font-weight: 800;
     color: var(--gu-text-primary);
     margin-bottom: 6px; line-height: 1.2;
+    letter-spacing: -0.6px;
+    font-family: 'Space Grotesk', sans-serif;
   }
   .onboard-sub {
-    font-size: 12.5px; color: var(--gu-text-secondary);
-    margin-bottom: 18px; line-height: 1.5;
+    font-size: 13px; color: var(--gu-text-secondary);
+    margin-bottom: 22px; line-height: 1.5;
   }
   .vin-scanner {
-    background: var(--gu-soft-bg);
-    border: 2px dashed var(--gu-card-border);
-    border-radius: 14px; padding: 28px 16px;
+    background: linear-gradient(135deg, var(--gu-brand-blue-soft), var(--gu-soft-bg));
+    border: 2px dashed var(--gu-brand-blue-bg);
+    border-radius: 16px; padding: 32px 16px;
     text-align: center; cursor: pointer;
-    margin-bottom: 14px;
-    transition: all 0.15s;
+    margin-bottom: 16px;
+    transition: all 0.18s;
   }
   .vin-scanner:hover {
-    border-color: var(--gu-accent-blue);
-    background: var(--gu-accent-blue-light);
+    border-color: var(--gu-brand-blue);
+    background: var(--gu-brand-blue-soft);
+    transform: translateY(-1px);
   }
-  .scan-icon { margin: 0 auto 8px; }
+  .scan-icon-wrap {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--gu-brand-blue);
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+  }
   .scan-text {
-    font-size: 13px; font-weight: 700;
-    color: var(--gu-accent-blue);
-    margin-bottom: 2px;
+    font-size: 14px; font-weight: 700;
+    color: var(--gu-brand-blue);
+    margin-bottom: 3px;
+    letter-spacing: -0.2px;
   }
-  .scan-hint { font-size: 10.5px; color: var(--gu-text-secondary); }
+  .scan-hint { font-size: 11px; color: var(--gu-text-secondary); line-height: 1.4; }
   .vin-divider {
     text-align: center; font-size: 10px;
     color: var(--gu-text-tertiary);
-    margin: 14px 0; position: relative;
+    margin: 16px 0; position: relative;
     text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 600;
   }
   .vin-divider::before, .vin-divider::after {
-    content: ''; position: absolute; top: 50%; width: 38%;
+    content: ''; position: absolute; top: 50%; width: 40%;
     height: 1px; background: var(--gu-divider);
   }
   .vin-divider::before { left: 0; }
   .vin-divider::after { right: 0; }
   .vin-input {
-    width: 100%; padding: 13px 14px;
+    width: 100%; padding: 14px 16px;
     border: 1px solid var(--gu-card-border);
-    border-radius: 11px; font-size: 13px;
+    border-radius: 12px; font-size: 13px;
     background: var(--gu-card-bg);
     color: var(--gu-text-primary);
-    font-family: inherit; font-weight: 600;
-    letter-spacing: 0.5px;
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 600;
+    letter-spacing: 0.8px;
     margin-bottom: 12px;
   }
   .vin-input:focus {
     outline: none;
-    border-color: var(--gu-accent-blue);
+    border-color: var(--gu-brand-blue);
+    box-shadow: 0 0 0 3px var(--gu-brand-blue-soft);
   }
   .vin-verified {
-    display: none; align-items: center; gap: 6px;
+    display: none; align-items: center; gap: 8px;
     background: var(--gu-success-bg);
     color: var(--gu-success-text);
-    padding: 9px 12px; border-radius: 9px;
-    font-size: 11px; font-weight: 700;
-    margin-bottom: 12px;
+    padding: 11px 13px; border-radius: 11px;
+    font-size: 12px; font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.1px;
   }
   .vin-verified.show { display: flex; }
   .primary-cta {
-    width: 100%; padding: 13px;
-    background: var(--gu-accent-blue);
-    color: #fff; border: none;
-    border-radius: 12px;
+    width: 100%; padding: 14px;
+    background: var(--gu-text-primary);
+    color: var(--gu-card-bg); border: none;
+    border-radius: 14px;
     font-size: 14px; font-weight: 700;
     cursor: pointer; font-family: inherit;
-    transition: all 0.15s;
+    transition: all 0.18s;
+    letter-spacing: -0.2px;
   }
   .primary-cta:hover:not(:disabled) {
-    background: var(--gu-accent-blue-dark);
     transform: translateY(-1px);
+    box-shadow: 0 8px 20px var(--gu-card-hover-shadow);
   }
   .primary-cta:disabled {
     background: var(--gu-card-border);
@@ -1002,7 +1458,9 @@
     cursor: not-allowed;
   }
 
-  /* ============= CHECKOUT ============= */
+  /* ============================================================
+     CHECKOUT
+     ============================================================ */
   .checkout-summary {
     background: var(--gu-card-bg);
     border: 1px solid var(--gu-card-border);
@@ -1011,31 +1469,87 @@
   }
   .checkout-row {
     display: flex; justify-content: space-between;
-    margin-bottom: 8px; font-size: 12.5px;
+    margin-bottom: 9px; font-size: 13px;
   }
   .checkout-row:last-child { margin-bottom: 0; }
   .checkout-row.total {
-    padding-top: 10px; border-top: 1px solid var(--gu-divider);
-    font-weight: 800; font-size: 14px;
+    padding-top: 11px; border-top: 1px solid var(--gu-divider);
+    font-weight: 800; font-size: 15px;
     color: var(--gu-text-primary);
+    letter-spacing: -0.3px;
   }
-  .checkout-label { color: var(--gu-text-secondary); }
-  .checkout-value { color: var(--gu-text-primary); font-weight: 600; }
+  .checkout-label { color: var(--gu-text-secondary); font-weight: 500; }
+  .checkout-value { color: var(--gu-text-primary); font-weight: 700; }
   .order-confirmed {
-    text-align: center; padding: 30px 20px;
+    text-align: center; padding: 40px 20px;
   }
   .order-check {
-    width: 70px; height: 70px; border-radius: 50%;
+    width: 80px; height: 80px; border-radius: 50%;
     background: var(--gu-success-bg);
-    color: var(--gu-success-text);
+    color: var(--gu-success-strong);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px;
-    font-size: 32px;
-    animation: pop 0.5s cubic-bezier(.36,1.5,.6,1);
+    margin: 0 auto 16px;
+    font-size: 36px;
+    animation: pop 0.6s cubic-bezier(.36,1.5,.6,1);
   }
   @keyframes pop {
     0% { transform: scale(0); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Bottom sheet (filters) */
+  .sheet-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 150;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .sheet-overlay.show { opacity: 1; pointer-events: all; }
+  .sheet {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: var(--gu-card-bg);
+    border-radius: 22px 22px 0 0;
+    padding: 16px 18px 24px;
+    z-index: 151;
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(.2,.7,.3,1);
+    max-height: 70%; overflow-y: auto;
+  }
+  .sheet.show { transform: translateY(0); }
+  .sheet-handle {
+    width: 36px; height: 4px; border-radius: 2px;
+    background: var(--gu-card-border);
+    margin: 0 auto 14px;
+  }
+  .sheet-title {
+    font-size: 16px; font-weight: 800;
+    color: var(--gu-text-primary);
+    margin-bottom: 14px; letter-spacing: -0.3px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .filter-group { margin-bottom: 18px; }
+  .filter-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--gu-text-tertiary);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .filter-options { display: flex; flex-wrap: wrap; gap: 7px; }
+  .filter-pill {
+    padding: 8px 14px; border-radius: 10px;
+    border: 1px solid var(--gu-card-border);
+    background: var(--gu-card-bg);
+    color: var(--gu-text-primary);
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.15s;
+  }
+  .filter-pill:hover { border-color: var(--gu-text-primary); }
+  .filter-pill.selected {
+    background: var(--gu-text-primary);
+    color: var(--gu-card-bg);
+    border-color: var(--gu-text-primary);
   }
 </style>
 
@@ -1044,13 +1558,13 @@
 
 <div class="stage">
 <div class="phone">
-  <div class="notch"></div>
+  <div class="dynamic-island"></div>
   <div class="status-bar">
     <span>9:41</span>
     <span class="status-icons">
-      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><path d="M0 9h2v1H0zm3-1h2v2H3zm3-2h2v4H6zm3-2h2v6H9zm3-2h2v8h-2z"/></svg>
-      <svg width="14" height="10" viewBox="0 0 16 12" fill="currentColor"><path d="M8 4.05a4.49 4.49 0 014.5 1.49L14 4.07a6.48 6.48 0 00-12 0l1.5 1.47A4.49 4.49 0 018 4.05zM2.5 2.6L1 1.1A8.97 8.97 0 0115 1.1l-1.5 1.5a6.97 6.97 0 00-11 0zM8 7.05a1.5 1.5 0 011.5 1.49L8 10l-1.5-1.46A1.5 1.5 0 018 7.05zM5.5 5.55L4 4.05a5.5 5.5 0 018 0l-1.5 1.5a3.5 3.5 0 00-5 0z"/></svg>
-      <svg width="22" height="10" viewBox="0 0 24 11" fill="none"><rect x="0.5" y="0.5" width="20" height="10" rx="2.5" stroke="currentColor"/><rect x="2" y="2" width="17" height="7" rx="1" fill="currentColor"/><rect x="21" y="3.5" width="2" height="4" fill="currentColor" opacity="0.5"/></svg>
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><path d="M1 8h2v3H1zm4-2h2v5H5zm4-2h2v7H9zm4-2h2v9h-2z"/></svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2.5a8 8 0 015.65 2.34l-1.06 1.06a6.5 6.5 0 00-9.18 0L1.85 4.84A8 8 0 017.5 2.5zm0 3a5 5 0 013.54 1.46L9.97 8.04a3.5 3.5 0 00-4.94 0L3.96 6.96A5 5 0 017.5 5.5zm0 3a2 2 0 011.41.59L7.5 11l-1.41-1.41A2 2 0 017.5 8.5z"/></svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="currentColor" opacity="0.5"/><rect x="2" y="2" width="18" height="8" rx="1.5" fill="currentColor"/><rect x="22" y="4" width="2" height="4" rx="1" fill="currentColor" opacity="0.5"/></svg>
     </span>
   </div>
 
@@ -1061,14 +1575,14 @@
     <div class="splash-loader"></div>
   </div>
 
-  <!-- ============= HOME / SHOP ============= -->
+  <!-- ============= SHOP / HOME ============= -->
   <div class="screen active" id="screen-shop">
     <div class="header">
       <div class="logo" onclick="nav('shop')">Gear<span>Up</span></div>
       <div class="header-actions">
         <button class="icon-btn" onclick="nav('notifs')" aria-label="Notifications">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-          <span class="badge">3</span>
+          <span class="badge" id="notif-badge">3</span>
         </button>
         <div class="avatar" onclick="nav('profile')">TS</div>
       </div>
@@ -1078,23 +1592,39 @@
       <div>
         <div class="vehicle-label">My Vehicle</div>
         <div class="vehicle-name">2021 Ford Mustang GT</div>
-        <div class="vehicle-sub">VIN ••••••• 123 · 5.0L V8</div>
+        <div class="vehicle-sub">5.0L V8 Coyote · Race Red</div>
+        <div class="vehicle-mini-stats">
+          <span class="vmini"><b>12</b> mods</span>
+          <span class="vmini"><b>$8.4K</b> invested</span>
+          <span class="vmini"><b>+34hp</b></span>
+        </div>
       </div>
       <div class="vehicle-thumb">
-        <svg width="32" height="22" viewBox="0 0 60 38">
-          <rect x="6" y="14" width="48" height="14" rx="3" fill="var(--gu-accent-blue-dark)"/>
-          <rect x="14" y="6" width="32" height="12" rx="2" fill="var(--gu-accent-blue)"/>
-          <rect x="18" y="9" width="11" height="7" rx="1" fill="var(--gu-accent-blue-light)" opacity="0.7"/>
-          <rect x="32" y="9" width="11" height="7" rx="1" fill="var(--gu-accent-blue-light)" opacity="0.7"/>
-          <circle cx="16" cy="29" r="5" fill="#1a1a1c"/><circle cx="16" cy="29" r="2.5" fill="#5a5a5e"/>
-          <circle cx="44" cy="29" r="5" fill="#1a1a1c"/><circle cx="44" cy="29" r="2.5" fill="#5a5a5e"/>
+        <svg width="40" height="28" viewBox="0 0 60 38">
+          <rect x="6" y="14" width="48" height="14" rx="3" fill="#fff" opacity="0.95"/>
+          <rect x="14" y="6" width="32" height="12" rx="2" fill="#fff" opacity="0.7"/>
+          <rect x="18" y="9" width="11" height="7" rx="1" fill="#0B3F89" opacity="0.8"/>
+          <rect x="32" y="9" width="11" height="7" rx="1" fill="#0B3F89" opacity="0.8"/>
+          <circle cx="16" cy="29" r="5" fill="#15151a"/><circle cx="16" cy="29" r="2.5" fill="#fff" opacity="0.6"/>
+          <circle cx="44" cy="29" r="5" fill="#15151a"/><circle cx="44" cy="29" r="2.5" fill="#fff" opacity="0.6"/>
         </svg>
       </div>
     </div>
 
     <div class="search-wrap">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="search" id="search-input" placeholder="Search parts, brands, builds..." oninput="filterProducts()" autocomplete="off"/>
+      <input class="search" id="search-input" placeholder="Search 12,000+ parts and brands..." oninput="filterProducts()" autocomplete="off"/>
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">×</button>
+    </div>
+
+    <div class="promo-strip" onclick="setCategory('exhaust'); toast('Showing exhaust deals')">
+      <div class="promo-text">
+        <div class="promo-eyebrow">Limited time · Ends Sunday</div>
+        <div class="promo-title">15% off all exhaust systems →</div>
+      </div>
+      <div class="promo-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
     </div>
 
     <div class="categories" id="categories">
@@ -1104,11 +1634,15 @@
       <button class="cat" data-cat="lighting" onclick="setCategory('lighting')"><span class="cat-icon">💡</span>Lighting</button>
       <button class="cat" data-cat="body" onclick="setCategory('body')"><span class="cat-icon">🎨</span>Body</button>
       <button class="cat" data-cat="suspension" onclick="setCategory('suspension')"><span class="cat-icon">🔧</span>Suspension</button>
+      <button class="cat" data-cat="brakes" onclick="setCategory('brakes')"><span class="cat-icon">🛑</span>Brakes</button>
     </div>
 
     <div class="section-label">
       <span id="section-title">Top picks for your Mustang</span>
-      <span class="section-link" onclick="toast('Filter coming soon')">Sort ⇅</span>
+      <span class="section-link" onclick="openFilterSheet()">
+        Filter
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      </span>
     </div>
 
     <div id="products"></div>
@@ -1117,34 +1651,98 @@
   <!-- ============= PRODUCT DETAIL ============= -->
   <div class="screen" id="screen-detail">
     <div class="header">
-      <button class="back-btn" onclick="nav('shop')">← Back</button>
-      <button class="icon-btn" onclick="toggleLikeFromDetail(this)" id="detail-like" aria-label="Save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-      </button>
+      <button class="back-btn" onclick="nav('shop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="toast('Share link copied')" aria-label="Share">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+        <button class="icon-btn" onclick="toggleLikeFromDetail(this)" id="detail-like" aria-label="Save">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="detail-hero" id="detail-hero"></div>
-    <div class="detail-name" id="detail-name"></div>
-    <div class="detail-sub" id="detail-sub"></div>
+    <div class="detail-hero" id="detail-hero">
+      <div class="detail-tags">
+        <span class="detail-tag fit">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Verified fit
+        </span>
+        <span class="detail-tag">★ Bestseller</span>
+      </div>
+      <div class="detail-360">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        360° view
+      </div>
+    </div>
 
-    <div class="fit-row">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      <span>Verified fit · 2021 Ford Mustang GT</span>
+    <div class="detail-brand" id="detail-brand">FORGESTAR</div>
+    <div class="detail-name" id="detail-name">Forgestar F14 20"</div>
+    <div class="detail-rating-row">
+      <span class="stars">★★★★★</span>
+      <span><strong>4.8</strong> (348 reviews)</span>
+      <span class="verified">✓ Verified buyers</span>
+    </div>
+
+    <div class="detail-price-block">
+      <span class="detail-price" id="detail-price">$1,849</span>
+      <span class="detail-price-old" id="detail-price-old">$2,099</span>
+      <span class="detail-save">Save $250</span>
     </div>
 
     <button class="ar-cta" onclick="showAR()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-      View in AR
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      View on your Mustang in AR
     </button>
 
-    <div class="price-comparison-title">Compare prices · 4 retailers</div>
+    <div class="specs-strip">
+      <div class="spec-item">
+        <div class="spec-icon">📏</div>
+        <div class="spec-label">Size</div>
+        <div class="spec-value">20×9.5"</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">⚖️</div>
+        <div class="spec-label">Weight</div>
+        <div class="spec-value">22 lbs</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🔧</div>
+        <div class="spec-label">Install</div>
+        <div class="spec-value">DIY · 2hr</div>
+      </div>
+    </div>
+
+    <div class="section-title-sm">Compare prices · 4 retailers</div>
     <div id="retailers-list"></div>
+
+    <div class="section-title-sm" style="margin-top:14px;">Reviews · 4.8</div>
+    <div class="review-preview">
+      <div class="review-head">
+        <div class="review-author">
+          <div class="review-mini-avatar">M</div>
+          @mike_5.0 · Verified buyer
+        </div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <div class="review-text">"Perfect fit on my 2021 GT. The matte black finish is exactly as pictured. Took about 2 hours to install with a friend. Would buy again."</div>
+    </div>
+    <div class="review-preview">
+      <div class="review-head">
+        <div class="review-author">
+          <div class="review-mini-avatar">A</div>
+          @alex.boost · Verified buyer
+        </div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <div class="review-text">"Worth every penny. The AR preview helped me commit and the final look is exactly what I imagined."</div>
+    </div>
   </div>
 
   <!-- ============= AR VIEW ============= -->
   <div class="screen" id="screen-ar">
     <div class="header">
-      <button class="back-btn" onclick="nav('detail')">← Exit AR</button>
+      <button class="back-btn" onclick="nav('detail')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Exit AR</button>
       <button class="icon-btn" onclick="toast('Snapshot saved to Garage')" aria-label="Snapshot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </button>
@@ -1153,33 +1751,60 @@
     <div class="ar-stage">
       <div class="ar-grid"></div>
       <div class="ar-floor"></div>
-      <div class="ar-status"><span class="ar-live-dot"></span>AR LIVE · MUSTANG</div>
-      <button class="ar-camera-btn" onclick="toast('Snapshot taken')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5 6h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg>
-      </button>
-      <svg class="ar-car-svg" width="280" height="120" viewBox="0 0 320 140">
-        <!-- shadow -->
-        <ellipse cx="160" cy="128" rx="115" ry="6" fill="rgba(0,0,0,0.5)"/>
-        <!-- body -->
-        <path d="M30 95 Q 35 75 60 70 L 105 60 Q 125 50 160 50 Q 195 50 215 60 L 260 70 Q 285 75 290 95 L 290 105 L 30 105 Z" fill="#dc2626"/>
-        <!-- top -->
-        <path d="M105 60 Q 130 35 160 35 Q 190 35 215 60 L 200 60 L 195 50 L 160 47 L 125 50 L 120 60 Z" fill="#991b1b"/>
+      <div class="ar-spotlight"></div>
+      <div class="ar-status"><span class="ar-live-dot"></span>AR LIVE · MUSTANG GT</div>
+      <div class="ar-controls">
+        <button class="ar-control-btn" onclick="toast('Rotating view')" aria-label="Rotate">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15"/></svg>
+        </button>
+        <button class="ar-control-btn" onclick="toast('Snapshot taken')" aria-label="Camera">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5 6h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg>
+        </button>
+      </div>
+      <div class="ar-fitment">
+        <span>Fitment confidence</span>
+        <span class="ar-fitment-pct">98%</span>
+      </div>
+
+      <svg class="ar-car-svg" width="290" height="135" viewBox="0 0 320 150">
+        <!-- ground shadow -->
+        <ellipse cx="160" cy="138" rx="120" ry="6" fill="rgba(0,0,0,0.5)"/>
+        <!-- main body lower -->
+        <path d="M30 100 L40 88 Q 60 75 90 70 L 105 65 Q 130 53 160 53 Q 190 53 215 65 L 230 70 Q 260 75 280 88 L 290 100 L 290 110 L 30 110 Z" fill="#dc2626"/>
+        <!-- body highlight (top sheen) -->
+        <path d="M30 100 L40 88 Q 60 75 90 70 L 105 65 Q 130 53 160 53 Q 190 53 215 65 L 230 70 Q 260 75 280 88 L 290 100" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
+        <!-- roof -->
+        <path d="M105 65 Q 130 38 160 38 Q 190 38 215 65 L 200 65 L 195 53 L 160 50 L 125 53 L 120 65 Z" fill="#991b1b"/>
         <!-- windows -->
-        <path d="M115 58 Q 132 42 160 42 Q 188 42 205 58 L 195 58 L 192 52 L 160 50 L 128 52 L 125 58 Z" fill="#0c1525" opacity="0.85"/>
-        <!-- side detail -->
-        <line x1="40" y1="92" x2="280" y2="92" stroke="#7f1d1d" stroke-width="1.5" opacity="0.7"/>
+        <path d="M115 63 Q 132 45 160 45 Q 188 45 205 63 L 195 63 L 192 55 L 160 53 L 128 55 L 125 63 Z" fill="#0c1525"/>
+        <!-- window sheen -->
+        <path d="M120 60 Q 135 47 158 46 L 158 49 Q 138 50 125 60 Z" fill="#fff" opacity="0.15"/>
+        <!-- character line on door -->
+        <line x1="42" y1="93" x2="280" y2="93" stroke="#7f1d1d" stroke-width="1.5" opacity="0.7"/>
+        <line x1="50" y1="86" x2="270" y2="86" stroke="#fff" stroke-width="0.8" opacity="0.2"/>
+        <!-- door cuts -->
+        <line x1="120" y1="65" x2="120" y2="100" stroke="#7f1d1d" stroke-width="1" opacity="0.6"/>
+        <line x1="200" y1="65" x2="200" y2="100" stroke="#7f1d1d" stroke-width="1" opacity="0.6"/>
         <!-- headlight -->
-        <ellipse cx="42" cy="80" rx="8" ry="6" fill="#fef3c7" opacity="0.85"/>
-        <!-- wheel wells -->
-        <circle cx="80" cy="105" r="22" fill="#0a0a0a"/>
-        <circle cx="240" cy="105" r="22" fill="#0a0a0a"/>
-        <!-- WHEELS - dynamically rendered -->
+        <ellipse cx="42" cy="82" rx="8" ry="6" fill="#fef3c7" opacity="0.95"/>
+        <ellipse cx="42" cy="82" rx="6" ry="4" fill="#fff" opacity="0.85"/>
+        <!-- taillight -->
+        <ellipse cx="278" cy="82" rx="6" ry="5" fill="#7f1d1d"/>
+        <!-- mustang badge area -->
+        <rect x="155" y="92" width="10" height="3" rx="0.5" fill="#1a1a1c"/>
+        <!-- wheel wells (dark openings) -->
+        <circle cx="80" cy="108" r="24" fill="#0a0a0a"/>
+        <circle cx="240" cy="108" r="24" fill="#0a0a0a"/>
+        <!-- WHEELS dynamic -->
         <g id="ar-wheel-front"></g>
         <g id="ar-wheel-rear"></g>
       </svg>
     </div>
 
-    <div class="wheel-options-title">Tap to swap wheels · 4 styles</div>
+    <div class="wheel-options-title">
+      <span>Tap to swap · 4 styles available</span>
+      <span style="color:var(--gu-text-tertiary); font-weight: 600; text-transform: none; letter-spacing: 0;">Swipe →</span>
+    </div>
     <div class="wheel-options" id="wheel-options"></div>
 
     <div class="ar-info-card">
@@ -1187,7 +1812,7 @@
         <div class="ar-info-name" id="ar-product-name">Forgestar F14 20"</div>
         <div class="ar-info-price" id="ar-product-price">Matte black · 4 retailers from $1,849</div>
       </div>
-      <button class="ar-info-cta" onclick="nav('detail')">Buy →</button>
+      <button class="ar-info-cta" onclick="nav('detail')">Buy now</button>
     </div>
   </div>
 
@@ -1201,8 +1826,17 @@
     </div>
 
     <div class="garage-hero">
+      <svg class="garage-hero-svg" width="220" height="120" viewBox="0 0 320 150">
+        <ellipse cx="160" cy="138" rx="115" ry="5" fill="rgba(0,0,0,0.4)"/>
+        <path d="M30 100 L40 88 Q 60 75 90 70 L 105 65 Q 130 53 160 53 Q 190 53 215 65 L 230 70 Q 260 75 280 88 L 290 100 L 290 110 L 30 110 Z" fill="#dc2626"/>
+        <path d="M105 65 Q 130 38 160 38 Q 190 38 215 65 L 200 65 L 195 53 L 160 50 L 125 53 L 120 65 Z" fill="#991b1b"/>
+        <path d="M115 63 Q 132 45 160 45 Q 188 45 205 63 L 195 63 L 192 55 L 160 53 L 128 55 L 125 63 Z" fill="#0c1525"/>
+        <ellipse cx="42" cy="82" rx="7" ry="5" fill="#fef3c7"/>
+        <circle cx="80" cy="108" r="22" fill="#0a0a0a"/><circle cx="80" cy="108" r="16" fill="#1a1a1c" stroke="#5a5a5e" stroke-width="1"/><circle cx="80" cy="108" r="4" fill="#5a5a5e"/>
+        <circle cx="240" cy="108" r="22" fill="#0a0a0a"/><circle cx="240" cy="108" r="16" fill="#1a1a1c" stroke="#5a5a5e" stroke-width="1"/><circle cx="240" cy="108" r="4" fill="#5a5a5e"/>
+      </svg>
       <div class="garage-veh-name">2021 Ford Mustang GT</div>
-      <div class="garage-veh-meta">5.0L V8 · Race Red · 18,420 mi</div>
+      <div class="garage-veh-meta">5.0L V8 Coyote · Race Red · 18,420 mi</div>
     </div>
 
     <div class="garage-stats">
@@ -1221,15 +1855,15 @@
     </div>
 
     <div class="section-label">
-      <span>Installed Mods</span>
-      <span class="section-link" onclick="toast('Full mod history coming soon')">View all</span>
+      <span>Installed mods · 12</span>
+      <span class="section-link" onclick="toast('Full mod history coming soon')">View all →</span>
     </div>
 
     <div class="installed-mod">
       <div class="mod-thumb">🛞</div>
       <div class="mod-info">
         <div class="mod-name">Forgestar F14 20" Wheels</div>
-        <div class="mod-meta">Installed Mar 2024 · $1,849</div>
+        <div class="mod-meta">Installed Mar 2024 · $1,849 · 4 wheels</div>
       </div>
       <div class="mod-status">Active</div>
     </div>
@@ -1237,7 +1871,7 @@
     <div class="installed-mod">
       <div class="mod-thumb">💨</div>
       <div class="mod-info">
-        <div class="mod-name">Borla ATAK Exhaust</div>
+        <div class="mod-name">Borla ATAK Cat-Back Exhaust</div>
         <div class="mod-meta">Installed Jan 2024 · $1,295</div>
       </div>
       <div class="mod-status">Active</div>
@@ -1247,18 +1881,27 @@
       <div class="mod-thumb">⚡</div>
       <div class="mod-info">
         <div class="mod-name">JLT Cold Air Intake</div>
-        <div class="mod-meta">Installed Dec 2023 · $390</div>
+        <div class="mod-meta">Installed Dec 2023 · $390 · +18hp</div>
       </div>
       <div class="mod-status">Active</div>
     </div>
 
-    <button class="add-vehicle-btn" onclick="nav('vin-onboard')" style="margin-top:10px;">
+    <div class="installed-mod">
+      <div class="mod-thumb">🔧</div>
+      <div class="mod-info">
+        <div class="mod-name">Eibach Pro-Kit Springs</div>
+        <div class="mod-meta">Installed Oct 2023 · $349</div>
+      </div>
+      <div class="mod-status">Active</div>
+    </div>
+
+    <button class="add-vehicle-btn" onclick="nav('vin-onboard')" style="margin-top:12px;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       Add another vehicle
     </button>
   </div>
 
-  <!-- ============= COMMUNITY FEED ============= -->
+  <!-- ============= COMMUNITY ============= -->
   <div class="screen" id="screen-feed">
     <div class="header">
       <div class="logo">Com<span>munity</span></div>
@@ -1268,34 +1911,51 @@
     </div>
 
     <div class="feed-stories">
-      <div class="story" onclick="toast('Your build · share to feed')"><div class="story-ring" style="background:var(--gu-card-border);"><div class="story-inner">+</div></div><div class="story-label">Yours</div></div>
+      <div class="story your-build" onclick="toast('Share your build to feed')"><div class="story-ring"><div class="story-inner">+</div></div><div class="story-label">Your build</div></div>
       <div class="story" onclick="toast('@mike350z\'s build')"><div class="story-ring"><div class="story-inner">🏎️</div></div><div class="story-label">@mike350z</div></div>
       <div class="story" onclick="toast('@sn95.scott\'s build')"><div class="story-ring"><div class="story-inner">🚗</div></div><div class="story-label">@sn95</div></div>
       <div class="story" onclick="toast('@jdm.daily\'s build')"><div class="story-ring"><div class="story-inner">🏁</div></div><div class="story-label">@jdm</div></div>
-      <div class="story" onclick="toast('@bagged.bmw\'s build')"><div class="story-ring"><div class="story-inner">🔧</div></div><div class="story-label">@bmw</div></div>
+      <div class="story" onclick="toast('@bagged.bmw\'s build')"><div class="story-ring"><div class="story-inner">🔧</div></div><div class="story-label">@bagged</div></div>
+      <div class="story" onclick="toast('@stang_lyfe\'s build')"><div class="story-ring"><div class="story-inner">🐎</div></div><div class="story-label">@stang</div></div>
     </div>
 
     <div class="post">
       <div class="post-header">
         <div class="post-avatar">M</div>
         <div class="post-user-info">
-          <div class="post-user-name">@mike350z</div>
+          <div class="post-user-row">
+            <span class="post-user-name">@mike350z</span>
+            <span class="post-verified">✓</span>
+          </div>
           <div class="post-meta">2h · 2003 Nissan 350Z · Tampa, FL</div>
         </div>
+        <div class="post-more">⋯</div>
       </div>
       <div class="post-image">
-        <svg width="70%" height="70%" viewBox="0 0 320 140">
-          <ellipse cx="160" cy="128" rx="115" ry="6" fill="rgba(0,0,0,0.4)"/>
-          <path d="M30 95 Q 35 75 60 70 L 105 60 Q 125 50 160 50 Q 195 50 215 60 L 260 70 Q 285 75 290 95 L 290 105 L 30 105 Z" fill="#1e40af"/>
-          <path d="M105 60 Q 130 35 160 35 Q 190 35 215 60 L 200 60 L 195 50 L 160 47 L 125 50 L 120 60 Z" fill="#1e3a8a"/>
-          <path d="M115 58 Q 132 42 160 42 Q 188 42 205 58 L 195 58 L 192 52 L 160 50 L 128 52 L 125 58 Z" fill="#0c1525"/>
-          <circle cx="80" cy="105" r="22" fill="#0a0a0a"/><circle cx="80" cy="105" r="16" fill="#854F0B"/><circle cx="80" cy="105" r="3" fill="#412402"/>
-          <circle cx="240" cy="105" r="22" fill="#0a0a0a"/><circle cx="240" cy="105" r="16" fill="#854F0B"/><circle cx="240" cy="105" r="3" fill="#412402"/>
+        <svg width="80%" height="80%" viewBox="0 0 320 150">
+          <ellipse cx="160" cy="138" rx="115" ry="6" fill="rgba(0,0,0,0.4)"/>
+          <path d="M30 100 L40 88 Q 60 75 90 70 L 105 65 Q 130 53 160 53 Q 190 53 215 65 L 230 70 Q 260 75 280 88 L 290 100 L 290 110 L 30 110 Z" fill="#1e3a8a"/>
+          <path d="M105 65 Q 130 38 160 38 Q 190 38 215 65 L 200 65 L 195 53 L 160 50 L 125 53 L 120 65 Z" fill="#1e3a8a" opacity="0.7"/>
+          <path d="M115 63 Q 132 45 160 45 Q 188 45 205 63 L 195 63 L 192 55 L 160 53 L 128 55 L 125 63 Z" fill="#0c1525"/>
+          <ellipse cx="42" cy="82" rx="7" ry="5" fill="#fef3c7"/>
+          <circle cx="80" cy="108" r="24" fill="#0a0a0a"/><circle cx="80" cy="108" r="18" fill="#854F0B"/>
+          <g stroke="#412402" stroke-width="2" stroke-linecap="round"><line x1="80" y1="93" x2="80" y2="103"/><line x1="80" y1="113" x2="80" y2="123"/><line x1="65" y1="108" x2="75" y2="108"/><line x1="85" y1="108" x2="95" y2="108"/><line x1="69" y1="97" x2="76" y2="104"/><line x1="84" y1="112" x2="91" y2="119"/><line x1="91" y1="97" x2="84" y2="104"/><line x1="76" y1="112" x2="69" y2="119"/></g>
+          <circle cx="80" cy="108" r="5" fill="#412402"/>
+          <circle cx="240" cy="108" r="24" fill="#0a0a0a"/><circle cx="240" cy="108" r="18" fill="#854F0B"/>
+          <g stroke="#412402" stroke-width="2" stroke-linecap="round"><line x1="240" y1="93" x2="240" y2="103"/><line x1="240" y1="113" x2="240" y2="123"/><line x1="225" y1="108" x2="235" y2="108"/><line x1="245" y1="108" x2="255" y2="108"/></g>
+          <circle cx="240" cy="108" r="5" fill="#412402"/>
         </svg>
       </div>
       <div class="post-caption">Finally got the bronze TE37s on. Worth every penny. Stance is exactly what I imagined 🤌</div>
       <div class="post-tags">
         <span class="post-tag">#bronze</span><span class="post-tag">#350z</span><span class="post-tag">#stancenation</span>
+      </div>
+      <div class="post-build-callout" onclick="toast('Build list saved')">
+        <div class="post-build-icon">🛠</div>
+        <div class="post-build-text">
+          <div class="post-build-title">View 6-part build list</div>
+          <div class="post-build-sub">Wheels · Coilovers · Exhaust · 3 more</div>
+        </div>
       </div>
       <div class="post-actions">
         <div class="post-action liked" onclick="likePost(this, 248)">
@@ -1306,9 +1966,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           <span>32</span>
         </div>
-        <div class="post-action" onclick="toast('Build list copied to clipboard')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/></svg>
-          <span>Build</span>
+        <div class="post-action" onclick="toast('Build list copied')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
         </div>
       </div>
     </div>
@@ -1317,9 +1976,12 @@
       <div class="post-header">
         <div class="post-avatar">J</div>
         <div class="post-user-info">
-          <div class="post-user-name">@jdm.daily</div>
+          <div class="post-user-row">
+            <span class="post-user-name">@jdm.daily</span>
+          </div>
           <div class="post-meta">5h · 2017 Subaru WRX · Miami, FL</div>
         </div>
+        <div class="post-more">⋯</div>
       </div>
       <div class="post-caption">Day 3 with the new exhaust. The sound is unreal. Anyone else running Borla on a WRX?</div>
       <div class="post-tags">
@@ -1334,9 +1996,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           <span>47</span>
         </div>
-        <div class="post-action" onclick="toast('Build list copied to clipboard')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/></svg>
-          <span>Build</span>
+        <div class="post-action" onclick="toast('Shared')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
         </div>
       </div>
     </div>
@@ -1345,37 +2006,37 @@
   <!-- ============= NOTIFICATIONS ============= -->
   <div class="screen" id="screen-notifs">
     <div class="header">
-      <button class="back-btn" onclick="nav('shop')">← Back</button>
-      <div style="font-size:11px;color:var(--gu-text-secondary);font-weight:600;cursor:pointer;" onclick="markAllRead()">Mark all read</div>
+      <button class="back-btn" onclick="nav('shop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+      <div style="font-size:12px;color:var(--gu-brand-blue);font-weight:600;cursor:pointer;" onclick="markAllRead()">Mark all read</div>
     </div>
 
-    <h2 style="font-size:20px;font-weight:800;color:var(--gu-text-primary);margin-bottom:14px;">Notifications</h2>
+    <h2 class="h1">Notifications</h2>
 
     <div class="notif-section">
       <div class="notif-section-title">Today</div>
-      <div class="notif unread" onclick="this.classList.remove('unread'); nav('detail');">
+      <div class="notif unread" onclick="this.classList.remove('unread'); updateNotifBadge(); openProduct('forgestar-f14');">
         <div class="notif-icon price">💰</div>
         <div class="notif-content">
-          <div class="notif-title">Price drop alert</div>
-          <div class="notif-body">Forgestar F14 dropped $250 at Summit Racing — now $1,849</div>
+          <div class="notif-title">Price drop alert · Forgestar F14</div>
+          <div class="notif-body">Dropped $250 at Summit Racing — your saved item is now $1,849 (was $2,099)</div>
           <div class="notif-time">2 hours ago</div>
         </div>
         <div class="notif-unread-dot"></div>
       </div>
-      <div class="notif unread" onclick="this.classList.remove('unread'); nav('feed');">
+      <div class="notif unread" onclick="this.classList.remove('unread'); updateNotifBadge(); nav('feed');">
         <div class="notif-icon community">❤️</div>
         <div class="notif-content">
-          <div class="notif-title">@mike350z liked your build</div>
-          <div class="notif-body">"Mustang GT — Clean Build" got 12 new likes</div>
+          <div class="notif-title">Your build is trending</div>
+          <div class="notif-body">"Mustang GT — Clean Build" got 12 new likes and was added to 3 watchlists</div>
           <div class="notif-time">4 hours ago</div>
         </div>
         <div class="notif-unread-dot"></div>
       </div>
-      <div class="notif unread" onclick="this.classList.remove('unread'); toast('Build saved to your collection');">
-        <div class="notif-icon system">🔔</div>
+      <div class="notif unread" onclick="this.classList.remove('unread'); updateNotifBadge(); setCategory('exhaust'); nav('shop');">
+        <div class="notif-icon deal">🔥</div>
         <div class="notif-content">
-          <div class="notif-title">New parts compatible with your Mustang</div>
-          <div class="notif-body">8 new performance parts just added that fit your build</div>
+          <div class="notif-title">Flash sale · 15% off exhaust</div>
+          <div class="notif-body">Limited-time deal on all exhaust systems for your Mustang. Ends Sunday.</div>
           <div class="notif-time">6 hours ago</div>
         </div>
         <div class="notif-unread-dot"></div>
@@ -1396,7 +2057,7 @@
         <div class="notif-icon system">📦</div>
         <div class="notif-content">
           <div class="notif-title">Order delivered</div>
-          <div class="notif-body">Borla ATAK Exhaust delivered to your shop</div>
+          <div class="notif-body">Borla ATAK Exhaust delivered to your shop — installation guide attached</div>
           <div class="notif-time">5 days ago</div>
         </div>
       </div>
@@ -1406,7 +2067,7 @@
   <!-- ============= PROFILE ============= -->
   <div class="screen" id="screen-profile">
     <div class="header">
-      <button class="back-btn" onclick="nav('shop')">← Back</button>
+      <button class="back-btn" onclick="nav('shop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
       <button class="icon-btn" onclick="toast('Edit profile')" aria-label="Edit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
       </button>
@@ -1484,39 +2145,41 @@
   <!-- ============= WISHLIST ============= -->
   <div class="screen" id="screen-wishlist">
     <div class="header">
-      <button class="back-btn" onclick="nav('profile')">← Back</button>
+      <button class="back-btn" onclick="nav('profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
     </div>
-    <h2 style="font-size:20px;font-weight:800;color:var(--gu-text-primary);margin-bottom:14px;">Wishlist</h2>
+    <h2 class="h1">Wishlist</h2>
     <div id="wishlist-content"></div>
   </div>
 
   <!-- ============= VIN ONBOARDING ============= -->
   <div class="screen" id="screen-vin-onboard">
     <div class="header">
-      <button class="back-btn" onclick="nav('garage')">← Cancel</button>
-      <div style="font-size:11px;color:var(--gu-text-secondary);font-weight:600;">Step 1 of 2</div>
+      <button class="back-btn" onclick="nav('garage')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Cancel</button>
+      <div style="font-size:11px;color:var(--gu-text-secondary);font-weight:700; letter-spacing: 0.5px;">STEP 1 OF 2</div>
     </div>
     <div class="onboard-title">Add your vehicle</div>
     <div class="onboard-sub">We use your VIN to show only parts that fit your exact make, model, and year — no more guessing.</div>
 
     <div class="vin-scanner" onclick="simulateScan()">
-      <svg class="scan-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gu-accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="6" width="18" height="12" rx="1"/>
-        <line x1="7" y1="10" x2="7" y2="14"/>
-        <line x1="10" y1="10" x2="10" y2="14"/>
-        <line x1="13" y1="10" x2="13" y2="14"/>
-        <line x1="16" y1="10" x2="16" y2="14"/>
-      </svg>
+      <div class="scan-icon-wrap">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="6" width="18" height="12" rx="1"/>
+          <line x1="7" y1="10" x2="7" y2="14"/>
+          <line x1="10" y1="10" x2="10" y2="14"/>
+          <line x1="13" y1="10" x2="13" y2="14"/>
+          <line x1="16" y1="10" x2="16" y2="14"/>
+        </svg>
+      </div>
       <div class="scan-text">Scan VIN barcode</div>
       <div class="scan-hint">Point camera at the VIN sticker on your driver's door jamb</div>
     </div>
 
     <div class="vin-divider">or enter manually</div>
 
-    <input class="vin-input" id="vin-input" placeholder="1HGBH41JXMN..." maxlength="17" oninput="checkVin()" autocomplete="off"/>
+    <input class="vin-input" id="vin-input" placeholder="1HGBH41JXMN109186" maxlength="17" oninput="checkVin()" autocomplete="off"/>
     <div class="vin-verified" id="vin-verified">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Verified · 2021 Ford Mustang GT
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Verified · 2021 Ford Mustang GT 5.0L
     </div>
 
     <button class="primary-cta" id="vin-confirm" disabled onclick="completeOnboarding()">Confirm vehicle</button>
@@ -1525,51 +2188,89 @@
   <!-- ============= CHECKOUT ============= -->
   <div class="screen" id="screen-checkout">
     <div class="header">
-      <button class="back-btn" onclick="nav('detail')">← Back</button>
+      <button class="back-btn" onclick="nav('detail')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
     </div>
-    <h2 style="font-size:20px;font-weight:800;color:var(--gu-text-primary);margin-bottom:14px;">Confirm purchase</h2>
+    <h2 class="h1">Confirm purchase</h2>
 
     <div class="checkout-summary" id="checkout-product"></div>
 
     <div class="checkout-summary">
       <div class="checkout-row"><span class="checkout-label">Subtotal</span><span class="checkout-value" id="ck-sub">$1,849.00</span></div>
-      <div class="checkout-row"><span class="checkout-label">Shipping</span><span class="checkout-value" style="color:var(--gu-success-text)">FREE</span></div>
-      <div class="checkout-row"><span class="checkout-label">Tax</span><span class="checkout-value" id="ck-tax">$129.43</span></div>
+      <div class="checkout-row"><span class="checkout-label">Shipping</span><span class="checkout-value" style="color:var(--gu-success-strong)">FREE</span></div>
+      <div class="checkout-row"><span class="checkout-label">Tax (7%)</span><span class="checkout-value" id="ck-tax">$129.43</span></div>
       <div class="checkout-row total"><span>Total</span><span id="ck-total">$1,978.43</span></div>
     </div>
 
     <button class="primary-cta" onclick="confirmOrder()">Buy from Summit Racing →</button>
-    <div style="font-size:10.5px;color:var(--gu-text-tertiary);text-align:center;margin-top:10px;line-height:1.5;">You'll be redirected to Summit Racing to complete your purchase. GearUp earns a small commission.</div>
+    <div style="font-size:10.5px;color:var(--gu-text-tertiary);text-align:center;margin-top:12px;line-height:1.5;padding: 0 10px;">You'll be redirected to Summit Racing to complete your purchase. GearUp earns a small commission on referrals — at no cost to you.</div>
   </div>
 
   <!-- ============= ORDER CONFIRMED ============= -->
   <div class="screen" id="screen-confirmed">
     <div class="order-confirmed">
       <div class="order-check">✓</div>
-      <h2 style="font-size:21px;font-weight:800;color:var(--gu-text-primary);margin-bottom:8px;">Order placed!</h2>
-      <p style="font-size:13px;color:var(--gu-text-secondary);line-height:1.5;margin-bottom:24px;">Your order with Summit Racing has been placed. We'll add it to your Garage once it ships.</p>
+      <h2 class="h1" style="text-align:center;">Order placed!</h2>
+      <p style="font-size:13px;color:var(--gu-text-secondary);line-height:1.5;margin-bottom:24px;max-width:280px;margin-left:auto;margin-right:auto;">Your order with Summit Racing has been placed. We'll add it to your Garage once it ships.</p>
       <button class="primary-cta" onclick="nav('garage')">View in Garage</button>
-      <button onclick="nav('shop')" style="background:none;border:none;color:var(--gu-accent-blue);font-size:13px;font-weight:600;margin-top:14px;cursor:pointer;font-family:inherit;">Keep shopping</button>
+      <button onclick="nav('shop')" style="background:none;border:none;color:var(--gu-brand-blue);font-size:13px;font-weight:600;margin-top:16px;cursor:pointer;font-family:inherit;">Keep shopping</button>
     </div>
+  </div>
+
+  <!-- ============= FILTER SHEET ============= -->
+  <div class="sheet-overlay" id="sheet-overlay" onclick="closeFilterSheet()"></div>
+  <div class="sheet" id="filter-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">Filter & sort</div>
+
+    <div class="filter-group">
+      <div class="filter-label">Sort by</div>
+      <div class="filter-options">
+        <button class="filter-pill selected">Recommended</button>
+        <button class="filter-pill">Price: low to high</button>
+        <button class="filter-pill">Price: high to low</button>
+        <button class="filter-pill">Top rated</button>
+        <button class="filter-pill">Newest</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-label">Price range</div>
+      <div class="filter-options">
+        <button class="filter-pill">Under $500</button>
+        <button class="filter-pill">$500 — $1,500</button>
+        <button class="filter-pill">$1,500 — $3,000</button>
+        <button class="filter-pill">$3,000+</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-label">Features</div>
+      <div class="filter-options">
+        <button class="filter-pill">AR available</button>
+        <button class="filter-pill">In stock</button>
+        <button class="filter-pill">Free shipping</button>
+      </div>
+    </div>
+
+    <button class="primary-cta" onclick="applyFilters()">Show 18 results</button>
   </div>
 
   <!-- ============= BOTTOM NAV ============= -->
   <div class="bottom-nav">
     <button class="nav-item active" id="nav-shop" onclick="nav('shop')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       <span class="nav-label">Shop</span>
-    </button>
-    <button class="nav-item" id="nav-ar" onclick="showAR()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-      <span class="nav-label">AR</span>
-    </button>
-    <button class="nav-item" id="nav-garage" onclick="nav('garage')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-      <span class="nav-label">Garage</span>
     </button>
     <button class="nav-item" id="nav-feed" onclick="nav('feed')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
       <span class="nav-label">Feed</span>
+    </button>
+    <button class="nav-item ar-special" id="nav-ar" onclick="showAR()" style="position:relative;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+    </button>
+    <button class="nav-item" id="nav-garage" onclick="nav('garage')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 13h6v9H9z"/></svg>
+      <span class="nav-label">Garage</span>
     </button>
     <button class="nav-item" id="nav-profile" onclick="nav('profile')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -1583,40 +2284,47 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  // ======================= PRODUCT DATA =======================
+  // =============================================================
+  // PRODUCT DATA — expanded for realism
+  // =============================================================
   const products = {
     wheels: [
-      { id: 'forgestar-f14', name: 'Forgestar F14 20"', desc: 'Matte black · Drag/Track', price: 1849, oldPrice: 2099, retailers: 4, ar: true, thumb: 'wheel-black' },
-      { id: 'enkei-rpf1', name: 'Enkei RPF1 18"', desc: 'Silver · Lightweight 18 lbs', price: 1420, retailers: 6, ar: true, thumb: 'wheel-silver' },
-      { id: 'bbs-chr', name: 'BBS CH-R II 20"', desc: 'Matte graphite · Premium forged', price: 3250, retailers: 3, ar: true, thumb: 'wheel-graphite' },
-      { id: 'rotiform-las', name: 'Rotiform LAS-R 20"', desc: 'Matte bronze · Stance favorite', price: 2100, retailers: 5, ar: true, thumb: 'wheel-bronze' },
-      { id: 'vossen-hf3', name: 'Vossen HF-3 19"', desc: 'Tinted gloss · Hybrid forged', price: 2890, retailers: 4, ar: false, thumb: 'wheel-tinted' }
+      { id: 'forgestar-f14', brand: 'FORGESTAR', name: 'F14 20" Wheels', desc: 'Matte black · Drag/Track', price: 1849, oldPrice: 2099, retailers: 4, ar: true, thumb: 'wheel-black', rating: 4.8, reviews: 348 },
+      { id: 'enkei-rpf1', brand: 'ENKEI', name: 'RPF1 18" Wheels', desc: 'Silver · Lightweight 18 lbs', price: 1420, retailers: 6, ar: true, thumb: 'wheel-silver', rating: 4.9, reviews: 612 },
+      { id: 'bbs-chr', brand: 'BBS', name: 'CH-R II 20" Wheels', desc: 'Matte graphite · Premium forged', price: 3250, retailers: 3, ar: true, thumb: 'wheel-graphite', rating: 4.9, reviews: 184 },
+      { id: 'rotiform-las', brand: 'ROTIFORM', name: 'LAS-R 20" Wheels', desc: 'Matte bronze · Stance favorite', price: 2100, retailers: 5, ar: true, thumb: 'wheel-bronze', rating: 4.7, reviews: 256 },
+      { id: 'vossen-hf3', brand: 'VOSSEN', name: 'HF-3 19" Wheels', desc: 'Tinted gloss · Hybrid forged', price: 2890, retailers: 4, ar: false, thumb: 'wheel-tinted', rating: 4.6, reviews: 124 }
     ],
     exhaust: [
-      { id: 'borla-atak', name: 'Borla ATAK Cat-Back', desc: 'Aggressive growl · Stainless steel', price: 1295, retailers: 5, ar: false, thumb: 'exhaust' },
-      { id: 'magnaflow-sport', name: 'MagnaFlow Sport', desc: 'Refined tone · Lifetime warranty', price: 985, retailers: 4, ar: false, thumb: 'exhaust' },
-      { id: 'roush-axleback', name: 'Roush Axle-Back', desc: 'Bolt-on · Track-tuned', price: 749, oldPrice: 875, retailers: 3, ar: false, thumb: 'exhaust' },
-      { id: 'corsa-xtreme', name: 'Corsa Xtreme', desc: 'Loudest legal option · Polished tips', price: 1450, retailers: 2, ar: false, thumb: 'exhaust' }
+      { id: 'borla-atak', brand: 'BORLA', name: 'ATAK Cat-Back Exhaust', desc: 'Aggressive growl · Stainless', price: 1295, retailers: 5, ar: false, thumb: 'exhaust', rating: 4.8, reviews: 482 },
+      { id: 'magnaflow-sport', brand: 'MAGNAFLOW', name: 'Sport Exhaust System', desc: 'Refined tone · Lifetime warranty', price: 985, retailers: 4, ar: false, thumb: 'exhaust', rating: 4.7, reviews: 338 },
+      { id: 'roush-axleback', brand: 'ROUSH', name: 'Axle-Back Exhaust', desc: 'Bolt-on · Track-tuned', price: 749, oldPrice: 875, retailers: 3, ar: false, thumb: 'exhaust', rating: 4.6, reviews: 192 },
+      { id: 'corsa-xtreme', brand: 'CORSA', name: 'Xtreme Cat-Back Exhaust', desc: 'Loudest legal · Polished tips', price: 1450, retailers: 2, ar: false, thumb: 'exhaust', rating: 4.7, reviews: 156 }
     ],
     intake: [
-      { id: 'jlt-cai', name: 'JLT Cold Air Intake', desc: '+18 hp gain · Reusable filter', price: 390, retailers: 5, ar: false, thumb: 'intake' },
-      { id: 'kn-bluepower', name: 'K&N BluePower Intake', desc: 'CARB legal · 50-state compliant', price: 425, retailers: 4, ar: false, thumb: 'intake' },
-      { id: 'roush-intake', name: 'Roush Performance Intake', desc: 'OEM-quality · Dyno proven', price: 549, retailers: 3, ar: false, thumb: 'intake' }
+      { id: 'jlt-cai', brand: 'JLT', name: 'Cold Air Intake', desc: '+18 hp gain · Reusable filter', price: 390, retailers: 5, ar: false, thumb: 'intake', rating: 4.8, reviews: 412 },
+      { id: 'kn-bluepower', brand: 'K&N', name: 'BluePower Intake', desc: 'CARB legal · 50-state', price: 425, retailers: 4, ar: false, thumb: 'intake', rating: 4.6, reviews: 286 },
+      { id: 'roush-intake', brand: 'ROUSH', name: 'Performance Intake', desc: 'OEM-quality · Dyno proven', price: 549, retailers: 3, ar: false, thumb: 'intake', rating: 4.7, reviews: 158 }
     ],
     lighting: [
-      { id: 'morimoto-xb', name: 'Morimoto XB LED Headlights', desc: 'DRL · Sequential turn signals', price: 1199, retailers: 4, ar: false, thumb: 'light' },
-      { id: 'oracle-halos', name: 'Oracle Halo Kit', desc: 'Color-shifting · App controlled', price: 489, retailers: 6, ar: false, thumb: 'light' },
-      { id: 'diode-fog', name: 'Diode Dynamics Fog Lights', desc: 'SAE compliant · 5000K', price: 245, retailers: 5, ar: false, thumb: 'light' }
+      { id: 'morimoto-xb', brand: 'MORIMOTO', name: 'XB LED Headlights', desc: 'DRL · Sequential signals', price: 1199, retailers: 4, ar: false, thumb: 'light', rating: 4.9, reviews: 268 },
+      { id: 'oracle-halos', brand: 'ORACLE', name: 'ColorSHIFT Halo Kit', desc: 'App controlled · Multi-color', price: 489, retailers: 6, ar: false, thumb: 'light', rating: 4.7, reviews: 412 },
+      { id: 'diode-fog', brand: 'DIODE DYNAMICS', name: 'SS3 Fog Lights', desc: 'SAE compliant · 5000K', price: 245, retailers: 5, ar: false, thumb: 'light', rating: 4.8, reviews: 528 }
     ],
     body: [
-      { id: 'roush-lip', name: 'Roush Front Splitter', desc: 'CNC carbon · Bolt-on install', price: 685, retailers: 3, ar: true, thumb: 'body' },
-      { id: 'cervinis-hood', name: "Cervini's Mach 1 Hood", desc: 'Vented · Heat extraction', price: 1395, retailers: 2, ar: true, thumb: 'body' },
-      { id: 'gt500-spoiler', name: 'GT500-Style Rear Spoiler', desc: 'OEM-style · Pre-painted', price: 549, oldPrice: 649, retailers: 4, ar: true, thumb: 'body' }
+      { id: 'roush-lip', brand: 'ROUSH', name: 'Front Splitter Kit', desc: 'CNC carbon · Bolt-on', price: 685, retailers: 3, ar: true, thumb: 'body', rating: 4.7, reviews: 92 },
+      { id: 'cervinis-hood', brand: "CERVINI'S", name: 'Mach 1 Hood', desc: 'Vented · Heat extraction', price: 1395, retailers: 2, ar: true, thumb: 'body', rating: 4.8, reviews: 64 },
+      { id: 'gt500-spoiler', brand: 'FORD PERFORMANCE', name: 'GT500-Style Spoiler', desc: 'OEM-style · Pre-painted', price: 549, oldPrice: 649, retailers: 4, ar: true, thumb: 'body', rating: 4.6, reviews: 142 }
     ],
     suspension: [
-      { id: 'ford-perf-handling', name: 'Ford Performance Handling Pack', desc: 'Sway bars · Dampers · Bushings', price: 1450, retailers: 3, ar: false, thumb: 'spring' },
-      { id: 'eibach-prokit', name: 'Eibach Pro-Kit Springs', desc: '1.2" drop · Better handling', price: 349, retailers: 5, ar: false, thumb: 'spring' },
-      { id: 'kw-v3', name: 'KW Variant 3 Coilovers', desc: 'Independent rebound · Compression', price: 3290, retailers: 2, ar: false, thumb: 'spring' }
+      { id: 'ford-perf-handling', brand: 'FORD PERFORMANCE', name: 'Handling Pack', desc: 'Sway bars · Dampers · Bushings', price: 1450, retailers: 3, ar: false, thumb: 'spring', rating: 4.9, reviews: 184 },
+      { id: 'eibach-prokit', brand: 'EIBACH', name: 'Pro-Kit Lowering Springs', desc: '1.2" drop · Better handling', price: 349, retailers: 5, ar: false, thumb: 'spring', rating: 4.8, reviews: 386 },
+      { id: 'kw-v3', brand: 'KW SUSPENSION', name: 'Variant 3 Coilovers', desc: 'Independent rebound · Compression', price: 3290, retailers: 2, ar: false, thumb: 'spring', rating: 4.9, reviews: 96 }
+    ],
+    brakes: [
+      { id: 'brembo-gt', brand: 'BREMBO', name: 'GT Big Brake Kit', desc: '6-piston front · Slotted rotors', price: 4250, retailers: 2, ar: false, thumb: 'brake', rating: 4.9, reviews: 78 },
+      { id: 'powerstop-z23', brand: 'POWERSTOP', name: 'Z23 Brake Pads', desc: 'Drilled rotors · Ceramic pads', price: 389, retailers: 5, ar: false, thumb: 'brake', rating: 4.7, reviews: 248 },
+      { id: 'ebc-yellow', brand: 'EBC', name: 'Yellowstuff Brake Pads', desc: 'Track + street · Low dust', price: 285, retailers: 4, ar: false, thumb: 'brake', rating: 4.8, reviews: 168 }
     ]
   };
 
@@ -1625,7 +2333,9 @@
   let wishlist = new Set();
   let activeProduct = null;
 
-  // ======================= ICON / IMAGE SVG =======================
+  // =============================================================
+  // SVG THUMBNAIL RENDERER
+  // =============================================================
   function thumbSVG(type) {
     const tBlack = ` <g stroke="#5F5E5A" stroke-width="2" stroke-linecap="round">
         <line x1="40" y1="22" x2="40" y2="32"/><line x1="40" y1="48" x2="40" y2="58"/>
@@ -1633,28 +2343,34 @@
         <line x1="27" y1="27" x2="34" y2="34"/><line x1="46" y1="46" x2="53" y2="53"/>
         <line x1="53" y1="27" x2="46" y2="34"/><line x1="34" y1="46" x2="27" y2="53"/>
       </g>`;
-    if (type === 'wheel-black') return `<svg width="56" height="56" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="#1a1a1c"/><circle cx="40" cy="40" r="30" fill="#2a2a30"/>${tBlack}<circle cx="40" cy="40" r="8" fill="#3a3a40"/></svg>`;
-    if (type === 'wheel-silver') return `<svg width="56" height="56" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="#1a1a1c"/><circle cx="40" cy="40" r="30" fill="#c4c4c8"/><g stroke="#5F5E5A" stroke-width="3" stroke-linecap="round"><line x1="40" y1="20" x2="40" y2="32"/><line x1="40" y1="48" x2="40" y2="60"/><line x1="20" y1="40" x2="32" y2="40"/><line x1="48" y1="40" x2="60" y2="40"/></g><circle cx="40" cy="40" r="8" fill="#5a5a5e"/></svg>`;
-    if (type === 'wheel-graphite') return `<svg width="56" height="56" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="#1a1a1c"/><circle cx="40" cy="40" r="30" fill="#5a5a5e"/><g fill="#2a2a30"><circle cx="40" cy="22" r="3"/><circle cx="40" cy="58" r="3"/><circle cx="22" cy="40" r="3"/><circle cx="58" cy="40" r="3"/><circle cx="27" cy="27" r="3"/><circle cx="53" cy="53" r="3"/><circle cx="53" cy="27" r="3"/><circle cx="27" cy="53" r="3"/></g><circle cx="40" cy="40" r="8" fill="#c4c4c8"/></svg>`;
-    if (type === 'wheel-bronze') return `<svg width="56" height="56" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="#1a1a1c"/><circle cx="40" cy="40" r="30" fill="#854F0B"/><g stroke="#412402" stroke-width="3" stroke-linecap="round"><line x1="40" y1="20" x2="40" y2="32"/><line x1="40" y1="48" x2="40" y2="60"/><line x1="20" y1="40" x2="32" y2="40"/><line x1="48" y1="40" x2="60" y2="40"/><line x1="26" y1="26" x2="34" y2="34"/><line x1="46" y1="46" x2="54" y2="54"/><line x1="54" y1="26" x2="46" y2="34"/><line x1="34" y1="46" x2="26" y2="54"/></g><circle cx="40" cy="40" r="8" fill="#412402"/></svg>`;
-    if (type === 'wheel-tinted') return `<svg width="56" height="56" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="#1a1a1c"/><circle cx="40" cy="40" r="30" fill="#3a3a4e"/>${tBlack}<circle cx="40" cy="40" r="8" fill="#5a5a6e"/></svg>`;
-    if (type === 'exhaust') return `<svg width="56" height="56" viewBox="0 0 80 80"><rect x="10" y="32" width="50" height="16" rx="3" fill="#9a9a9e"/><rect x="56" y="28" width="14" height="24" rx="2" fill="#7a7a7e"/><rect x="10" y="36" width="50" height="2" fill="#bababe" opacity="0.6"/><circle cx="63" cy="40" r="6" fill="#1a1a1c"/></svg>`;
-    if (type === 'intake') return `<svg width="56" height="56" viewBox="0 0 80 80"><path d="M15 30 Q15 22 22 22 L40 22 L42 18 L48 18 L50 22 L65 22 Q65 30 60 35 L60 50 Q60 58 50 58 L30 58 Q20 58 20 50 L20 35 Z" fill="#dc2626"/><rect x="30" y="35" width="20" height="20" fill="#1a1a1c" opacity="0.4"/><circle cx="45" cy="20" r="3" fill="#fbbf24"/></svg>`;
-    if (type === 'light') return `<svg width="56" height="56" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="32" ry="22" fill="#1a1a1c"/><ellipse cx="40" cy="40" rx="26" ry="16" fill="#c0c8d4"/><ellipse cx="40" cy="40" rx="20" ry="11" fill="#fef3c7"/><circle cx="40" cy="40" r="6" fill="#fbbf24"/><circle cx="40" cy="40" r="3" fill="#fff"/></svg>`;
-    if (type === 'body') return `<svg width="56" height="56" viewBox="0 0 80 80"><path d="M10 50 L70 50 L62 64 L18 64 Z" fill="#dc2626"/><path d="M14 56 L66 56 L62 60 L18 60 Z" fill="#1a1a1c" opacity="0.3"/><path d="M22 46 Q 40 30 58 46" stroke="#dc2626" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`;
-    if (type === 'spring') return `<svg width="56" height="56" viewBox="0 0 80 80"><path d="M40 14 L40 18 L34 22 L46 26 L34 30 L46 34 L34 38 L46 42 L34 46 L46 50 L34 54 L46 58 L40 62 L40 66" stroke="#9a9a9e" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="32" y="10" width="16" height="6" rx="1" fill="#5a5a5e"/><rect x="32" y="64" width="16" height="6" rx="1" fill="#5a5a5e"/></svg>`;
+    if (type === 'wheel-black') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#1a1a1c"/><circle cx="40" cy="40" r="32" fill="#26262e"/>${tBlack}<circle cx="40" cy="40" r="9" fill="#3a3a40"/></svg>`;
+    if (type === 'wheel-silver') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#1a1a1c"/><circle cx="40" cy="40" r="32" fill="#c4c4c8"/><g stroke="#5F5E5A" stroke-width="3" stroke-linecap="round"><line x1="40" y1="20" x2="40" y2="32"/><line x1="40" y1="48" x2="40" y2="60"/><line x1="20" y1="40" x2="32" y2="40"/><line x1="48" y1="40" x2="60" y2="40"/></g><circle cx="40" cy="40" r="9" fill="#5a5a5e"/></svg>`;
+    if (type === 'wheel-graphite') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#1a1a1c"/><circle cx="40" cy="40" r="32" fill="#5a5a5e"/><g fill="#2a2a30"><circle cx="40" cy="22" r="3"/><circle cx="40" cy="58" r="3"/><circle cx="22" cy="40" r="3"/><circle cx="58" cy="40" r="3"/><circle cx="27" cy="27" r="3"/><circle cx="53" cy="53" r="3"/><circle cx="53" cy="27" r="3"/><circle cx="27" cy="53" r="3"/></g><circle cx="40" cy="40" r="9" fill="#c4c4c8"/></svg>`;
+    if (type === 'wheel-bronze') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#1a1a1c"/><circle cx="40" cy="40" r="32" fill="#854F0B"/><g stroke="#412402" stroke-width="3" stroke-linecap="round"><line x1="40" y1="20" x2="40" y2="32"/><line x1="40" y1="48" x2="40" y2="60"/><line x1="20" y1="40" x2="32" y2="40"/><line x1="48" y1="40" x2="60" y2="40"/><line x1="26" y1="26" x2="34" y2="34"/><line x1="46" y1="46" x2="54" y2="54"/><line x1="54" y1="26" x2="46" y2="34"/><line x1="34" y1="46" x2="26" y2="54"/></g><circle cx="40" cy="40" r="9" fill="#412402"/></svg>`;
+    if (type === 'wheel-tinted') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#1a1a1c"/><circle cx="40" cy="40" r="32" fill="#3a3a4e"/>${tBlack}<circle cx="40" cy="40" r="9" fill="#5a5a6e"/></svg>`;
+    if (type === 'exhaust') return `<svg width="60" height="60" viewBox="0 0 80 80"><rect x="10" y="32" width="50" height="16" rx="3" fill="#9a9a9e"/><rect x="56" y="28" width="14" height="24" rx="2" fill="#7a7a7e"/><rect x="10" y="36" width="50" height="2" fill="#bababe" opacity="0.6"/><circle cx="63" cy="40" r="6" fill="#1a1a1c"/></svg>`;
+    if (type === 'intake') return `<svg width="60" height="60" viewBox="0 0 80 80"><path d="M15 30 Q15 22 22 22 L40 22 L42 18 L48 18 L50 22 L65 22 Q65 30 60 35 L60 50 Q60 58 50 58 L30 58 Q20 58 20 50 L20 35 Z" fill="#dc2626"/><rect x="30" y="35" width="20" height="20" fill="#1a1a1c" opacity="0.4"/><circle cx="45" cy="20" r="3" fill="#fbbf24"/></svg>`;
+    if (type === 'light') return `<svg width="60" height="60" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="32" ry="22" fill="#1a1a1c"/><ellipse cx="40" cy="40" rx="26" ry="16" fill="#c0c8d4"/><ellipse cx="40" cy="40" rx="20" ry="11" fill="#fef3c7"/><circle cx="40" cy="40" r="6" fill="#fbbf24"/><circle cx="40" cy="40" r="3" fill="#fff"/></svg>`;
+    if (type === 'body') return `<svg width="60" height="60" viewBox="0 0 80 80"><path d="M10 50 L70 50 L62 64 L18 64 Z" fill="#dc2626"/><path d="M14 56 L66 56 L62 60 L18 60 Z" fill="#1a1a1c" opacity="0.3"/><path d="M22 46 Q 40 30 58 46" stroke="#dc2626" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`;
+    if (type === 'spring') return `<svg width="60" height="60" viewBox="0 0 80 80"><path d="M40 14 L40 18 L34 22 L46 26 L34 30 L46 34 L34 38 L46 42 L34 46 L46 50 L34 54 L46 58 L40 62 L40 66" stroke="#9a9a9e" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="32" y="10" width="16" height="6" rx="1" fill="#5a5a5e"/><rect x="32" y="64" width="16" height="6" rx="1" fill="#5a5a5e"/></svg>`;
+    if (type === 'brake') return `<svg width="60" height="60" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="#1a1a1c"/><circle cx="40" cy="40" r="26" fill="#c4c4c8"/><circle cx="40" cy="40" r="20" fill="#9a9a9e"/><g fill="#1a1a1c"><rect x="20" y="38" width="6" height="4" rx="1"/><rect x="32" y="20" width="4" height="6" rx="1"/><rect x="44" y="20" width="4" height="6" rx="1"/><rect x="32" y="54" width="4" height="6" rx="1"/><rect x="44" y="54" width="4" height="6" rx="1"/><rect x="54" y="38" width="6" height="4" rx="1"/></g><rect x="55" y="32" width="14" height="16" rx="2" fill="#dc2626"/><circle cx="40" cy="40" r="5" fill="#3a3a40"/></svg>`;
     return '';
   }
 
-  // ======================= PRODUCT LIST =======================
+  // =============================================================
+  // PRODUCT LIST RENDER
+  // =============================================================
   function renderProducts() {
     const list = products[currentCategory] || [];
     const filtered = list.filter(p =>
-      !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.desc.toLowerCase().includes(searchQuery.toLowerCase())
+      !searchQuery ||
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.brand.toLowerCase().includes(searchQuery.toLowerCase())
     );
     const container = document.getElementById('products');
     if (filtered.length === 0) {
-      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">No results</div><div class="empty-text">Try a different search or category</div></div>`;
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">No results</div><div class="empty-text">Try a different search or pick a different category</div></div>`;
       return;
     }
     container.innerHTML = filtered.map(p => `
@@ -1663,17 +2379,18 @@
         <div class="product-info">
           <div class="product-top">
             <div style="flex:1;min-width:0;">
+              <div class="product-brand">${p.brand}</div>
               <div class="product-name">${p.name}</div>
-              <div class="product-desc">${p.desc}</div>
+              <div class="product-rating"><span class="stars">★★★★★</span> <span><strong>${p.rating}</strong> (${p.reviews})</span></div>
             </div>
             ${p.ar ? '<div class="ar-badge">AR</div>' : ''}
           </div>
           <div class="price-row">
             <div>
               <span class="price">$${p.price.toLocaleString()}</span>
-              ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}
+              ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span><span class="price-save">SAVE</span>` : ''}
             </div>
-            <div class="retailers">${p.retailers} retailers</div>
+            <div class="retailers">${p.retailers} stores</div>
           </div>
         </div>
       </div>
@@ -1691,18 +2408,30 @@
       intake: 'Cold air intakes',
       lighting: 'Lighting upgrades',
       body: 'Body & aero',
-      suspension: 'Suspension upgrades'
+      suspension: 'Suspension upgrades',
+      brakes: 'Brake upgrades'
     };
     document.getElementById('section-title').textContent = titles[cat] || 'Parts';
     renderProducts();
   }
 
   function filterProducts() {
-    searchQuery = document.getElementById('search-input').value;
+    const input = document.getElementById('search-input');
+    searchQuery = input.value;
+    document.getElementById('search-clear').classList.toggle('show', searchQuery.length > 0);
     renderProducts();
   }
 
-  // ======================= NAVIGATION =======================
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    searchQuery = '';
+    document.getElementById('search-clear').classList.remove('show');
+    renderProducts();
+  }
+
+  // =============================================================
+  // NAVIGATION
+  // =============================================================
   function nav(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById('screen-' + screenId);
@@ -1719,7 +2448,9 @@
     if (screenId === 'wishlist') renderWishlist();
   }
 
-  // ======================= PRODUCT DETAIL =======================
+  // =============================================================
+  // PRODUCT DETAIL
+  // =============================================================
   function openProduct(id) {
     let prod = null;
     Object.values(products).forEach(list => {
@@ -1727,13 +2458,42 @@
     });
     if (!prod) return;
     activeProduct = prod;
+
+    document.getElementById('detail-brand').textContent = prod.brand;
     document.getElementById('detail-name').textContent = prod.name;
-    document.getElementById('detail-sub').textContent = prod.desc;
-    document.getElementById('detail-hero').innerHTML = `<div style="transform:scale(2);">${thumbSVG(prod.thumb)}</div>`;
-    // Update like button
+    document.getElementById('detail-price').textContent = '$' + prod.price.toLocaleString();
+    const oldPriceEl = document.getElementById('detail-price-old');
+    if (prod.oldPrice) {
+      oldPriceEl.textContent = '$' + prod.oldPrice.toLocaleString();
+      oldPriceEl.style.display = 'inline';
+      document.querySelector('.detail-save').style.display = 'inline-block';
+    } else {
+      oldPriceEl.style.display = 'none';
+      document.querySelector('.detail-save').style.display = 'none';
+    }
+
+    // Hero with tags
+    const hero = document.getElementById('detail-hero');
+    hero.innerHTML = `
+      <div class="detail-tags">
+        <span class="detail-tag fit">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Verified fit
+        </span>
+        ${prod.rating >= 4.8 ? '<span class="detail-tag">★ Bestseller</span>' : ''}
+      </div>
+      <div class="detail-360">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        360° view
+      </div>
+      <div style="transform:scale(2.4);">${thumbSVG(prod.thumb)}</div>
+    `;
+
+    // Update like state
     const likeBtn = document.getElementById('detail-like');
-    if (wishlist.has(id)) likeBtn.querySelector('svg').setAttribute('fill', 'var(--gu-accent-orange)');
+    if (wishlist.has(id)) likeBtn.querySelector('svg').setAttribute('fill', 'var(--gu-brand-orange)');
     else likeBtn.querySelector('svg').setAttribute('fill', 'none');
+
     // Render retailers
     const retailers = [
       { name: 'Summit Racing', meta: 'Free shipping · In stock', price: prod.price, best: true },
@@ -1742,14 +2502,15 @@
       { name: 'TireRack', meta: 'Free shipping · 7-day delivery', price: prod.price + 95, best: false }
     ];
     document.getElementById('retailers-list').innerHTML = retailers.map(r => `
-      <div class="retailer-card ${r.best ? 'best' : ''}" onclick="goCheckout('${prod.id}', '${r.name}', ${r.price})">
+      <div class="retailer-card ${r.best ? 'best' : ''}" onclick="goCheckout('${prod.id}', '${r.name.replace(/'/g, "\\'")}', ${r.price})">
         <div>
-          <div class="retailer-name">${r.name}${r.best ? ' · BEST' : ''}</div>
+          <div class="retailer-name">${r.name}${r.best ? '<span class="best-badge">Best</span>' : ''}</div>
           <div class="retailer-meta">${r.meta}</div>
         </div>
         <div class="retailer-price">$${r.price.toLocaleString()}</div>
       </div>
     `).join('');
+
     nav('detail');
   }
 
@@ -1762,74 +2523,72 @@
       toast('Removed from wishlist');
     } else {
       wishlist.add(id);
-      btn.querySelector('svg').setAttribute('fill', 'var(--gu-accent-orange)');
+      btn.querySelector('svg').setAttribute('fill', 'var(--gu-brand-orange)');
       toast('Saved to wishlist');
     }
   }
 
-  // ======================= AR =======================
+  // =============================================================
+  // AR
+  // =============================================================
   const wheelStyles = {
     forgestar: {
-      name: 'Forgestar F14 20"',
-      price: 'Matte black · 4 retailers from $1,849',
-      thumb: 'wheel-black',
+      name: 'Forgestar F14 20"', price: 'Matte black · 4 retailers from $1,849',
+      thumbType: 'wheel-black', priceFrom: '$1,849',
       render: (cx, cy) => `
-        <circle cx="${cx}" cy="${cy}" r="20" fill="#000"/>
-        <circle cx="${cx}" cy="${cy}" r="18" fill="#1a1a1a" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#1a1a1a" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
         <g stroke="#888" stroke-width="2" stroke-linecap="round">
-          <line x1="${cx}" y1="${cy-16}" x2="${cx}" y2="${cy-7}"/><line x1="${cx}" y1="${cy+7}" x2="${cx}" y2="${cy+16}"/>
-          <line x1="${cx-16}" y1="${cy}" x2="${cx-7}" y2="${cy}"/><line x1="${cx+7}" y1="${cy}" x2="${cx+16}" y2="${cy}"/>
-          <line x1="${cx-11}" y1="${cy-11}" x2="${cx-5}" y2="${cy-5}"/><line x1="${cx+11}" y1="${cy+11}" x2="${cx+5}" y2="${cy+5}"/>
-          <line x1="${cx+11}" y1="${cy-11}" x2="${cx+5}" y2="${cy-5}"/><line x1="${cx-11}" y1="${cy+11}" x2="${cx-5}" y2="${cy+5}"/>
+          <line x1="${cx}" y1="${cy-18}" x2="${cx}" y2="${cy-8}"/><line x1="${cx}" y1="${cy+8}" x2="${cx}" y2="${cy+18}"/>
+          <line x1="${cx-18}" y1="${cy}" x2="${cx-8}" y2="${cy}"/><line x1="${cx+8}" y1="${cy}" x2="${cx+18}" y2="${cy}"/>
+          <line x1="${cx-12}" y1="${cy-12}" x2="${cx-6}" y2="${cy-6}"/><line x1="${cx+12}" y1="${cy+12}" x2="${cx+6}" y2="${cy+6}"/>
+          <line x1="${cx+12}" y1="${cy-12}" x2="${cx+6}" y2="${cy-6}"/><line x1="${cx-12}" y1="${cy+12}" x2="${cx-6}" y2="${cy+6}"/>
         </g>
-        <circle cx="${cx}" cy="${cy}" r="5" fill="#5F5E5A"/>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#5F5E5A"/>
       `
     },
     enkei: {
-      name: 'Enkei RPF1 18"',
-      price: 'Silver · 6 retailers from $1,420',
-      thumb: 'wheel-silver',
+      name: 'Enkei RPF1 18"', price: 'Silver · 6 retailers from $1,420',
+      thumbType: 'wheel-silver', priceFrom: '$1,420',
       render: (cx, cy) => `
-        <circle cx="${cx}" cy="${cy}" r="20" fill="#000"/>
-        <circle cx="${cx}" cy="${cy}" r="18" fill="#B4B2A9" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#B4B2A9" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
         <g stroke="#5F5E5A" stroke-width="2.5" stroke-linecap="round">
-          <line x1="${cx}" y1="${cy-15}" x2="${cx}" y2="${cy-5}"/><line x1="${cx}" y1="${cy+5}" x2="${cx}" y2="${cy+15}"/>
-          <line x1="${cx-15}" y1="${cy}" x2="${cx-5}" y2="${cy}"/><line x1="${cx+5}" y1="${cy}" x2="${cx+15}" y2="${cy}"/>
-          <line x1="${cx-10}" y1="${cy-10}" x2="${cx-4}" y2="${cy-4}"/><line x1="${cx+10}" y1="${cy+10}" x2="${cx+4}" y2="${cy+4}"/>
+          <line x1="${cx}" y1="${cy-17}" x2="${cx}" y2="${cy-6}"/><line x1="${cx}" y1="${cy+6}" x2="${cx}" y2="${cy+17}"/>
+          <line x1="${cx-17}" y1="${cy}" x2="${cx-6}" y2="${cy}"/><line x1="${cx+6}" y1="${cy}" x2="${cx+17}" y2="${cy}"/>
+          <line x1="${cx-12}" y1="${cy-12}" x2="${cx-5}" y2="${cy-5}"/><line x1="${cx+12}" y1="${cy+12}" x2="${cx+5}" y2="${cy+5}"/>
         </g>
-        <circle cx="${cx}" cy="${cy}" r="5" fill="#2C2C2A"/>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#2C2C2A"/>
       `
     },
     bbs: {
-      name: 'BBS CH-R II 20"',
-      price: 'Matte graphite · 3 retailers from $3,250',
-      thumb: 'wheel-graphite',
+      name: 'BBS CH-R II 20"', price: 'Matte graphite · 3 retailers from $3,250',
+      thumbType: 'wheel-graphite', priceFrom: '$3,250',
       render: (cx, cy) => `
-        <circle cx="${cx}" cy="${cy}" r="20" fill="#000"/>
-        <circle cx="${cx}" cy="${cy}" r="18" fill="#5F5E5A" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#5F5E5A" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
         <g fill="#1a1a1a">
-          <circle cx="${cx}" cy="${cy-13}" r="2"/><circle cx="${cx}" cy="${cy+13}" r="2"/>
-          <circle cx="${cx-13}" cy="${cy}" r="2"/><circle cx="${cx+13}" cy="${cy}" r="2"/>
-          <circle cx="${cx-9}" cy="${cy-9}" r="2"/><circle cx="${cx+9}" cy="${cy+9}" r="2"/>
-          <circle cx="${cx+9}" cy="${cy-9}" r="2"/><circle cx="${cx-9}" cy="${cy+9}" r="2"/>
+          <circle cx="${cx}" cy="${cy-15}" r="2.5"/><circle cx="${cx}" cy="${cy+15}" r="2.5"/>
+          <circle cx="${cx-15}" cy="${cy}" r="2.5"/><circle cx="${cx+15}" cy="${cy}" r="2.5"/>
+          <circle cx="${cx-11}" cy="${cy-11}" r="2.5"/><circle cx="${cx+11}" cy="${cy+11}" r="2.5"/>
+          <circle cx="${cx+11}" cy="${cy-11}" r="2.5"/><circle cx="${cx-11}" cy="${cy+11}" r="2.5"/>
         </g>
-        <circle cx="${cx}" cy="${cy}" r="5" fill="#D3D1C7"/>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#D3D1C7"/>
       `
     },
     bronze: {
-      name: 'Rotiform LAS-R 20"',
-      price: 'Matte bronze · 5 retailers from $2,100',
-      thumb: 'wheel-bronze',
+      name: 'Rotiform LAS-R 20"', price: 'Matte bronze · 5 retailers from $2,100',
+      thumbType: 'wheel-bronze', priceFrom: '$2,100',
       render: (cx, cy) => `
-        <circle cx="${cx}" cy="${cy}" r="20" fill="#000"/>
-        <circle cx="${cx}" cy="${cy}" r="18" fill="#854F0B" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
-        <g stroke="#412402" stroke-width="2" stroke-linecap="round">
-          <line x1="${cx}" y1="${cy-15}" x2="${cx}" y2="${cy-4}"/><line x1="${cx}" y1="${cy+4}" x2="${cx}" y2="${cy+15}"/>
-          <line x1="${cx-15}" y1="${cy}" x2="${cx-4}" y2="${cy}"/><line x1="${cx+4}" y1="${cy}" x2="${cx+15}" y2="${cy}"/>
-          <line x1="${cx-10}" y1="${cy-10}" x2="${cx-3}" y2="${cy-3}"/><line x1="${cx+10}" y1="${cy+10}" x2="${cx+3}" y2="${cy+3}"/>
-          <line x1="${cx+10}" y1="${cy-10}" x2="${cx+3}" y2="${cy-3}"/><line x1="${cx-10}" y1="${cy+10}" x2="${cx-3}" y2="${cy+3}"/>
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#854F0B" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <g stroke="#412402" stroke-width="2.5" stroke-linecap="round">
+          <line x1="${cx}" y1="${cy-17}" x2="${cx}" y2="${cy-5}"/><line x1="${cx}" y1="${cy+5}" x2="${cx}" y2="${cy+17}"/>
+          <line x1="${cx-17}" y1="${cy}" x2="${cx-5}" y2="${cy}"/><line x1="${cx+5}" y1="${cy}" x2="${cx+17}" y2="${cy}"/>
+          <line x1="${cx-12}" y1="${cy-12}" x2="${cx-4}" y2="${cy-4}"/><line x1="${cx+12}" y1="${cy+12}" x2="${cx+4}" y2="${cy+4}"/>
+          <line x1="${cx+12}" y1="${cy-12}" x2="${cx+4}" y2="${cy-4}"/><line x1="${cx-12}" y1="${cy+12}" x2="${cx-4}" y2="${cy+4}"/>
         </g>
-        <circle cx="${cx}" cy="${cy}" r="5" fill="#412402"/>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#412402"/>
       `
     }
   };
@@ -1839,16 +2598,17 @@
     container.innerHTML = Object.keys(wheelStyles).map((key, i) => {
       const style = wheelStyles[key];
       return `<div class="wheel-opt ${i === 0 ? 'selected' : ''}" data-style="${key}" onclick="selectWheel(this, '${key}')">
-        <div class="wheel-opt-thumb">${thumbSVG(style.thumb)}</div>
-        <div class="wheel-opt-name">${style.name.split(' ')[0]}</div>
+        <div class="wheel-opt-thumb">${thumbSVG(style.thumbType)}</div>
+        <div class="wheel-opt-name">${style.name.split(' ').slice(0,2).join(' ')}</div>
+        <div class="wheel-opt-price">${style.priceFrom}</div>
       </div>`;
     }).join('');
   }
 
   function renderARWheels(style) {
     const s = wheelStyles[style];
-    document.getElementById('ar-wheel-front').innerHTML = s.render(80, 105);
-    document.getElementById('ar-wheel-rear').innerHTML = s.render(240, 105);
+    document.getElementById('ar-wheel-front').innerHTML = s.render(80, 108);
+    document.getElementById('ar-wheel-rear').innerHTML = s.render(240, 108);
     document.getElementById('ar-product-name').textContent = s.name;
     document.getElementById('ar-product-price').textContent = s.price;
   }
@@ -1867,7 +2627,9 @@
     document.getElementById('nav-ar').classList.add('active');
   }
 
-  // ======================= VIN =======================
+  // =============================================================
+  // VIN
+  // =============================================================
   function checkVin() {
     const v = document.getElementById('vin-input').value;
     const isValid = v.length >= 11;
@@ -1891,7 +2653,9 @@
     setTimeout(() => nav('garage'), 600);
   }
 
-  // ======================= CHECKOUT =======================
+  // =============================================================
+  // CHECKOUT
+  // =============================================================
   function goCheckout(productId, retailer, price) {
     let prod = null;
     Object.values(products).forEach(list => {
@@ -1899,32 +2663,42 @@
     });
     if (!prod) return;
     document.getElementById('checkout-product').innerHTML = `
-      <div style="display:flex;gap:11px;align-items:center;">
-        <div class="product-thumb" style="width:60px;height:60px;">${thumbSVG(prod.thumb)}</div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="product-thumb" style="width:64px;height:64px;">${thumbSVG(prod.thumb)}</div>
         <div style="flex:1;">
-          <div style="font-size:13px;font-weight:700;color:var(--gu-text-primary);">${prod.name}</div>
-          <div style="font-size:11px;color:var(--gu-text-secondary);margin-top:2px;">${retailer}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--gu-text-tertiary);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;">${prod.brand}</div>
+          <div style="font-size:13.5px;font-weight:700;color:var(--gu-text-primary);letter-spacing:-0.2px;">${prod.name}</div>
+          <div style="font-size:11px;color:var(--gu-text-secondary);margin-top:3px;">via ${retailer}</div>
         </div>
       </div>
     `;
     document.getElementById('ck-sub').textContent = `$${price.toLocaleString()}.00`;
-    const tax = (price * 0.07).toFixed(2);
-    const total = (price * 1.07).toFixed(2);
-    document.getElementById('ck-tax').textContent = `$${tax}`;
-    document.getElementById('ck-total').textContent = `$${parseFloat(total).toLocaleString()}`;
+    const tax = (price * 0.07);
+    const total = (price * 1.07);
+    document.getElementById('ck-tax').textContent = `$${tax.toFixed(2)}`;
+    document.getElementById('ck-total').textContent = `$${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     nav('checkout');
   }
   function confirmOrder() { nav('confirmed'); }
 
-  // ======================= NOTIFICATIONS =======================
+  // =============================================================
+  // NOTIFICATIONS
+  // =============================================================
   function markAllRead() {
     document.querySelectorAll('.notif.unread').forEach(n => n.classList.remove('unread'));
-    const badge = document.querySelector('#nav-shop .badge, .icon-btn .badge');
-    if (badge) badge.style.display = 'none';
+    updateNotifBadge();
     toast('All notifications marked read');
   }
+  function updateNotifBadge() {
+    const unreadCount = document.querySelectorAll('#screen-notifs .notif.unread').length;
+    const badge = document.getElementById('notif-badge');
+    if (unreadCount === 0) { badge.style.display = 'none'; }
+    else { badge.style.display = 'flex'; badge.textContent = unreadCount; }
+  }
 
-  // ======================= WISHLIST =======================
+  // =============================================================
+  // WISHLIST
+  // =============================================================
   function renderWishlist() {
     const container = document.getElementById('wishlist-content');
     if (wishlist.size === 0) {
@@ -1941,21 +2715,51 @@
         <div class="product-info">
           <div class="product-top">
             <div style="flex:1;min-width:0;">
+              <div class="product-brand">${p.brand}</div>
               <div class="product-name">${p.name}</div>
-              <div class="product-desc">${p.desc}</div>
+              <div class="product-rating"><span class="stars">★★★★★</span> <span><strong>${p.rating}</strong></span></div>
             </div>
             ${p.ar ? '<div class="ar-badge">AR</div>' : ''}
           </div>
           <div class="price-row">
             <div><span class="price">$${p.price.toLocaleString()}</span></div>
-            <div class="retailers">${p.retailers} retailers</div>
+            <div class="retailers">${p.retailers} stores</div>
           </div>
         </div>
       </div>
     `).join('');
   }
 
-  // ======================= INTERACTIONS =======================
+  // =============================================================
+  // FILTERS
+  // =============================================================
+  function openFilterSheet() {
+    document.getElementById('sheet-overlay').classList.add('show');
+    document.getElementById('filter-sheet').classList.add('show');
+  }
+  function closeFilterSheet() {
+    document.getElementById('sheet-overlay').classList.remove('show');
+    document.getElementById('filter-sheet').classList.remove('show');
+  }
+  function applyFilters() {
+    closeFilterSheet();
+    toast('Filters applied');
+  }
+  // Filter pill toggles
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('filter-pill')) {
+      const group = e.target.parentElement;
+      // Sort group is single-select
+      if (group.previousElementSibling?.textContent.toLowerCase().includes('sort')) {
+        group.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('selected'));
+      }
+      e.target.classList.toggle('selected');
+    }
+  });
+
+  // =============================================================
+  // INTERACTIONS
+  // =============================================================
   function toast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -1978,11 +2782,15 @@
     }
   }
 
-  // ======================= INIT =======================
+  // =============================================================
+  // INIT
+  // =============================================================
   renderProducts();
   setTimeout(() => { document.getElementById('splash').classList.add('hide'); }, 1300);
 
-  // ======================= THEME SYNC WITH PARENT =======================
+  // =============================================================
+  // THEME SYNC WITH PARENT
+  // =============================================================
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
   }
