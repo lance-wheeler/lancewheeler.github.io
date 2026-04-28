@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GearUp — Interactive Prototype</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: transparent;
+    min-height: 100vh;
+    padding: 0;
+    color: #2C2C2A;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+  }
+
+  /* Header */
+  .proto-header { display: none; }
+  .proto-header-old {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    text-align: center;
+  }
+  .proto-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0C447C;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .proto-header h1 span { color: #D85A30; }
+  .proto-header p {
+    color: #5F5E5A;
+    font-size: 14px;
+  }
+
+  /* Phone frame container */
+  .stage {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .phone {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 40px;
+    border: 10px solid #2C2C2A;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    overflow: hidden;
+    position: relative;
+    height: 780px;
+  }
+  .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 24px;
+    background: #2C2C2A;
+    border-radius: 0 0 16px 16px;
+    z-index: 100;
+  }
+
+  /* Screen container */
+  .screen {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding: 40px 20px 0;
+    display: none;
+    overflow-y: auto;
+    background: #ffffff;
+  }
+  .screen.active { display: block; }
+
+  /* --- Common components --- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-top: 6px;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #185FA5;
+    cursor: pointer;
+  }
+  .logo span { color: #D85A30; }
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #B5D4F4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0C447C;
+  }
+  .back-btn {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2C2C2A;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+  .back-btn:hover { color: #185FA5; }
+
+  /* Vehicle card */
+  .vehicle-card {
+    background: #E6F1FB;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .vehicle-card:hover { transform: translateY(-1px); }
+  .vehicle-label {
+    font-size: 10px;
+    color: #185FA5;
+    margin-bottom: 2px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .vehicle-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0C447C;
+  }
+  .vehicle-sub {
+    font-size: 11px;
+    color: #185FA5;
+    opacity: 0.85;
+  }
+
+  /* Search */
+  .search {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #D3D1C7;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 14px;
+    background: #F7F6F1;
+    font-family: inherit;
+  }
+  .search:focus {
+    outline: none;
+    border-color: #185FA5;
+    background: #ffffff;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .categories::-webkit-scrollbar { display: none; }
+  .cat {
+    padding: 7px 14px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid #D3D1C7;
+    color: #5F5E5A;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cat:hover { border-color: #185FA5; color: #185FA5; }
+  .cat.active {
+    background: #185FA5;
+    color: #ffffff;
+    border-color: #185FA5;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2C2C2A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-link {
+    font-size: 11px;
+    color: #185FA5;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* Product cards */
+  .product-card {
+    background: #ffffff;
+    border: 1px solid #D3D1C7;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .product-card:hover {
+    border-color: #185FA5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(24,95,165,0.1);
+  }
+  .product-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: #F1EFE8;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-info { flex: 1; min-width: 0; }
+  .product-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .product-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2C2C2A;
+  }
+  .product-desc {
+    font-size: 11px;
+    color: #5F5E5A;
+    margin-top: 2px;
+  }
+  .ar-badge {
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2C2C2A;
+  }
+  .price-old {
+    font-size: 10px;
+    color: #888780;
+    text-decoration: line-through;
+    margin-left: 4px;
+  }
+  .retailers {
+    font-size: 10px;
+    color: #5F5E5A;
+  }
+
+  /* Bottom nav */
+  .bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: 10px 0 16px;
+    background: #ffffff;
+    border-top: 1px solid #E8E6DF;
+    z-index: 50;
+  }
+  .nav-item {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    color: #888780;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 0;
+    transition: color 0.15s;
+  }
+  .nav-item:hover { color: #185FA5; }
+  .nav-item.active {
+    color: #185FA5;
+    font-weight: 600;
+  }
+  .nav-icon {
+    display: block;
+    margin: 0 auto 3px;
+  }
+
+  /* Screen with bottom nav needs padding */
+  .has-nav { padding-bottom: 70px; }
+
+  /* VIN Onboarding */
+  .onboard-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+  .onboard-sub {
+    font-size: 13px;
+    color: #5F5E5A;
+    margin-bottom: 22px;
+    line-height: 1.4;
+  }
+  .vin-scanner {
+    border: 2px dashed #185FA5;
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 14px;
+    background: #F7FAFD;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .vin-scanner:hover { background: #E6F1FB; }
+  .scan-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    background: #E6F1FB;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scan-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #185FA5;
+    margin-bottom: 3px;
+  }
+  .scan-desc {
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .or-divider {
+    text-align: center;
+    color: #888780;
+    font-size: 11px;
+    margin: 14px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .vin-manual-wrap {
+    border: 1px solid #D3D1C7;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    cursor: text;
+  }
+  .vin-manual-wrap:focus-within {
+    border-color: #185FA5;
+  }
+  .vin-field-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #5F5E5A;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .vin-input-field {
+    font-size: 14px;
+    font-family: "SF Mono", Monaco, "Courier New", monospace;
+    color: #2C2C2A;
+    letter-spacing: 2px;
+    font-weight: 600;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+  .verified-box {
+    background: #EAF3DE;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    display: none;
+  }
+  .verified-box.show { display: flex; }
+  .check-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #639922;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    background: #185FA5;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #0C447C; }
+  .btn-primary:disabled { background: #B4B2A9; cursor: not-allowed; }
+
+  /* AR Screen */
+  .ar-view {
+    position: absolute;
+    top: 30px; left: 0; right: 0; bottom: 0;
+    background: #1a1a1a;
+    color: #ffffff;
+    display: none;
+    flex-direction: column;
+    z-index: 60;
+  }
+  .ar-view.show { display: flex; }
+  .ar-top {
+    padding: 14px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ar-close {
+    color: #fff;
+    font-size: 20px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .ar-chip {
+    background: rgba(255,255,255,0.15);
+    padding: 5px 12px;
+    border-radius: 14px;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .ar-live-tag {
+    margin: 8px 20px 0;
+    background: rgba(216,90,48,0.9);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 0.5px;
+    width: fit-content;
+  }
+  .live-dot {
+    width: 6px; height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .ar-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 20px;
+  }
+  .ar-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #B4B2A9;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+  .ar-bottom {
+    background: #ffffff;
+    padding: 14px 20px;
+    color: #2C2C2A;
+  }
+  .ar-product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .wheel-options {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    overflow-x: auto;
+  }
+  .wheel-options::-webkit-scrollbar { display: none; }
+  .wheel-opt {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid #D3D1C7;
+    background: #F1EFE8;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .wheel-opt.selected {
+    border-color: #185FA5;
+    box-shadow: 0 0 0 2px rgba(24,95,165,0.2);
+  }
+  .wheel-opt:hover { border-color: #185FA5; }
+
+  /* Compare screen */
+  .compare-header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+  .compare-sub {
+    font-size: 12px;
+    color: #5F5E5A;
+    margin-bottom: 14px;
+  }
+  .part-hero {
+    background: #F1EFE8;
+    border-radius: 14px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .savings-banner {
+    background: #FAEEDA;
+    border: 1px solid #EF9F27;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .savings-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #854F0B;
+  }
+  .savings-amt {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3B6D11;
+  }
+  .retailer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #D3D1C7;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .retailer-row:hover {
+    border-color: #185FA5;
+    transform: translateY(-1px);
+  }
+  .retailer-best {
+    background: #EAF3DE;
+    border: 2px solid #639922;
+  }
+  .retailer-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2C2C2A;
+  }
+  .retailer-best .retailer-name { color: #27500A; }
+  .retailer-sub {
+    font-size: 10px;
+    color: #5F5E5A;
+    margin-top: 2px;
+  }
+  .retailer-best .retailer-sub { color: #3B6D11; }
+  .retailer-price {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .best-badge {
+    background: #639922;
+    color: #ffffff;
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Garage */
+  .garage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    margin-top: 4px;
+  }
+  .garage-title {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .add-btn {
+    background: #185FA5;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .garage-car {
+    background: #ffffff;
+    border: 1px solid #D3D1C7;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .garage-car:hover { border-color: #185FA5; transform: translateY(-1px); }
+  .garage-car.active {
+    border: 2px solid #185FA5;
+    background: #F7FAFD;
+  }
+  .garage-car-img {
+    background: #F1EFE8;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .garage-car-name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .garage-car-meta {
+    font-size: 12px;
+    color: #5F5E5A;
+    margin-top: 2px;
+  }
+  .build-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #D3D1C7;
+  }
+  .build-stat { flex: 1; }
+  .build-stat-num {
+    font-size: 15px;
+    font-weight: 700;
+    color: #185FA5;
+  }
+  .build-stat-lbl {
+    font-size: 10px;
+    color: #5F5E5A;
+    margin-top: 1px;
+  }
+
+  /* Feed */
+  .feed-post {
+    background: #ffffff;
+    border: 1px solid #D3D1C7;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .post-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .post-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .post-name {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .post-meta {
+    font-size: 11px;
+    color: #5F5E5A;
+  }
+  .post-image {
+    background: #1a1a1a;
+    border-radius: 10px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .post-text {
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .post-tag {
+    display: inline-block;
+    background: #E6F1FB;
+    color: #0C447C;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  .post-actions {
+    display: flex;
+    gap: 18px;
+    padding-top: 10px;
+    border-top: 1px solid #F1EFE8;
+    align-items: center;
+  }
+  .post-action {
+    font-size: 12px;
+    color: #5F5E5A;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+  }
+  .post-action:hover { color: #185FA5; }
+  .post-action.liked { color: #D85A30; font-weight: 700; }
+
+  /* Help panel */
+  .help-panel {
+    max-width: 420px;
+    margin: 20px auto 0;
+    background: #ffffff;
+    border: 1px solid #D3D1C7;
+    border-radius: 14px;
+    padding: 14px 18px;
+  }
+  .help-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #185FA5;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .help-body {
+    font-size: 12px;
+    color: #5F5E5A;
+    line-height: 1.5;
+  }
+  .help-body code {
+    background: #F1EFE8;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+
+  /* Screen transitions */
+  .screen {
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2C2C2A;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+  }
+</style>
+</head>
+<body>
+
+<div class="proto-header">
+  <h1>Gear<span>Up</span></h1>
+  <p>Interactive prototype · Click any screen element to navigate</p>
+</div>
+
+<div class="stage">
+<div class="phone">
+  <div class="notch"></div>
+
+  <!-- ======================= SCREEN: VIN ONBOARDING ======================= -->
+  <div class="screen" id="screen-vin">
+    <div class="header">
+      <button class="back-btn" onclick="nav('shop')">← Back</button>
+      <div style="font-size:11px;color:#5F5E5A;font-weight:600;">Step 2 of 3</div>
+    </div>
+    <div class="onboard-title">Add your vehicle</div>
+    <div class="onboard-sub">We'll use your VIN to show only parts that fit your exact make, model, and year.</div>
+
+    <div class="vin-scanner" onclick="simulateScan()">
+      <div class="scan-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="6" width="18" height="12" rx="1"/>
+          <line x1="7" y1="10" x2="7" y2="14"/>
+          <line x1="10" y1="10" x2="10" y2="14"/>
+          <line x1="13" y1="10" x2="13" y2="14"/>
+          <line x1="16" y1="10" x2="16" y2="14"/>
+        </svg>
+      </div>
+      <div class="scan-title">Scan VIN Barcode</div>
+      <div class="scan-desc">Point camera at windshield or door jamb</div>
+    </div>
+
+    <div class="or-divider">— OR ENTER MANUALLY —</div>
+
+    <div class="vin-manual-wrap">
+      <div class="vin-field-label">17-DIGIT VIN</div>
+      <input type="text" class="vin-input-field" id="vin-input" placeholder="1FA6P8CF5M••••••••" maxlength="17" oninput="checkVin()" />
+    </div>
+
+    <div class="verified-box" id="vin-verified">
+      <div class="check-circle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#27500A;">2021 Ford Mustang GT</div>
+        <div style="font-size:11px;color:#3B6D11;">5.0L V8 · Premium · Coupe</div>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="vin-confirm" onclick="nav('shop'); toast('Vehicle added to your garage!')" disabled>Confirm vehicle</button>
+  </div>
+
+  <!-- ======================= SCREEN: SHOP ======================= -->
+  <div class="screen active has-nav" id="screen-shop">
+    <div class="header">
+      <div class="logo" onclick="nav('shop')">Gear<span>Up</span></div>
+      <div class="avatar" onclick="toast('Profile menu')">TS</div>
+    </div>
+
+    <div class="vehicle-card" onclick="nav('garage')">
+      <div>
+        <div class="vehicle-label">MY VEHICLE</div>
+        <div class="vehicle-name">2021 Mustang GT</div>
+        <div class="vehicle-sub">VIN verified ✓ · Tap to switch</div>
+      </div>
+      <svg width="72" height="36" viewBox="0 0 140 60">
+        <path d="M 10 45 Q 12 42 18 42 L 24 38 Q 28 30 40 27 L 60 23 Q 75 20 95 22 L 110 25 Q 122 28 126 35 L 130 42 L 132 45 Z" fill="#185FA5"/>
+        <path d="M 42 28 Q 50 24 65 23 L 85 23 Q 98 24 105 28 L 100 32 L 50 32 Z" fill="#9FC7ED" opacity="0.9"/>
+        <line x1="70" y1="27" x2="70" y2="42" stroke="#0C447C" stroke-width="0.8"/>
+        <circle cx="35" cy="45" r="8" fill="#2C2C2A"/>
+        <circle cx="35" cy="45" r="4" fill="#5F5E5A"/>
+        <circle cx="108" cy="45" r="8" fill="#2C2C2A"/>
+        <circle cx="108" cy="45" r="4" fill="#5F5E5A"/>
+      </svg>
+    </div>
+
+    <input type="text" class="search" id="search-input" placeholder="🔍  Search 50,000+ parts..." oninput="filterProducts()" />
+
+    <div class="categories" id="categories">
+      <div class="cat active" data-cat="wheels" onclick="setCategory('wheels')">Wheels</div>
+      <div class="cat" data-cat="exhaust" onclick="setCategory('exhaust')">Exhaust</div>
+      <div class="cat" data-cat="lighting" onclick="setCategory('lighting')">Lighting</div>
+      <div class="cat" data-cat="body" onclick="setCategory('body')">Body</div>
+      <div class="cat" data-cat="intake" onclick="setCategory('intake')">Intake</div>
+    </div>
+
+    <div class="section-label">
+      <span id="section-title">Top picks for your Mustang</span>
+      <span class="section-link" onclick="toast('Full catalog coming soon')">See all →</span>
+    </div>
+
+    <div id="products"></div>
+  </div>
+
+  <!-- ======================= SCREEN: PRODUCT DETAIL ======================= -->
+  <div class="screen" id="screen-detail">
+    <div class="header">
+      <button class="back-btn" onclick="nav('shop')">← Back</button>
+      <div style="font-size:20px;color:#D85A30;cursor:pointer;" onclick="toggleLike(this)">♡</div>
+    </div>
+
+    <div class="compare-header" id="detail-name">Forgestar F14 20"</div>
+    <div class="compare-sub" id="detail-sub">Matte black · 5x114.3 · Fits your 2021 Mustang GT</div>
+
+    <div class="part-hero" id="detail-hero"></div>
+
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <button class="btn-primary" style="flex:1;background:#2C2C2A;" onclick="showAR()">
+        <span style="display:inline-flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          View in AR
+        </span>
+      </button>
+      <button class="btn-primary" style="flex:1;" onclick="nav('compare')">Compare prices</button>
+    </div>
+
+    <div class="section-label" style="margin-top:14px;">
+      <span>Specs</span>
+    </div>
+    <div style="background:#F7F6F1;border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.7;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:#5F5E5A;">Size</span><strong>20x10</strong></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:#5F5E5A;">Offset</span><strong>+42mm</strong></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:#5F5E5A;">Bolt pattern</span><strong>5x114.3</strong></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:#5F5E5A;">Weight</span><strong>21.5 lbs</strong></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:#5F5E5A;">Material</span><strong>Flow-formed aluminum</strong></div>
+    </div>
+  </div>
+
+  <!-- ======================= SCREEN: COMPARE PRICES ======================= -->
+  <div class="screen" id="screen-compare">
+    <div class="header">
+      <button class="back-btn" onclick="nav('detail')">← Back</button>
+      <div style="font-size:20px;color:#D85A30;cursor:pointer;" onclick="toggleLike(this)">♡</div>
+    </div>
+
+    <div class="compare-header">Forgestar F14 20"</div>
+    <div class="compare-sub">Matte black · 5x114.3 · Fits your 2021 Mustang GT</div>
+
+    <div class="part-hero">
+      <svg width="130" height="130" viewBox="0 0 120 120">
+        <defs>
+          <radialGradient id="wheelBig" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="#5F5E5A"/>
+            <stop offset="60%" stop-color="#2C2C2A"/>
+            <stop offset="100%" stop-color="#1a1a1a"/>
+          </radialGradient>
+        </defs>
+        <circle cx="60" cy="60" r="58" fill="#000"/>
+        <circle cx="60" cy="60" r="52" fill="#1a1a1a"/>
+        <circle cx="60" cy="60" r="48" fill="url(#wheelBig)" stroke="#5F5E5A" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="46" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+        <g fill="#3a3a3a">
+          <path d="M 60 16 L 56 46 L 64 46 Z"/>
+          <path d="M 60 104 L 56 74 L 64 74 Z"/>
+          <path d="M 16 60 L 46 56 L 46 64 Z"/>
+          <path d="M 104 60 L 74 56 L 74 64 Z"/>
+          <path d="M 29 29 L 52 47 L 47 52 Z"/>
+          <path d="M 91 91 L 68 73 L 73 68 Z"/>
+          <path d="M 91 29 L 68 47 L 73 52 Z"/>
+          <path d="M 29 91 L 52 73 L 47 68 Z"/>
+        </g>
+        <circle cx="60" cy="60" r="14" fill="#2C2C2A" stroke="#5F5E5A" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="12" fill="#1a1a1a"/>
+        <text x="60" y="65" text-anchor="middle" fill="#5DCAA5" font-size="10" font-weight="700" font-family="sans-serif">F14</text>
+      </svg>
+    </div>
+
+    <div class="savings-banner">
+      <div class="savings-text">💰 Save up to</div>
+      <div class="savings-amt">$321 vs. highest</div>
+    </div>
+
+    <div class="retailer-row retailer-best" onclick="buyFrom('Summit Racing', 1849)">
+      <div>
+        <div class="retailer-name">Summit Racing<span class="best-badge">BEST</span></div>
+        <div class="retailer-sub">Free shipping · In stock</div>
+      </div>
+      <div class="retailer-price" style="color:#27500A;">$1,849</div>
+    </div>
+
+    <div class="retailer-row" onclick="buyFrom('AmericanMuscle', 1889)">
+      <div>
+        <div class="retailer-name">AmericanMuscle</div>
+        <div class="retailer-sub">+$40 shipping · 2-3 days</div>
+      </div>
+      <div class="retailer-price">$1,889</div>
+    </div>
+
+    <div class="retailer-row" onclick="buyFrom('CARiD', 1999)">
+      <div>
+        <div class="retailer-name">CARiD</div>
+        <div class="retailer-sub">In stock · Free returns</div>
+      </div>
+      <div class="retailer-price">$1,999</div>
+    </div>
+
+    <div class="retailer-row" onclick="buyFrom('Tire Rack', 2170)">
+      <div>
+        <div class="retailer-name">Tire Rack</div>
+        <div class="retailer-sub">Ships in 5 days</div>
+      </div>
+      <div class="retailer-price">$2,170</div>
+    </div>
+
+    <button class="btn-primary" style="margin-top:12px;" onclick="buyFrom('Summit Racing', 1849)">Buy from Summit Racing →</button>
+  </div>
+
+  <!-- ======================= SCREEN: GARAGE ======================= -->
+  <div class="screen has-nav" id="screen-garage">
+    <div class="garage-header">
+      <div class="garage-title">My Garage</div>
+      <button class="add-btn" onclick="nav('vin')">+ Add vehicle</button>
+    </div>
+
+    <div class="garage-car active" onclick="toast('Mustang is the active vehicle')">
+      <div class="garage-car-img">
+        <svg width="260" height="85" viewBox="0 0 280 90">
+          <defs>
+            <linearGradient id="mustangBody2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#D85A30"/>
+              <stop offset="60%" stop-color="#993C1D"/>
+              <stop offset="100%" stop-color="#712B13"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="140" cy="80" rx="110" ry="4" fill="#000" opacity="0.2"/>
+          <path d="M 20 65 L 24 60 Q 28 53 36 51 L 50 44 Q 58 36 70 33 L 95 28 Q 120 24 155 24 L 195 26 Q 220 28 235 34 L 250 42 Q 258 48 262 55 L 264 68 L 22 70 Z" fill="url(#mustangBody2)"/>
+          <path d="M 72 35 Q 80 27 100 24 L 150 22 L 147 40 L 80 40 Z" fill="#1a1a1a" opacity="0.9"/>
+          <path d="M 150 22 L 195 26 Q 205 30 205 40 L 155 40 Z" fill="#1a1a1a" opacity="0.9"/>
+          <line x1="150" y1="22" x2="150" y2="40" stroke="#4A1B0C" stroke-width="1.5"/>
+          <line x1="117" y1="40" x2="117" y2="68" stroke="#4A1B0C" stroke-width="0.8"/>
+          <ellipse cx="35" cy="50" rx="6" ry="3" fill="#FAEEDA"/>
+          <rect x="248" y="48" width="10" height="6" fill="#A32D2D"/>
+          <ellipse cx="70" cy="68" rx="22" ry="18" fill="#1a1a1a"/>
+          <circle cx="70" cy="68" r="16" fill="#000"/>
+          <circle cx="70" cy="68" r="14" fill="#2C2C2A"/>
+          <g stroke="#888780" stroke-width="1.5" stroke-linecap="round">
+            <line x1="70" y1="56" x2="70" y2="62"/><line x1="70" y1="74" x2="70" y2="80"/>
+            <line x1="58" y1="68" x2="64" y2="68"/><line x1="76" y1="68" x2="82" y2="68"/>
+            <line x1="62" y1="60" x2="66" y2="64"/><line x1="78" y1="76" x2="74" y2="72"/>
+            <line x1="78" y1="60" x2="74" y2="64"/><line x1="62" y1="76" x2="66" y2="72"/>
+          </g>
+          <circle cx="70" cy="68" r="4" fill="#5F5E5A"/>
+          <ellipse cx="215" cy="68" rx="22" ry="18" fill="#1a1a1a"/>
+          <circle cx="215" cy="68" r="16" fill="#000"/>
+          <circle cx="215" cy="68" r="14" fill="#2C2C2A"/>
+          <g stroke="#888780" stroke-width="1.5" stroke-linecap="round">
+            <line x1="215" y1="56" x2="215" y2="62"/><line x1="215" y1="74" x2="215" y2="80"/>
+            <line x1="203" y1="68" x2="209" y2="68"/><line x1="221" y1="68" x2="227" y2="68"/>
+            <line x1="207" y1="60" x2="211" y2="64"/><line x1="223" y1="76" x2="219" y2="72"/>
+            <line x1="223" y1="60" x2="219" y2="64"/><line x1="207" y1="76" x2="211" y2="72"/>
+          </g>
+          <circle cx="215" cy="68" r="4" fill="#5F5E5A"/>
+        </svg>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="garage-car-name">2021 Ford Mustang GT</div>
+          <div class="garage-car-meta">Race Red · 5.0L V8 · VIN verified</div>
+        </div>
+        <div style="background:#639922;color:#fff;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:700;">ACTIVE</div>
+      </div>
+      <div class="build-stats">
+        <div class="build-stat">
+          <div class="build-stat-num">12</div>
+          <div class="build-stat-lbl">Parts owned</div>
+        </div>
+        <div class="build-stat">
+          <div class="build-stat-num">8</div>
+          <div class="build-stat-lbl">Wishlist</div>
+        </div>
+        <div class="build-stat">
+          <div class="build-stat-num">$8.4K</div>
+          <div class="build-stat-lbl">Invested</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="garage-car" onclick="toast('Switched to F-150 Lariat')">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div style="width:80px;height:60px;background:#F1EFE8;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="68" height="46" viewBox="0 0 100 60">
+            <ellipse cx="50" cy="55" rx="42" ry="2" fill="#000" opacity="0.2"/>
+            <path d="M 5 42 L 5 30 Q 8 22 20 22 L 30 22 L 35 14 Q 38 10 45 10 L 60 10 Q 65 10 66 14 L 70 22 L 92 22 L 95 30 L 95 42 Z" fill="#185FA5"/>
+            <rect x="36" y="14" width="28" height="8" fill="#1a1a1a" opacity="0.8"/>
+            <rect x="68" y="24" width="25" height="15" fill="none" stroke="#0C447C" stroke-width="0.5"/>
+            <circle cx="24" cy="44" r="8" fill="#1a1a1a"/>
+            <circle cx="24" cy="44" r="4" fill="#5F5E5A"/>
+            <circle cx="78" cy="44" r="8" fill="#1a1a1a"/>
+            <circle cx="78" cy="44" r="4" fill="#5F5E5A"/>
+          </svg>
+        </div>
+        <div style="flex:1;">
+          <div class="garage-car-name">2019 F-150 Lariat</div>
+          <div class="garage-car-meta">Velocity Blue · 3.5L EcoBoost · 4 parts</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:18px;">
+      <span>Saved builds</span>
+      <span class="section-link" onclick="toast('Builds library')">View all →</span>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:12px;">
+      <div style="flex:1;background:#F1EFE8;border-radius:10px;padding:12px;cursor:pointer;" onclick="toast('Track Build loaded')">
+        <div style="font-size:12px;font-weight:700;">Track Build</div>
+        <div style="font-size:11px;color:#5F5E5A;margin-top:3px;">5 parts · $4,200</div>
+      </div>
+      <div style="flex:1;background:#F1EFE8;border-radius:10px;padding:12px;cursor:pointer;" onclick="toast('Daily Driver build loaded')">
+        <div style="font-size:12px;font-weight:700;">Daily Driver</div>
+        <div style="font-size:11px;color:#5F5E5A;margin-top:3px;">3 parts · $1,850</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= SCREEN: FEED ======================= -->
+  <div class="screen has-nav" id="screen-feed">
+    <div class="header">
+      <div style="font-size:22px;font-weight:700;">Feed</div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5F5E5A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <div class="avatar" style="width:32px;height:32px;font-size:11px;">TS</div>
+      </div>
+    </div>
+
+    <div class="categories">
+      <div class="cat active" onclick="toast('Following feed')">Following</div>
+      <div class="cat" onclick="toast('Mustang feed')">Mustang</div>
+      <div class="cat" onclick="toast('Trending now')">Trending</div>
+      <div class="cat" onclick="toast('User builds')">Builds</div>
+    </div>
+
+    <div class="feed-post">
+      <div class="post-head">
+        <div class="post-avatar" style="background:#F0997B;color:#4A1B0C;">MK</div>
+        <div style="flex:1;">
+          <div class="post-name">@mustang_mike</div>
+          <div class="post-meta">2021 GT · 2h ago</div>
+        </div>
+        <div style="font-size:16px;color:#888780;cursor:pointer;">⋯</div>
+      </div>
+      <div class="post-image">
+        <svg width="260" height="120" viewBox="0 0 280 110">
+          <defs>
+            <linearGradient id="nightMustang2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#B5D4F4"/>
+              <stop offset="50%" stop-color="#378ADD"/>
+              <stop offset="100%" stop-color="#185FA5"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="140" cy="100" rx="115" ry="4" fill="#000" opacity="0.3"/>
+          <path d="M 18 80 L 22 75 Q 26 67 34 64 L 48 57 Q 56 48 70 44 L 95 37 Q 122 32 158 32 L 200 34 Q 225 37 242 45 L 256 53 Q 264 60 268 68 L 270 82 L 20 84 Z" fill="url(#nightMustang2)"/>
+          <path d="M 72 47 Q 80 38 100 35 L 152 32 L 148 52 L 80 52 Z" fill="#1a1a1a"/>
+          <path d="M 152 32 L 200 37 Q 210 41 210 52 L 157 52 Z" fill="#1a1a1a"/>
+          <line x1="152" y1="32" x2="152" y2="52" stroke="#0C447C" stroke-width="1.5"/>
+          <ellipse cx="35" cy="63" rx="7" ry="3" fill="#FAEEDA"/>
+          <rect x="254" y="60" width="11" height="7" fill="#E24B4A"/>
+          <circle cx="72" cy="82" r="20" fill="#1a1a1a"/><circle cx="72" cy="82" r="17" fill="#2C2C2A"/>
+          <g stroke="#B4B2A9" stroke-width="2" stroke-linecap="round">
+            <line x1="72" y1="68" x2="72" y2="76"/><line x1="72" y1="88" x2="72" y2="96"/>
+            <line x1="58" y1="82" x2="66" y2="82"/><line x1="78" y1="82" x2="86" y2="82"/>
+            <line x1="63" y1="73" x2="68" y2="78"/><line x1="81" y1="91" x2="76" y2="86"/>
+            <line x1="81" y1="73" x2="76" y2="78"/><line x1="63" y1="91" x2="68" y2="86"/>
+          </g>
+          <circle cx="72" cy="82" r="5" fill="#5F5E5A"/>
+          <circle cx="220" cy="82" r="20" fill="#1a1a1a"/><circle cx="220" cy="82" r="17" fill="#2C2C2A"/>
+          <g stroke="#B4B2A9" stroke-width="2" stroke-linecap="round">
+            <line x1="220" y1="68" x2="220" y2="76"/><line x1="220" y1="88" x2="220" y2="96"/>
+            <line x1="206" y1="82" x2="214" y2="82"/><line x1="226" y1="82" x2="234" y2="82"/>
+            <line x1="211" y1="73" x2="216" y2="78"/><line x1="229" y1="91" x2="224" y2="86"/>
+            <line x1="229" y1="73" x2="224" y2="78"/><line x1="211" y1="91" x2="216" y2="86"/>
+          </g>
+          <circle cx="220" cy="82" r="5" fill="#5F5E5A"/>
+        </svg>
+      </div>
+      <div class="post-text">
+        Just installed the <strong>Forgestar F14s</strong> I bought through GearUp — fitment was perfect on the first try 🔥
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="post-tag" onclick="toast('Forgestar F14 parts')">#Forgestar F14</span>
+        <span class="post-tag" onclick="toast('Mustang GT community')">#Mustang GT</span>
+      </div>
+      <div class="post-actions">
+        <div class="post-action" onclick="likePost(this)"><span class="heart">♡</span> <span class="like-count">248</span></div>
+        <div class="post-action" onclick="toast('Comments (32)')">💬 32</div>
+        <div class="post-action" style="margin-left:auto;color:#185FA5;font-weight:700;" onclick="nav('compare')">Shop this build →</div>
+      </div>
+    </div>
+
+    <div class="feed-post">
+      <div class="post-head">
+        <div class="post-avatar" style="background:#C0DD97;color:#173404;">JL</div>
+        <div style="flex:1;">
+          <div class="post-name">@jl_offroad</div>
+          <div class="post-meta">Wrangler · 5h ago</div>
+        </div>
+      </div>
+      <div class="post-text" style="margin:0;">
+        Need recommendations for 37" tires that fit a lifted JL — AR preview makes picking so much easier now. Dropping my build guide this week 👀
+      </div>
+      <div style="margin-top:10px;">
+        <span class="post-tag">#JL Wrangler</span>
+        <span class="post-tag">#Off-road</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= AR OVERLAY ======================= -->
+  <div class="ar-view" id="ar-view">
+    <div class="ar-top">
+      <button class="ar-close" onclick="hideAR()">✕</button>
+      <div class="ar-chip">AR · LIVE</div>
+    </div>
+    <div class="ar-live-tag">
+      <div class="live-dot"></div>
+      TRACKING
+    </div>
+    <div class="ar-stage">
+      <svg id="ar-car" width="100%" height="240" viewBox="0 0 320 180" style="max-width:340px;">
+        <defs>
+          <linearGradient id="carBodyAR" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#D85A30"/>
+            <stop offset="50%" stop-color="#993C1D"/>
+            <stop offset="100%" stop-color="#712B13"/>
+          </linearGradient>
+          <linearGradient id="windowGradAR" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1a1a1a"/>
+            <stop offset="100%" stop-color="#444441"/>
+          </linearGradient>
+          <radialGradient id="wheelNewAR" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="#5F5E5A"/>
+            <stop offset="100%" stop-color="#1a1a1a"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="160" cy="158" rx="110" ry="8" fill="#000000" opacity="0.5"/>
+        <path d="M 30 130 L 35 125 Q 38 118 46 115 L 60 108 Q 68 96 82 92 L 105 85 Q 130 78 165 78 L 210 80 Q 235 82 255 90 L 275 98 Q 285 105 290 115 L 295 125 L 292 140 L 30 140 Z" fill="url(#carBodyAR)"/>
+        <path d="M 82 92 L 105 85 L 165 78" stroke="#4A1B0C" stroke-width="0.8" fill="none"/>
+        <path d="M 88 92 Q 95 82 115 78 L 165 75 L 160 92 L 95 92 Z" fill="url(#windowGradAR)" opacity="0.85"/>
+        <path d="M 165 75 L 215 80 Q 225 85 225 92 L 170 92 Z" fill="url(#windowGradAR)" opacity="0.85"/>
+        <line x1="165" y1="75" x2="165" y2="92" stroke="#1a1a1a" stroke-width="1.5"/>
+        <line x1="130" y1="92" x2="130" y2="138" stroke="#4A1B0C" stroke-width="1"/>
+        <rect x="118" y="110" width="10" height="2.5" rx="1" fill="#2C2C2A"/>
+        <ellipse cx="46" cy="108" rx="7" ry="4" fill="#F5C4B3"/>
+        <ellipse cx="46" cy="108" rx="5" ry="2.5" fill="#FAEEDA"/>
+        <rect x="278" y="108" width="12" height="8" rx="1" fill="#A32D2D"/>
+        <rect x="279" y="109" width="3" height="6" fill="#E24B4A"/>
+        <rect x="283" y="109" width="3" height="6" fill="#E24B4A"/>
+        <rect x="287" y="109" width="2" height="6" fill="#E24B4A"/>
+
+        <!-- Wheel wells -->
+        <ellipse cx="240" cy="140" rx="28" ry="22" fill="#1a1a1a"/>
+        <ellipse cx="80" cy="140" rx="28" ry="22" fill="#1a1a1a"/>
+
+        <!-- WHEELS — these get replaced by JS based on selected style -->
+        <g id="ar-wheel-front"></g>
+        <g id="ar-wheel-rear"></g>
+
+        <!-- AR brackets -->
+        <g stroke="#5DCAA5" stroke-width="1.5" fill="none">
+          <path d="M 52 112 L 52 118 L 58 118"/>
+          <path d="M 108 112 L 108 118 L 102 118"/>
+          <path d="M 52 168 L 52 162 L 58 162"/>
+          <path d="M 108 168 L 108 162 L 102 162"/>
+        </g>
+      </svg>
+      <div class="ar-hint" id="ar-hint">Tap a wheel style to try →</div>
+    </div>
+    <div class="ar-bottom">
+      <div class="wheel-options">
+        <div class="wheel-opt selected" data-wheel="forgestar" onclick="selectWheel(this, 'forgestar')">
+          <svg width="32" height="32" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="28" fill="#1a1a1a"/>
+            <g stroke="#888780" stroke-width="2.5" stroke-linecap="round">
+              <line x1="30" y1="8" x2="30" y2="24"/><line x1="30" y1="52" x2="30" y2="36"/>
+              <line x1="8" y1="30" x2="24" y2="30"/><line x1="52" y1="30" x2="36" y2="30"/>
+              <line x1="14" y1="14" x2="24" y2="24"/><line x1="46" y1="46" x2="36" y2="36"/>
+              <line x1="46" y1="14" x2="36" y2="24"/><line x1="14" y1="46" x2="24" y2="36"/>
+            </g>
+            <circle cx="30" cy="30" r="6" fill="#5F5E5A"/>
+          </svg>
+        </div>
+        <div class="wheel-opt" data-wheel="enkei" onclick="selectWheel(this, 'enkei')">
+          <svg width="32" height="32" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="28" fill="#B4B2A9"/>
+            <g stroke="#5F5E5A" stroke-width="3" stroke-linecap="round">
+              <line x1="30" y1="8" x2="30" y2="24"/><line x1="30" y1="52" x2="30" y2="36"/>
+              <line x1="8" y1="30" x2="24" y2="30"/><line x1="52" y1="30" x2="36" y2="30"/>
+              <line x1="14" y1="14" x2="24" y2="24"/><line x1="46" y1="46" x2="36" y2="36"/>
+            </g>
+            <circle cx="30" cy="30" r="6" fill="#2C2C2A"/>
+          </svg>
+        </div>
+        <div class="wheel-opt" data-wheel="bbs" onclick="selectWheel(this, 'bbs')">
+          <svg width="32" height="32" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="28" fill="#1a1a1a"/>
+            <circle cx="30" cy="30" r="24" fill="#5F5E5A"/>
+            <g fill="#1a1a1a">
+              <circle cx="30" cy="14" r="3"/><circle cx="30" cy="46" r="3"/>
+              <circle cx="14" cy="30" r="3"/><circle cx="46" cy="30" r="3"/>
+              <circle cx="19" cy="19" r="3"/><circle cx="41" cy="41" r="3"/>
+              <circle cx="41" cy="19" r="3"/><circle cx="19" cy="41" r="3"/>
+            </g>
+            <circle cx="30" cy="30" r="6" fill="#D3D1C7"/>
+          </svg>
+        </div>
+        <div class="wheel-opt" data-wheel="bronze" onclick="selectWheel(this, 'bronze')">
+          <svg width="32" height="32" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="28" fill="#854F0B"/>
+            <g stroke="#412402" stroke-width="2.5" stroke-linecap="round">
+              <line x1="30" y1="8" x2="30" y2="24"/><line x1="30" y1="52" x2="30" y2="36"/>
+              <line x1="8" y1="30" x2="24" y2="30"/><line x1="52" y1="30" x2="36" y2="30"/>
+              <line x1="14" y1="14" x2="24" y2="24"/><line x1="46" y1="46" x2="36" y2="36"/>
+              <line x1="46" y1="14" x2="36" y2="24"/><line x1="14" y1="46" x2="24" y2="36"/>
+            </g>
+            <circle cx="30" cy="30" r="6" fill="#412402"/>
+          </svg>
+        </div>
+      </div>
+      <div class="ar-product-row">
+        <div>
+          <div style="font-size:15px;font-weight:700;" id="ar-product-name">Forgestar F14 20"</div>
+          <div style="font-size:11px;color:#5F5E5A;margin-top:2px;" id="ar-product-price">Matte black · 4 retailers from $1,849</div>
+        </div>
+        <div style="font-size:20px;color:#D85A30;cursor:pointer;" onclick="toggleLike(this)">♡</div>
+      </div>
+      <button class="btn-primary" onclick="hideAR(); nav('compare');">See price comparison →</button>
+    </div>
+  </div>
+
+  <!-- ======================= BOTTOM NAV ======================= -->
+  <div class="bottom-nav">
+    <div class="nav-item active" id="nav-shop" onclick="nav('shop')">
+      <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Shop
+    </div>
+    <div class="nav-item" id="nav-ar" onclick="showAR()">
+      <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      AR
+    </div>
+    <div class="nav-item" id="nav-garage" onclick="nav('garage')">
+      <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      Garage
+    </div>
+    <div class="nav-item" id="nav-feed" onclick="nav('feed')">
+      <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+      Feed
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="help-panel">
+  <div class="help-title">💡 TRY THE PROTOTYPE</div>
+  <div class="help-body">
+    <strong>Click any card, tab, or button</strong> to navigate. Key flows to try:
+    <ul style="margin:6px 0 0 18px;padding:0;">
+      <li>Tap a <code>product</code> → see detail → tap <code>View in AR</code></li>
+      <li>In AR, <code>tap different wheel styles</code> to swap them on the car</li>
+      <li>Use the <code>bottom nav</code> to jump between Shop, AR, Garage, and Feed</li>
+      <li>Tap <code>+ Add vehicle</code> in Garage to try the VIN flow</li>
+    </ul>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ======================= PRODUCT DATA =======================
+  const products = {
+    wheels: [
+      {
+        id: 'forgestar-f14',
+        name: 'Forgestar F14 20"',
+        desc: 'Matte black · 5x114.3',
+        price: 1849,
+        oldPrice: 2100,
+        retailers: 4,
+        ar: true,
+        thumb: 'forgestar'
+      },
+      {
+        id: 'enkei-rpf1',
+        name: 'Enkei RPF1 18"',
+        desc: 'Silver · 5x114.3 · Lightweight',
+        price: 1420,
+        retailers: 6,
+        ar: true,
+        thumb: 'enkei'
+      },
+      {
+        id: 'bbs-ch-r',
+        name: 'BBS CH-R II 20"',
+        desc: 'Matte graphite · Forged',
+        price: 3250,
+        retailers: 3,
+        ar: true,
+        thumb: 'bbs'
+      }
+    ],
+    exhaust: [
+      {
+        id: 'borla-atak',
+        name: 'Borla ATAK Cat-Back',
+        desc: 'Stainless · Aggressive tone',
+        price: 1299,
+        retailers: 6,
+        ar: true,
+        thumb: 'exhaust'
+      },
+      {
+        id: 'magnaflow',
+        name: 'MagnaFlow Competition',
+        desc: '3" dual tip · Street legal',
+        price: 1049,
+        retailers: 5,
+        ar: true,
+        thumb: 'exhaust'
+      }
+    ],
+    lighting: [
+      {
+        id: 'morimoto',
+        name: 'Morimoto XB LED Headlights',
+        desc: 'DRL · Sequential turn signals',
+        price: 1450,
+        retailers: 3,
+        ar: true,
+        thumb: 'headlight'
+      }
+    ],
+    body: [
+      {
+        id: 'rtr-spoiler',
+        name: 'RTR Performance Spoiler',
+        desc: 'Carbon fiber · Adjustable',
+        price: 899,
+        retailers: 4,
+        ar: true,
+        thumb: 'spoiler'
+      }
+    ],
+    intake: [
+      {
+        id: 'k&n',
+        name: 'K&N 63 Series AirCharger',
+        desc: '+10hp · Washable filter',
+        price: 489,
+        retailers: 8,
+        ar: false,
+        thumb: 'intake'
+      }
+    ]
+  };
+
+  let currentCategory = 'wheels';
+  let searchQuery = '';
+
+  // ======================= THUMBNAIL RENDERERS =======================
+  function thumbSVG(type) {
+    if (type === 'forgestar') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="28" fill="#1a1a1a"/>
+        <circle cx="30" cy="30" r="24" fill="#2C2C2A" stroke="#5F5E5A" stroke-width="0.5"/>
+        <g stroke="#3a3a3a" stroke-width="2.5" stroke-linecap="round">
+          <line x1="30" y1="8" x2="30" y2="24"/><line x1="30" y1="52" x2="30" y2="36"/>
+          <line x1="8" y1="30" x2="24" y2="30"/><line x1="52" y1="30" x2="36" y2="30"/>
+          <line x1="14.6" y1="14.6" x2="25.2" y2="25.2"/><line x1="45.4" y1="45.4" x2="34.8" y2="34.8"/>
+          <line x1="45.4" y1="14.6" x2="34.8" y2="25.2"/><line x1="14.6" y1="45.4" x2="25.2" y2="34.8"/>
+        </g>
+        <circle cx="30" cy="30" r="7" fill="#5F5E5A"/><circle cx="30" cy="30" r="2" fill="#1a1a1a"/>
+      </svg>`;
+    }
+    if (type === 'enkei') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="28" fill="#1a1a1a"/>
+        <circle cx="30" cy="30" r="24" fill="#B4B2A9"/>
+        <g stroke="#5F5E5A" stroke-width="3" stroke-linecap="round">
+          <line x1="30" y1="9" x2="30" y2="23"/><line x1="30" y1="51" x2="30" y2="37"/>
+          <line x1="9" y1="30" x2="23" y2="30"/><line x1="51" y1="30" x2="37" y2="30"/>
+          <line x1="15" y1="15" x2="25" y2="25"/><line x1="45" y1="45" x2="35" y2="35"/>
+        </g>
+        <circle cx="30" cy="30" r="7" fill="#2C2C2A"/><circle cx="30" cy="30" r="2" fill="#B4B2A9"/>
+      </svg>`;
+    }
+    if (type === 'bbs') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="28" fill="#1a1a1a"/>
+        <circle cx="30" cy="30" r="25" fill="#5F5E5A"/>
+        <g fill="#1a1a1a">
+          <circle cx="30" cy="12" r="2.8"/><circle cx="30" cy="48" r="2.8"/>
+          <circle cx="12" cy="30" r="2.8"/><circle cx="48" cy="30" r="2.8"/>
+          <circle cx="17" cy="17" r="2.8"/><circle cx="43" cy="43" r="2.8"/>
+          <circle cx="43" cy="17" r="2.8"/><circle cx="17" cy="43" r="2.8"/>
+          <circle cx="30" cy="21" r="2.3"/><circle cx="30" cy="39" r="2.3"/>
+          <circle cx="21" cy="30" r="2.3"/><circle cx="39" cy="30" r="2.3"/>
+        </g>
+        <circle cx="30" cy="30" r="7" fill="#D3D1C7"/><circle cx="30" cy="30" r="2.5" fill="#1a1a1a"/>
+      </svg>`;
+    }
+    if (type === 'exhaust') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <defs>
+          <radialGradient id="ext-${Math.random()}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#2C2C2A"/><stop offset="70%" stop-color="#5F5E5A"/><stop offset="100%" stop-color="#888780"/>
+          </radialGradient>
+        </defs>
+        <rect x="6" y="24" width="36" height="12" fill="#B4B2A9"/>
+        <ellipse cx="6" cy="30" rx="2" ry="6" fill="#5F5E5A"/>
+        <ellipse cx="46" cy="30" rx="8" ry="12" fill="#D3D1C7"/>
+        <ellipse cx="46" cy="30" rx="6" ry="10" fill="#2C2C2A"/>
+        <ellipse cx="46" cy="30" rx="4" ry="7" fill="#1a1a1a"/>
+        <ellipse cx="46" cy="26" rx="2" ry="3" fill="#ffffff" opacity="0.4"/>
+      </svg>`;
+    }
+    if (type === 'headlight') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <path d="M 8 22 Q 30 10 52 22 L 50 38 Q 30 46 10 38 Z" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <path d="M 10 24 Q 30 14 50 24 L 48 36 Q 30 42 12 36 Z" fill="#F7F6F1"/>
+        <circle cx="20" cy="30" r="4" fill="#378ADD"/>
+        <circle cx="30" cy="30" r="5" fill="#FAEEDA"/>
+        <circle cx="40" cy="30" r="4" fill="#378ADD"/>
+        <rect x="14" y="37" width="32" height="2" fill="#EF9F27"/>
+      </svg>`;
+    }
+    if (type === 'spoiler') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <path d="M 6 36 Q 30 24 54 36 L 54 42 Q 30 30 6 42 Z" fill="#2C2C2A"/>
+        <path d="M 8 38 Q 30 28 52 38" fill="none" stroke="#5F5E5A" stroke-width="0.5"/>
+        <rect x="12" y="42" width="4" height="6" fill="#5F5E5A"/>
+        <rect x="44" y="42" width="4" height="6" fill="#5F5E5A"/>
+      </svg>`;
+    }
+    if (type === 'intake') {
+      return `<svg width="54" height="54" viewBox="0 0 60 60">
+        <rect x="8" y="20" width="30" height="20" rx="3" fill="#378ADD"/>
+        <ellipse cx="44" cy="30" rx="8" ry="10" fill="#E24B4A"/>
+        <ellipse cx="44" cy="30" rx="5" ry="7" fill="#A32D2D"/>
+        <circle cx="44" cy="30" r="2" fill="#ffffff"/>
+        <rect x="10" y="22" width="26" height="4" fill="#185FA5"/>
+        <rect x="10" y="34" width="26" height="4" fill="#185FA5"/>
+      </svg>`;
+    }
+    return '';
+  }
+
+  // ======================= PRODUCT LIST =======================
+  function renderProducts() {
+    const list = products[currentCategory] || [];
+    const filtered = list.filter(p =>
+      !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.desc.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    const container = document.getElementById('products');
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div style="text-align:center;color:#888780;font-size:13px;padding:40px 20px;">No parts match your search.</div>';
+      return;
+    }
+
+    container.innerHTML = filtered.map(p => `
+      <div class="product-card" onclick="openProduct('${p.id}')">
+        <div class="product-thumb">${thumbSVG(p.thumb)}</div>
+        <div class="product-info">
+          <div class="product-top">
+            <div style="flex:1;min-width:0;">
+              <div class="product-name">${p.name}</div>
+              <div class="product-desc">${p.desc}</div>
+            </div>
+            ${p.ar ? '<div class="ar-badge">AR</div>' : ''}
+          </div>
+          <div class="price-row">
+            <div>
+              <span class="price">$${p.price.toLocaleString()}</span>
+              ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}
+            </div>
+            <div class="retailers">${p.retailers} retailers</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function setCategory(cat) {
+    currentCategory = cat;
+    document.querySelectorAll('#categories .cat').forEach(el => {
+      el.classList.toggle('active', el.dataset.cat === cat);
+    });
+    const titles = {
+      wheels: 'Top picks for your Mustang',
+      exhaust: 'Exhaust systems',
+      lighting: 'Lighting upgrades',
+      body: 'Body & aero',
+      intake: 'Cold air intakes'
+    };
+    document.getElementById('section-title').textContent = titles[cat] || 'Parts for your Mustang';
+    renderProducts();
+  }
+
+  function filterProducts() {
+    searchQuery = document.getElementById('search-input').value;
+    renderProducts();
+  }
+
+  // ======================= NAVIGATION =======================
+  function nav(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + screenId).classList.add('active');
+    // Scroll to top
+    document.getElementById('screen-' + screenId).scrollTop = 0;
+    // Update nav
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const navMap = { shop: 'nav-shop', garage: 'nav-garage', feed: 'nav-feed' };
+    if (navMap[screenId]) document.getElementById(navMap[screenId]).classList.add('active');
+  }
+
+  // ======================= PRODUCT DETAIL =======================
+  function openProduct(id) {
+    // Find the product
+    let prod = null;
+    Object.values(products).forEach(list => {
+      list.forEach(p => { if (p.id === id) prod = p; });
+    });
+    if (!prod) return;
+
+    document.getElementById('detail-name').textContent = prod.name;
+    document.getElementById('detail-sub').textContent = prod.desc + ' · Fits your 2021 Mustang GT';
+    document.getElementById('detail-hero').innerHTML = `<div style="transform:scale(1.8);">${thumbSVG(prod.thumb)}</div>`;
+    nav('detail');
+  }
+
+  // ======================= AR =======================
+  const wheelStyles = {
+    forgestar: {
+      name: 'Forgestar F14 20"',
+      price: 'Matte black · 4 retailers from $1,849',
+      render: (cx, cy) => `
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#1a1a1a" stroke="#5DCAA5" stroke-width="2" stroke-dasharray="2 2"/>
+        <g stroke="#888780" stroke-width="2" stroke-linecap="round">
+          <line x1="${cx}" y1="${cy-18}" x2="${cx}" y2="${cy-8}"/>
+          <line x1="${cx}" y1="${cy+8}" x2="${cx}" y2="${cy+18}"/>
+          <line x1="${cx-18}" y1="${cy}" x2="${cx-8}" y2="${cy}"/>
+          <line x1="${cx+8}" y1="${cy}" x2="${cx+18}" y2="${cy}"/>
+          <line x1="${cx-13}" y1="${cy-13}" x2="${cx-6}" y2="${cy-6}"/>
+          <line x1="${cx+13}" y1="${cy+13}" x2="${cx+6}" y2="${cy+6}"/>
+          <line x1="${cx+13}" y1="${cy-13}" x2="${cx+6}" y2="${cy-6}"/>
+          <line x1="${cx-13}" y1="${cy+13}" x2="${cx-6}" y2="${cy+6}"/>
+        </g>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#5F5E5A"/>
+      `
+    },
+    enkei: {
+      name: 'Enkei RPF1 18"',
+      price: 'Silver · 6 retailers from $1,420',
+      render: (cx, cy) => `
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#B4B2A9" stroke="#5DCAA5" stroke-width="2" stroke-dasharray="2 2"/>
+        <g stroke="#5F5E5A" stroke-width="3" stroke-linecap="round">
+          <line x1="${cx}" y1="${cy-17}" x2="${cx}" y2="${cy-6}"/>
+          <line x1="${cx}" y1="${cy+6}" x2="${cx}" y2="${cy+17}"/>
+          <line x1="${cx-17}" y1="${cy}" x2="${cx-6}" y2="${cy}"/>
+          <line x1="${cx+6}" y1="${cy}" x2="${cx+17}" y2="${cy}"/>
+          <line x1="${cx-12}" y1="${cy-12}" x2="${cx-5}" y2="${cy-5}"/>
+          <line x1="${cx+12}" y1="${cy+12}" x2="${cx+5}" y2="${cy+5}"/>
+        </g>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#2C2C2A"/>
+      `
+    },
+    bbs: {
+      name: 'BBS CH-R II 20"',
+      price: 'Matte graphite · 3 retailers from $3,250',
+      render: (cx, cy) => `
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#5F5E5A" stroke="#5DCAA5" stroke-width="2" stroke-dasharray="2 2"/>
+        <g fill="#1a1a1a">
+          <circle cx="${cx}" cy="${cy-15}" r="2.5"/>
+          <circle cx="${cx}" cy="${cy+15}" r="2.5"/>
+          <circle cx="${cx-15}" cy="${cy}" r="2.5"/>
+          <circle cx="${cx+15}" cy="${cy}" r="2.5"/>
+          <circle cx="${cx-11}" cy="${cy-11}" r="2.5"/>
+          <circle cx="${cx+11}" cy="${cy+11}" r="2.5"/>
+          <circle cx="${cx+11}" cy="${cy-11}" r="2.5"/>
+          <circle cx="${cx-11}" cy="${cy+11}" r="2.5"/>
+        </g>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#D3D1C7"/>
+      `
+    },
+    bronze: {
+      name: 'Rotiform LAS-R 20"',
+      price: 'Matte bronze · 5 retailers from $2,100',
+      render: (cx, cy) => `
+        <circle cx="${cx}" cy="${cy}" r="22" fill="#000000"/>
+        <circle cx="${cx}" cy="${cy}" r="20" fill="#854F0B" stroke="#5DCAA5" stroke-width="2" stroke-dasharray="2 2"/>
+        <g stroke="#412402" stroke-width="2.5" stroke-linecap="round">
+          <line x1="${cx}" y1="${cy-17}" x2="${cx}" y2="${cy-5}"/>
+          <line x1="${cx}" y1="${cy+5}" x2="${cx}" y2="${cy+17}"/>
+          <line x1="${cx-17}" y1="${cy}" x2="${cx-5}" y2="${cy}"/>
+          <line x1="${cx+5}" y1="${cy}" x2="${cx+17}" y2="${cy}"/>
+          <line x1="${cx-12}" y1="${cy-12}" x2="${cx-4}" y2="${cy-4}"/>
+          <line x1="${cx+12}" y1="${cy+12}" x2="${cx+4}" y2="${cy+4}"/>
+          <line x1="${cx+12}" y1="${cy-12}" x2="${cx+4}" y2="${cy-4}"/>
+          <line x1="${cx-12}" y1="${cy+12}" x2="${cx-4}" y2="${cy+4}"/>
+        </g>
+        <circle cx="${cx}" cy="${cy}" r="6" fill="#412402"/>
+      `
+    }
+  };
+
+  function renderARWheels(style) {
+    const s = wheelStyles[style];
+    document.getElementById('ar-wheel-front').innerHTML = s.render(80, 140);
+    document.getElementById('ar-wheel-rear').innerHTML = s.render(240, 140);
+    document.getElementById('ar-product-name').textContent = s.name;
+    document.getElementById('ar-product-price').textContent = s.price;
+  }
+
+  function selectWheel(el, style) {
+    document.querySelectorAll('.wheel-opt').forEach(w => w.classList.remove('selected'));
+    el.classList.add('selected');
+    renderARWheels(style);
+    document.getElementById('ar-hint').textContent = 'Nice pick! Tap price comparison →';
+  }
+
+  function showAR() {
+    document.getElementById('ar-view').classList.add('show');
+    renderARWheels('forgestar');
+  }
+
+  function hideAR() {
+    document.getElementById('ar-view').classList.remove('show');
+  }
+
+  // ======================= VIN =======================
+  function checkVin() {
+    const v = document.getElementById('vin-input').value;
+    const isValid = v.length === 17 || v.length >= 10; // lenient for demo
+    document.getElementById('vin-verified').classList.toggle('show', isValid);
+    document.getElementById('vin-confirm').disabled = !isValid;
+  }
+
+  function simulateScan() {
+    const input = document.getElementById('vin-input');
+    input.value = '';
+    const full = '1FA6P8CF5M5123456';
+    let i = 0;
+    const iv = setInterval(() => {
+      input.value = full.substring(0, i+1);
+      i++;
+      if (i >= full.length) {
+        clearInterval(iv);
+        checkVin();
+      }
+    }, 60);
+    toast('Scanning VIN...');
+  }
+
+  // ======================= INTERACTIONS =======================
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  function toggleLike(el) {
+    if (el.textContent === '♡') {
+      el.textContent = '♥';
+      el.style.color = '#D85A30';
+      toast('Added to wishlist');
+    } else {
+      el.textContent = '♡';
+      toast('Removed from wishlist');
+    }
+  }
+
+  function likePost(el) {
+    const heart = el.querySelector('.heart');
+    const count = el.querySelector('.like-count');
+    if (heart.textContent === '♡') {
+      heart.textContent = '♥';
+      el.classList.add('liked');
+      count.textContent = parseInt(count.textContent) + 1;
+    } else {
+      heart.textContent = '♡';
+      el.classList.remove('liked');
+      count.textContent = parseInt(count.textContent) - 1;
+    }
+  }
+
+  function buyFrom(retailer, price) {
+    toast(`Redirecting to ${retailer} ($${price.toLocaleString()})...`);
+    // In real app, open affiliate link
+  }
+
+  // ======================= INIT =======================
+  renderProducts();
+</script>
+
+</body>
+</html>
