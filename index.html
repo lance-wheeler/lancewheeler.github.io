@@ -101,6 +101,18 @@
   body.hover-link .cursor-ring { width: 54px; height: 54px; border-color: var(--teal); opacity: 0.4; }
   @media (max-width: 900px) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
 
+  /* Respect users who prefer reduced motion (vestibular disorders, motion sensitivity) */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .cursor, .cursor-ring { display: none !important; }
+    body { cursor: auto !important; }
+  }
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -2154,16 +2166,23 @@ When answering: Stay in character. If asked something not in this profile, say "
   }
   function removeTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
 
+  let isSending = false;
   async function handleSend() {
+    if (isSending) return; // prevent overlapping calls during pending API request
     const q = chatInput.value.trim();
     if (!q) return;
+    isSending = true;
     chatInput.value = '';
     addMsg(q, 'user');
     chatSuggestions.style.display = 'none';
     addTyping();
-    const answer = await askLance(q);
-    removeTyping();
-    addMsg(answer, 'bot');
+    try {
+      const answer = await askLance(q);
+      removeTyping();
+      addMsg(answer, 'bot');
+    } finally {
+      isSending = false;
+    }
   }
 
   chatSend.addEventListener('click', handleSend);
@@ -2197,7 +2216,12 @@ When answering: Stay in character. If asked something not in this profile, say "
   // Open / close panel
   a11yLauncher.addEventListener('click', () => a11yPanel.classList.toggle('open'));
   a11yClose.addEventListener('click', () => a11yPanel.classList.remove('open'));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && a11yPanel.classList.contains('open')) a11yPanel.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (a11yPanel.classList.contains('open')) a11yPanel.classList.remove('open');
+      if (chatWindow.classList.contains('open')) chatWindow.classList.remove('open');
+    }
+  });
 
   // Text size control
   let textScale = parseFloat(a11yStore.get('size', '1'));
