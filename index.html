@@ -1601,10 +1601,27 @@
     setTheme(cur === 'dark' ? 'light' : 'dark');
   });
   // When iframe asks for current theme on load, send it
+  // Also receive cursor position from embedded iframes so custom cursor follows
   window.addEventListener('message', (e) => {
-    if (e.data && e.data.type === 'request-theme') {
+    if (!e.data) return;
+    if (e.data.type === 'request-theme') {
       const t = document.documentElement.getAttribute('data-theme') || 'dark';
       try { e.source.postMessage({ type: 'theme', theme: t }, '*'); } catch (err) {}
+    } else if (e.data.type === 'iframe-cursor') {
+      // Find which iframe sent it, translate iframe-relative coords to viewport coords
+      const iframes = document.querySelectorAll('iframe');
+      let srcIframe = null;
+      iframes.forEach(f => { if (f.contentWindow === e.source) srcIframe = f; });
+      if (!srcIframe) return;
+      const rect = srcIframe.getBoundingClientRect();
+      mx = rect.left + e.data.x;
+      my = rect.top + e.data.y;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+      if (e.data.hover) document.body.classList.add('hover-link');
+      else document.body.classList.remove('hover-link');
+    } else if (e.data.type === 'iframe-cursor-leave') {
+      document.body.classList.remove('hover-link');
     }
   });
 

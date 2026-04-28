@@ -2804,6 +2804,39 @@
   } catch (e) {}
   const urlTheme = new URLSearchParams(location.search).get('theme');
   if (urlTheme) applyTheme(urlTheme);
+
+  // =============================================================
+  // CURSOR FORWARDING (only when embedded)
+  // Forwards mouse position to parent so the parent's custom cursor
+  // continues to track inside the iframe. Skipped when standalone /
+  // full-screen so the user gets their normal default cursor.
+  // =============================================================
+  (function() {
+    let isEmbedded = false;
+    try { isEmbedded = window.parent && window.parent !== window; } catch (e) { isEmbedded = false; }
+    if (!isEmbedded) return;
+
+    const HOVER_SELECTOR = 'a, button, input, .product-card, .nav-item, .cat, .icon-btn, .vehicle-card, .promo-strip, .retailer-card, .installed-mod, .settings-item, .story, .ar-cta, .primary-cta, .ar-info-cta, .filter-pill, .post-action, .post-build-callout, .wheel-opt, .vin-scanner, .add-vehicle-btn, .product-pin, .section-link, .settings-toggle, .post-avatar, .avatar, .ar-control-btn, .back-btn, .post-tag, .promo-arrow, .search-clear, .post-more';
+
+    let lastSent = 0;
+    document.addEventListener('mousemove', (e) => {
+      const now = performance.now();
+      if (now - lastSent < 12) return; // throttle to ~80fps to keep postMessage cheap
+      lastSent = now;
+      try {
+        window.parent.postMessage({
+          type: 'iframe-cursor',
+          x: e.clientX,
+          y: e.clientY,
+          hover: !!(e.target && e.target.closest && e.target.closest(HOVER_SELECTOR))
+        }, '*');
+      } catch (err) {}
+    });
+
+    document.addEventListener('mouseleave', () => {
+      try { window.parent.postMessage({ type: 'iframe-cursor-leave' }, '*'); } catch (err) {}
+    });
+  })();
 </script>
 
 </body>
