@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lance Wheeler — Product Owner | A-CSPO</title>
+<meta name="description" content="Product Owner @ Stellar MLS. A-CSPO certified. Building products that deliver real value across real estate platforms serving 80,000+ professionals."/>
+<meta name="author" content="Lance Wheeler"/>
+<meta name="theme-color" content="#e8622a"/>
+<link rel="canonical" href="https://lance-wheeler.github.io/lancewheeler.github.io/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://lance-wheeler.github.io/lancewheeler.github.io/"/>
+<meta property="og:title" content="Lance Wheeler — Product Owner | A-CSPO"/>
+<meta property="og:description" content="Product Owner @ Stellar MLS. A-CSPO certified. Building products that deliver real value across real estate platforms serving 80,000+ professionals."/>
+<meta property="og:image" content="https://lance-wheeler.github.io/lancewheeler.github.io/lance-headshot.png"/>
+<meta property="og:image:alt" content="Lance Wheeler — Product Owner at Stellar MLS"/>
+<meta property="og:site_name" content="Lance Wheeler Portfolio"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Lance Wheeler — Product Owner | A-CSPO"/>
+<meta name="twitter:description" content="Product Owner @ Stellar MLS. A-CSPO certified. Serving 80,000+ real estate professionals."/>
+<meta name="twitter:image" content="https://lance-wheeler.github.io/lancewheeler.github.io/lance-headshot.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+  /* THEME VARIABLES */
+  :root[data-theme="dark"] {
+    --bg: #080808;
+    --surface: #0f0f0f;
+    --card: #141414;
+    --card-hover: #1a1a1a;
+    --border: #1e1e1e;
+    --text: #f2f0ed;
+    --text-soft: #aaa;
+    --muted: #666;
+    --subtle: #333;
+    --orange: #e8622a;
+    --orange-dim: rgba(232,98,42,0.12);
+    --teal: #2ab8c8;
+    --teal-dim: rgba(42,184,200,0.1);
+    --shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] {
+    --bg: #fafaf7;
+    --surface: #f0eee8;
+    --card: #ffffff;
+    --card-hover: #f5f5f0;
+    --border: #e4e1d9;
+    --text: #1a1a1a;
+    --text-soft: #4a4a4a;
+    --muted: #6a6a6a;
+    --subtle: #c0bdb4;
+    --orange: #d54e1a;
+    --orange-dim: rgba(213,78,26,0.1);
+    --teal: #1d96a5;
+    --teal-dim: rgba(29,150,165,0.08);
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  :root {
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --text-scale: 1;
+  }
+  html { font-size: calc(16px * var(--text-scale)); }
+  /* High contrast mode */
+  html.a11y-contrast[data-theme="dark"] { --bg: #000; --surface: #0a0a0a; --card: #111; --text: #fff; --text-soft: #fff; --muted: #ddd; --border: #555; --orange: #ff8c4a; --teal: #5dd5e5; }
+  html.a11y-contrast[data-theme="light"] { --bg: #fff; --surface: #fff; --card: #fff; --text: #000; --text-soft: #000; --muted: #222; --border: #000; --orange: #b03a00; --teal: #007a85; }
+  /* Reduced motion */
+  html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; }
+  html.a11y-motion .reveal { opacity: 1 !important; transform: none !important; }
+  /* Underline links */
+  html.a11y-links a:not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.cert-btn):not(.contact-link) { text-decoration: underline !important; text-underline-offset: 3px; }
+  /* Focus indicators always visible */
+  html.a11y-focus *:focus { outline: 3px solid var(--orange) !important; outline-offset: 3px !important; }
+  /* Hide custom cursor in a11y mode */
+  html.a11y-cursor body, html.a11y-cursor * { cursor: auto !important; }
+  html.a11y-cursor .cursor, html.a11y-cursor .cursor-ring { display: none !important; }
+  html.a11y-cursor a, html.a11y-cursor button, html.a11y-cursor input { cursor: pointer !important; }
+  html.a11y-cursor input { cursor: text !important; }
+  /* Dyslexia-friendly font */
+  html.a11y-dyslexia, html.a11y-dyslexia * { font-family: 'Atkinson Hyperlegible', 'Verdana', sans-serif !important; letter-spacing: 0.02em !important; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+    overflow-x: hidden; cursor: none;
+    transition: background 0.4s, color 0.4s;
+  }
+  ::selection { background: var(--orange); color: #000; }
+
+  /* CUSTOM CURSOR */
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.2s, height 0.2s, background 0.2s; mix-blend-mode: difference; }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid var(--orange); opacity: 0.5; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.25s, height 0.25s, opacity 0.2s; }
+  body.hover-link .cursor { width: 18px; height: 18px; background: var(--teal); }
+  body.hover-link .cursor-ring { width: 54px; height: 54px; border-color: var(--teal); opacity: 0.4; }
+  @media (max-width: 900px) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s, border-bottom 0.3s;
+  }
+  nav.scrolled { background: var(--bg); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .theme-toggle { background: transparent; border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: none; color: var(--text); transition: all 0.2s; }
+  .theme-toggle:hover { border-color: var(--orange); color: var(--orange); transform: rotate(15deg); }
+  .nav-cta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange); padding: 8px 18px; text-decoration: none; transition: all 0.2s; }
+  .nav-cta:hover { background: var(--orange); color: var(--bg); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-content-row {
+    display: flex; gap: clamp(40px, 6vw, 100px); align-items: center;
+    flex-wrap: wrap-reverse; justify-content: space-between;
+    max-width: 1300px; width: 100%; margin: 0 auto;
+  }
+  .hero-text-col { flex: 1 1 520px; min-width: 320px; max-width: 720px; }
+  .hero-photo {
+    position: relative;
+    width: clamp(220px, 26vw, 360px);
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    opacity: 0; animation: fadeUp 0.9s 0.3s forwards;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.5),
+      0 0 0 8px rgba(232,98,42,0.06),
+      0 0 60px rgba(232,98,42,0.15);
+    position: relative; z-index: 2;
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .hero-photo::before {
+    content: ''; position: absolute; inset: -16px;
+    background: conic-gradient(from 0deg, var(--orange), var(--teal), var(--orange));
+    border-radius: 50%; opacity: 0.15; filter: blur(14px);
+    z-index: 1; animation: spinSlow 18s linear infinite;
+  }
+  .hero-photo:hover img { transform: scale(1.02); box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 8px rgba(232,98,42,0.12), 0 0 80px rgba(232,98,42,0.25); }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+  @media (max-width: 768px) {
+    .hero-content-row { gap: 24px; }
+    .hero-photo { width: 160px; margin-bottom: 8px; }
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px; opacity: 0.5;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-glow { position: absolute; top: 20%; left: 10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--orange-dim) 0%, transparent 70%); pointer-events: none; }
+  .hero-glow-2 { position: absolute; bottom: 10%; right: 5%; width: 400px; height: 400px; background: radial-gradient(circle, var(--teal-dim) 0%, transparent 70%); pointer-events: none; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+  .hero-name { font-family: var(--font-display); font-size: clamp(72px, 12vw, 160px); line-height: 0.9; letter-spacing: 2px; color: var(--text); opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+  .hero-name .highlight { color: var(--orange); }
+  .hero-title { font-family: var(--font-body); font-size: clamp(16px, 2.5vw, 24px); font-weight: 600; color: var(--text-soft); margin-top: 20px; max-width: 600px; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+  .hero-stats { display: flex; gap: 48px; margin-top: 56px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; max-width: 1300px; width: 100%; margin-left: auto; margin-right: auto; }
+  .stat-item { border-left: 2px solid var(--orange); padding-left: 16px; }
+  .stat-num { font-family: var(--font-display); font-size: 40px; color: var(--text); line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+  .hero-actions { display: flex; gap: 16px; margin-top: 48px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 1s forwards; max-width: 1300px; width: 100%; margin-left: auto; margin-right: auto; }
+  .btn-primary { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; background: var(--orange); color: #000; padding: 14px 32px; text-decoration: none; font-weight: 500; transition: all 0.2s; border: none; cursor: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { background: #ff7a3d; transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn-secondary { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; background: transparent; color: var(--text); padding: 14px 32px; text-decoration: none; font-weight: 500; transition: all 0.2s; border: 1px solid var(--subtle); cursor: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-secondary:hover { border-color: var(--text); transform: translateY(-2px); }
+  .scroll-indicator { position: absolute; bottom: 32px; left: 48px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
+  .scroll-line { width: 40px; height: 1px; background: var(--muted); }
+
+  /* SECTION COMMON */
+  section { padding: 100px 48px; }
+  .section-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(42px, 6vw, 80px); line-height: 0.95; color: var(--text); margin-bottom: 8px; }
+  .section-sub { font-size: 16px; color: var(--text-soft); max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* STORY / TIMELINE */
+  #story { background: var(--surface); }
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .story-left p { color: var(--text-soft); line-height: 1.8; font-size: 15px; margin-bottom: 16px; }
+  .story-left p strong { color: var(--text); }
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--orange), var(--teal)); }
+  .tl-item { position: relative; margin-bottom: 32px; }
+  .tl-item::before { content: ''; position: absolute; left: -28px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); border: 2px solid var(--bg); transition: transform 0.2s, background 0.2s; }
+  .tl-item:hover::before { transform: scale(1.6); background: var(--teal); }
+  .tl-date { font-family: var(--font-mono); font-size: 11px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .tl-title { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .tl-desc { font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+  .promo-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--orange-dim); border: 1px solid rgba(232,98,42,0.2); color: var(--orange); font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; margin-top: 6px; }
+
+  /* IMPACT DASHBOARD */
+  #impact { background: var(--bg); }
+  .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-bottom: 1px; }
+  .dash-card { background: var(--card); padding: 32px 28px; transition: background 0.3s; }
+  .dash-card:hover { background: var(--card-hover); }
+  .dash-num { font-family: var(--font-display); font-size: 64px; color: var(--orange); line-height: 1; margin-bottom: 6px; }
+  .dash-card.teal .dash-num { color: var(--teal); }
+  .dash-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .dash-desc { font-size: 12px; color: var(--text-soft); line-height: 1.5; }
+  .dash-bottom { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1px; background: var(--border); }
+  .chart-card { background: var(--card); padding: 36px; }
+  .chart-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+  .bar-chart { display: flex; flex-direction: column; gap: 14px; }
+  .bar-row { display: flex; align-items: center; gap: 16px; }
+  .bar-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-soft); width: 110px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 8px; background: var(--border); position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--teal)); width: 0; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); }
+  .bar-value { font-family: var(--font-mono); font-size: 11px; color: var(--text); width: 40px; text-align: right; }
+  .promo-tracker { background: var(--card); padding: 36px; display: flex; flex-direction: column; gap: 12px; }
+  .promo-step { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--surface); border-left: 3px solid var(--border); transition: border-color 0.3s; }
+  .promo-step.active { border-left-color: var(--orange); }
+  .promo-num { font-family: var(--font-display); font-size: 22px; color: var(--orange); line-height: 1; width: 28px; }
+  .promo-step.active .promo-num { color: var(--orange); }
+  .promo-info { flex: 1; }
+  .promo-role { font-family: var(--font-mono); font-size: 11px; color: var(--text); font-weight: 500; }
+  .promo-time { font-family: var(--font-mono); font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+  /* CERTIFICATIONS */
+  #certs { background: var(--surface); }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .cert-card {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 28px 24px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    transition: all 0.3s; min-height: 360px;
+  }
+  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
+  .cert-card.teal-card::before { background: var(--teal); }
+  .cert-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: var(--shadow); }
+  .cert-card.teal-card:hover { border-color: var(--teal); }
+  .cert-card:hover::before { transform: scaleX(1); }
+  .cert-badge-img {
+    width: 110px; height: 110px; object-fit: contain;
+    margin-bottom: 16px; transition: transform 0.3s;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  }
+  .cert-card:hover .cert-badge-img { transform: scale(1.06) rotate(-2deg); }
+  .cert-icon-fallback {
+    width: 110px; height: 110px; display: flex; align-items: center; justify-content: center;
+    font-size: 44px; margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--orange-dim), transparent);
+    border-radius: 50%;
+  }
+  .cert-card.teal-card .cert-icon-fallback { background: linear-gradient(135deg, var(--teal-dim), transparent); }
+  .cert-name { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+  .cert-org { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+  .cert-date { font-family: var(--font-mono); font-size: 10px; color: var(--orange); letter-spacing: 1px; margin-bottom: 18px; }
+  .cert-card.teal-card .cert-date { color: var(--teal); }
+  .cert-actions { display: flex; gap: 8px; margin-top: auto; width: 100%; }
+  .cert-btn {
+    flex: 1; font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 9px 8px; border: 1px solid var(--border);
+    background: transparent; color: var(--text-soft);
+    text-decoration: none; cursor: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  }
+  .cert-btn:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .cert-btn.primary { background: var(--orange); color: #000; border-color: var(--orange); }
+  .cert-btn.primary:hover { background: #ff7a3d; border-color: #ff7a3d; color: #000; }
+  .cert-card.teal-card .cert-btn.primary { background: var(--teal); border-color: var(--teal); }
+  .cert-card.teal-card .cert-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
+  .cert-tag {
+    position: absolute; top: 14px; right: 14px;
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 8px;
+    border: 1px solid var(--orange); color: var(--orange);
+    background: var(--bg);
+  }
+  .cert-card.teal-card .cert-tag { border-color: var(--teal); color: var(--teal); }
+
+  /* SKILLS */
+  #skills { background: var(--bg); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .skill-category { margin-bottom: 36px; }
+  .skill-cat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag { font-family: var(--font-mono); font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); color: var(--text-soft); letter-spacing: 0.5px; transition: all 0.2s; }
+  .skill-tag:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .feature-card { background: var(--card); border: 1px solid var(--border); padding: 36px; margin-bottom: 16px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .feature-card:hover { border-color: var(--orange); }
+  .feature-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--orange), var(--teal)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .feature-card:hover::after { transform: scaleX(1); }
+  .feature-num { font-family: var(--font-display); font-size: 48px; color: var(--border); line-height: 1; margin-bottom: 8px; }
+  .feature-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .feature-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+
+  /* VISION BUILDER */
+  #vision { background: var(--surface); }
+  .vision-wrapper { background: var(--card); border: 1px solid var(--border); padding: 40px; max-width: 920px; margin: 0 auto; }
+  .vision-template { font-family: var(--font-mono); font-size: 13px; color: var(--text-soft); line-height: 2.4; margin-bottom: 24px; padding: 24px; background: var(--surface); border-left: 3px solid var(--orange); }
+  .vision-template span.fill { color: var(--orange); font-weight: 600; }
+  .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .vision-input { display: flex; flex-direction: column; gap: 6px; }
+  .vision-input label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .vision-input input { font-family: var(--font-body); font-size: 14px; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; transition: border-color 0.2s; cursor: none; }
+  .vision-input input:focus { outline: none; border-color: var(--orange); }
+  .vision-output { background: var(--bg); border: 1px solid var(--orange); padding: 24px; margin-top: 16px; font-family: var(--font-body); font-size: 15px; line-height: 1.8; color: var(--text); display: none; }
+  .vision-output.visible { display: block; }
+  .vision-output strong { color: var(--orange); }
+  .vision-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .vision-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 20px; border: 1px solid var(--orange); background: transparent; color: var(--orange); cursor: none; transition: all 0.2s; }
+  .vision-btn:hover { background: var(--orange); color: var(--bg); }
+  .vision-btn.solid { background: var(--orange); color: var(--bg); }
+  .vision-btn.solid:hover { background: #ff7a3d; }
+
+  /* BACKLOG DEMO */
+  #demo { background: var(--bg); }
+  .demo-wrapper { background: var(--card); border: 1px solid var(--border); overflow: hidden; }
+  .demo-toolbar { background: var(--surface); padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+  .demo-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .demo-title-bar { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: 8px; }
+  .kanban { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .kanban-col { padding: 20px; border-right: 1px solid var(--border); min-height: 240px; }
+  .kanban-col:last-child { border-right: none; }
+  .col-header { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .col-count { background: var(--border); width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--muted); }
+  .kanban-card { background: var(--surface); border: 1px solid var(--border); padding: 14px; margin-bottom: 10px; cursor: grab; transition: all 0.2s; }
+  .kanban-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .kanban-card.dragging { opacity: 0.4; cursor: grabbing; }
+  .card-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
+  .tag-feature { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(232,98,42,0.2); }
+  .tag-bug { background: rgba(200,42,42,0.15); color: #e85a5a; border: 1px solid rgba(200,42,42,0.2); }
+  .tag-debt { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(42,184,200,0.2); }
+  .tag-research { background: rgba(140,100,220,0.1); color: #a78bfa; border: 1px solid rgba(140,100,220,0.2); }
+  .card-title { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 10px; }
+  .card-points { font-family: var(--font-mono); font-size: 10px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+  .points-badge { background: var(--border); padding: 2px 8px; font-size: 10px; }
+  .demo-note { padding: 14px 20px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-align: center; }
+
+  /* GEARUP PHONE SHOWCASE */
+  #gearup { background: var(--surface); position: relative; overflow: hidden; }
+  .gearup-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .gearup-info p { color: var(--text-soft); line-height: 1.8; font-size: 15px; margin-bottom: 16px; }
+  .gearup-info p strong { color: var(--text); }
+  .gearup-info p em { color: var(--orange); font-style: normal; font-weight: 600; }
+  .gearup-info h3 { font-family: var(--font-body); font-weight: 700; font-size: 18px; color: var(--text); margin-top: 28px; margin-bottom: 10px; position: relative; padding-left: 14px; }
+  .gearup-info h3::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px; background: var(--orange); }
+  .gearup-features { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .gu-tag { font-family: var(--font-mono); font-size: 10px; padding: 5px 12px; border: 1px solid var(--orange); color: var(--orange); letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+  .gu-tag:hover { background: var(--orange); color: var(--bg); }
+  .gearup-tryit { font-family: var(--font-mono); font-size: 11px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-top: 28px; animation: pulseHint 2.4s ease-in-out infinite; }
+  @keyframes pulseHint { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+  /* PROTOTYPE IFRAME — embeds the live GearUp app */
+  .prototype-stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .prototype-frame {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    height: 860px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #F1EFE8 0%, #E6EADF 100%);
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.45),
+      0 0 0 1px rgba(232,98,42,0.15),
+      0 0 60px rgba(232,98,42,0.12);
+    transition: box-shadow 0.4s, transform 0.4s;
+  }
+  .prototype-frame::before {
+    content: ''; position: absolute; inset: -2px;
+    border-radius: 30px; padding: 2px;
+    background: linear-gradient(135deg, var(--orange), transparent 40%, var(--teal));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none; opacity: 0.5;
+  }
+  .prototype-frame:hover {
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(232,98,42,0.3),
+      0 0 80px rgba(232,98,42,0.25);
+  }
+  .prototype-iframe {
+    width: 100%; height: 100%;
+    border: none; display: block;
+    background: linear-gradient(135deg, #F1EFE8 0%, #E6EADF 100%);
+  }
+  .prototype-fullscreen {
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    text-decoration: none; letter-spacing: 1px; text-transform: uppercase;
+    padding: 8px 14px; border: 1px solid var(--border); border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .prototype-fullscreen:hover { border-color: var(--orange); color: var(--orange); }
+  @media (max-width: 900px) {
+    .prototype-frame { height: 760px; max-width: 420px; }
+  }
+  @media (max-width: 600px) {
+    .prototype-frame { height: 720px; max-width: 100%; border-radius: 22px; }
+  }
+
+  .phone-stage { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .phone-frame {
+    position: relative; width: 300px; height: 620px;
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border-radius: 44px; padding: 14px;
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.04),
+      inset 0 0 0 2px rgba(255,255,255,0.03);
+  }
+  .phone-glow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 110%; height: 110%; pointer-events: none;
+    background: radial-gradient(ellipse, rgba(232,98,42,0.18), transparent 65%);
+    z-index: -1; filter: blur(40px);
+  }
+  .phone-screen {
+    background: linear-gradient(180deg, #14142a 0%, #0a0a18 100%);
+    border-radius: 32px; height: 100%; overflow: hidden; position: relative;
+  }
+  .phone-notch {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 26px; background: #000; border-radius: 14px; z-index: 10;
+  }
+  .phone-status {
+    padding: 18px 24px 6px; display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 11px; color: #fff; font-weight: 500;
+    position: relative; z-index: 5;
+  }
+  .status-icons { letter-spacing: 1px; }
+  .gu-screen {
+    padding: 16px 18px 80px; height: calc(100% - 38px);
+    display: flex; flex-direction: column; gap: 14px;
+    overflow-y: auto; animation: screenFade 0.4s;
+  }
+  .gu-screen::-webkit-scrollbar { display: none; }
+  .gu-screen { -ms-overflow-style: none; scrollbar-width: none; }
+  .gu-screen:not(.active) { display: none; }
+  @keyframes screenFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .gu-app-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 4px;
+  }
+  .gu-logo { font-family: var(--font-display); font-size: 22px; color: #e8622a; letter-spacing: 1px; white-space: nowrap; }
+  .gu-logo span { color: #fff; }
+  .gu-icons { display: flex; gap: 12px; }
+  .gu-icons span {
+    font-size: 14px; color: #aaa;
+    width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.04); border-radius: 50%;
+  }
+  .gu-search {
+    background: rgba(255,255,255,0.06); padding: 11px 14px; border-radius: 12px;
+    font-family: var(--font-mono); font-size: 11px; color: #888;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .gu-section-title {
+    font-family: var(--font-mono); font-size: 9px; color: #888;
+    letter-spacing: 1.8px; text-transform: uppercase; margin-top: 4px; margin-bottom: -4px;
+  }
+  .gu-card {
+    background: linear-gradient(135deg, rgba(232,98,42,0.18), rgba(232,98,42,0.04));
+    border: 1px solid rgba(232,98,42,0.25);
+    padding: 14px; border-radius: 14px;
+    transition: transform 0.2s;
+  }
+  .gu-card:hover { transform: translateY(-2px); }
+  .gu-card-teal {
+    background: linear-gradient(135deg, rgba(42,184,200,0.22), rgba(42,184,200,0.04));
+    border-color: rgba(42,184,200,0.3);
+  }
+  .gu-card-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; line-height: 1.3; }
+  .gu-card-sub { font-family: var(--font-mono); font-size: 9px; color: #999; margin-bottom: 10px; }
+  .gu-price {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .gu-price-val { font-family: var(--font-mono); font-size: 13px; color: #e8622a; font-weight: 700; }
+  .gu-build-val { font-family: var(--font-mono); font-size: 10px; color: #2ab8c8; font-weight: 600; }
+  .gu-vendor { font-family: var(--font-mono); font-size: 8px; color: #777; letter-spacing: 0.5px; }
+
+  .gu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .gu-mini {
+    background: rgba(255,255,255,0.05); padding: 12px 10px; border-radius: 10px;
+    font-size: 10px; color: #fff; font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.2s;
+  }
+  .gu-mini:hover { background: rgba(232,98,42,0.1); border-color: rgba(232,98,42,0.2); }
+  .gu-mini-icon { font-size: 22px; margin-bottom: 6px; }
+
+  .gu-ar-stage {
+    background: radial-gradient(ellipse at center, rgba(232,98,42,0.2), rgba(0,0,0,0.5));
+    border-radius: 12px; padding: 28px 16px; text-align: center;
+    border: 1px dashed rgba(232,98,42,0.4);
+    position: relative; overflow: hidden;
+  }
+  .gu-ar-stage::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 4px, rgba(232,98,42,0.04) 4px, rgba(232,98,42,0.04) 5px);
+    pointer-events: none;
+  }
+  .gu-ar-car { font-size: 56px; line-height: 1; animation: floaty 3s ease-in-out infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  .gu-ar-label { font-family: var(--font-mono); font-size: 9px; color: #ccc; margin-top: 12px; letter-spacing: 1.5px; }
+  .gu-ar-part { font-size: 12px; color: #fff; margin-top: 6px; font-weight: 600; }
+  .gu-ar-hint { font-family: var(--font-mono); font-size: 9px; color: #e8622a; margin-top: 6px; }
+
+  .gu-post {
+    background: rgba(255,255,255,0.04); border-radius: 12px; padding: 12px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .gu-post-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .gu-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, #e8622a, #2ab8c8);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 13px; color: #fff;
+  }
+  .gu-post-name { font-size: 11px; color: #fff; font-weight: 600; }
+  .gu-post-time { font-family: var(--font-mono); font-size: 9px; color: #888; }
+  .gu-post-img {
+    background: linear-gradient(135deg, rgba(232,98,42,0.2), rgba(42,184,200,0.1));
+    border-radius: 8px; padding: 16px; text-align: center; font-size: 36px;
+    margin-bottom: 8px;
+  }
+  .gu-post-actions { display: flex; gap: 14px; font-family: var(--font-mono); font-size: 10px; color: #aaa; }
+
+  .gu-bottom-nav {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(20px);
+    padding: 12px 20px 18px; display: flex; justify-content: space-around;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .gu-nav-item {
+    font-size: 18px; color: #555; cursor: pointer;
+    transition: all 0.2s; padding: 6px 10px; border-radius: 8px;
+  }
+  .gu-nav-item:hover { color: #aaa; }
+  .gu-nav-item.active { color: #e8622a; background: rgba(232,98,42,0.12); }
+
+  .phone-controls {
+    display: flex; gap: 10px; justify-content: center; margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .phone-dot {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border: 1px solid var(--border);
+    background: var(--card); cursor: none; transition: all 0.2s;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .phone-dot::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--border); transition: background 0.2s;
+  }
+  .phone-dot:hover { border-color: var(--orange); color: var(--orange); }
+  .phone-dot.active { border-color: var(--orange); background: var(--orange-dim); color: var(--orange); }
+  .phone-dot.active::before { background: var(--orange); }
+  .phone-hint { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 14px; letter-spacing: 0.5px; text-align: center; }
+
+  /* WORK */
+  #work { background: var(--bg); }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .work-card { background: var(--card); padding: 40px; transition: background 0.3s; position: relative; overflow: hidden; }
+  .work-card:hover { background: var(--card-hover); }
+  .work-card-accent { position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--orange); transition: height 0.4s; }
+  .work-card:hover .work-card-accent { height: 100%; }
+  .work-card.teal .work-card-accent { background: var(--teal); }
+  .work-platform { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .work-title { font-family: var(--font-body); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .work-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; margin-bottom: 20px; }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .work-tag { font-family: var(--font-mono); font-size: 10px; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--surface); }
+  .testi-wrapper { position: relative; max-width: 920px; margin: 0 auto; }
+  .testi-track { position: relative; min-height: 480px; }
+  .testi-card {
+    position: absolute; inset: 0; background: var(--card); border: 1px solid var(--border);
+    padding: 44px 48px; opacity: 0; transition: opacity 0.5s; pointer-events: none;
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .testi-card.active { opacity: 1; pointer-events: auto; }
+  .testi-card::-webkit-scrollbar { width: 6px; }
+  .testi-card::-webkit-scrollbar-track { background: transparent; }
+  .testi-card::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .testi-quote { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 24px; flex: 1; }
+  .testi-quote::before { content: '"'; font-family: var(--font-display); font-size: 56px; color: var(--orange); line-height: 0; position: relative; top: 18px; margin-right: 8px; }
+  .testi-author { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--border); margin-top: auto; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); color: #fff; font-size: 18px; flex-shrink: 0; }
+  .testi-name { font-weight: 700; font-size: 14px; color: var(--text); }
+  .testi-role { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+  .testi-meta { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.5px; }
+
+  .testi-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 16px; flex-wrap: wrap; }
+  .testi-arrows { display: flex; gap: 8px; }
+  .testi-arrow {
+    width: 44px; height: 44px; border: 1px solid var(--border); background: var(--card);
+    color: var(--text); cursor: none; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .testi-arrow:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .testi-counter { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .testi-counter strong { color: var(--orange); }
+  .testi-pause {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; padding: 8px 16px; border: 1px solid var(--border);
+    background: transparent; color: var(--text-soft); cursor: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .testi-pause:hover { border-color: var(--orange); color: var(--orange); }
+  .testi-pause.paused { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: none; transition: all 0.2s; }
+  .testi-dot.active { background: var(--orange); width: 24px; border-radius: 4px; }
+  .testi-dot:hover { background: var(--text-soft); }
+
+  /* CONTACT */
+  #contact { background: var(--bg); text-align: center; }
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .contact-inner .section-title { font-size: clamp(48px, 8vw, 100px); }
+  .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 48px; }
+  .contact-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); color: var(--text-soft); text-decoration: none; transition: all 0.2s; cursor: none; display: inline-flex; align-items: center; gap: 8px; }
+  .contact-link:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+  .contact-link.primary { background: var(--orange); color: #000; border-color: var(--orange); }
+  .contact-link.primary:hover { background: #ff7a3d; border-color: #ff7a3d; color: #000; }
+
+  /* FOOTER */
+  footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; color: var(--muted); }
+  .footer-logo span { color: var(--orange); }
+  .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--subtle); }
+
+  /* AI CHAT WIDGET */
+  .chat-launcher {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), #ff7a3d);
+    border: none; cursor: none;
+    box-shadow: 0 12px 28px rgba(232,98,42,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s; color: #fff; font-size: 24px;
+    animation: pulseGlow 2.4s infinite;
+  }
+  .chat-launcher:hover { transform: scale(1.08); }
+  .chat-launcher .badge { position: absolute; top: -2px; right: -2px; background: var(--teal); color: #000; font-family: var(--font-mono); font-size: 9px; padding: 3px 6px; border-radius: 8px; letter-spacing: 0.5px; font-weight: 600; }
+  @keyframes pulseGlow { 0%,100% { box-shadow: 0 12px 28px rgba(232,98,42,0.4); } 50% { box-shadow: 0 12px 36px rgba(232,98,42,0.7); } }
+
+  .chat-window {
+    position: fixed; bottom: 100px; right: 28px; z-index: 201;
+    width: 380px; max-width: calc(100vw - 32px); height: 540px; max-height: calc(100vh - 140px);
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; display: flex; flex-direction: column;
+    overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: translateY(20px) scale(0.96); opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .chat-window.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+  .chat-header { background: linear-gradient(135deg, var(--orange), #ff7a3d); padding: 18px 20px; color: #fff; }
+  .chat-header-title { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .chat-header-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; opacity: 0.9; margin-top: 4px; display: flex; align-items: center; gap: 6px; }
+  .status-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+  .chat-close { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.2); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: none; font-size: 16px; }
+  .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .chat-msg { padding: 10px 14px; border-radius: 14px; max-width: 85%; font-size: 13px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--surface); color: var(--text); align-self: flex-start; border-top-left-radius: 4px; }
+  .chat-msg.user { background: var(--orange); color: #000; align-self: flex-end; border-top-right-radius: 4px; }
+  .chat-typing { display: inline-flex; gap: 4px; padding: 12px 16px; background: var(--surface); border-radius: 14px; align-self: flex-start; }
+  .chat-typing span { width: 6px; height: 6px; background: var(--muted); border-radius: 50%; animation: typingDot 1.2s infinite; }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typingDot { 0%,60%,100% { opacity: 0.3; transform: scale(1); } 30% { opacity: 1; transform: scale(1.2); } }
+  .chat-suggestions { padding: 8px 16px 0; display: flex; gap: 6px; flex-wrap: wrap; }
+  .chat-chip { font-family: var(--font-mono); font-size: 10px; padding: 6px 10px; background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: none; border-radius: 12px; transition: all 0.2s; }
+  .chat-chip:hover { border-color: var(--orange); color: var(--orange); }
+  .chat-input-wrap { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .chat-disclaimer { padding: 8px 16px 12px; font-family: var(--font-mono); font-size: 9px; line-height: 1.5; color: var(--muted); border-top: 1px solid var(--border); text-align: center; letter-spacing: 0.3px; }
+  .chat-input { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 20px; font-family: var(--font-body); font-size: 13px; cursor: none; }
+  .chat-input:focus { outline: none; border-color: var(--orange); }
+  .chat-send { background: var(--orange); color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: none; font-size: 16px; transition: transform 0.2s; }
+  .chat-send:hover { transform: scale(1.08); }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+  .kanban-col.drag-over { background: var(--orange-dim); }
+
+  /* ACCESSIBILITY (ADA) MENU */
+  .a11y-launcher {
+    position: fixed; bottom: 28px; left: 28px; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--card); border: 2px solid var(--orange);
+    cursor: none; transition: all 0.2s; color: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .a11y-launcher:hover { background: var(--orange); color: var(--bg); transform: scale(1.05); }
+  .a11y-launcher svg { width: 28px; height: 28px; }
+  .a11y-panel {
+    position: fixed; bottom: 96px; left: 28px; z-index: 201;
+    width: 340px; max-width: calc(100vw - 32px); max-height: calc(100vh - 140px);
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: translateY(20px) scale(0.96); opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .a11y-panel.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+  .a11y-header {
+    padding: 18px 20px; background: var(--orange); color: #000;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .a11y-title { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .a11y-close { background: rgba(0,0,0,0.15); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: none; font-size: 16px; color: #000; }
+  .a11y-body { padding: 16px; overflow-y: auto; }
+  .a11y-section { margin-bottom: 18px; }
+  .a11y-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .a11y-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: 6px; align-items: center; }
+  .a11y-size-btn {
+    width: 36px; height: 36px; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); cursor: none; font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    border-radius: 6px;
+  }
+  .a11y-size-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .a11y-current { font-family: var(--font-mono); font-size: 11px; color: var(--text); padding: 0 8px; min-width: 40px; text-align: center; }
+  .a11y-toggle {
+    width: 100%; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border);
+    cursor: none; font-family: var(--font-body); font-size: 13px; color: var(--text);
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.2s; border-radius: 8px; margin-bottom: 6px;
+  }
+  .a11y-toggle:hover { border-color: var(--orange); }
+  .a11y-toggle-state {
+    font-family: var(--font-mono); font-size: 10px; padding: 3px 10px;
+    border-radius: 12px; letter-spacing: 1px; text-transform: uppercase;
+    background: var(--border); color: var(--muted);
+  }
+  .a11y-toggle.active { border-color: var(--orange); background: var(--orange-dim); }
+  .a11y-toggle.active .a11y-toggle-state { background: var(--orange); color: #000; }
+  .a11y-reset {
+    width: 100%; padding: 10px; margin-top: 8px; background: transparent;
+    border: 1px solid var(--border); color: var(--muted); cursor: none;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; transition: all 0.2s; border-radius: 6px;
+  }
+  .a11y-reset:hover { border-color: var(--orange); color: var(--orange); }
+  .a11y-statement { padding: 12px 16px; background: var(--surface); border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); line-height: 1.5; text-align: center; }
+
+  @media (max-width: 600px) {
+    .a11y-launcher { left: 16px; bottom: 16px; width: 48px; height: 48px; }
+    .a11y-launcher svg { width: 24px; height: 24px; }
+    .a11y-panel { left: 12px; bottom: 80px; width: calc(100vw - 24px); }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    #hero { padding: 90px 20px 50px; }
+    .story-grid, .skills-layout, .work-grid, .gearup-layout { grid-template-columns: 1fr; gap: 48px; }
+    .kanban { grid-template-columns: 1fr 1fr; }
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .dash-bottom { grid-template-columns: 1fr; }
+    .vision-grid { grid-template-columns: 1fr; }
+    .chat-window { right: 12px; bottom: 90px; width: calc(100vw - 24px); height: 70vh; }
+    .chat-launcher { right: 16px; bottom: 16px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">LW<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#certs">Credentials</a></li>
+    <li><a href="#vision">Vision Builder</a></li>
+    <li><a href="#demo">Backlog</a></li>
+    <li><a href="#gearup">GearUp</a></li>
+    <li><a href="#testimonials">Praise</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" class="nav-cta">LinkedIn</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content-row">
+    <div class="hero-text-col">
+      <div class="hero-eyebrow">Product Owner · A-CSPO · Stellar MLS</div>
+      <h1 class="hero-name">LANCE<br/><span class="highlight">WHEELER</span></h1>
+      <p class="hero-title">I build products that deliver real value — not just features. Bridging strategy, teams, and technology across real estate platforms serving 80,000+ professionals.</p>
+    </div>
+    <div class="hero-photo">
+      <picture>
+        <source srcset="lance-headshot.webp" type="image/webp"/>
+        <img src="lance-headshot.png" alt="Lance Wheeler — Product Owner at Stellar MLS" loading="eager"/>
+      </picture>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num" data-target="4" data-suffix="×">4×</div><div class="stat-label">Promoted at Stellar MLS</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="80" data-suffix="K+">80K+</div><div class="stat-label">Professionals served</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="9" data-suffix="">9</div><div class="stat-label">Products owned</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="3" data-suffix="+">3+</div><div class="stat-label">Years of growth</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#story" class="btn-primary">See My Story →</a>
+    <a href="Lance_Wheeler_Resume_2026.pdf" download class="btn-secondary">↓ Download Resume</a>
+  </div>
+  <div class="scroll-indicator"><span class="scroll-line"></span> Scroll to explore</div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="reveal">
+    <div class="section-tag">Origin Story</div>
+    <h2 class="section-title">FROM HELP DESK<br/>TO PRODUCT OWNER</h2>
+    <p class="section-sub">Four promotions. One company. A story about showing up, owning outcomes, and building something real from the ground up.</p>
+  </div>
+  <div class="story-grid">
+    <div class="story-left reveal">
+      <p>I didn't start in product. I started at the <strong>support desk</strong> at Stellar MLS — diagnosing issues, learning every corner of the platform, and building a reputation for getting things done.</p>
+      <p>Over 3+ years, I earned four promotions by taking ownership beyond my job title. Every time there was a gap between what the business needed and what was getting built, <strong>I stepped into it</strong>.</p>
+      <p>Today I manage a <strong>9-product portfolio</strong> serving 80,000+ real estate professionals — owning everything from requirement gathering and QA, to vendor relationships, compliance initiatives, and internal AI enablement.</p>
+      <p>The title changed. The mindset was always the same: <strong>own the value, not the output.</strong></p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-date">Feb 2017 – Mar 2022</div><div class="tl-title">Lead IT Specialist — Elite Realty Inc.</div><div class="tl-desc">Go-to internal IT resource. Hardware, software, networking, and daily operations for a real estate office environment.</div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2022</div><div class="tl-title">Joined Stellar MLS — Support Center Technician</div><div class="tl-desc">Started on the front lines — learning the platforms, the users, and the gaps between them.</div><span class="promo-badge">🚀 Promotion 1</span></div>
+      <div class="tl-item"><div class="tl-date">2023</div><div class="tl-title">Growing Ownership Across Products</div><div class="tl-desc">Began taking on product ownership responsibilities — QA, documentation, and release coordination across multiple platforms.</div><span class="promo-badge">🚀 Promotion 2 · Promotion 3</span></div>
+      <div class="tl-item"><div class="tl-date">2024 – Present</div><div class="tl-title">Product Owner — 9-Product Portfolio</div><div class="tl-desc">3 primary + 6 secondary products. Leading NAR compliance, AI chatbot governance, billing systems, and more across platforms serving 80,000+ professionals.</div><span class="promo-badge">🚀 Promotion 4</span></div>
+      <div class="tl-item"><div class="tl-date">April 2026</div><div class="tl-title">A-CSPO Certified</div><div class="tl-desc">Advanced Certified Scrum Product Owner® earned through Scrum Alliance. Earned AI for Product Owners microcredential the same week.</div><span class="promo-badge" style="background:var(--teal-dim);border-color:rgba(42,184,200,0.3);color:var(--teal);">🎯 Dual Credential</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT DASHBOARD -->
+<section id="impact">
+  <div class="reveal">
+    <div class="section-tag">Impact Dashboard</div>
+    <h2 class="section-title">BY THE<br/>NUMBERS</h2>
+    <p class="section-sub">Receipts, not buzzwords. Real data from real product work.</p>
+  </div>
+  <div class="dash-grid reveal">
+    <div class="dash-card">
+      <div class="dash-num" data-target="4" data-suffix="×">4×</div>
+      <div class="dash-label">Promotions</div>
+      <div class="dash-desc">Four advancements at Stellar MLS in 3 years 7 months — a rapid growth track at Stellar MLS.</div>
+    </div>
+    <div class="dash-card teal">
+      <div class="dash-num" data-target="80" data-suffix="K+">80K+</div>
+      <div class="dash-label">End Users</div>
+      <div class="dash-desc">Real estate professionals across Florida who depend on the platforms I help build and maintain.</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-num" data-target="9" data-suffix="">9</div>
+      <div class="dash-label">Product Portfolio</div>
+      <div class="dash-desc">3 primary products, 6 secondary — covering MLS, billing, compliance, AI, and analytics platforms.</div>
+    </div>
+    <div class="dash-card teal">
+      <div class="dash-num" data-target="10" data-suffix="+">10+</div>
+      <div class="dash-label">Departments Served</div>
+      <div class="dash-desc">Internal AI chatbot platforms supporting 10+ teams across the organization with governance I own.</div>
+    </div>
+  </div>
+  <div class="dash-bottom reveal">
+    <div class="chart-card">
+      <div class="chart-title">▸ Skill Distribution</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Product Ownership</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">95%</div></div>
+        <div class="bar-row"><div class="bar-label">QA / UAT</div><div class="bar-track"><div class="bar-fill" data-pct="92"></div></div><div class="bar-value">92%</div></div>
+        <div class="bar-row"><div class="bar-label">Vendor Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="88"></div></div><div class="bar-value">88%</div></div>
+        <div class="bar-row"><div class="bar-label">Documentation</div><div class="bar-track"><div class="bar-fill" data-pct="96"></div></div><div class="bar-value">96%</div></div>
+        <div class="bar-row"><div class="bar-label">Release Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="90"></div></div><div class="bar-value">90%</div></div>
+        <div class="bar-row"><div class="bar-label">AI Knowledge Ops</div><div class="bar-track"><div class="bar-fill" data-pct="85"></div></div><div class="bar-value">85%</div></div>
+        <div class="bar-row"><div class="bar-label">Stakeholder Comms</div><div class="bar-track"><div class="bar-fill" data-pct="93"></div></div><div class="bar-value">93%</div></div>
+      </div>
+    </div>
+    <div class="promo-tracker">
+      <div class="chart-title">▸ Career Progression</div>
+      <div class="promo-step active"><div class="promo-num">01</div><div class="promo-info"><div class="promo-role">Support Center Technician</div><div class="promo-time">Sep 2022</div></div></div>
+      <div class="promo-step active"><div class="promo-num">02</div><div class="promo-info"><div class="promo-role">Tier 2 Technician</div><div class="promo-time">2023</div></div></div>
+      <div class="promo-step active"><div class="promo-num">03</div><div class="promo-info"><div class="promo-role">Product Specialist</div><div class="promo-time">2023</div></div></div>
+      <div class="promo-step active"><div class="promo-num">04</div><div class="promo-info"><div class="promo-role">Product Owner</div><div class="promo-time">2024 – Present</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="reveal">
+    <div class="section-tag">Credentials</div>
+    <h2 class="section-title">CERTIFIED &<br/>VERIFIED</h2>
+    <p class="section-sub">Every credential backed by real application — and every one independently verifiable. Click "Verify" to confirm authenticity, or "View Certificate" to see the document.</p>
+  </div>
+  <div class="certs-grid reveal">
+
+    <div class="cert-card">
+      <div class="cert-tag">New 2026</div>
+      <img src="badge-acspo.png" alt="A-CSPO Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🏆</div>'"/>
+      <div class="cert-name">Advanced Certified Scrum Product Owner®</div>
+      <div class="cert-org">Scrum Alliance · A-CSPO</div>
+      <div class="cert-date">Issued April 24, 2026 · Active through 2028</div>
+      <div class="cert-actions">
+        <a href="https://bcert.me/sqpyljcil" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-acspo.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card teal-card">
+      <div class="cert-tag">New 2026</div>
+      <img src="badge-aipo.png" alt="AI for Product Owners Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🤖</div>'"/>
+      <div class="cert-name">AI for Product Owners</div>
+      <div class="cert-org">Scrum Alliance · Microcredential</div>
+      <div class="cert-date">Issued April 21, 2026</div>
+      <div class="cert-actions">
+        <a href="https://bcert.me/seloaaeoe" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-aipo.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <img src="badge-cspo.png" alt="CSPO Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>📋</div>'"/>
+      <div class="cert-name">Certified Scrum Product Owner®</div>
+      <div class="cert-org">Scrum Alliance · CSPO</div>
+      <div class="cert-date">Issued October 2, 2024 · Active</div>
+      <div class="cert-actions">
+        <a href="cert-cspo.pdf" target="_blank" class="cert-btn primary">View Certificate ↗</a>
+        <a href="https://www.scrumalliance.org/get-certified" target="_blank" rel="noopener" class="cert-btn">About CSPO</a>
+      </div>
+    </div>
+
+    <div class="cert-card teal-card">
+      <img src="badge-csm.png" alt="CSM Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🔄</div>'"/>
+      <div class="cert-name">Certified ScrumMaster®</div>
+      <div class="cert-org">Scrum Alliance · CSM</div>
+      <div class="cert-date">Issued November 22, 2023 · Active</div>
+      <div class="cert-actions">
+        <a href="cert-csm.pdf" target="_blank" class="cert-btn primary">View Certificate ↗</a>
+        <a href="https://www.scrumalliance.org/get-certified" target="_blank" rel="noopener" class="cert-btn">About CSM</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <img src="badge-comptia.png" alt="CompTIA A+ Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🖥️</div>'"/>
+      <div class="cert-name">CompTIA A+</div>
+      <div class="cert-org">CompTIA · IT Foundations</div>
+      <div class="cert-date">Issued March 16, 2022 · Active through 2028</div>
+      <div class="cert-actions">
+        <a href="https://www.credly.com/badges/ce35ea49-1ba5-46d4-8891-7c0db1d614b2/public_url" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-comptia.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card teal-card">
+      <div class="cert-icon-fallback">🧠</div>
+      <div class="cert-name">AI Product Management</div>
+      <div class="cert-org">Duke University · Coursera</div>
+      <div class="cert-date">Completed November 26, 2023</div>
+      <div class="cert-actions">
+        <a href="https://coursera.org/verify/specialization/EHBRE353JBQS" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-duke-aipm.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <img src="badge-google-it.png" alt="Google IT Support Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🌐</div>'"/>
+      <div class="cert-name">Google IT Support Professional</div>
+      <div class="cert-org">Google · Coursera</div>
+      <div class="cert-date">Completed December 16, 2020</div>
+      <div class="cert-actions">
+        <a href="https://www.credly.com/badges/1c28d5af-7391-461d-92d4-0773a3aafaeb/public_url" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-google-it.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card teal-card">
+      <img src="badge-google-cyber.png" alt="Google Cybersecurity Badge" class="cert-badge-img" onerror="this.outerHTML='<div class=cert-icon-fallback>🔒</div>'"/>
+      <div class="cert-name">Google Cybersecurity Professional</div>
+      <div class="cert-org">Google · Coursera</div>
+      <div class="cert-date">Completed September 11, 2023</div>
+      <div class="cert-actions">
+        <a href="https://www.credly.com/badges/d253873d-ed9c-4acf-8b37-cd86d987a073/public_url" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+        <a href="cert-google-cyber.pdf" target="_blank" class="cert-btn">View PDF</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon-fallback">🎖️</div>
+      <div class="cert-name">Google · CompTIA A+ Dual Credential</div>
+      <div class="cert-org">Credly Verified Badge</div>
+      <div class="cert-date">Recognized Dual Achievement</div>
+      <div class="cert-actions">
+        <a href="https://www.credly.com/badges/fb7c7010-7f48-40bb-8bc4-4dad0b184995/public_url" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+      </div>
+    </div>
+
+    <div class="cert-card teal-card">
+      <div class="cert-icon-fallback">📊</div>
+      <div class="cert-name">Google Analytics Individual Qualification</div>
+      <div class="cert-org">Google · Skillshop</div>
+      <div class="cert-date">Certified</div>
+      <div class="cert-actions">
+        <a href="https://skillshop.credential.net/34febc23-2817-40bf-9d21-39fc77e21730#acc.41oz9mPu" target="_blank" rel="noopener" class="cert-btn primary">Verify ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-tag">Capabilities</div>
+    <h2 class="section-title">WHAT I<br/>BRING</h2>
+    <p class="section-sub">A rare blend of technical depth, product thinking, and communication that gets things shipped.</p>
+  </div>
+  <div class="skills-layout">
+    <div class="reveal">
+      <div class="skill-category">
+        <div class="skill-cat-label">Product Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Backlog Ownership</span><span class="skill-tag">Requirements Gathering</span><span class="skill-tag">QA / UAT</span><span class="skill-tag">Release Management</span><span class="skill-tag">Vendor Management</span><span class="skill-tag">Product Analytics</span><span class="skill-tag">Change Management</span><span class="skill-tag">Stakeholder Alignment</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">Technical / Domain</div>
+        <div class="skill-tags">
+          <span class="skill-tag">API & Data Coordination</span><span class="skill-tag">RESO Data Standards</span><span class="skill-tag">Field Mapping</span><span class="skill-tag">AI Knowledge Ops</span><span class="skill-tag">Billing Systems</span><span class="skill-tag">Training Enablement</span><span class="skill-tag">MLS Platforms</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span><span class="skill-tag">Monday.com</span><span class="skill-tag">Zendesk</span><span class="skill-tag">Salesforce</span><span class="skill-tag">StaxBill</span><span class="skill-tag">Matrix</span><span class="skill-tag">Snagit</span><span class="skill-tag">MS Dynamics CRM</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="feature-card"><div class="feature-num">01</div><div class="feature-title">I own value, not output</div><div class="feature-desc">Features shipped mean nothing if they don't solve the right problem. Every backlog decision I make runs through: does this actually help the user? Does it serve the business?</div></div>
+      <div class="feature-card"><div class="feature-num">02</div><div class="feature-title">Facilitation is a superpower</div><div class="feature-desc">I know how to run a room — drawing out real requirements, managing competing stakeholder priorities, and turning messy discussions into clear decisions and actionable stories.</div></div>
+      <div class="feature-card"><div class="feature-num">03</div><div class="feature-title">Technical enough to be dangerous</div><div class="feature-desc">API coordination, data standards, field mapping, AI governance — I can speak the language of devs without losing the thread of business value. That bridge matters more than most people realize.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION BUILDER -->
+<section id="vision">
+  <div class="reveal">
+    <div class="section-tag">Interactive Tool</div>
+    <h2 class="section-title">PRODUCT VISION<br/>BUILDER</h2>
+    <p class="section-sub">Try it yourself — fill in the blanks using Geoffrey Moore's classic vision template. This is the same framework I use at Stellar MLS to align stakeholders.</p>
+  </div>
+  <div class="vision-wrapper reveal">
+    <div class="vision-template">
+      <strong style="color:var(--orange);">FOR</strong> <span class="fill" id="t-for">[target customers]</span>
+      <strong style="color:var(--orange);">WHO</strong> <span class="fill" id="t-who">[need or opportunity]</span>
+      <strong style="color:var(--orange);">THE</strong> <span class="fill" id="t-the">[product name]</span>
+      <strong style="color:var(--orange);">IS A</strong> <span class="fill" id="t-isa">[product category]</span>
+      <strong style="color:var(--orange);">THAT</strong> <span class="fill" id="t-that">[key benefit / reason to use]</span>
+      <strong style="color:var(--orange);">UNLIKE</strong> <span class="fill" id="t-unlike">[competition]</span>
+      <strong style="color:var(--orange);">OUR PRODUCT</strong> <span class="fill" id="t-our">[primary differentiator]</span>.
+    </div>
+    <div class="vision-grid">
+      <div class="vision-input"><label>FOR — target customers</label><input id="i-for" placeholder="e.g. car owners and enthusiasts" /></div>
+      <div class="vision-input"><label>WHO — need / opportunity</label><input id="i-who" placeholder="e.g. want to take control of their mods" /></div>
+      <div class="vision-input"><label>THE — product name</label><input id="i-the" placeholder="e.g. GearUp App" /></div>
+      <div class="vision-input"><label>IS A — product category</label><input id="i-isa" placeholder="e.g. mobile parts comparison app" /></div>
+      <div class="vision-input"><label>THAT — key benefit</label><input id="i-that" placeholder="e.g. lets buyers compare and visualize parts" /></div>
+      <div class="vision-input"><label>UNLIKE — competition</label><input id="i-unlike" placeholder="e.g. traditional auto parts stores" /></div>
+      <div class="vision-input" style="grid-column:1/-1;"><label>OUR PRODUCT — differentiator</label><input id="i-our" placeholder="e.g. uses AR to visualize parts on your actual car" /></div>
+    </div>
+    <div class="vision-actions">
+      <button class="vision-btn solid" id="visionGen">Generate Vision Statement</button>
+      <button class="vision-btn" id="visionCopy">Copy to Clipboard</button>
+      <button class="vision-btn" id="visionExample">Load GearUp Example</button>
+      <button class="vision-btn" id="visionClear">✕ Clear All</button>
+    </div>
+    <div class="vision-output" id="visionOutput"></div>
+  </div>
+</section>
+
+<!-- BACKLOG DEMO -->
+<section id="demo">
+  <div class="reveal">
+    <div class="section-tag">Live Demo</div>
+    <h2 class="section-title">THINK LIKE<br/>A PO</h2>
+    <p class="section-sub">A real working backlog. Drag cards between columns — this is how I think about product work every day.</p>
+  </div>
+  <div class="demo-wrapper reveal">
+    <div class="demo-toolbar"><div class="demo-dot" style="background:#ff5f57"></div><div class="demo-dot" style="background:#ffbd2e"></div><div class="demo-dot" style="background:#28c840"></div><div class="demo-title-bar">GearUp App — Sprint 4 Backlog</div></div>
+    <div class="kanban" id="kanban">
+      <div class="kanban-col" data-col="backlog">
+        <div class="col-header" style="color:var(--muted)">Backlog <span class="col-count" id="count-backlog">3</span></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-research">Research</span></div><div class="card-title">User interviews — why do buyers abandon the AR view?</div><div class="card-points"><span>Discovery</span><span class="points-badge">3 pts</span></div></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-debt">Tech Debt</span></div><div class="card-title">Refactor VIN lookup to reduce latency under 200ms</div><div class="card-points"><span>Backend</span><span class="points-badge">5 pts</span></div></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">Add saved builds to My Garage with share link</div><div class="card-points"><span>Frontend</span><span class="points-badge">8 pts</span></div></div>
+      </div>
+      <div class="kanban-col" data-col="ready">
+        <div class="col-header" style="color:var(--teal)">Ready <span class="col-count" id="count-ready">2</span></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">Cross-retailer price comparison — top 3 results</div><div class="card-points"><span>Core</span><span class="points-badge">5 pts</span></div></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-bug">Bug</span></div><div class="card-title">AR overlay misaligns on wide-body kits — fix hitbox</div><div class="card-points"><span>iOS / Android</span><span class="points-badge">3 pts</span></div></div>
+      </div>
+      <div class="kanban-col" data-col="progress">
+        <div class="col-header" style="color:var(--orange)">In Progress <span class="col-count" id="count-progress">2</span></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">Community feed — post your build with tagged parts</div><div class="card-points"><span>Social</span><span class="points-badge">13 pts</span></div></div>
+        <div class="kanban-card" draggable="true"><div><span class="card-tag tag-debt">Tech Debt</span></div><div class="card-title">Allocate 20% sprint capacity to debt reduction</div><div class="card-points"><span>All teams</span><span class="points-badge">Ongoing</span></div></div>
+      </div>
+      <div class="kanban-col" data-col="done">
+        <div class="col-header" style="color:#4ade80">Done <span class="col-count" id="count-done">1</span></div>
+        <div class="kanban-card" draggable="true" style="opacity:0.6"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker — guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
+      </div>
+    </div>
+    <div class="demo-note">✦ Drag cards between columns. This backlog is from a real product concept built during A-CSPO training.</div>
+  </div>
+</section>
+
+<!-- GEARUP SHOWCASE -->
+<section id="gearup">
+  <div class="reveal">
+    <div class="section-tag">Case Study · Live Prototype</div>
+    <h2 class="section-title">GEARUP APP<br/>SHOWCASE</h2>
+    <p class="section-sub">A real product I led during my A-CSPO training — taken from sticky-note workflow to fully interactive prototype, all under serious time pressure.</p>
+  </div>
+  <div class="gearup-layout reveal">
+    <div class="gearup-info">
+      <p>During my Advanced Certified Scrum Product Owner course, our team was given a <strong>20-minute time limit</strong> to map out a product workflow on sticky notes. That was the assignment. Most teams stopped there.</p>
+      <p>I went further. After class, I took our team's vision and <strong>built out a complete interactive prototype</strong> — branded UI, multiple screens, working navigation, product browsing, AR wheel preview, VIN scanning, and a live community feed. The trainer, Richard Cheng, called it out specifically: <em>"I loved your product prototype!"</em></p>
+      <h3>The Product</h3>
+      <p>GearUp is a mobile app for car owners and enthusiasts to compare and shop modifications, with AR visualization, VIN-based fitment, and cross-retailer price comparison.</p>
+      <h3>My Role</h3>
+      <p>Product Owner — defined the vision using Moore's template, built the backlog, prioritized features against business goals, and personally drove the prototype to a working demo.</p>
+      <div class="gearup-features">
+        <span class="gu-tag">VIN Fitment</span><span class="gu-tag">AR Visualization</span><span class="gu-tag">Price Compare</span><span class="gu-tag">My Garage</span><span class="gu-tag">Community Feed</span><span class="gu-tag">Affiliate Model</span>
+      </div>
+      <p class="gearup-tryit">↓ Try it live — fully interactive prototype</p>
+    </div>
+    <div class="prototype-stage">
+      <div class="prototype-frame">
+        <iframe
+          src="gearup-prototype.html"
+          title="GearUp Interactive Prototype"
+          loading="lazy"
+          class="prototype-iframe"
+        ></iframe>
+      </div>
+      <a href="gearup-prototype.html" target="_blank" rel="noopener" class="prototype-fullscreen">↗ Open prototype full-screen</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="reveal">
+    <div class="section-tag">Selected Work</div>
+    <h2 class="section-title">PRODUCTS<br/>I'VE OWNED</h2>
+    <p class="section-sub">A sample of the platforms, initiatives, and systems I've driven at Stellar MLS.</p>
+  </div>
+  <div class="work-grid reveal">
+    <div class="work-card"><div class="work-card-accent"></div><div class="work-platform">Stellar MLS · Billing</div><div class="work-title">StaxBill Payment Gateway</div><div class="work-desc">Full Product Owner for StaxBill and its payment gateway. Coordinated annual billing enhancements with accounting, marketing, vendors, and executive leadership through sandbox-to-production release cycles.</div><div class="work-tags"><span class="work-tag">Billing</span><span class="work-tag">Vendor Mgmt</span><span class="work-tag">Release Mgmt</span></div></div>
+    <div class="work-card teal"><div class="work-card-accent"></div><div class="work-platform">Stellar MLS · Compliance</div><div class="work-title">NAR Settlement Compliance Initiative</div><div class="work-desc">Led an enterprise-wide compliance rollout — driving audit, documentation, rules updates, training materials, and platform changes across forms, fields, website content, and remarks restrictions.</div><div class="work-tags"><span class="work-tag">Compliance</span><span class="work-tag">Documentation</span><span class="work-tag">Training</span></div></div>
+    <div class="work-card teal"><div class="work-card-accent"></div><div class="work-platform">Stellar MLS · Data</div><div class="work-title">RESO Data Dictionary & API Coordination</div><div class="work-desc">Built Matrix field-mapping and metadata documentation, directed API data-pull coordination, and helped develop the RESO Data Dictionary while participating in industry workgroup and duplication subgroup meetings.</div><div class="work-tags"><span class="work-tag">API</span><span class="work-tag">Data Standards</span><span class="work-tag">RESO</span></div></div>
+    <div class="work-card"><div class="work-card-accent"></div><div class="work-platform">Stellar MLS · AI Enablement</div><div class="work-title">Internal AI Chatbot Governance</div><div class="work-desc">Own governance and content quality for internal AI platforms supporting 10+ departments. Maintain source documentation, coordinate feedback workflows in Monday.com, and continuously improve answer accuracy.</div><div class="work-tags"><span class="work-tag">AI</span><span class="work-tag">Governance</span><span class="work-tag">Knowledge Ops</span></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="section-tag">Praise</div>
+    <h2 class="section-title">WHAT PEOPLE<br/>ARE SAYING</h2>
+    <p class="section-sub">Real words from real people I've worked with — colleagues, executives, trainers, and clients across Stellar MLS and beyond.</p>
+  </div>
+  <div class="testi-wrapper reveal">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card active">
+        <div class="testi-quote">Congratulations Lance! Thanks for all your great work and great questions in the class. And I loved your product prototype! I hope we get to work together again soon.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RC</div>
+          <div>
+            <div class="testi-name">Richard K. Cheng</div>
+            <div class="testi-role">Certified Scrum Trainer® · Agility Trainer, Coach, Consultant, Founder</div>
+            <div class="testi-meta">A-CSPO Course Trainer · April 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">Lance approaches every task with a professional attitude, ensuring that the output is accurate and complete. He is able to quickly gain understanding of complex technical information and tailor communication to both technical and non-technical stakeholders to ensure understanding. Lance also maintains a high standard of quality in his work, resulting in successful product launches with few to no issues. It's been a pleasure to work with Lance in his roles as QA and Product Owner.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">BD</div>
+          <div>
+            <div class="testi-name">Bev Dunfield</div>
+            <div class="testi-role">Stellar MLS</div>
+            <div class="testi-meta">Worked with Lance · April 14, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I've had the opportunity to work alongside Lance on a couple of projects, and he is a dependable teammate! Lance brings a great mix of problem solving, organization, and positivity to everything they do. Whether it was brainstorming FAQs, problem-solving under tight deadlines, or jumping in to help the team, Lance always goes above and beyond.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">KB</div>
+          <div>
+            <div class="testi-name">Karmen Barrios</div>
+            <div class="testi-role">Marketing Coordinator at Stellar MLS</div>
+            <div class="testi-meta">Worked with Lance · October 5, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I've had the pleasure of working alongside Lance in the PMG group at Stellar MLS, and I can confidently say he's one of the most detail-oriented and driven professionals I've encountered.<br/><br/>Lance is known for identifying efficient technical solutions and for his relentless commitment to problem-solving. His ability to dig deep into an issue, ask the right questions, and persist until he lands on a solution is truly impressive. He brings a methodical mindset to his work, balanced by a genuine enthusiasm for learning and growth.<br/><br/>Having co-led a successful Matrix enhancement project together, I saw firsthand how Lance's thoroughness and collaborative spirit helped bring it across the finish line. His dedication and curiosity elevate every team he's a part of.<br/><br/>He is truly an asset to our team and any organization would be lucky to have him!</div>
+        <div class="testi-author">
+          <div class="testi-avatar">DC</div>
+          <div>
+            <div class="testi-name">Daphnee Casimir</div>
+            <div class="testi-role">Product Owner | Product Specialist II · Championing User Experience, Agile Strategy & Product Growth</div>
+            <div class="testi-meta">Reported directly to Lance · July 23, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I had the pleasure of working with Lance Wheeler during my time at Stellar MLS and can confidently say he is a driven and adaptable professional. Lance brings a rare blend of creativity, strategic thinking, and technical skill to every project.<br/><br/>He communicates clearly, collaborates seamlessly, and brings enthusiasm and positive energy that inspires those around him.<br/><br/>Any team would be fortunate to have Lance on board. I highly recommend him.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">JL</div>
+          <div>
+            <div class="testi-name">Jillian Lugo</div>
+            <div class="testi-role">Social Media Strategist & Communicator</div>
+            <div class="testi-meta">Worked with Lance · June 10, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I have the pleasure of working closely on a lot of projects here at Stellar with Lance. Working with Lance is easy & he is a huge team player. Contributes a lot to the team with positivity, always seeking resolutions no matter the issue, and we love having him with us.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">JB</div>
+          <div>
+            <div class="testi-name">Jorge Becaria</div>
+            <div class="testi-role">Certified SCRUM Master & Product Owner (CSM & CSPO) · 4+ years in MLS Product Management, data governance, and Agile delivery</div>
+            <div class="testi-meta">Worked on the same team · April 10, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I had the opportunity to work with Lance on a series of projects for a period of time spanning more than a year. It was a productive and enjoyable working relationship. Lance was helpful, competent, diligent and always motivated to perform at a high level. He brought his characteristics to the team, which was a benefit for all involved.<br/><br/>Lance would be a terrific team member and leader in whatever path and discipline he pursues.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RS</div>
+          <div>
+            <div class="testi-name">Rique Santiestevan</div>
+            <div class="testi-role">Former Senior Client Delivery Project Manager for Cotality · Senior Business Analyst, Technical Implementation Manager & CURE Team Lead for Bright MLS</div>
+            <div class="testi-meta">Lance was Rique's client · April 9, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">Lance Wheeler is a highly innovative and forward-thinking individual. I have had the privilege of collaborating with Lance for several years, spanning two departments that I oversaw as an Executive. Lance's exceptional customer service skills and outstanding performance in our support department were evident from the outset.<br/><br/>Lance's extensive background in Information Technology, coupled with his knowledge of the real estate industry, sets him apart. His unwavering pursuit of novel and innovative products and services is unparalleled. After a few months in customer support, it became evident that Lance would excel in the product management group as a product owner and contributor to numerous company projects.<br/><br/>Beyond his core responsibilities, Lance has taken on additional tasks to integrate Artificial Intelligence into the company's roadmap for both staff and customers. His insatiable thirst for knowledge is evident through his certifications and ongoing education. Lance is highly motivated, a self-starter, respectful, insightful, and always willing to contribute thoughts and ideas relevant to broader discussions beyond his current role.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">EM</div>
+          <div>
+            <div class="testi-name">Eben Moran</div>
+            <div class="testi-role">Operations Executive · Driving Innovation & Operational Excellence in MLS Services & Real Estate Technology</div>
+            <div class="testi-meta">Senior to Lance · March 28, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I had the pleasure of working alongside Lance on numerous projects and initiatives. I found him to be always prepared for the task at hand, knowledgeable, and open minded. His communication and conflict resolution skills are spot on, combining these with his inquisitive nature gives you a person who can at times see what could be, not what is. The leadership I have seen already in this young man has barely been tapped and I expect great things to come in the future for and from Lance.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SM</div>
+          <div>
+            <div class="testi-name">Steven Mayhue</div>
+            <div class="testi-role">IT Professional · CMLX2, RED-B</div>
+            <div class="testi-meta">Worked with Lance · March 28, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I have had the pleasure of working with Lance on a few projects at Stellar MLS and I can tell you that he is a dedicated and skilled professional who brings expertise, innovation, and a collaborative spirit to every one of those projects. He tackles challenges head-on, thinks strategically, and continuously expands his knowledge by studying and earning new certifications. Beyond his technical skills, Lance is always willing to share insights, support his colleagues, and go the extra mile to ensure success. His strong work ethic and commitment to growth make him an asset to any team.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AQ</div>
+          <div>
+            <div class="testi-name">Alvaro Quesada</div>
+            <div class="testi-role">Developer + Problem Solver</div>
+            <div class="testi-meta">Worked with Lance · March 19, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">I'm delighted to recommend Lance, whose technical expertise and follow-through have consistently impressed our entire team. His dedication to problem resolution and swift growth through our company ranks speak volumes about his abilities.<br/><br/>Lance's can-do attitude, reliability, and collaborative spirit make him an essential asset to our organization. He tackles complex challenges with confidence and delivers exceptional results every time.<br/><br/>Any team would be fortunate to have Lance — a true professional who combines technical savvy with outstanding teamwork to drive meaningful results.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">LD</div>
+          <div>
+            <div class="testi-name">Laura Daughety</div>
+            <div class="testi-role">Senior Relationship Manager · Stellar MLS · Focused on growth, opportunity, and "Making the Market Work"</div>
+            <div class="testi-meta">Worked on the same team · March 19, 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-nav">
+      <div class="testi-arrows">
+        <button class="testi-arrow" id="testiPrev" aria-label="Previous">‹</button>
+        <button class="testi-arrow" id="testiNext" aria-label="Next">›</button>
+      </div>
+      <div class="testi-counter"><strong id="testiNum">1</strong> / <span id="testiTotal">11</span></div>
+      <button class="testi-pause" id="testiPause">⏸ Pause</button>
+    </div>
+
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-tag">Let's Connect</div>
+    <h2 class="section-title">LET'S<br/>TALK.</h2>
+    <p class="section-sub" style="margin:0 auto 0; text-align:center;">I'm always open to conversations about product, agile, real estate tech, or what's next. Reach out on LinkedIn, download my resume, or drop a message.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" rel="noopener" class="contact-link primary">LinkedIn Profile</a>
+      <a href="Lance_Wheeler_Resume_2026.pdf" download class="contact-link">↓ Download Resume</a>
+      <a href="https://bcert.me/sqpyljcil" target="_blank" rel="noopener" class="contact-link">Verify A-CSPO</a>
+      <a href="mailto:Lancebusiness044@gmail.com?subject=Hello%20Lance%20%E2%80%94%20From%20your%20portfolio" class="contact-link" id="emailLink">✉ Email Me</a>
+      <button type="button" class="contact-link" id="copyEmailBtn" aria-label="Copy email address">📋 Copy Email</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">LW<span>.</span></div>
+  <div class="footer-copy">© 2026 Lance Wheeler · Built different.</div>
+</footer>
+
+<!-- ACCESSIBILITY MENU -->
+<button class="a11y-launcher" id="a11yLauncher" aria-label="Open accessibility menu" title="Accessibility options">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+    <circle cx="16" cy="6" r="3"/>
+    <path d="M22 11h-12c-0.6 0-1 0.4-1 1s0.4 1 1 1h3v15c0 0.6 0.4 1 1 1s1-0.4 1-1v-7h2v7c0 0.6 0.4 1 1 1s1-0.4 1-1v-15h3c0.6 0 1-0.4 1-1s-0.4-1-1-1z"/>
+  </svg>
+</button>
+
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings">
+  <div class="a11y-header">
+    <div class="a11y-title">♿ Accessibility</div>
+    <button class="a11y-close" id="a11yClose" aria-label="Close">×</button>
+  </div>
+  <div class="a11y-body">
+    <div class="a11y-section">
+      <div class="a11y-label">Text Size</div>
+      <div class="a11y-row">
+        <span style="font-size:13px;color:var(--text-soft);">Adjust font size</span>
+        <button class="a11y-size-btn" id="a11ySizeDown" aria-label="Decrease text size">A−</button>
+        <span class="a11y-current" id="a11ySizeVal">100%</span>
+        <button class="a11y-size-btn" id="a11ySizeUp" aria-label="Increase text size">A+</button>
+      </div>
+    </div>
+
+    <div class="a11y-section">
+      <div class="a11y-label">Visual Adjustments</div>
+      <button class="a11y-toggle" data-a11y="contrast">
+        <span>🎨 High Contrast</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+      <button class="a11y-toggle" data-a11y="links">
+        <span>🔗 Underline Links</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+      <button class="a11y-toggle" data-a11y="focus">
+        <span>🎯 Visible Focus Indicators</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+      <button class="a11y-toggle" data-a11y="dyslexia">
+        <span>📖 Readable Font</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+    </div>
+
+    <div class="a11y-section">
+      <div class="a11y-label">Motion & Cursor</div>
+      <button class="a11y-toggle" data-a11y="motion">
+        <span>⏸ Reduce Motion</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+      <button class="a11y-toggle" data-a11y="cursor">
+        <span>🖱 Standard Cursor</span>
+        <span class="a11y-toggle-state">Off</span>
+      </button>
+    </div>
+
+    <button class="a11y-reset" id="a11yReset">↺ Reset All Settings</button>
+  </div>
+  <div class="a11y-statement">
+    Settings are saved for your next visit. This site aims to meet WCAG 2.1 AA standards. Issues? Email Lance directly.
+  </div>
+</div>
+
+<!-- AI CHAT WIDGET -->
+<button class="chat-launcher" id="chatLauncher" aria-label="Chat with AI Lance">
+  💬
+  <span class="badge">AI</span>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <button class="chat-close" id="chatClose">×</button>
+    <div class="chat-header-title">💬 Ask About Lance</div>
+    <div class="chat-header-status"><span class="status-dot"></span> Portfolio Assistant · Based on Lance's resume and site</div>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">👋 Hi! I'm a portfolio assistant that can answer questions about Lance's career, certifications, and projects at Stellar MLS based on his public resume and this site.</div>
+  </div>
+  <div class="chat-suggestions" id="chatSuggestions">
+    <button class="chat-chip" data-q="Tell me about yourself">About Lance</button>
+    <button class="chat-chip" data-q="What certifications does Lance have?">Certifications</button>
+    <button class="chat-chip" data-q="What's Stellar MLS?">Stellar MLS</button>
+    <button class="chat-chip" data-q="Tell me about the NAR compliance project">NAR project</button>
+    <button class="chat-chip" data-q="What's the GearUp App?">GearUp App</button>
+    <button class="chat-chip" data-q="What are Lance's strengths?">Skills & strengths</button>
+    <button class="chat-chip" data-q="What's Lance's career progression?">Career path</button>
+    <button class="chat-chip" data-q="How can I contact Lance?">Contact</button>
+  </div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chatInput" placeholder="Ask about Lance's work, certs, or projects..." />
+    <button class="chat-send" id="chatSend">➤</button>
+  </div>
+  <div class="chat-disclaimer">Answers are based on public portfolio information. For specifics, verify via resume, LinkedIn, or certificates.</div>
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
+  animateRing();
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('a, button, input, .skill-tag, .kanban-card, .testi-dot, .phone-dot, .chat-chip')) document.body.classList.add('hover-link');
+    else document.body.classList.remove('hover-link');
+  });
+
+  // Theme toggle
+  const themeBtn = document.getElementById('themeToggle');
+  const moonIcon = document.getElementById('moonIcon');
+  const sunIcon = document.getElementById('sunIcon');
+  const savedTheme = (typeof Storage !== 'undefined' && localStorage.getItem) ? null : null;
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    if (t === 'light') { moonIcon.style.display = 'none'; sunIcon.style.display = 'block'; }
+    else { moonIcon.style.display = 'block'; sunIcon.style.display = 'none'; }
+  }
+  themeBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    setTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal observer
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Counter animation — HTML has real value for SEO/no-JS, JS resets to 0 then animates up
+  function animateCounters(scope) {
+    scope.querySelectorAll('[data-target]').forEach(el => {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      el.textContent = '0' + suffix;
+      const duration = 1600;
+      const t0 = performance.now();
+      function step(now) {
+        const p = Math.min((now - t0) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = Math.floor(eased * target);
+        el.textContent = (suffix === 'K+') ? (v >= target ? target + 'K+' : v + 'K+') : v + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) animateCounters(e.target); });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.hero-stats, .dash-grid').forEach(el => counterObs.observe(el));
+
+  // Bar chart animation
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.pct + '%'; }, i * 80);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.bar-chart').forEach(el => barObs.observe(el));
+
+  // Kanban drag & drop
+  let draggedCard = null;
+  function updateCounts() {
+    document.querySelectorAll('.kanban-col').forEach(col => {
+      const el = document.getElementById('count-' + col.dataset.col);
+      if (el) el.textContent = col.querySelectorAll('.kanban-card').length;
+    });
+  }
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    card.addEventListener('dragstart', () => { draggedCard = card; setTimeout(() => card.classList.add('dragging'), 0); });
+    card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedCard = null; updateCounts(); });
+  });
+  document.querySelectorAll('.kanban-col').forEach(col => {
+    col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('drag-over'); });
+    col.addEventListener('dragleave', () => col.classList.remove('drag-over'));
+    col.addEventListener('drop', e => { e.preventDefault(); col.classList.remove('drag-over'); if (draggedCard) { col.appendChild(draggedCard); updateCounts(); } });
+  });
+
+  // Vision Builder
+  const visionFields = ['for','who','the','isa','that','unlike','our'];
+  const visionPlaceholders = {
+    for: '[target customers]', who: '[need or opportunity]', the: '[product name]',
+    isa: '[product category]', that: '[key benefit / reason to use]', unlike: '[competition]', our: '[primary differentiator]'
+  };
+  function updateVisionTemplate() {
+    visionFields.forEach(f => {
+      const i = document.getElementById('i-'+f);
+      const t = document.getElementById('t-'+f);
+      t.textContent = i.value.trim() || visionPlaceholders[f];
+    });
+  }
+  visionFields.forEach(f => document.getElementById('i-'+f).addEventListener('input', updateVisionTemplate));
+
+  document.getElementById('visionGen').addEventListener('click', () => {
+    const v = {};
+    visionFields.forEach(f => v[f] = document.getElementById('i-'+f).value.trim());
+    if (!v.for || !v.who || !v.the) { alert('Please fill in at least FOR, WHO, and THE fields.'); return; }
+    const out = `<strong>FOR</strong> ${v.for||'[target]'} <strong>WHO</strong> ${v.who||'[need]'} <strong>THE</strong> ${v.the||'[name]'} <strong>IS A</strong> ${v.isa||'[category]'} <strong>THAT</strong> ${v.that||'[benefit]'} <strong>UNLIKE</strong> ${v.unlike||'[competition]'} <strong>OUR PRODUCT</strong> ${v.our||'[differentiator]'}.`;
+    const o = document.getElementById('visionOutput');
+    o.innerHTML = out;
+    o.classList.add('visible');
+    o.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  document.getElementById('visionCopy').addEventListener('click', () => {
+    const o = document.getElementById('visionOutput');
+    const text = o.innerText || o.textContent;
+    if (!text) { alert('Generate a vision statement first!'); return; }
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('visionCopy');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    });
+  });
+
+  document.getElementById('visionExample').addEventListener('click', () => {
+    const ex = {
+      for: 'car owners and enthusiasts',
+      who: 'want to take control of their vehicle modifications',
+      the: 'GearUp App',
+      isa: 'mobile parts comparison and shopping app',
+      that: 'lets buyers compare and visualize parts in AR before they buy',
+      unlike: 'traditional auto parts stores',
+      our: 'uses VIN-matched fitment and AR to visualize parts on your actual car'
+    };
+    visionFields.forEach(f => document.getElementById('i-'+f).value = ex[f]);
+    updateVisionTemplate();
+  });
+
+  document.getElementById('visionClear').addEventListener('click', () => {
+    visionFields.forEach(f => document.getElementById('i-'+f).value = '');
+    updateVisionTemplate();
+    const o = document.getElementById('visionOutput');
+    o.classList.remove('visible');
+    o.innerHTML = '';
+    document.getElementById('i-for').focus();
+  });
+
+  // Testimonials carousel — full controls
+  const testiCards = document.querySelectorAll('.testi-card');
+  const testiDotsContainer = document.getElementById('testiDots');
+  const testiPrev = document.getElementById('testiPrev');
+  const testiNext = document.getElementById('testiNext');
+  const testiPause = document.getElementById('testiPause');
+  const testiNum = document.getElementById('testiNum');
+  const testiTotal = document.getElementById('testiTotal');
+  const testiWrapper = document.querySelector('.testi-wrapper');
+  let testiIdx = 0;
+  let testiPaused = false;
+  let testiInterval;
+
+  // Build dots dynamically
+  if (testiDotsContainer && testiCards.length) {
+    testiCards.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      d.dataset.i = i;
+      d.addEventListener('click', () => showTesti(i));
+      testiDotsContainer.appendChild(d);
+    });
+    if (testiTotal) testiTotal.textContent = testiCards.length;
+  }
+
+  function showTesti(i) {
+    if (i < 0) i = testiCards.length - 1;
+    if (i >= testiCards.length) i = 0;
+    testiCards.forEach((c, idx) => {
+      c.classList.toggle('active', idx === i);
+      if (idx === i) c.scrollTop = 0;
+    });
+    document.querySelectorAll('.testi-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+    testiIdx = i;
+    if (testiNum) testiNum.textContent = i + 1;
+  }
+
+  function startAuto() {
+    clearInterval(testiInterval);
+    testiInterval = setInterval(() => { if (!testiPaused) showTesti(testiIdx + 1); }, 9000);
+  }
+
+  if (testiPrev) testiPrev.addEventListener('click', () => { showTesti(testiIdx - 1); startAuto(); });
+  if (testiNext) testiNext.addEventListener('click', () => { showTesti(testiIdx + 1); startAuto(); });
+  if (testiPause) testiPause.addEventListener('click', () => {
+    testiPaused = !testiPaused;
+    testiPause.classList.toggle('paused', testiPaused);
+    testiPause.innerHTML = testiPaused ? '▶ Resume' : '⏸ Pause';
+  });
+  // Hover to pause
+  if (testiWrapper) {
+    testiWrapper.addEventListener('mouseenter', () => { testiPaused = true; });
+    testiWrapper.addEventListener('mouseleave', () => { if (testiPause && !testiPause.classList.contains('paused')) testiPaused = false; });
+  }
+  // Keyboard arrows when section is in view
+  document.addEventListener('keydown', e => {
+    if (!testiWrapper) return;
+    const rect = testiWrapper.getBoundingClientRect();
+    const visible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!visible) return;
+    if (e.key === 'ArrowLeft') { showTesti(testiIdx - 1); startAuto(); }
+    if (e.key === 'ArrowRight') { showTesti(testiIdx + 1); startAuto(); }
+  });
+  startAuto();
+
+  // GearUp prototype is now embedded as iframe — no JS needed here
+
+  // ========================================
+  // AI CHAT — "Ask Lance"
+  // ========================================
+  const chatLauncher = document.getElementById('chatLauncher');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatClose = document.getElementById('chatClose');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatSuggestions = document.getElementById('chatSuggestions');
+
+  chatLauncher.addEventListener('click', () => { chatWindow.classList.add('open'); chatInput.focus(); });
+  chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+  // Lance context — feeds into AI prompt
+  const LANCE_CONTEXT = `You are an AI assistant representing Lance Wheeler, a Product Owner at Stellar MLS. You speak in first-person AS Lance — friendly, confident, professional, but down-to-earth. Keep responses concise (2-4 sentences usually). Never make up information not in this profile.
+
+ABOUT LANCE:
+- Product Owner at Stellar MLS in Altamonte Springs, FL
+- Based in Florida, serves 80,000+ real estate professionals
+- Promoted 4 times in 3+ years (Sep 2022–Present): Support Center Technician → Tier 2 → Product Specialist → Product Owner
+- Manages 9-product portfolio: 3 primary, 6 secondary
+- Previous role: Lead IT Specialist at Elite Realty Inc. (Feb 2017–Mar 2022)
+- Education: Lake Brantley High School diploma
+
+CERTIFICATIONS (2026):
+- Advanced Certified Scrum Product Owner (A-CSPO) — earned April 24, 2026, expires April 2028
+- AI for Product Owners Microcredential — earned April 21, 2026
+- Certified Scrum Product Owner (CSPO)
+- Certified ScrumMaster (CSM)
+- CompTIA A+
+- Duke University AI Project/Product Management Certificate
+- Google IT Support Professional Certificate
+- Google Analytics Individual Qualification
+
+KEY WORK AT STELLAR MLS:
+- StaxBill payment gateway: Full PO, coordinates annual billing enhancements with accounting, marketing, vendors, executive leadership
+- NAR settlement compliance initiative: Led enterprise-wide rollout — audit, documentation, rules updates, training
+- RESO Data Dictionary & API coordination: Built Matrix field-mapping, participated in RESO workgroups
+- Internal AI chatbot governance: Owns content quality for 10+ departments
+- Onboarded 10 technicians, often up to 3 at a time
+- Platforms: MLS Touch, ShowingTime, Matrix, StaxBill, Calabra Ad Builder, RealReports, TransactionDesk, CubiCasa
+
+GEARUP APP (A-CSPO project):
+- Mobile app for car owners to compare/shop modifications
+- Features: VIN-based fitment, AR visualization, cross-retailer price comparison, My Garage, community feed
+- Affiliate revenue model
+- During class we had a 20-minute time limit to map the workflow on sticky notes. Lance went above and beyond, building a fully interactive working prototype with branded UI and a live hosted demo. The trainer Richard Cheng specifically praised it.
+
+PHILOSOPHY:
+- Owns value, not output
+- Facilitation is a superpower
+- Technical enough to be dangerous
+
+TOOLS: Jira, Monday.com, Zendesk, Salesforce, StaxBill, Matrix, Snagit, MS Dynamics CRM, Excel, PowerPoint, Slack, Teams, Adobe InDesign
+
+CONTACT: LinkedIn https://www.linkedin.com/in/lance-w-a903661aa, email Lancebusiness044@gmail.com
+
+When answering: Stay in character. If asked something not in this profile, say "That's not something I've shared publicly — best to message me on LinkedIn for a real conversation about it." Be helpful, be human.`;
+
+  // Knowledge base for offline fallback (in case API fails)
+  const FAQ = [
+    // === PRIVACY REFUSALS (highest priority — match these FIRST) ===
+    { keywords: ['social security','ssn','credit card','passport','license number','driver\'s license','drivers license'], answer: "I can't share personal identifiers like that — and you should be skeptical of anyone (or anything) who would. If you have a legitimate business reason to need that info, reach out to me directly on LinkedIn." },
+    { keywords: ['phone number','cell number','your number','my number'], answer: "I keep my phone number private. Best ways to reach me: LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com)." },
+    { keywords: ['home address','where do you live exactly','where exactly','street address','your address','what address'], answer: "I keep my home address private — but I work at Stellar MLS in Altamonte Springs, Florida. For professional inquiries, reach out on LinkedIn." },
+    { keywords: ['religion','religious','what faith','what church','christian','muslim','jewish','hindu','buddhist','atheist'], answer: "I keep religious topics off my professional portfolio. Happy to chat about product, tech, or work topics anytime!" },
+    { keywords: ['political','politics','republican','democrat','liberal','conservative','your vote','who do you vote','did you vote','who did you vote'], answer: "I keep politics off my professional portfolio. Happy to chat about product, tech, or work topics anytime!" },
+    { keywords: [' drink','alcohol','drunk','do drugs','smoke weed','marijuana'], answer: "Let's keep the conversation focused on professional topics! Ask me about my work, certs, or projects." },
+    { keywords: [' gay','straight','sexuality','sexual orientation','lgbt','girlfriend','boyfriend','dating','are you single','relationship status'], answer: "I keep my personal life off my professional portfolio. Happy to talk about product, agile, or anything work-related!" },
+    { keywords: ['family','are you married','your wife','your husband','your spouse','your kids','your children','do you have kids','do you have children','do you have a wife','do you have a husband','your parents','your siblings','personal life'], answer: "I'd rather keep my personal life off my professional portfolio — happy to chat about product, agile, or work topics anytime!" },
+    { keywords: ['salary expectation','salary range','target salary','desired salary','asking salary','salary requirement','expected compensation','expected pay','desired compensation','compensation expectation','offer','negotiate'], answer: "I don't discuss compensation or hiring-specific details on this site. For that conversation, please reach Lance directly via LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com)." },
+    { keywords: ['salary','your income','how much do you make','how much do you earn','your pay','your wage','your compensation','your net worth'], answer: "Compensation isn't something I discuss publicly. For specific questions, please reach Lance directly via LinkedIn or email." },
+    { keywords: ['how old are you','your age','what is your age','when were you born','birth year','your birthday','date of birth'], answer: "I'd rather not share that publicly, but as Eben Moran put it in his recommendation: 'The leadership I have seen in this young man has barely been tapped.' I take that as motivation." },
+
+    // === GREETINGS ===
+    { keywords: ['hello','hi!','hi.','hi ','hey','what\'s up','whats up','greetings','howdy','good morning','good afternoon','good evening'], answer: "Hey! 👋 I'm an AI version of Lance Wheeler. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?" },
+    { keywords: ['how are you','how\'s it going','how have you been'], answer: "Doing great, thanks for asking! Excited to chat about what I do. What would you like to know?" },
+    { keywords: ['thank you','thanks','appreciate it'], answer: "You're very welcome! Anything else you'd like to know? Or if you'd like to chat with the real me, you can reach out on LinkedIn." },
+    { keywords: ['bye','goodbye','see you','later','cya','farewell'], answer: "Take care! Feel free to come back anytime, or connect with me on LinkedIn at linkedin.com/in/lance-w-a903661aa." },
+
+    // === META / WEBSITE / AI ===
+    { keywords: ['350z','350 z','your 350','about your 350'], answer: "Big car enthusiast — my 350Z is my personal project. That passion bled into the GearUp app concept I built during A-CSPO training. Real product work is always better when you actually understand the user." },
+    { keywords: ['real lance','actual lance','talk to lance','reach lance','speak with lance','speak to lance','speak to the real'], answer: "I'm an AI version of Lance — but the real Lance is just a LinkedIn message away: linkedin.com/in/lance-w-a903661aa or email Lancebusiness044@gmail.com." },
+    { keywords: ['this website','this site','this portfolio','built this','how was this site','how is this site','about this site','made this site'], answer: "Lance built this entire site from scratch as a personal project — HTML, CSS, JavaScript, all in a weekend. It's hosted on GitHub Pages. He treated it like a real product: vision, scope, prioritization, MVP, ship, iterate. The interactive backlog and vision builder demos are designed to show how he thinks, not just what he's done." },
+    { keywords: ['this chat','this ai','this chatbot','chatbot you','chat bot','this bot','are you ai','are you real','are you human','are you a real','really lance','is this lance','is this real','are you a bot','are you a person'], answer: "I'm an AI assistant trained on Lance's career and projects — not the real Lance. He built this so people could ask questions about him 24/7. For a real conversation, his LinkedIn is the way to go: linkedin.com/in/lance-w-a903661aa." },
+
+    // === IDENTITY ===
+    { keywords: ['what is your name','what\'s your name','your name','full name','first name','last name','whats your name'], answer: "Lance Wheeler — Product Owner at Stellar MLS. Nice to meet you!" },
+    { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Promoted 4 times in 3+ years — from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Just earned my A-CSPO, hold 10 certifications, and care more about delivering real value than shipping features for the sake of it." },
+    { keywords: ['where do you live','where are you located','where are you based','your location','what city','what state','where based','live in','live now'], answer: "I'm based in Florida, working at Stellar MLS in Altamonte Springs (just north of Orlando). Stellar serves real estate professionals across all of Florida and beyond." },
+    { keywords: ['altamonte springs','near orlando'], answer: "Yep — based in Florida, working at Stellar MLS headquartered in Altamonte Springs (just north of Orlando)." },
+    { keywords: ['education','college','degree','university','your school','where did you go to school','what school'], answer: "I have a high school diploma from Lake Brantley High School. I've gotten where I am through hands-on experience and continuous certification — A-CSPO, CSPO, CSM, AI for POs, CompTIA A+, Duke University AI Product Management cert, and three Google certificates. The work-and-learn path has worked well for me." },
+
+    // === STELLAR MLS COMPANY ===
+    { keywords: ['stellar mls','what is stellar','stellar company','about stellar','tell me about stellar'], answer: "Stellar MLS is one of the largest multiple listing services in the country, serving 80,000+ real estate professionals across Florida, Puerto Rico, and beyond. Headquartered in Altamonte Springs, FL. Voted a Top Workplace by the Orlando Sentinel in 2025. They provide MLS technology, data services, and professional tools to brokers, agents, and appraisers." },
+    { keywords: ['what is mls','what\'s mls','whats mls','multiple listing','what does mls','define mls'], answer: "MLS = Multiple Listing Service. It's the database real estate professionals use to share property listings, market data, and transaction info. Stellar MLS is the technology platform powering that for 80,000+ professionals — and that's where I work as a Product Owner." },
+    { keywords: ['who do you work for','where do you work','your employer','current job','current role','current company'], answer: "I'm a Product Owner at Stellar MLS. I joined in September 2022 as a Support Center Technician and have been promoted 4 times since. I manage a 9-product portfolio: 3 primary, 6 secondary." },
+    { keywords: ['top workplace','orlando sentinel','best place to work'], answer: "Yes! Stellar MLS was named a Top Workplace by the Orlando Sentinel in 2025. It's a great culture — collaborative, growth-oriented, and genuinely invested in employee development. That's a big reason I've been able to grow from support tech to Product Owner." },
+
+    // === ROLE / DAY-TO-DAY ===
+    { keywords: ['your role','your title','your position','what is your job','what\'s your job','what do you do','day to day','typical day','what does a product owner do'], answer: "Product Owner at Stellar MLS. My day-to-day: backlog grooming and prioritization, stakeholder meetings, working with dev teams on release readiness, QA/UAT coordination, vendor management calls, and a lot of writing — requirements, acceptance criteria, training docs, rollout comms. No two days look the same." },
+    { keywords: ['responsibilities','responsibility','responsible for','what you manage','what do you manage','what do you handle'], answer: "I manage a 9-product portfolio: 3 primary owned products and 6 secondary. Across them I handle requirements gathering, QA/UAT, release management, vendor coordination, compliance initiatives, billing systems, data standards, and internal AI governance. I'm the bridge between business needs and the dev/QA teams." },
+    { keywords: ['portfolio','products you own','what products','9 product','nine product'], answer: "I support a 9-product portfolio at Stellar MLS — 3 primary ownership assignments and 6 secondary. The platforms include MLS Touch, ShowingTime, Matrix, StaxBill, Calabra Ad Builder, RealReports, TransactionDesk, CubiCasa, and Salesforce Customer Experience Portal, plus internal analytics tooling." },
+
+    // === KEY PROJECTS ===
+    { keywords: ['staxbill','billing','payment gateway','payments system','project you led','tell me about a project','biggest project'], answer: "I'm the Product Owner for StaxBill at Stellar MLS — our billing platform and payment gateway. I coordinate annual billing enhancements with accounting, marketing, vendors, and executive leadership through full sandbox-to-production release cycles. Billing is high-stakes work — it touches every customer, so the bar for quality is extremely high." },
+    { keywords: ['nar','settlement','national association of realtors','compliance project','compliance initiative'], answer: "I led the NAR settlement compliance initiative at Stellar MLS — an enterprise-wide rollout following the 2024 NAR commission rule changes. I drove audit, documentation, rules updates, training materials, and platform changes across forms, fields, website content, and remarks restrictions. It was a massive cross-functional effort with real legal stakes." },
+    { keywords: ['reso','data dictionary','data standard'], answer: "I built Matrix field-mapping and metadata documentation, directed API and data-pull coordination, helped develop our RESO Data Dictionary implementation, and participated in the RESO Data Dictionary workgroup and the duplication subgroup meetings. RESO is the industry standards body — being part of those workgroups means contributing to how MLS data works nationwide." },
+    { keywords: ['ai chatbot project','chatbot governance','chatbot platform','knowledge ops','ai governance','internal ai chatbot','ai chatbot at stellar','your ai project','ai chatbot work'], answer: "I own governance and content quality for our internal AI chatbot platforms supporting 10+ departments. That means maintaining source documentation, coordinating feedback workflows in Monday.com, reviewing answer accuracy, and continuously improving the knowledge base. AI tools are only as good as the data behind them — that's the part I own." },
+    { keywords: ['matrix platform','field mapping','metadata','matrix mls','tell me about matrix','about matrix','matrix work','matrix project'], answer: "Matrix is one of the core MLS platforms I work with. I've built field-mapping documentation, metadata schemas, and led enhancement cycles on it. I also co-led a successful Matrix enhancement project with Daphnee Casimir that she shouted out in her recommendation." },
+    { keywords: ['onboarded','training','trained','technicians','mentor','mentored'], answer: "I've trained and onboarded 10 technicians at Stellar MLS, often up to 3 at a time, while supporting knowledge transfer for new tools, workflows, and product updates. Teaching is one of my favorite parts of the job — it forces you to truly understand what you know." },
+    { keywords: ['qa work','uat','quality assurance','user acceptance','testing process'], answer: "QA and UAT are core to my work. I created and managed QA documentation across multiple quarterly enhancement cycles for Matrix, web applications, CRM extensions, and product launches — supporting testing, validation, issue tracking, and release readiness. Bev Dunfield's recommendation specifically called out my QA work." },
+    { keywords: ['vendor management','vendor coordination','vendor','third party','partners','worked with vendors'], answer: "Vendor management is part of nearly every product I own. I coordinate with payment processors, software vendors, data partners, and integration providers — running calls, managing release readiness, and making sure their roadmaps align with ours. StaxBill has the most active vendor coordination, but it's everywhere in MLS work." },
+
+    // === CERTIFICATIONS ===
+    { keywords: ['what cert','your cert','your certif','your credent','list cert','all cert','how many cert','certifications you have','certifications do you have'], answer: "I hold 10 verifiable certifications: A-CSPO, AI for Product Owners microcredential, CSPO, CSM, CompTIA A+, Duke University AI Product Management Certificate, Google IT Support Professional, Google Cybersecurity Professional, Google + CompTIA A+ Dual Credential, and Google Analytics Individual Qualification. All independently verifiable on this site." },
+    { keywords: ['a-cspo','acspo','advanced certified scrum','advanced scrum product'], answer: "I earned my Advanced Certified Scrum Product Owner (A-CSPO) on April 24, 2026 through APS AgileTraining, with Richard K. Cheng as my Certified Scrum Trainer. It builds on the CSPO and goes deeper into stakeholder management, advanced backlog techniques, business model assessment, and product strategy. Active through April 2028." },
+    { keywords: ['ai for product owner','aipo','ai microcredential'], answer: "Earned the AI for Product Owners microcredential from Scrum Alliance on April 21, 2026. Covers prompt engineering, AI-supported backlog work, persona creation, story generation, estimation, roadmap integration, and how to use AI as a force multiplier in product work." },
+    { keywords: ['cspo certification','certified scrum product owner','cspo','about cspo','tell me about cspo'], answer: "I earned my Certified Scrum Product Owner (CSPO) on October 2, 2024 through Scrum Alliance. That was my first formal product certification and the foundation I built A-CSPO on top of." },
+    { keywords: ['csm','scrummaster','scrum master'], answer: "Certified ScrumMaster (CSM) earned November 22, 2023 through Scrum Alliance, trained by Cathy Simpson. While my work is PO-focused, having CSM gives me a deep understanding of how the whole Scrum team operates — which makes me a better PO." },
+    { keywords: ['comptia','a plus cert','a+ cert'], answer: "CompTIA A+ certified since March 16, 2022. It validates IT fundamentals — hardware, software, networking, security, troubleshooting. It came from my IT background before transitioning to product. Active through March 2028." },
+    { keywords: ['duke','duke university'], answer: "Duke University AI Product Management Certificate — completed November 26, 2023 via Coursera. It's a 3-course specialization covering Machine Learning Foundations for Product Managers, Managing Machine Learning Projects, and Human Factors in AI." },
+    { keywords: ['cybersecurity','cyber security','google cyber','security certif'], answer: "I earned the Google Cybersecurity Professional Certificate on September 11, 2023 — 8 courses developed by Google covering foundations of cybersecurity, security risks, networks, Linux/SQL, assets and vulnerabilities, detection and response, automating tasks with Python, and job preparation." },
+    { keywords: ['google it','it support cert','google support','google it support','tell me about google it'], answer: "Google IT Support Professional Certificate — completed December 16, 2020 via Coursera. 5 courses covering technical support, computer networking, operating systems, system administration, and IT security." },
+    { keywords: ['google certif','google cert','coursera'], answer: "I hold three Google credentials: the Google IT Support Professional Certificate (Dec 2020), the Google Cybersecurity Professional Certificate (Sep 2023), and the Google Analytics Individual Qualification. Plus I earned the Google + CompTIA A+ Dual Credential badge on Credly." },
+    { keywords: ['analytics','google analytics','ga4'], answer: "Google Analytics Individual Qualification covers GA4 implementation, reporting, and data analysis. It's part of how I think about product analytics — measuring what matters and using data to drive prioritization." },
+    { keywords: ['python','linux',' sql','programming language'], answer: "I have foundational skills in Python, Linux, and SQL from my Google Cybersecurity certification. Not my daily tools, but I'm comfortable enough to read code, query databases, and have technical conversations with developers about implementation." },
+    { keywords: ['richard cheng','your trainer','cspo trainer','acspo trainer'], answer: "Richard K. Cheng was my A-CSPO trainer through APS AgileTraining (April 23-24, 2026). He's a Certified Scrum Trainer and one of the best instructors I've had. He specifically praised my GearUp prototype — which meant a lot." },
+
+    // === CAREER PROGRESSION ===
+    { keywords: ['promot','your career','your journey','climbed','progression','career path','your path'], answer: "I started at Stellar MLS in September 2022 as a Support Center Technician. Since then I've been promoted 4 times — Support Tech → Tier 2 → Product Specialist → Product Owner. The path was built on showing up, owning outcomes, and stepping into gaps before being asked. It took 3 years and 7 months to reach PO." },
+    { keywords: ['help desk','support desk','support center','first job stellar','starting job'], answer: "Yes — I started at the Stellar MLS support desk in September 2022. Front-line tickets, customer calls, troubleshooting. That foundation matters: today as a PO, I know exactly what users hit, where they get stuck, and how the systems actually behave in the real world. You can't fake that perspective." },
+    { keywords: ['previous job','before stellar','prior work','elite realty','last job'], answer: "Before Stellar MLS I was Lead Information Technology Specialist at Elite Realty Inc. from February 2017 to March 2022. Internal IT for a real estate office — PCs, mobile devices, networking, software, daily operational support. That's where I first got real estate industry exposure." },
+    { keywords: ['why product','why became po','why product owner','transition to product'], answer: "I came at it sideways. Started in IT support, moved to Stellar's support center, kept volunteering for cross-functional work — QA documentation, release coordination, vendor calls. Eben Moran (Operations Executive) noticed and said in his recommendation: 'After a few months in customer support, it became evident that Lance would excel in the product management group.' Honestly, product was the natural fit for how I already thought." },
+
+    // === SKILLS / PHILOSOPHY ===
+    { keywords: ['your skill','your strength','what are you good at','best at','your expertise'], answer: "Core PM skills: backlog ownership, requirements gathering, QA/UAT, release management, vendor management, change management, stakeholder alignment. Technical side: API & data coordination, RESO data standards, field mapping, AI knowledge ops, billing systems. Plus I'm a strong technical writer and trainer." },
+    { keywords: ['weakness','your flaw','your weak','what could you improve','area to grow'], answer: "Saying no — I'm working on it. As a PO, the urge to find a way to fit every stakeholder request in is real. I'm getting better at framing trade-offs early and protecting team focus." },
+    { keywords: ['philosophy','your approach','your mindset','what you believe','your principle'], answer: "Three core beliefs that drive my work: (1) The PO owns value, not output — features shipped don't matter if they don't solve the right problem. (2) Facilitation is a superpower — I run rooms by drawing out real requirements, not racing to decisions. (3) Be technical enough to be dangerous — I bridge the language of devs and business without losing the thread." },
+    { keywords: ['value not output','own value','value over output','outcomes over output'], answer: "It's the central principle from my A-CSPO training and how I work daily. The PO's job isn't to push tickets through; it's to make sure what gets built actually moves the business forward and helps users. Every backlog decision runs through: does this help the user? Does it serve the business? If neither — why are we doing it?" },
+    { keywords: ['agile','scrum methodology','sprint','your process','tell me about agile','about scrum'], answer: "I work in Scrum daily — sprint planning, daily standups, backlog refinement, retrospectives, the whole rhythm. I'm CSM and A-CSPO certified, so I have deep understanding of both sides of the team. I also draw on Lean (especially Eric Ries) for MVP thinking and Geoffrey Moore for product vision." },
+
+    // === TOOLS ===
+    { keywords: ['what tools','your tools','what software','tech stack','your stack'], answer: "Daily drivers: Jira and Monday.com for backlog and workflow, Zendesk for support, Salesforce CRM for customer data, StaxBill for billing, Matrix for MLS, Snagit for documentation, Adobe InDesign for visuals. Communication: Slack and Microsoft Teams. I'm tool-agnostic — pick what fits the job." },
+    { keywords: ['jira','atlassian'], answer: "Yes, I use Jira daily for backlog management, sprint planning, and release tracking. I also use Monday.com extensively, especially for cross-functional workflows and AI chatbot governance feedback loops." },
+    { keywords: ['monday.com','monday platform'], answer: "Monday.com is one of my most-used tools at Stellar — particularly for cross-functional workflows, AI chatbot feedback coordination across 10+ departments, and project tracking outside of pure dev work." },
+    { keywords: ['salesforce','crm system'], answer: "Yes — Salesforce Customer Experience Portal is one of my secondary product assignments. I also have experience with Microsoft Dynamics CRM from previous roles." },
+
+    // === GEARUP ===
+    { keywords: ['gearup','gear up','class project','team project','your prototype'], answer: "GearUp is the app I built as PO during my A-CSPO class. The trainer gave us a 20-minute time limit for the initial sticky-note workflow exercise — but I went above and beyond after class and built out a fully interactive working prototype with branded UI, multiple screens, and a live hosted demo. Richard Cheng (my trainer) specifically praised it. It's a mobile parts comparison app for car owners with AR visualization, VIN-based fitment, and cross-retailer price comparison." },
+    { keywords: ['augmented reality','ar feature','ar view','ar visualization'], answer: "GearUp's augmented reality feature lets car owners visualize parts on their actual vehicle before buying — wheels, body kits, performance mods. Combined with VIN-based fitment validation, it dramatically reduces returns and buyer regret. It was the killer feature that differentiated us in our team's pitch." },
+    { keywords: ['350z','about your 350','about my 350','your 350','my 350','nissan','your car','what car','car enthusiast','what do you drive','kind of car','vehicle do you'], answer: "Big car enthusiast — my 350Z is my personal project. That passion bled into the GearUp app concept I built during A-CSPO training. Real product work is always better when you actually understand the user." },
+
+    // === REAL ESTATE INDUSTRY ===
+    { keywords: ['real estate industry','real estate market','real estate technology','industry experience'], answer: "I've been in real estate technology since 2017 — first at Elite Realty Inc. doing IT, then at Stellar MLS. I know the industry from both the brokerage side and the MLS side. That's a rare combination — most product folks have one or the other." },
+    { keywords: ['mls touch','showingtime','transactiondesk','calabra','realreports','cubicasa'], answer: "Those are all platforms in my product portfolio at Stellar. MLS Touch is mobile MLS access. ShowingTime handles showings and feedback. TransactionDesk is for forms/transactions. Calabra Ad Builder generates marketing content. RealReports gives property analytics. CubiCasa creates floor plans from phone scans. Each has its own user base and integration story." },
+    { keywords: ['broker','realtor','agents','end user','your user'], answer: "Our end users are real estate professionals — brokers, agents, appraisers, and assistants — about 80,000 of them across Florida and beyond. I never lose sight of them. Every backlog decision I make has to answer: how does this help the agent on the ground actually do their job better?" },
+
+    // === RECOMMENDATIONS / TESTIMONIALS ===
+    { keywords: ['recommend','testimonial','review','feedback','people say','what others say','what do people say','say about you','people say about'], answer: "I have 11 LinkedIn recommendations from people I've worked with at Stellar MLS and beyond — including my A-CSPO trainer Richard Cheng, an Operations Executive (Eben Moran), a Senior Relationship Manager (Laura Daughety), Product Owners, developers, marketing coordinators, and a former Senior Client Delivery PM. You can read all of them on the testimonials section of this site." },
+    { keywords: ['eben moran','eben'], answer: "Eben Moran is an Operations Executive at Stellar who oversaw two departments I worked in. He wrote a recommendation calling me 'highly innovative and forward-thinking' and said my 'unwavering pursuit of novel and innovative products and services is unparalleled.' His full recommendation is in the testimonials section." },
+
+    // === CONTACT / HIRING ===
+    { keywords: ['contact','reach out','reach me','message me','connect with','get in touch','your email'], answer: "Best ways to reach Lance: LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com). Always happy to connect about product, agile, or real estate technology." },
+    { keywords: ['linkedin'], answer: "LinkedIn is the best place to reach me: linkedin.com/in/lance-w-a903661aa. I'm active there and post about product, agile, and what I'm learning." },
+    { keywords: ['resume','your cv','download resume'], answer: "You can download Lance's public-facing resume right from this site — there's a button in the hero section and another in the contact section." },
+    { keywords: ['hiring','open to opportunit','available for','job opportunity','looking for work','open to roles','can i hire','open to remote','remote work','open to relocation','open to new'], answer: "Anything related to roles, opportunities, or hiring isn't something I discuss publicly here. If you'd like to reach Lance directly about a professional matter, the best path is LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com)." },
+    { keywords: ['why hire','why should i hire','why should we hire','best fit','great fit','why choose you','what makes you'], answer: "What I bring to product work: real technical depth (CompTIA A+, Google certs, IT background), proven product ownership (A-CSPO, 4 promotions, 9-product portfolio), and front-line empathy (started at the support desk). For anything role-specific, reach out directly via LinkedIn or email." },
+    { keywords: ['github','your repo','open source','source code'], answer: "You're on it! This portfolio is hosted on GitHub Pages — my GitHub is github.com/lance-wheeler. The site source is open if you ever want to peek at how it's built." },
+
+    // === HOBBIES (LIGHT) ===
+    { keywords: ['hobby','hobbies','what do you do for fun','outside of work','your interests','free time','spare time'], answer: "Outside of work, I'm into cars (especially my 350Z — which inspired GearUp), tech tinkering, and side projects like this very website. I built it from scratch as my own product to demonstrate what I do." },
+
+    // === MOTION / SPEED ===
+    { keywords: ['fastest','quickest','how fast','speed of work'], answer: "I ship. Earned A-CSPO and AI for Product Owners in the same week. Built a working app prototype after a 20-minute sticky-note exercise. Built this entire portfolio site in a weekend. I don't sit on ideas — I move." },
+    { keywords: ['fast growth','rapid promotion','quick promotion'], answer: "Four promotions in 3 years and 7 months at Stellar MLS — Support Tech → Tier 2 → Product Specialist → Product Owner. Fast, but earned. I took on cross-functional work, owned outcomes, and built a track record before each role change." }
+  ];
+
+  function findFAQ(question) {
+    const q = question.toLowerCase().trim();
+    // Fast-path: pure greeting words alone or with punctuation
+    const bareGreetings = /^(hi|hey|yo|hola|sup)[.!?\s]*$/i;
+    if (bareGreetings.test(q)) {
+      return "Hey! 👋 I'm an AI version of Lance Wheeler. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?";
+    }
+    for (const item of FAQ) {
+      if (item.keywords.some(k => q.includes(k))) return item.answer;
+    }
+    return null;
+  }
+
+  async function askLance(question) {
+    // Try API first; fall back to FAQ if API isn't reachable.
+    try {
+      const r = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 400,
+          system: LANCE_CONTEXT,
+          messages: [{ role: 'user', content: question }]
+        })
+      });
+      if (!r.ok) throw new Error('API not available');
+      const d = await r.json();
+      const text = d.content.map(c => c.text || '').filter(Boolean).join('\n');
+      return text || findFAQ(question) || "Hmm, I don't have that one ready — best to message me on LinkedIn for a real conversation about it!";
+    } catch (e) {
+      // Fallback to local FAQ
+      const ans = findFAQ(question);
+      if (ans) return ans;
+      return "That's a great question — though it's not something I have ready in my AI's knowledge base. Best to message me directly on LinkedIn (linkedin.com/in/lance-w-a903661aa) for a real conversation about it!";
+    }
+  }
+
+  function addMsg(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + sender;
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+  function removeTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
+
+  async function handleSend() {
+    const q = chatInput.value.trim();
+    if (!q) return;
+    chatInput.value = '';
+    addMsg(q, 'user');
+    chatSuggestions.style.display = 'none';
+    addTyping();
+    const answer = await askLance(q);
+    removeTyping();
+    addMsg(answer, 'bot');
+  }
+
+  chatSend.addEventListener('click', handleSend);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
+  document.querySelectorAll('.chat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chatInput.value = chip.dataset.q;
+      handleSend();
+    });
+  });
+
+  // ========================================
+  // ACCESSIBILITY (ADA) MENU
+  // ========================================
+  const a11yLauncher = document.getElementById('a11yLauncher');
+  const a11yPanel = document.getElementById('a11yPanel');
+  const a11yClose = document.getElementById('a11yClose');
+  const a11ySizeUp = document.getElementById('a11ySizeUp');
+  const a11ySizeDown = document.getElementById('a11ySizeDown');
+  const a11ySizeVal = document.getElementById('a11ySizeVal');
+  const a11yReset = document.getElementById('a11yReset');
+  const a11yToggles = document.querySelectorAll('.a11y-toggle[data-a11y]');
+
+  // Storage helpers (localStorage may be blocked in some embeds, so wrap)
+  const a11yStore = {
+    get(k, fallback) { try { return localStorage.getItem('a11y-' + k) ?? fallback; } catch(e) { return fallback; } },
+    set(k, v) { try { localStorage.setItem('a11y-' + k, v); } catch(e) {} },
+    rm(k) { try { localStorage.removeItem('a11y-' + k); } catch(e) {} }
+  };
+
+  // Open / close panel
+  a11yLauncher.addEventListener('click', () => a11yPanel.classList.toggle('open'));
+  a11yClose.addEventListener('click', () => a11yPanel.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && a11yPanel.classList.contains('open')) a11yPanel.classList.remove('open'); });
+
+  // Text size control
+  let textScale = parseFloat(a11yStore.get('size', '1'));
+  function applyScale() {
+    textScale = Math.max(0.85, Math.min(1.5, textScale));
+    document.documentElement.style.setProperty('--text-scale', textScale);
+    a11ySizeVal.textContent = Math.round(textScale * 100) + '%';
+    a11yStore.set('size', textScale);
+  }
+  a11ySizeUp.addEventListener('click', () => { textScale += 0.1; applyScale(); });
+  a11ySizeDown.addEventListener('click', () => { textScale -= 0.1; applyScale(); });
+  applyScale();
+
+  // Toggle features
+  function applyToggle(feature, on) {
+    document.documentElement.classList.toggle('a11y-' + feature, on);
+    const btn = document.querySelector('.a11y-toggle[data-a11y="' + feature + '"]');
+    if (btn) {
+      btn.classList.toggle('active', on);
+      btn.querySelector('.a11y-toggle-state').textContent = on ? 'On' : 'Off';
+    }
+    if (on) a11yStore.set(feature, '1'); else a11yStore.rm(feature);
+  }
+
+  a11yToggles.forEach(btn => {
+    const feature = btn.dataset.a11y;
+    // Restore state
+    if (a11yStore.get(feature, '0') === '1') applyToggle(feature, true);
+    btn.addEventListener('click', () => {
+      const isOn = document.documentElement.classList.contains('a11y-' + feature);
+      applyToggle(feature, !isOn);
+    });
+  });
+
+  // Reset all
+  a11yReset.addEventListener('click', () => {
+    textScale = 1; applyScale();
+    ['contrast','links','focus','dyslexia','motion','cursor'].forEach(f => applyToggle(f, false));
+  });
+
+  // Copy email button
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = 'Lancebusiness044@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        const orig = copyEmailBtn.innerHTML;
+        copyEmailBtn.innerHTML = '✓ Copied!';
+        setTimeout(() => { copyEmailBtn.innerHTML = orig; }, 1800);
+      } catch (e) {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = email; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        copyEmailBtn.innerHTML = '✓ Copied!';
+        setTimeout(() => { copyEmailBtn.innerHTML = '📋 Copy Email'; }, 1800);
+      }
+    });
+  }
+</script>
+</body>
+</html>
