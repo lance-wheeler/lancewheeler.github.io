@@ -228,7 +228,7 @@
   .bar-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-soft); width: 110px; flex-shrink: 0; }
   .bar-track { flex: 1; height: 8px; background: var(--border); position: relative; overflow: hidden; }
   .bar-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--teal)); width: 0; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); }
-  .bar-value { font-family: var(--font-mono); font-size: 11px; color: var(--text); width: 40px; text-align: right; }
+  .bar-value { font-family: var(--font-mono); font-size: 10px; color: var(--text); width: 70px; text-align: right; text-transform: uppercase; letter-spacing: 1px; }
   .promo-tracker { background: var(--card); padding: 36px; display: flex; flex-direction: column; gap: 12px; }
   .promo-step { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--surface); border-left: 3px solid var(--border); transition: border-color 0.3s; }
   .promo-step.active { border-left-color: var(--orange); }
@@ -861,6 +861,94 @@
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Lance Wheeler",
+  "alternateName": "Lance Preston Wheeler",
+  "jobTitle": "Product Owner",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Stellar MLS"
+  },
+  "url": "https://lance-wheeler.github.io/lancewheeler.github.io/",
+  "sameAs": [
+    "https://www.linkedin.com/in/lance-w-a903661aa",
+    "https://github.com/lance-wheeler"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Altamonte Springs",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "knowsAbout": [
+    "Product Ownership",
+    "Agile / Scrum",
+    "QA and UAT",
+    "Vendor Management",
+    "Release Management",
+    "Real Estate Technology",
+    "MLS Platforms",
+    "RESO Data Dictionary",
+    "AI Knowledge Operations",
+    "Stakeholder Communication",
+    "Billing Systems",
+    "Compliance"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Advanced Certified Scrum Product Owner (A-CSPO)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Scrum Alliance" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "AI for Product Owners",
+      "credentialCategory": "microcredential",
+      "recognizedBy": { "@type": "Organization", "name": "Scrum Alliance" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified Scrum Product Owner (CSPO)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Scrum Alliance" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified ScrumMaster (CSM)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Scrum Alliance" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CompTIA A+",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "CompTIA" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Duke University AI Project / Product Management Certificate",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Duke University" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google IT Support Professional Certificate",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Google" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Cybersecurity Professional Certificate",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Google" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -884,7 +972,7 @@
       <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     </button>
-    <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" class="nav-cta">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" rel="noopener noreferrer" class="nav-cta">LinkedIn</a>
   </div>
 </nav>
 
@@ -974,15 +1062,15 @@
   </div>
   <div class="dash-bottom reveal">
     <div class="chart-card">
-      <div class="chart-title">▸ Skill Distribution</div>
+      <div class="chart-title">▸ Core Strengths</div>
       <div class="bar-chart">
-        <div class="bar-row"><div class="bar-label">Product Ownership</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">95%</div></div>
-        <div class="bar-row"><div class="bar-label">QA / UAT</div><div class="bar-track"><div class="bar-fill" data-pct="92"></div></div><div class="bar-value">92%</div></div>
-        <div class="bar-row"><div class="bar-label">Vendor Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="88"></div></div><div class="bar-value">88%</div></div>
-        <div class="bar-row"><div class="bar-label">Documentation</div><div class="bar-track"><div class="bar-fill" data-pct="96"></div></div><div class="bar-value">96%</div></div>
-        <div class="bar-row"><div class="bar-label">Release Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="90"></div></div><div class="bar-value">90%</div></div>
-        <div class="bar-row"><div class="bar-label">AI Knowledge Ops</div><div class="bar-track"><div class="bar-fill" data-pct="85"></div></div><div class="bar-value">85%</div></div>
-        <div class="bar-row"><div class="bar-label">Stakeholder Comms</div><div class="bar-track"><div class="bar-fill" data-pct="93"></div></div><div class="bar-value">93%</div></div>
+        <div class="bar-row"><div class="bar-label">Product Ownership</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
+        <div class="bar-row"><div class="bar-label">QA / UAT</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
+        <div class="bar-row"><div class="bar-label">Vendor Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="78"></div></div><div class="bar-value">Strong</div></div>
+        <div class="bar-row"><div class="bar-label">Documentation</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
+        <div class="bar-row"><div class="bar-label">Release Mgmt</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
+        <div class="bar-row"><div class="bar-label">AI Knowledge Ops</div><div class="bar-track"><div class="bar-fill" data-pct="78"></div></div><div class="bar-value">Strong</div></div>
+        <div class="bar-row"><div class="bar-label">Stakeholder Comms</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
       </div>
     </div>
     <div class="promo-tracker">
@@ -1470,7 +1558,7 @@
 
 <footer>
   <div class="footer-logo">LW<span>.</span></div>
-  <div class="footer-copy">© 2026 Lance Wheeler · Built different.</div>
+  <div class="footer-copy">© 2026 Lance Wheeler · Built different. <span style="opacity:0.5; margin-left:8px; font-size:0.9em;">Last updated April 2026</span></div>
 </footer>
 
 <!-- ACCESSIBILITY MENU -->
