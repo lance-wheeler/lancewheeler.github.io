@@ -7,14 +7,14 @@
 <meta name="description" content="Product Owner @ Stellar MLS. A-CSPO certified. Building products that deliver real value across real estate platforms serving 80,000+ professionals."/>
 <meta name="author" content="Lance Wheeler"/>
 <meta name="theme-color" content="#e8622a"/>
-<link rel="canonical" href="https://lance-wheeler.github.io/lancewheeler.github.io/"/>
+<link rel="canonical" href="https://lancewheeler.co/"/>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://lance-wheeler.github.io/lancewheeler.github.io/"/>
+<meta property="og:url" content="https://lancewheeler.co/"/>
 <meta property="og:title" content="Lance Wheeler — Product Owner | A-CSPO"/>
 <meta property="og:description" content="Product Owner @ Stellar MLS. A-CSPO certified. Building products that deliver real value across real estate platforms serving 80,000+ professionals."/>
-<meta property="og:image" content="https://lance-wheeler.github.io/lancewheeler.github.io/lance-headshot.png"/>
+<meta property="og:image" content="https://lancewheeler.co/lance-headshot.png"/>
 <meta property="og:image:alt" content="Lance Wheeler — Product Owner at Stellar MLS"/>
 <meta property="og:site_name" content="Lance Wheeler Portfolio"/>
 
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Lance Wheeler — Product Owner | A-CSPO"/>
 <meta name="twitter:description" content="Product Owner @ Stellar MLS. A-CSPO certified. Serving 80,000+ real estate professionals."/>
-<meta name="twitter:image" content="https://lance-wheeler.github.io/lancewheeler.github.io/lance-headshot.png"/>
+<meta name="twitter:image" content="https://lancewheeler.co/lance-headshot.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
@@ -67,6 +67,85 @@
     --text-scale: 1;
   }
   html { font-size: calc(16px * var(--text-scale)); }
+
+  /* ============ CRAFT PACK — texture, motion & detail ============ */
+  /* Film grain — the single biggest "not a template" signal */
+  .grain {
+    position: fixed; inset: -50%; width: 200%; height: 200%;
+    pointer-events: none; z-index: 2000; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  :root[data-theme="light"] .grain { opacity: 0.035; }
+
+  /* Reading progress bar */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--orange), var(--teal));
+    z-index: 3000; pointer-events: none;
+  }
+
+  /* Global scrollbar — most templates never touch this */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--subtle); border-radius: 5px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+  /* Keyboard focus — visible, branded, never default blue */
+  :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+
+  /* Typography micro-craft */
+  h1, h2, h3, .section-title { text-wrap: balance; font-kerning: normal; }
+  .stat-num, .dash-num { font-variant-numeric: tabular-nums; }
+
+  /* Nav links — underline sweeps in from left instead of color-only */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
+    background: var(--orange); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* Primary button — light sheen sweep on hover */
+
+  /* Hero glows — slow ambient drift so the page feels alive at rest */
+  .hero-glow { animation: glowDrift 14s ease-in-out infinite alternate; }
+  .hero-glow-2 { animation: glowDrift 18s ease-in-out infinite alternate-reverse; }
+  @keyframes glowDrift {
+    from { transform: translate(0,0) scale(1); }
+    to { transform: translate(40px,-30px) scale(1.12); }
+  }
+  html.a11y-motion .hero-glow, html.a11y-motion .hero-glow-2 { animation: none; }
+
+  /* Marquee — editorial skill ticker */
+  .marquee {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    overflow: hidden; padding: 18px 0; background: var(--surface);
+    display: flex; user-select: none;
+  }
+  .marquee-track {
+    display: flex; flex-shrink: 0; gap: 48px; padding-right: 48px;
+    animation: marqueeScroll 36s linear infinite; will-change: transform;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  html.a11y-motion .marquee-track { animation: none; }
+  .marquee-item {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    display: flex; align-items: center; gap: 48px;
+  }
+  .marquee-item::after { content: '◆'; color: var(--orange); font-size: 8px; }
+  @keyframes marqueeScroll { to { transform: translateX(-100%); } }
+
+  /* Footer watermark — oversized wordmark, classic editorial close */
+  footer { position: relative; overflow: hidden; }
+  .footer-watermark {
+    position: absolute; bottom: -0.28em; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-display); font-size: clamp(100px, 18vw, 260px);
+    line-height: 1; color: var(--text); opacity: 0.04;
+    pointer-events: none; white-space: nowrap; letter-spacing: 4px;
+  }
+
   /* High contrast mode */
   html.a11y-contrast[data-theme="dark"] { --bg: #000; --surface: #0a0a0a; --card: #111; --text: #fff; --text-soft: #fff; --muted: #ddd; --border: #555; --orange: #ff8c4a; --teal: #5dd5e5; }
   html.a11y-contrast[data-theme="light"] { --bg: #fff; --surface: #fff; --card: #fff; --text: #000; --text-soft: #000; --muted: #222; --border: #000; --orange: #b03a00; --teal: #007a85; }
@@ -91,6 +170,10 @@
     font-family: var(--font-body); font-size: 16px; line-height: 1.6;
     overflow-x: hidden; cursor: none;
     transition: background 0.4s, color 0.4s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
   }
   ::selection { background: var(--orange); color: #000; }
 
@@ -884,7 +967,7 @@
     "@type": "Organization",
     "name": "Stellar MLS"
   },
-  "url": "https://lance-wheeler.github.io/lancewheeler.github.io/",
+  "url": "https://lancewheeler.co/",
   "sameAs": [
     "https://www.linkedin.com/in/lance-w-a903661aa",
     "https://github.com/lance-wheeler"
@@ -964,6 +1047,8 @@
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -1014,10 +1099,35 @@
   </div>
   <div class="hero-actions">
     <a href="#story" class="btn-primary">See My Story →</a>
+    <a href="#gearup" class="btn-secondary">View Product Work</a>
     <a href="Lance_Wheeler_Resume_2026.pdf" download class="btn-secondary">↓ Download Resume</a>
   </div>
   <div class="scroll-indicator"><span class="scroll-line"></span> Scroll to explore</div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Product Ownership</span>
+    <span class="marquee-item">A-CSPO</span>
+    <span class="marquee-item">QA / UAT</span>
+    <span class="marquee-item">Release Management</span>
+    <span class="marquee-item">AI Knowledge Ops</span>
+    <span class="marquee-item">RESO Data Standards</span>
+    <span class="marquee-item">Vendor Management</span>
+    <span class="marquee-item">80,000+ Professionals Served</span>
+  </div>
+  <div class="marquee-track">
+    <span class="marquee-item">Product Ownership</span>
+    <span class="marquee-item">A-CSPO</span>
+    <span class="marquee-item">QA / UAT</span>
+    <span class="marquee-item">Release Management</span>
+    <span class="marquee-item">AI Knowledge Ops</span>
+    <span class="marquee-item">RESO Data Standards</span>
+    <span class="marquee-item">Vendor Management</span>
+    <span class="marquee-item">80,000+ Professionals Served</span>
+  </div>
+</div>
 
 <!-- STORY -->
 <section id="story">
@@ -1035,9 +1145,9 @@
     </div>
     <div class="timeline reveal">
       <div class="tl-item"><div class="tl-date">Feb 2017 – Mar 2022</div><div class="tl-title">Lead IT Specialist — Elite Realty Inc.</div><div class="tl-desc">Go-to internal IT resource. Hardware, software, networking, and daily operations for a real estate office environment.</div></div>
-      <div class="tl-item"><div class="tl-date">Sep 2022</div><div class="tl-title">Joined Stellar MLS — Support Center Technician</div><div class="tl-desc">Started on the front lines — learning the platforms, the users, and the gaps between them.</div><span class="promo-badge">🚀 Promotion 1</span></div>
-      <div class="tl-item"><div class="tl-date">2023</div><div class="tl-title">Growing Ownership Across Products</div><div class="tl-desc">Began taking on product ownership responsibilities — QA, documentation, and release coordination across multiple platforms.</div><span class="promo-badge">🚀 Promotion 2 · Promotion 3</span></div>
-      <div class="tl-item"><div class="tl-date">2024 – Present</div><div class="tl-title">Product Owner — 9-Product Portfolio</div><div class="tl-desc">3 primary + 6 secondary products. Leading NAR compliance, AI chatbot governance, billing systems, and more across platforms serving 80,000+ professionals.</div><span class="promo-badge">🚀 Promotion 4</span></div>
+      <div class="tl-item"><div class="tl-date">Sep 2022</div><div class="tl-title">Joined Stellar MLS — Support Center Technician</div><div class="tl-desc">Started on the front lines — learning the platforms, the users, and the gaps between them.</div><span class="promo-badge">Promotion 1</span></div>
+      <div class="tl-item"><div class="tl-date">2023</div><div class="tl-title">Growing Ownership Across Products</div><div class="tl-desc">Began taking on product ownership responsibilities — QA, documentation, and release coordination across multiple platforms.</div><span class="promo-badge">Promotions 2 & 3</span></div>
+      <div class="tl-item"><div class="tl-date">2024 – Present</div><div class="tl-title">Product Owner — 9-Product Portfolio</div><div class="tl-desc">3 primary + 6 secondary products. Leading NAR compliance, AI chatbot governance, billing systems, and more across platforms serving 80,000+ professionals.</div><span class="promo-badge">Promotion 4</span></div>
       <div class="tl-item"><div class="tl-date">April 2026</div><div class="tl-title">A-CSPO Certified</div><div class="tl-desc">Advanced Certified Scrum Product Owner® earned through Scrum Alliance. Earned AI for Product Owners microcredential the same week.</div><span class="promo-badge" style="background:var(--teal-dim);border-color:rgba(42,184,200,0.3);color:var(--teal);">🎯 Dual Credential</span></div>
     </div>
   </div>
@@ -1074,7 +1184,7 @@
   </div>
   <div class="dash-bottom reveal">
     <div class="chart-card">
-      <div class="chart-title">▸ Core Strengths</div>
+      <div class="chart-title">Core Strengths</div>
       <div class="bar-chart">
         <div class="bar-row"><div class="bar-label">Product Ownership</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
         <div class="bar-row"><div class="bar-label">QA / UAT</div><div class="bar-track"><div class="bar-fill" data-pct="95"></div></div><div class="bar-value">Advanced</div></div>
@@ -1086,7 +1196,7 @@
       </div>
     </div>
     <div class="promo-tracker">
-      <div class="chart-title">▸ Career Progression</div>
+      <div class="chart-title">Career Progression</div>
       <div class="promo-step active"><div class="promo-num">01</div><div class="promo-info"><div class="promo-role">Support Center Technician</div><div class="promo-time">Sep 2022</div></div></div>
       <div class="promo-step active"><div class="promo-num">02</div><div class="promo-info"><div class="promo-role">Tier 2 Technician</div><div class="promo-time">2023</div></div></div>
       <div class="promo-step active"><div class="promo-num">03</div><div class="promo-info"><div class="promo-role">Product Specialist</div><div class="promo-time">2023</div></div></div>
@@ -1222,7 +1332,7 @@
   <div class="reveal">
     <div class="section-tag">Capabilities</div>
     <h2 class="section-title">WHAT I<br/>BRING</h2>
-    <p class="section-sub">A rare blend of technical depth, product thinking, and communication that gets things shipped.</p>
+    <p class="section-sub">Technical depth, product judgment, and the communication to get things shipped.</p>
   </div>
   <div class="skills-layout">
     <div class="reveal">
@@ -1320,7 +1430,7 @@
         <div class="kanban-card" draggable="true" style="opacity:0.6"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker — guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
       </div>
     </div>
-    <div class="demo-note">✦ Drag cards between columns (on mobile, press and hold a card to pick it up). This backlog is from a real product concept built during A-CSPO training.</div>
+    <div class="demo-note">Drag cards between columns (on mobile, press and hold a card to pick it up). This backlog is from a real product concept built during A-CSPO training.</div>
   </div>
 </section>
 
@@ -1563,12 +1673,13 @@
       <a href="Lance_Wheeler_Resume_2026.pdf" download class="contact-link">↓ Download Resume</a>
       <a href="https://bcert.me/sqpyljcil" target="_blank" rel="noopener" class="contact-link">Verify A-CSPO</a>
       <a href="mailto:Lancebusiness044@gmail.com?subject=Hello%20Lance%20%E2%80%94%20From%20your%20portfolio" class="contact-link" id="emailLink">✉ Email Me</a>
-      <button type="button" class="contact-link" id="copyEmailBtn" aria-label="Copy email address">📋 Copy Email</button>
+      <button type="button" class="contact-link" id="copyEmailBtn" aria-label="Copy email address">Copy Email</button>
     </div>
   </div>
 </section>
 
 <footer>
+  <div class="footer-watermark" aria-hidden="true">WHEELER</div>
   <div class="footer-logo">LW<span>.</span></div>
   <div class="footer-copy">© 2026 Lance Wheeler · Built different. <span style="opacity:0.5; margin-left:8px; font-size:0.9em;">Last updated April 2026</span></div>
 </footer>
@@ -2407,7 +2518,7 @@ When answering: Stay in character. If asked something not in this profile, say "
         ta.value = email; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy'); ta.remove();
         copyEmailBtn.innerHTML = '✓ Copied!';
-        setTimeout(() => { copyEmailBtn.innerHTML = '📋 Copy Email'; }, 1800);
+        setTimeout(() => { copyEmailBtn.innerHTML = 'Copy Email'; }, 1800);
       }
     });
   }
