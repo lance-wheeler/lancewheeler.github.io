@@ -36,7 +36,7 @@
     --border: #1e1e1e;
     --text: #f2f0ed;
     --text-soft: #aaa;
-    --muted: #666;
+    --muted: #8f8f8f;
     --subtle: #333;
     --orange: #e8622a;
     --orange-dim: rgba(232,98,42,0.12);
@@ -819,7 +819,10 @@
   footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; color: var(--muted); }
   .footer-logo span { color: var(--orange); }
-  .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--subtle); }
+  .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.9; }
+  .footer-copy a { color: var(--text-soft); }
+  body > footer { padding-bottom: 104px; } /* keep footer text clear of the floating a11y and chat buttons */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
   /* AI CHAT WIDGET */
   .chat-launcher {
@@ -995,6 +998,12 @@
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
+      "name": "Certified AI-Empowered SAFe 6 Product Owner/Product Manager (POPM)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Scaled Agile, Inc." }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
       "name": "Advanced Certified Scrum Product Owner (A-CSPO)",
       "credentialCategory": "certification",
       "recognizedBy": { "@type": "Organization", "name": "Scrum Alliance" }
@@ -1095,7 +1104,7 @@
     <div class="stat-item"><div class="stat-num" data-target="4" data-suffix="×">4×</div><div class="stat-label">Promoted at Stellar MLS</div></div>
     <div class="stat-item"><div class="stat-num" data-target="80" data-suffix="K+">80K+</div><div class="stat-label">Professionals served</div></div>
     <div class="stat-item"><div class="stat-num" data-target="9" data-suffix="">9</div><div class="stat-label">Products owned</div></div>
-    <div class="stat-item"><div class="stat-num" data-target="3" data-suffix="+">3+</div><div class="stat-label">Years of growth</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="4" data-suffix="+">4+</div><div class="stat-label">Years of growth</div></div>
   </div>
   <div class="hero-actions">
     <a href="#story" class="btn-primary">See My Story →</a>
@@ -1139,7 +1148,7 @@
   <div class="story-grid">
     <div class="story-left reveal">
       <p>I didn't start in product. I started at the <strong>support desk</strong> at Stellar MLS — diagnosing issues, learning every corner of the platform, and building a reputation for getting things done.</p>
-      <p>Over 3+ years, I earned four promotions by taking ownership beyond my job title. Every time there was a gap between what the business needed and what was getting built, <strong>I stepped into it</strong>.</p>
+      <p>Over four years, I earned four promotions by taking ownership beyond my job title. Every time there was a gap between what the business needed and what was getting built, <strong>I stepped into it</strong>.</p>
       <p>Today I manage a <strong>9-product portfolio</strong> serving 80,000+ real estate professionals — owning everything from requirement gathering and QA, to vendor relationships, compliance initiatives, and internal AI enablement.</p>
       <p>The title changed. The mindset was always the same: <strong>own the value, not the output.</strong></p>
     </div>
@@ -1164,7 +1173,7 @@
     <div class="dash-card">
       <div class="dash-num" data-target="4" data-suffix="×">4×</div>
       <div class="dash-label">Promotions</div>
-      <div class="dash-desc">Four advancements at Stellar MLS in 3 years 7 months — a rapid growth track at Stellar MLS.</div>
+      <div class="dash-desc">Four advancements at Stellar MLS between 2022 and 2024, from the support desk to Product Owner.</div>
     </div>
     <div class="dash-card teal">
       <div class="dash-num" data-target="80" data-suffix="K+">80K+</div>
@@ -1199,7 +1208,7 @@
       <div class="chart-title">Career Progression</div>
       <div class="promo-step active"><div class="promo-num">01</div><div class="promo-info"><div class="promo-role">Support Center Technician</div><div class="promo-time">Sep 2022</div></div></div>
       <div class="promo-step active"><div class="promo-num">02</div><div class="promo-info"><div class="promo-role">Tier 2 Technician</div><div class="promo-time">2023</div></div></div>
-      <div class="promo-step active"><div class="promo-num">03</div><div class="promo-info"><div class="promo-role">Product Specialist</div><div class="promo-time">2023</div></div></div>
+      <div class="promo-step active"><div class="promo-num">03</div><div class="promo-info"><div class="promo-role">Product Specialist I &amp; II</div><div class="promo-time">2023 – 2024</div></div></div>
       <div class="promo-step active"><div class="promo-num">04</div><div class="promo-info"><div class="promo-role">Product Owner</div><div class="promo-time">2024 – Present</div></div></div>
     </div>
   </div>
@@ -1430,7 +1439,7 @@
         <div class="kanban-card" draggable="true" style="opacity:0.6"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker — guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
       </div>
     </div>
-    <div class="demo-note">Drag cards between columns (on mobile, press and hold a card to pick it up). This backlog is from a real product concept built during A-CSPO training.</div>
+    <div class="demo-note">Drag cards between columns (on mobile, press and hold a card; with a keyboard, focus a card and use the left and right arrow keys). This backlog is from a real product concept built during A-CSPO training.</div>
   </div>
 </section>
 
@@ -1681,7 +1690,7 @@
 <footer>
   <div class="footer-watermark" aria-hidden="true">WHEELER</div>
   <div class="footer-logo">LW<span>.</span></div>
-  <div class="footer-copy">© 2026 Lance Wheeler · Built different. <span style="opacity:0.5; margin-left:8px; font-size:0.9em;">Last updated April 2026</span></div>
+  <div class="footer-copy">© 2026 Lance Wheeler · Built different. <span style="margin-left:8px; font-size:0.9em;">Last updated October 2026</span><br><a href="privacy.html">Privacy</a> · <a href="accessibility.html">Accessibility</a><br><span>SAFe® is a registered trademark of Scaled Agile, Inc.</span></div>
 </footer>
 
 <!-- ACCESSIBILITY MENU -->
@@ -1743,14 +1752,14 @@
     <button class="a11y-reset" id="a11yReset">↺ Reset All Settings</button>
   </div>
   <div class="a11y-statement">
-    Settings are saved for your next visit. This site aims to meet WCAG 2.1 AA standards. Issues? Email Lance directly.
+    Settings are saved in your browser for your next visit. This site aims to meet WCAG 2.1 AA. Hit a barrier? See the <a href="accessibility.html" style="color:inherit">accessibility statement</a> or <a href="mailto:Lancebusiness044@gmail.com?subject=Accessibility%20issue" style="color:inherit">email Lance</a>.
   </div>
 </div>
 
-<!-- AI CHAT WIDGET -->
-<button class="chat-launcher" id="chatLauncher" aria-label="Chat with AI Lance">
+<!-- QUICK-ANSWER CHAT WIDGET -->
+<button class="chat-launcher" id="chatLauncher" aria-label="💬 Q&amp;A: open the Ask About Lance assistant">
   💬
-  <span class="badge">AI</span>
+  <span class="badge">Q&amp;A</span>
 </button>
 
 <div class="chat-window" id="chatWindow">
@@ -1760,7 +1769,7 @@
     <div class="chat-header-status"><span class="status-dot"></span> Portfolio Assistant · Based on Lance's resume and site</div>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">👋 Hi! I'm a portfolio assistant that can answer questions about Lance's career, certifications, and projects at Stellar MLS based on his public resume and this site.</div>
+    <div class="chat-msg bot">👋 Hi! I'm a quick-answer assistant with pre-written answers about Lance's career, certifications, and projects, based on his public resume and this site.</div>
   </div>
   <div class="chat-suggestions" id="chatSuggestions">
     <button class="chat-chip" data-q="Tell me about yourself">About Lance</button>
@@ -1776,7 +1785,7 @@
     <input class="chat-input" id="chatInput" placeholder="Ask about Lance's work, certs, or projects..." />
     <button class="chat-send" id="chatSend">➤</button>
   </div>
-  <div class="chat-disclaimer">Answers are based on public portfolio information. For specifics, verify via resume, LinkedIn, or certificates.</div>
+  <div class="chat-disclaimer">Pre-written answers from public portfolio info. What you type stays in your browser and isn't stored or sent anywhere. <a href="privacy.html" style="color:inherit">Privacy</a></div>
 </div>
 
 <script>
@@ -1912,6 +1921,36 @@
     col.addEventListener('dragleave', () => col.classList.remove('drag-over'));
     col.addEventListener('drop', e => { e.preventDefault(); col.classList.remove('drag-over'); if (draggedCard) { col.appendChild(draggedCard); updateCounts(); } });
   });
+
+  // Kanban keyboard support — focus a card, then use Left/Right arrows to move it between columns.
+  (function () {
+    const cols = Array.from(document.querySelectorAll('.kanban-col'));
+    const colName = col => (col.querySelector('.col-header')?.firstChild?.textContent || col.dataset.col).trim();
+    const live = document.createElement('div');
+    live.setAttribute('aria-live', 'polite');
+    live.className = 'sr-only';
+    document.getElementById('kanban')?.after(live);
+    const label = card => {
+      const title = card.querySelector('.card-title')?.textContent || 'Card';
+      card.setAttribute('aria-label', title + '. In ' + colName(card.closest('.kanban-col')) + '. Use left and right arrow keys to move.');
+    };
+    document.querySelectorAll('.kanban-card').forEach(card => {
+      card.tabIndex = 0;
+      label(card);
+      card.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        const i = cols.indexOf(card.closest('.kanban-col'));
+        const target = cols[i + (e.key === 'ArrowRight' ? 1 : -1)];
+        if (!target) return;
+        target.appendChild(card);
+        updateCounts();
+        label(card);
+        card.focus();
+        live.textContent = 'Moved to ' + colName(target) + '.';
+      });
+    });
+  })();
 
   // Kanban touch support — HTML5 drag-and-drop doesn't work on mobile, so we polyfill with touch events.
   // Long-press to pick up a card (450ms), then drag with finger; release over a column to drop.
@@ -2116,12 +2155,16 @@
     if (i >= testiCards.length) i = 0;
     testiCards.forEach((c, idx) => {
       c.classList.toggle('active', idx === i);
+      c.tabIndex = idx === i ? 0 : -1;
+      c.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
       if (idx === i) c.scrollTop = 0;
     });
     document.querySelectorAll('.testi-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
     testiIdx = i;
     if (testiNum) testiNum.textContent = i + 1;
   }
+
+  if (testiCards.length) showTesti(0);
 
   function startAuto() {
     clearInterval(testiInterval);
@@ -2167,55 +2210,9 @@
   chatLauncher.addEventListener('click', () => { chatWindow.classList.add('open'); chatInput.focus(); });
   chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
 
-  // Lance context — feeds into AI prompt
-  const LANCE_CONTEXT = `You are an AI assistant representing Lance Wheeler, a Product Owner at Stellar MLS. You speak in first-person AS Lance — friendly, confident, professional, but down-to-earth. Keep responses concise (2-4 sentences usually). Never make up information not in this profile.
-
-ABOUT LANCE:
-- Product Owner at Stellar MLS in Altamonte Springs, FL
-- Based in Florida, serves 80,000+ real estate professionals
-- Promoted 4 times in 3+ years (Sep 2022–Present): Support Center Technician → Tier 2 → Product Specialist → Product Owner
-- Manages 9-product portfolio: 3 primary, 6 secondary
-- Previous role: Lead IT Specialist at Elite Realty Inc. (Feb 2017–Mar 2022)
-- Education: Lake Brantley High School diploma
-
-CERTIFICATIONS (2026):
-- Advanced Certified Scrum Product Owner (A-CSPO) — earned April 24, 2026, expires April 2028
-- AI for Product Owners Microcredential — earned April 21, 2026
-- Certified Scrum Product Owner (CSPO)
-- Certified ScrumMaster (CSM)
-- CompTIA A+
-- Duke University AI Project/Product Management Certificate
-- Google IT Support Professional Certificate
-- Google Analytics Individual Qualification
-
-KEY WORK AT STELLAR MLS:
-- StaxBill payment gateway: Full PO, coordinates annual billing enhancements with accounting, marketing, vendors, executive leadership
-- NAR settlement compliance initiative: Led enterprise-wide rollout — audit, documentation, rules updates, training
-- RESO Data Dictionary & API coordination: Built Matrix field-mapping, participated in RESO workgroups
-- Internal AI chatbot governance: Owns content quality for 10+ departments
-- Onboarded 10 technicians, often up to 3 at a time
-- Platforms: MLS Touch, ShowingTime, Matrix, StaxBill, Calabra Ad Builder, RealReports, TransactionDesk, CubiCasa
-
-GEARUP APP (A-CSPO project):
-- Mobile app for car owners to compare/shop modifications
-- Features: VIN-based fitment, AR visualization, cross-retailer price comparison, My Garage, community feed
-- Affiliate revenue model
-- During class we had a 20-minute time limit to map the workflow on sticky notes. Inside that same window, Lance went above and beyond — building a fully interactive working prototype with branded UI and a live hosted demo. The trainer Richard Cheng specifically praised it.
-
-PHILOSOPHY:
-- Owns value, not output
-- Facilitation is a superpower
-- Technical enough to be dangerous
-
-TOOLS: Jira, Monday.com, Zendesk, Salesforce, StaxBill, Matrix, Snagit, MS Dynamics CRM, Excel, PowerPoint, Slack, Teams, Adobe InDesign
-
-CONTACT: LinkedIn https://www.linkedin.com/in/lance-w-a903661aa, email Lancebusiness044@gmail.com
-
-When answering: Stay in character. If asked something not in this profile, say "That's not something I've shared publicly — best to message me on LinkedIn for a real conversation about it." Be helpful, be human.`;
-
-  // Knowledge base for offline fallback (in case API fails)
+  // Quick-answer knowledge base (runs entirely in the visitor's browser)
   const FAQ = [
-    // === EMPLOYER SAFETY (highest priority — protect Lance from coworker discovery) ===
+    // === EMPLOYMENT TOPICS ===
     { keywords: ['leaving stellar','quit stellar','quitting','plan to leave','leave the company','leave stellar','fired','let go','laid off','terminated','was lance fired','ever fired'], answer: "Anything about Lance's employment status at Stellar MLS isn't something I discuss publicly. For professional conversations, reach out on LinkedIn (linkedin.com/in/lance-w-a903661aa)." },
     { keywords: ['unhappy at','unhappy with','unhappy','hate his job','hate working','dislike stellar','frustrated at','problems at work','issues at work','complaints about'], answer: "I keep workplace topics professional and positive on this portfolio. Lance speaks highly of his time at Stellar MLS and the team there. For anything else, please reach out on LinkedIn." },
     { keywords: ['job search','job hunting','job hunt','actively looking','looking for a new','looking for new','interview process','applying for jobs','new opportunities','new role','new position'], answer: "Anything related to roles, opportunities, or hiring isn't something I discuss publicly here. If you'd like to reach Lance directly about a professional matter, the best path is LinkedIn (linkedin.com/in/lance-w-a903661aa) or email." },
@@ -2246,20 +2243,20 @@ When answering: Stay in character. If asked something not in this profile, say "
     { keywords: ['how old are you','your age','what is your age','when were you born','birth year','your birthday','date of birth'], answer: "I'd rather not share that publicly, but as Eben Moran put it in his recommendation: 'The leadership I have seen in this young man has barely been tapped.' I take that as motivation." },
 
     // === GREETINGS ===
-    { keywords: ['hello','hey there','greetings','howdy','good morning','good afternoon','good evening'], answer: "Hey! 👋 I'm an AI version of Lance Wheeler. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?" },
+    { keywords: ['hello','hey there','greetings','howdy','good morning','good afternoon','good evening'], answer: "Hey! 👋 I'm Lance's quick-answer assistant. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?" },
     { keywords: ['how are you','how\'s it going','how have you been'], answer: "Doing great, thanks for asking! Excited to chat about what I do. What would you like to know?" },
     { keywords: ['thank you','thanks','appreciate it'], answer: "You're very welcome! Anything else you'd like to know? Or if you'd like to chat with the real me, you can reach out on LinkedIn." },
     { keywords: ['bye','goodbye','see you','later','cya','farewell'], answer: "Take care! Feel free to come back anytime, or connect with me on LinkedIn at linkedin.com/in/lance-w-a903661aa." },
 
     // === META / WEBSITE / AI ===
     { keywords: ['350z','350 z','your 350','about your 350'], answer: "Big car enthusiast — my 350Z is my personal project. That passion bled into the GearUp app concept I built during A-CSPO training. Real product work is always better when you actually understand the user." },
-    { keywords: ['real lance','actual lance','talk to lance','reach lance','speak with lance','speak to lance','speak to the real'], answer: "I'm an AI version of Lance — but the real Lance is just a LinkedIn message away: linkedin.com/in/lance-w-a903661aa or email Lancebusiness044@gmail.com." },
+    { keywords: ['real lance','actual lance','talk to lance','reach lance','speak with lance','speak to lance','speak to the real'], answer: "I'm a quick-answer assistant, not Lance himself. The real Lance is just a LinkedIn message away: linkedin.com/in/lance-w-a903661aa or email Lancebusiness044@gmail.com." },
     { keywords: ['this website','this site','this portfolio','built this','how was this site','how is this site','about this site','made this site'], answer: "Lance built this entire site from scratch as a personal project — HTML, CSS, JavaScript, all in a weekend. It's hosted on GitHub Pages. He treated it like a real product: vision, scope, prioritization, MVP, ship, iterate. The interactive backlog and vision builder demos are designed to show how he thinks, not just what he's done." },
-    { keywords: ['this chat','this ai','this chatbot','chatbot you','chat bot','this bot','are you ai','are you real','are you human','are you a real','really lance','is this lance','is this real','are you a bot','are you a person','are you lance','are you a robot','am i talking to'], answer: "I'm an AI assistant trained on Lance's career and projects — not the real Lance. He built this so people could ask questions about him 24/7. For a real conversation, his LinkedIn is the way to go: linkedin.com/in/lance-w-a903661aa." },
+    { keywords: ['this chat','this ai','this chatbot','chatbot you','chat bot','this bot','are you ai','are you real','are you human','are you a real','really lance','is this lance','is this real','are you a bot','are you a person','are you lance','are you a robot','am i talking to'], answer: "I'm an automated assistant with pre-written answers about Lance's career and projects, not the real Lance. He built it so people can get quick answers anytime. For a real conversation, his LinkedIn is the way to go: linkedin.com/in/lance-w-a903661aa." },
 
     // === IDENTITY ===
     { keywords: ['what is your name','what\'s your name','your name','full name','first name','last name','whats your name'], answer: "Lance Wheeler — Product Owner at Stellar MLS. Nice to meet you!" },
-    { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself','what does lance do','where does lance work','what is lance','what do you do','where do you work'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Promoted 4 times in 3+ years — from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Just earned my A-CSPO, hold 10 certifications, and care more about delivering real value than shipping features for the sake of it." },
+    { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself','what does lance do','where does lance work','what is lance','what do you do','where do you work'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Joined in 2022 and promoted 4 times by 2024, from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Recently earned my SAFe POPM, hold A-CSPO and 11 certifications total, and care more about delivering real value than shipping features for the sake of it." },
     { keywords: ['where do you live','where are you located','where are you based','your location','what city','what state','where based','live in','live now'], answer: "I'm based in Florida, working at Stellar MLS in Altamonte Springs (just north of Orlando). Stellar serves real estate professionals across all of Florida and beyond." },
     { keywords: ['altamonte springs','near orlando'], answer: "Yep — based in Florida, working at Stellar MLS headquartered in Altamonte Springs (just north of Orlando)." },
     { keywords: ['education','college','degree','university','your school','where did you go to school','what school'], answer: "I have a high school diploma from Lake Brantley High School. I've gotten where I am through hands-on experience and continuous certification — A-CSPO, CSPO, CSM, AI for POs, CompTIA A+, Duke University AI Product Management cert, and three Google certificates. The work-and-learn path has worked well for me." },
@@ -2286,7 +2283,7 @@ When answering: Stay in character. If asked something not in this profile, say "
     { keywords: ['vendor management','vendor coordination','vendor','third party','partners','worked with vendors'], answer: "Vendor management is part of nearly every product I own. I coordinate with payment processors, software vendors, data partners, and integration providers — running calls, managing release readiness, and making sure their roadmaps align with ours. StaxBill has the most active vendor coordination, but it's everywhere in MLS work." },
 
     // === CERTIFICATIONS ===
-    { keywords: ['what cert','your cert','your certif','your credent','list cert','all cert','how many cert','certifications you have','certifications do you have'], answer: "I hold 10 verifiable certifications: A-CSPO, AI for Product Owners microcredential, CSPO, CSM, CompTIA A+, Duke University AI Product Management Certificate, Google IT Support Professional, Google Cybersecurity Professional, Google + CompTIA A+ Dual Credential, and Google Analytics Individual Qualification. All independently verifiable on this site." },
+    { keywords: ['what cert','your cert','your certif','your credent','list cert','all cert','how many cert','certifications you have','certifications do you have'], answer: "I hold 11 verifiable certifications: Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM), A-CSPO, AI for Product Owners microcredential, CSPO, CSM, CompTIA A+, Duke University AI Product Management Certificate, Google IT Support Professional, Google Cybersecurity Professional, Google + CompTIA A+ Dual Credential, and Google Analytics Individual Qualification. All independently verifiable on this site." },
     { keywords: ['a-cspo','acspo','advanced certified scrum','advanced scrum product'], answer: "I earned my Advanced Certified Scrum Product Owner (A-CSPO) on April 24, 2026 through APS AgileTraining, with Richard K. Cheng as my Certified Scrum Trainer. It builds on the CSPO and goes deeper into stakeholder management, advanced backlog techniques, business model assessment, and product strategy. Active through April 2028." },
     { keywords: ['ai for product owner','aipo','ai microcredential'], answer: "Earned the AI for Product Owners microcredential from Scrum Alliance on April 21, 2026. Covers prompt engineering, AI-supported backlog work, persona creation, story generation, estimation, roadmap integration, and how to use AI as a force multiplier in product work." },
     { keywords: ['cspo certification','certified scrum product owner','cspo','about cspo','tell me about cspo'], answer: "I earned my Certified Scrum Product Owner (CSPO) on October 2, 2024 through Scrum Alliance. That was my first formal product certification and the foundation I built A-CSPO on top of." },
@@ -2301,7 +2298,7 @@ When answering: Stay in character. If asked something not in this profile, say "
     { keywords: ['richard cheng','your trainer','cspo trainer','acspo trainer'], answer: "Richard K. Cheng was my A-CSPO trainer through APS AgileTraining (April 23-24, 2026). He's a Certified Scrum Trainer and one of the best instructors I've had. He specifically praised my GearUp prototype — which meant a lot." },
 
     // === CAREER PROGRESSION ===
-    { keywords: ['promot','your career','your journey','climbed','progression','career path','your path'], answer: "I started at Stellar MLS in September 2022 as a Support Center Technician. Since then I've been promoted 4 times — Support Tech → Tier 2 → Product Specialist → Product Owner. The path was built on showing up, owning outcomes, and stepping into gaps before being asked. It took 3 years and 7 months to reach PO." },
+    { keywords: ['promot','your career','your journey','climbed','progression','career path','your path'], answer: "I started at Stellar MLS in September 2022 as a Support Center Technician. Since then I've been promoted 4 times — Support Tech → Tier 2 → Product Specialist → Product Owner. The path was built on showing up, owning outcomes, and stepping into gaps before being asked. I moved into the Product Owner title in 2024 and have been growing the role since." },
     { keywords: ['help desk','support desk','support center','first job stellar','starting job'], answer: "Yes — I started at the Stellar MLS support desk in September 2022. Front-line tickets, customer calls, troubleshooting. That foundation matters: today as a PO, I know exactly what users hit, where they get stuck, and how the systems actually behave in the real world. You can't fake that perspective." },
     { keywords: ['previous job','before stellar','prior work','elite realty','last job'], answer: "Before Stellar MLS I was Lead Information Technology Specialist at Elite Realty Inc. from February 2017 to March 2022. Internal IT for a real estate office — PCs, mobile devices, networking, software, daily operational support. That's where I first got real estate industry exposure." },
     { keywords: ['why product','why became po','why product owner','transition to product'], answer: "I came at it sideways. Started in IT support, moved to Stellar's support center, kept volunteering for cross-functional work — QA documentation, release coordination, vendor calls. Eben Moran (Operations Executive) noticed and said in his recommendation: 'After a few months in customer support, it became evident that Lance would excel in the product management group.' Honestly, product was the natural fit for how I already thought." },
@@ -2311,11 +2308,11 @@ When answering: Stay in character. If asked something not in this profile, say "
     { keywords: ['weakness','your flaw','your weak','what could you improve','area to grow'], answer: "Saying no — I'm working on it. As a PO, the urge to find a way to fit every stakeholder request in is real. I'm getting better at framing trade-offs early and protecting team focus." },
     { keywords: ['philosophy','your approach','your mindset','what you believe','your principle'], answer: "Three core beliefs that drive my work: (1) The PO owns value, not output — features shipped don't matter if they don't solve the right problem. (2) Facilitation is a superpower — I run rooms by drawing out real requirements, not racing to decisions. (3) Be technical enough to be dangerous — I bridge the language of devs and business without losing the thread." },
     { keywords: ['value not output','own value','value over output','outcomes over output'], answer: "It's the central principle from my A-CSPO training and how I work daily. The PO's job isn't to push tickets through; it's to make sure what gets built actually moves the business forward and helps users. Every backlog decision runs through: does this help the user? Does it serve the business? If neither — why are we doing it?" },
-    { keywords: ['agile','scrum methodology','sprint','your process','tell me about agile','about scrum'], answer: "I work in Scrum daily — sprint planning, daily standups, backlog refinement, retrospectives, the whole rhythm. I'm CSM and A-CSPO certified, so I have deep understanding of both sides of the team. I also draw on Lean (especially Eric Ries) for MVP thinking and Geoffrey Moore for product vision." },
+    { keywords: ['agile','scrum methodology','sprint','your process','tell me about agile','about scrum'], answer: "I'm CSM, A-CSPO, and SAFe POPM certified. My PO role at Stellar is a hybrid one: I own requirements, user stories for internal builds, QA/UAT, vendor coordination, and stakeholder sign-off, while project managers handle scheduling. I bring Scrum practices like clear acceptance criteria and refinement into that setup. I also draw on Lean (especially Eric Ries) for MVP thinking and Geoffrey Moore for product vision." },
 
     // === TOOLS ===
-    { keywords: ['what tools','your tools','what software','tech stack','your stack'], answer: "Daily drivers: Jira and Monday.com for backlog and workflow, Zendesk for support, Salesforce CRM for customer data, StaxBill for billing, Matrix for MLS, Snagit for documentation, Adobe InDesign for visuals. Communication: Slack and Microsoft Teams. I'm tool-agnostic — pick what fits the job." },
-    { keywords: ['jira','atlassian'], answer: "Yes, I use Jira daily for backlog management, sprint planning, and release tracking. I also use Monday.com extensively, especially for cross-functional workflows and AI chatbot governance feedback loops." },
+    { keywords: ['what tools','your tools','what software','tech stack','your stack'], answer: "Daily drivers: Monday.com for workflow and feedback tracking, Jira for vendor bug and outage tracking, Zendesk for support, Salesforce CRM for customer data, StaxBill for billing, Matrix for MLS, Snagit for documentation, Adobe InDesign for visuals. Communication: Slack and Microsoft Teams. I'm tool-agnostic — pick what fits the job." },
+    { keywords: ['jira','atlassian'], answer: "At Stellar MLS I use Jira mainly to log and track bugs and outages with an external vendor. Monday.com is where most of my day-to-day tracking lives, including the AI chatbot feedback loop across 10+ departments." },
     { keywords: ['monday.com','monday platform'], answer: "Monday.com is one of my most-used tools at Stellar — particularly for cross-functional workflows, AI chatbot feedback coordination across 10+ departments, and project tracking outside of pure dev work." },
     { keywords: ['salesforce','crm system'], answer: "Yes — Salesforce Customer Experience Portal is one of my secondary product assignments. I also have experience with Microsoft Dynamics CRM from previous roles." },
 
@@ -2346,7 +2343,7 @@ When answering: Stay in character. If asked something not in this profile, say "
 
     // === MOTION / SPEED ===
     { keywords: ['fastest','quickest','how fast','speed of work'], answer: "I ship. Earned A-CSPO and AI for Product Owners in the same week. Built a working app prototype inside a 20-minute sticky-note exercise. Built this entire portfolio site in a weekend. I don't sit on ideas — I move." },
-    { keywords: ['fast growth','rapid promotion','quick promotion'], answer: "Four promotions in 3 years and 7 months at Stellar MLS — Support Tech → Tier 2 → Product Specialist → Product Owner. Fast, but earned. I took on cross-functional work, owned outcomes, and built a track record before each role change." }
+    { keywords: ['fast growth','rapid promotion','quick promotion'], answer: "Four promotions at Stellar MLS between 2022 and 2024 — Support Tech → Tier 2 → Product Specialist → Product Owner. Fast, but earned. I took on cross-functional work, owned outcomes, and built a track record before each role change." }
   ];
 
   function findFAQ(question) {
@@ -2354,7 +2351,7 @@ When answering: Stay in character. If asked something not in this profile, say "
     // Fast-path: pure greeting words alone or with punctuation
     const bareGreetings = /^(hi|hey|yo|hola|sup)[.!?\s]*$/i;
     if (bareGreetings.test(q)) {
-      return "Hey! 👋 I'm an AI version of Lance Wheeler. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?";
+      return "Hey! 👋 I'm Lance's quick-answer assistant. Ask me about his work as a Product Owner at Stellar MLS, his certifications, the projects he has led, or anything else you're curious about. What's on your mind?";
     }
     for (const item of FAQ) {
       if (item.keywords.some(k => q.includes(k))) return item.answer;
@@ -2363,28 +2360,10 @@ When answering: Stay in character. If asked something not in this profile, say "
   }
 
   async function askLance(question) {
-    // Try API first; fall back to FAQ if API isn't reachable.
-    try {
-      const r = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 400,
-          system: LANCE_CONTEXT,
-          messages: [{ role: 'user', content: question }]
-        })
-      });
-      if (!r.ok) throw new Error('API not available');
-      const d = await r.json();
-      const text = d.content.map(c => c.text || '').filter(Boolean).join('\n');
-      return text || findFAQ(question) || "Hmm, I don't have that one ready — best to message me on LinkedIn for a real conversation about it!";
-    } catch (e) {
-      // Fallback to local FAQ
-      const ans = findFAQ(question);
-      if (ans) return ans;
-      return "That's a great question — though it's not something I have ready in my AI's knowledge base. Best to message me directly on LinkedIn (linkedin.com/in/lance-w-a903661aa) for a real conversation about it!";
-    }
+    // Pre-written answers only. Nothing typed here is stored or sent anywhere.
+    const ans = findFAQ(question);
+    if (ans) return ans;
+    return "That's not one I have a ready answer for. Best to message Lance directly on LinkedIn (linkedin.com/in/lance-w-a903661aa) for a real conversation about it!";
   }
 
   function addMsg(text, sender) {
