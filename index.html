@@ -399,25 +399,6 @@
   .feature-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .feature-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; }
 
-  /* VISION BUILDER */
-  #vision { background: var(--surface); }
-  .vision-wrapper { background: var(--card); border: 1px solid var(--border); padding: 40px; max-width: 920px; margin: 0 auto; }
-  .vision-template { font-family: var(--font-mono); font-size: 13px; color: var(--text-soft); line-height: 2.4; margin-bottom: 24px; padding: 24px; background: var(--surface); border-left: 3px solid var(--orange); }
-  .vision-template span.fill { color: var(--orange); font-weight: 600; }
-  .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
-  .vision-input { display: flex; flex-direction: column; gap: 6px; }
-  .vision-input label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.02em;  }
-  .vision-input input { font-family: var(--font-body); font-size: 14px; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; transition: border-color 0.2s; cursor: pointer; }
-  .vision-input input:focus { outline: none; border-color: var(--orange); }
-  .vision-output { background: var(--bg); border: 1px solid var(--orange); padding: 24px; margin-top: 16px; font-family: var(--font-body); font-size: 15px; line-height: 1.8; color: var(--text); display: none; }
-  .vision-output.visible { display: block; }
-  .vision-output strong { color: var(--orange); }
-  .vision-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-  .vision-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em;  padding: 12px 20px; border: 1px solid var(--orange); background: transparent; color: var(--orange); cursor: pointer; transition: all 0.2s; }
-  .vision-btn:hover { background: var(--orange); color: var(--bg); }
-  .vision-btn.solid { background: var(--orange); color: var(--bg); }
-  .vision-btn.solid:hover { background: #ff7a3d; }
-
   /* BACKLOG DEMO */
   #demo { background: var(--bg); }
   .demo-wrapper { background: var(--card); border: 1px solid var(--border); overflow: hidden; }
@@ -792,8 +773,6 @@
   .skip-link:focus { top: 16px; }
   html:not(.has-mouse) body { cursor: auto; }
   @media (hover: none), (pointer: coarse) { body { cursor: auto; } }
-  .vision-msg { min-height: 20px; margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--orange); }
-  .vision-msg:empty { display: none; }
   body > footer { padding-bottom: 104px; } /* keep footer text clear of the floating chat button */
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
@@ -818,10 +797,10 @@
     background: var(--card); border: 1px solid var(--border);
     border-radius: 16px; display: flex; flex-direction: column;
     overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    transform: translateY(20px) scale(0.96); opacity: 0; pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s;
+    transform: translateY(20px) scale(0.96); opacity: 0; pointer-events: none; visibility: hidden;
+    transition: opacity 0.25s, transform 0.25s, visibility 0s linear 0.25s;
   }
-  .chat-window.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+  .chat-window.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; visibility: visible; transition-delay: 0s; }
   .chat-header { background: linear-gradient(135deg, var(--orange), #ff7a3d); padding: 18px 20px; color: #fff; }
   .chat-header-title { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; }
   .chat-header-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.02em; opacity: 0.9; margin-top: 4px; display: flex; align-items: center; gap: 6px; }
@@ -860,7 +839,6 @@
     .kanban { grid-template-columns: 1fr 1fr; }
     .dash-grid { grid-template-columns: 1fr 1fr; }
     .dash-bottom { grid-template-columns: 1fr; }
-    .vision-grid { grid-template-columns: 1fr; }
     .chat-window { right: 12px; bottom: 90px; width: calc(100vw - 24px); height: 70vh; }
     .chat-launcher { right: 16px; bottom: 16px; }
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
@@ -992,6 +970,7 @@
 </nav>
 
 <!-- HERO -->
+<main id="main">
 <section id="hero" tabindex="-1">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -1384,11 +1363,12 @@
       <a href="https://www.linkedin.com/in/lance-w-a903661aa" target="_blank" rel="noopener" class="contact-link primary">LinkedIn Profile</a>
       <a href="Lance_Wheeler_Resume_2026.pdf" download class="contact-link">↓ Download Resume</a>
       <a href="https://bcert.me/sqpyljcil" target="_blank" rel="noopener" class="contact-link">Verify A-CSPO</a>
-      <a href="mailto:Lancebusiness044@gmail.com?subject=Hello%20Lance%20%E2%80%94%20From%20your%20portfolio" class="contact-link" id="emailLink">Email Me</a>
+      <a href="mailto:Lancebusiness044@gmail.com?subject=Hello%20Lance%2C%20from%20your%20portfolio" class="contact-link" id="emailLink">Email Me</a>
       <button type="button" class="contact-link" id="copyEmailBtn" aria-label="Copy email address">Copy Email</button>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-watermark" aria-hidden="true">WHEELER</div>
@@ -1397,18 +1377,18 @@
 </footer>
 
 <!-- QUICK-ANSWER CHAT WIDGET -->
-<button class="chat-launcher" id="chatLauncher" aria-label="Q&amp;A: open the Ask About Lance assistant">
+<button class="chat-launcher" id="chatLauncher" aria-label="Q&amp;A: open the Ask About Lance assistant" aria-expanded="false" aria-controls="chatWindow">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>
   <span class="badge">Q&amp;A</span>
 </button>
 
-<div class="chat-window" id="chatWindow">
+<div class="chat-window" id="chatWindow" role="dialog" aria-label="Ask About Lance assistant">
   <div class="chat-header">
-    <button class="chat-close" id="chatClose">×</button>
+    <button class="chat-close" id="chatClose" aria-label="Close assistant">×</button>
     <div class="chat-header-title">Ask About Lance</div>
     <div class="chat-header-status"><span class="status-dot"></span> Portfolio Assistant · Based on Lance's resume and site</div>
   </div>
-  <div class="chat-messages" id="chatMessages">
+  <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" tabindex="0">
     <div class="chat-msg bot">Hi! I'm a quick-answer assistant with pre-written answers about Lance's career, certifications, and projects, based on his public resume and this site.</div>
   </div>
   <div class="chat-suggestions" id="chatSuggestions">
@@ -1459,7 +1439,6 @@
     setTheme(cur === 'dark' ? 'light' : 'dark');
   });
   // When iframe asks for current theme on load, send it
-  // Also receive cursor position from embedded iframes so custom cursor follows
   window.addEventListener('message', (e) => {
     if (!e.data) return;
     if (e.data.type === 'request-theme') {
@@ -1708,8 +1687,8 @@
   const chatSend = document.getElementById('chatSend');
   const chatSuggestions = document.getElementById('chatSuggestions');
 
-  chatLauncher.addEventListener('click', () => { chatWindow.classList.add('open'); chatInput.focus(); });
-  chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
+  chatLauncher.addEventListener('click', () => { chatWindow.classList.add('open'); chatLauncher.setAttribute('aria-expanded', 'true'); chatInput.focus(); });
+  chatClose.addEventListener('click', () => { chatWindow.classList.remove('open'); chatLauncher.setAttribute('aria-expanded', 'false'); chatLauncher.focus(); });
 
   // Quick-answer knowledge base (runs entirely in the visitor's browser)
   const FAQ = [
@@ -1751,7 +1730,7 @@
 
     // === META / WEBSITE / AI ===
     { keywords: ['real lance','actual lance','talk to lance','reach lance','speak with lance','speak to lance','speak to the real'], answer: "I'm a quick-answer assistant, not Lance himself. The real Lance is just a LinkedIn message away: linkedin.com/in/lance-w-a903661aa or email Lancebusiness044@gmail.com." },
-    { keywords: ['this website','this site','this portfolio','built this','how was this site','how is this site','about this site','made this site'], answer: "Lance built this entire site from scratch as a personal project, HTML, CSS, JavaScript, all in a weekend. It's hosted on GitHub Pages. He treated it like a real product: vision, scope, prioritization, MVP, ship, iterate. The interactive backlog and vision builder demos are designed to show how he thinks, not just what he's done." },
+    { keywords: ['this website','this site','this portfolio','built this','how was this site','how is this site','about this site','made this site'], answer: "Lance built this site as a personal project with HTML, CSS, and JavaScript, hosted on GitHub Pages. He treated it like a real product: vision, scope, prioritization, MVP, ship, iterate. The interactive backlog and the GearUp prototype are there to show how he thinks, not just what he's done." },
     { keywords: ['this chat','this ai','this chatbot','chatbot you','chat bot','this bot','are you ai','are you real','are you human','are you a real','really lance','is this lance','is this real','are you a bot','are you a person','are you lance','are you a robot','am i talking to'], answer: "I'm an automated assistant with pre-written answers about Lance's career and projects, not the real Lance. He built it so people can get quick answers anytime. For a real conversation, his LinkedIn is the way to go: linkedin.com/in/lance-w-a903661aa." },
 
     // === IDENTITY ===
@@ -1759,7 +1738,7 @@
     { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself','what does lance do','where does lance work','what is lance','what do you do','where do you work'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Joined in 2022 and promoted 4 times by 2024, from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Recently earned my SAFe POPM, hold A-CSPO and 11 certifications total, and care more about delivering real value than shipping features for the sake of it." },
     { keywords: ['where do you live','where are you located','where are you based','your location','what city','what state','where based','live in','live now'], answer: "I'm based in Florida, working at Stellar MLS in Altamonte Springs (just north of Orlando). Stellar serves real estate professionals across all of Florida and beyond." },
     { keywords: ['altamonte springs','near orlando'], answer: "Yep, based in Florida, working at Stellar MLS headquartered in Altamonte Springs (just north of Orlando)." },
-    { keywords: ['education','college','degree','university','your school','where did you go to school','what school'], answer: "I have a high school diploma from Lake Brantley High School. I've gotten where I am through hands-on experience and continuous certification, A-CSPO, CSPO, CSM, AI for POs, CompTIA A+, Duke University AI Product Management cert, and three Google certificates. The work-and-learn path has worked well for me." },
+    { keywords: ['education','college','degree','university','your school','where did you go to school','what school'], answer: "I have a high school diploma from Lake Brantley High School. I've gotten where I am through hands-on experience and continuous certification: SAFe® POPM, A-CSPO, CSPO, CSM, AI for POs, CompTIA A+, Duke University AI Product Management cert, and three Google certificates. The work-and-learn path has worked well for me." },
 
     // === STELLAR MLS COMPANY ===
     { keywords: ['stellar mls','what is stellar','stellar company','about stellar','tell me about stellar'], answer: "Stellar MLS is one of the largest multiple listing services in the country, serving 80,000+ real estate professionals across Florida, Puerto Rico, and beyond. Headquartered in Altamonte Springs, FL. Voted a Top Workplace by the Orlando Sentinel in 2025. They provide MLS technology, data services, and professional tools to brokers, agents, and appraisers." },
@@ -1786,7 +1765,8 @@
     { keywords: ['what cert','your cert','your certif','your credent','list cert','all cert','how many cert','certifications you have','certifications do you have'], answer: "I hold 11 verifiable certifications: Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM), A-CSPO, AI for Product Owners microcredential, CSPO, CSM, CompTIA A+, Duke University AI Product Management Certificate, Google IT Support Professional, Google Cybersecurity Professional, Google + CompTIA A+ Dual Credential, and Google Analytics Individual Qualification. All independently verifiable on this site." },
     { keywords: ['a-cspo','acspo','advanced certified scrum','advanced scrum product'], answer: "I earned my Advanced Certified Scrum Product Owner (A-CSPO) on April 24, 2026 through APS AgileTraining, with Richard K. Cheng as my Certified Scrum Trainer. It builds on the CSPO and goes deeper into stakeholder management, advanced backlog techniques, business model assessment, and product strategy. Active through April 2028." },
     { keywords: ['ai for product owner','aipo','ai microcredential'], answer: "Earned the AI for Product Owners microcredential from Scrum Alliance on April 21, 2026. Covers prompt engineering, AI-supported backlog work, persona creation, story generation, estimation, roadmap integration, and how to use AI as a force multiplier in product work." },
-    { keywords: ['popm','scaled agile','safe cert','safe 6','about safe','safe®','your safe','the safe'], answer: "I earned the Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM) through Scaled Agile on September 25, 2026. It covers PO/PM work at scale, PI planning, and using AI across the product role. To be straightforward: I haven't worked inside a formal Agile Release Train yet, but it rounds out my Scrum foundation for teams that scale. The certificate is in the credentials section." },
+    { keywords: ['years of experience','years experience','how many years','how much experience','how long have you','how long has he','how long at stellar','tenure'], answer: "I've been at Stellar MLS since September 2022, so a little over four years, and I've held the Product Owner title since 2024. Before Stellar, I spent five years as Lead IT Specialist at Elite Realty, so I've worked in real estate technology since 2017." },
+    { keywords: ['popm','scaled agile','safe cert','safe 6','about safe','safe®','your safe','the safe','safe experience','experience with safe','pi planning','pi-planning','program increment','release train','safe framework','safe agile','in safe'], answer: "I earned the Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM) through Scaled Agile on September 25, 2026. It covers PO/PM work at scale, PI planning, and using AI across the product role. To be straightforward: I haven't worked inside a formal Agile Release Train yet, but it rounds out my Scrum foundation for teams that scale. The certificate is in the credentials section." },
     { keywords: ['cspo certification','certified scrum product owner','cspo','about cspo','tell me about cspo'], answer: "I earned my Certified Scrum Product Owner (CSPO) on October 2, 2024 through Scrum Alliance. That was my first formal product certification and the foundation I built A-CSPO on top of." },
     { keywords: ['csm','scrummaster','scrum master'], answer: "Certified ScrumMaster (CSM) earned November 22, 2023 through Scrum Alliance, trained by Cathy Simpson. While my work is PO-focused, having CSM gives me a deep understanding of how the whole Scrum team operates, which makes me a better PO." },
     { keywords: ['comptia','a plus cert','a+ cert'], answer: "CompTIA A+ certified since March 16, 2022. It validates IT fundamentals, hardware, software, networking, security, troubleshooting. It came from my IT background before transitioning to product. Active through March 2028." },
@@ -1835,7 +1815,7 @@
     { keywords: ['contact','reach out','reach me','message me','connect with','get in touch','your email'], answer: "Best ways to reach Lance: LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com). Always happy to connect about product, agile, or real estate technology." },
     { keywords: ['linkedin'], answer: "LinkedIn is the best place to reach me: linkedin.com/in/lance-w-a903661aa. I'm active there and post about product, agile, and what I'm learning." },
     { keywords: ['resume','your cv','download resume'], answer: "You can download Lance's public-facing resume right from this site, there's a button in the hero section and another in the contact section." },
-    { keywords: ['hiring','open to opportunit','available for','job opportunity','looking for work','open to roles','can i hire','open to remote','remote work','open to relocation','open to new'], answer: "Anything related to roles, opportunities, or hiring isn't something I discuss publicly here. If you'd like to reach Lance directly about a professional matter, the best path is LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com)." },
+    { keywords: ['hiring','open to opportunit','available for','job opportunity','looking for work','open to roles','can i hire','open to remote','remote work','work remote','remote job','remote role','remote position','fully remote','work from home','wfh','relocat','hybrid role','open to relocation','open to new'], answer: "Anything related to roles, opportunities, or hiring isn't something I discuss publicly here. If you'd like to reach Lance directly about a professional matter, the best path is LinkedIn (linkedin.com/in/lance-w-a903661aa) or email (Lancebusiness044@gmail.com)." },
     { keywords: ['why hire','why should i hire','why should we hire','should i hire','should we hire','hire him','hire lance','best fit','great fit','why choose you','what makes you'], answer: "What I bring to product work: real technical depth (CompTIA A+, Google certs, IT background), proven product ownership (A-CSPO, 4 promotions, 9-product portfolio), and front-line empathy (started at the support desk). For anything role-specific, reach out directly via LinkedIn or email." },
     { keywords: ['github','your repo','open source','source code'], answer: "You're on it! This portfolio is hosted on GitHub Pages, my GitHub is github.com/lance-wheeler. The site source is open if you ever want to peek at how it's built." },
 
@@ -1914,7 +1894,7 @@
     });
   });
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && chatWindow.classList.contains('open')) chatWindow.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && chatWindow.classList.contains('open')) { chatWindow.classList.remove('open'); chatLauncher.setAttribute('aria-expanded', 'false'); chatLauncher.focus(); } });
 
   // Copy email button
   const copyEmailBtn = document.getElementById('copyEmailBtn');
