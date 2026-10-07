@@ -2,6 +2,10 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Lance Wheeler — Product Owner | A-CSPO · SAFe POPM</title>
 <meta name="description" content="Product Owner @ Stellar MLS. A-CSPO and SAFe POPM certified. Building products that deliver real value across real estate platforms serving 80,000+ professionals."/>
@@ -831,7 +835,14 @@
   .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; color: var(--muted); }
   .footer-logo span { color: var(--orange); }
   .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.9; }
-  .footer-copy a { color: var(--text-soft); }
+  .footer-copy a { color: var(--text-soft); display: inline-block; padding: 6px 2px; }
+  .skip-link { position: absolute; left: 16px; top: -60px; z-index: 10000; background: var(--text); color: var(--bg); padding: 10px 14px; font-family: var(--font-mono); font-size: 12px; text-decoration: none; }
+  .skip-link:focus { top: 16px; }
+  html:not(.has-mouse) .cursor, html:not(.has-mouse) .cursor-ring { display: none; }
+  html:not(.has-mouse) body { cursor: auto; }
+  @media (hover: none), (pointer: coarse) { .cursor, .cursor-ring { display: none !important; } body { cursor: auto; } }
+  .vision-msg { min-height: 20px; margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--orange); }
+  .vision-msg:empty { display: none; }
   body > footer { padding-bottom: 104px; } /* keep footer text clear of the floating a11y and chat buttons */
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
@@ -864,7 +875,7 @@
   .chat-header-title { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; }
   .chat-header-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; opacity: 0.9; margin-top: 4px; display: flex; align-items: center; gap: 6px; }
   .status-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
-  .chat-close { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.2); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: none; font-size: 16px; }
+  .chat-close { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.2); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: none; font-size: 16px; }
   .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
   .chat-msg { padding: 10px 14px; border-radius: 14px; max-width: 85%; font-size: 13px; line-height: 1.5; }
   .chat-msg.bot { background: var(--surface); color: var(--text); align-self: flex-start; border-top-left-radius: 4px; }
@@ -875,7 +886,7 @@
   .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes typingDot { 0%,60%,100% { opacity: 0.3; transform: scale(1); } 30% { opacity: 1; transform: scale(1.2); } }
   .chat-suggestions { padding: 8px 16px 0; display: flex; gap: 6px; flex-wrap: wrap; }
-  .chat-chip { font-family: var(--font-mono); font-size: 10px; padding: 6px 10px; background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: none; border-radius: 12px; transition: all 0.2s; }
+  .chat-chip { font-family: var(--font-mono); font-size: 10px; padding: 9px 12px; min-height: 32px; background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: none; border-radius: 12px; transition: all 0.2s; }
   .chat-chip:hover { border-color: var(--orange); color: var(--orange); }
   .chat-input-wrap { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
   .chat-disclaimer { padding: 8px 16px 12px; font-family: var(--font-mono); font-size: 9px; line-height: 1.5; color: var(--muted); border-top: 1px solid var(--border); text-align: center; letter-spacing: 0.3px; }
@@ -913,7 +924,7 @@
     display: flex; justify-content: space-between; align-items: center;
   }
   .a11y-title { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
-  .a11y-close { background: rgba(0,0,0,0.15); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: none; font-size: 16px; color: #000; }
+  .a11y-close { background: rgba(0,0,0,0.15); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: none; font-size: 16px; color: #000; }
   .a11y-body { padding: 16px; overflow-y: auto; }
   .a11y-section { margin-bottom: 18px; }
   .a11y-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
@@ -1066,6 +1077,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#hero">Skip to content</a>
 
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -1094,7 +1106,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" tabindex="-1">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
@@ -1244,7 +1256,7 @@
       <div class="cert-org">Scaled Agile, Inc. · POPM</div>
       <div class="cert-date">Issued September 25, 2026 · Active through September 25, 2027</div>
       <div class="cert-actions">
-        <a href="cert-safe-popm.pdf" target="_blank" class="cert-btn primary">View Certificate ↗</a>
+        <a href="cert-safe-popm.pdf" target="_blank" class="cert-btn primary">Certificate ↗</a>
         <a href="https://scaledagile.com/training/safe-product-owner-product-manager/" target="_blank" rel="noopener" class="cert-btn">About POPM</a>
       </div>
     </div>
@@ -1279,7 +1291,7 @@
       <div class="cert-org">Scrum Alliance · CSPO</div>
       <div class="cert-date">Issued October 2, 2024 · Active</div>
       <div class="cert-actions">
-        <a href="cert-cspo.pdf" target="_blank" class="cert-btn primary">View Certificate ↗</a>
+        <a href="cert-cspo.pdf" target="_blank" class="cert-btn primary">Certificate ↗</a>
         <a href="https://www.scrumalliance.org/get-certified" target="_blank" rel="noopener" class="cert-btn">About CSPO</a>
       </div>
     </div>
@@ -1290,7 +1302,7 @@
       <div class="cert-org">Scrum Alliance · CSM</div>
       <div class="cert-date">Issued November 22, 2023 · Active</div>
       <div class="cert-actions">
-        <a href="cert-csm.pdf" target="_blank" class="cert-btn primary">View Certificate ↗</a>
+        <a href="cert-csm.pdf" target="_blank" class="cert-btn primary">Certificate ↗</a>
         <a href="https://www.scrumalliance.org/get-certified" target="_blank" rel="noopener" class="cert-btn">About CSM</a>
       </div>
     </div>
@@ -1416,13 +1428,13 @@
       <strong style="color:var(--orange);">OUR PRODUCT</strong> <span class="fill" id="t-our">[primary differentiator]</span>.
     </div>
     <div class="vision-grid">
-      <div class="vision-input"><label>FOR — target customers</label><input id="i-for" placeholder="e.g. car owners and enthusiasts" /></div>
-      <div class="vision-input"><label>WHO — need / opportunity</label><input id="i-who" placeholder="e.g. want to take control of their mods" /></div>
-      <div class="vision-input"><label>THE — product name</label><input id="i-the" placeholder="e.g. GearUp App" /></div>
-      <div class="vision-input"><label>IS A — product category</label><input id="i-isa" placeholder="e.g. mobile parts comparison app" /></div>
-      <div class="vision-input"><label>THAT — key benefit</label><input id="i-that" placeholder="e.g. lets buyers compare and visualize parts" /></div>
-      <div class="vision-input"><label>UNLIKE — competition</label><input id="i-unlike" placeholder="e.g. traditional auto parts stores" /></div>
-      <div class="vision-input" style="grid-column:1/-1;"><label>OUR PRODUCT — differentiator</label><input id="i-our" placeholder="e.g. uses AR to visualize parts on your actual car" /></div>
+      <div class="vision-input"><label for="i-for">FOR — target customers</label><input id="i-for" placeholder="e.g. car owners and enthusiasts" /></div>
+      <div class="vision-input"><label for="i-who">WHO — need / opportunity</label><input id="i-who" placeholder="e.g. want to take control of their mods" /></div>
+      <div class="vision-input"><label for="i-the">THE — product name</label><input id="i-the" placeholder="e.g. GearUp App" /></div>
+      <div class="vision-input"><label for="i-isa">IS A — product category</label><input id="i-isa" placeholder="e.g. mobile parts comparison app" /></div>
+      <div class="vision-input"><label for="i-that">THAT — key benefit</label><input id="i-that" placeholder="e.g. lets buyers compare and visualize parts" /></div>
+      <div class="vision-input"><label for="i-unlike">UNLIKE — competition</label><input id="i-unlike" placeholder="e.g. traditional auto parts stores" /></div>
+      <div class="vision-input" style="grid-column:1/-1;"><label for="i-our">OUR PRODUCT — differentiator</label><input id="i-our" placeholder="e.g. uses AR to visualize parts on your actual car" /></div>
     </div>
     <div class="vision-actions">
       <button class="vision-btn solid" id="visionGen">Generate Vision Statement</button>
@@ -1430,6 +1442,7 @@
       <button class="vision-btn" id="visionExample">Load GearUp Example</button>
       <button class="vision-btn" id="visionClear">✕ Clear All</button>
     </div>
+    <p class="vision-msg" id="visionMsg" role="status" aria-live="polite"></p>
     <div class="vision-output" id="visionOutput"></div>
   </div>
 </section>
@@ -1692,7 +1705,7 @@
         <button class="testi-arrow" id="testiNext" aria-label="Next">›</button>
       </div>
       <div class="testi-counter"><strong id="testiNum">1</strong> / <span id="testiTotal">11</span></div>
-      <button class="testi-pause" id="testiPause">⏸ Pause</button>
+      <button class="testi-pause" id="testiPause" aria-pressed="false" aria-label="Pause testimonials">⏸ Pause</button>
     </div>
 
     <div class="testi-dots" id="testiDots"></div>
@@ -1810,7 +1823,7 @@
     <button class="chat-chip" data-q="How can I contact Lance?">Contact</button>
   </div>
   <div class="chat-input-wrap">
-    <input class="chat-input" id="chatInput" placeholder="Ask about Lance's work, certs, or projects..." />
+    <input class="chat-input" id="chatInput" aria-label="Ask a question about Lance" placeholder="Ask about Lance's work, certs, or projects..." />
     <button class="chat-send" id="chatSend">➤</button>
   </div>
   <div class="chat-disclaimer">Pre-written answers from public portfolio info. What you type stays in your browser and isn't stored or sent anywhere. <a href="privacy.html" style="color:inherit">Privacy</a></div>
@@ -1821,7 +1834,7 @@
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  document.addEventListener('mousemove', e => { if (!document.documentElement.classList.contains('has-mouse')) { document.documentElement.classList.add('has-mouse'); rx = e.clientX; ry = e.clientY; } mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
   function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
   animateRing();
   document.addEventListener('mouseover', e => {
@@ -1843,7 +1856,10 @@
     if (t === 'light') { moonIcon.style.display = 'none'; sunIcon.style.display = 'block'; }
     else { moonIcon.style.display = 'block'; sunIcon.style.display = 'none'; }
     broadcastThemeToIframes(t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
   }
+  (function syncThemeIcons() { const t = document.documentElement.getAttribute('data-theme') || 'dark';
+    moonIcon.style.display = t === 'light' ? 'none' : 'block'; sunIcon.style.display = t === 'light' ? 'block' : 'none'; })();
   themeBtn.addEventListener('click', () => {
     const cur = document.documentElement.getAttribute('data-theme');
     setTheme(cur === 'dark' ? 'light' : 'dark');
@@ -1893,6 +1909,13 @@
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
+  let revealTick = false;
+  function revealPassed() {
+    revealTick = false;
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible'); });
+  }
+  window.addEventListener('scroll', () => { if (!revealTick) { revealTick = true; requestAnimationFrame(revealPassed); } }, { passive: true });
+  window.addEventListener('hashchange', revealPassed);
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Counter animation — HTML has real value for SEO/no-JS, JS resets to 0 then animates up
@@ -2110,7 +2133,15 @@
   document.getElementById('visionGen').addEventListener('click', () => {
     const v = {};
     visionFields.forEach(f => v[f] = document.getElementById('i-'+f).value.trim());
-    if (!v.for || !v.who || !v.the) { alert('Please fill in at least FOR, WHO, and THE fields.'); return; }
+    const msg = document.getElementById('visionMsg');
+    if (!v.for || !v.who || !v.the) {
+      msg.textContent = 'Fill in at least FOR, WHO, and THE to generate a statement.';
+      document.getElementById(!v.for ? 'i-for' : !v.who ? 'i-who' : 'i-the').focus();
+      return;
+    }
+    msg.textContent = '';
+    const esc = x => x.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    visionFields.forEach(f => v[f] = esc(v[f]));
     const out = `<strong>FOR</strong> ${v.for||'[target]'} <strong>WHO</strong> ${v.who||'[need]'} <strong>THE</strong> ${v.the||'[name]'} <strong>IS A</strong> ${v.isa||'[category]'} <strong>THAT</strong> ${v.that||'[benefit]'} <strong>UNLIKE</strong> ${v.unlike||'[competition]'} <strong>OUR PRODUCT</strong> ${v.our||'[differentiator]'}.`;
     const o = document.getElementById('visionOutput');
     o.innerHTML = out;
@@ -2121,7 +2152,7 @@
   document.getElementById('visionCopy').addEventListener('click', () => {
     const o = document.getElementById('visionOutput');
     const text = o.innerText || o.textContent;
-    if (!text) { alert('Generate a vision statement first!'); return; }
+    if (!text) { document.getElementById('visionMsg').textContent = 'Generate a vision statement first, then copy it.'; return; }
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById('visionCopy');
       const orig = btn.textContent;
@@ -2150,6 +2181,7 @@
     const o = document.getElementById('visionOutput');
     o.classList.remove('visible');
     o.innerHTML = '';
+    document.getElementById('visionMsg').textContent = '';
     document.getElementById('i-for').focus();
   });
 
@@ -2205,6 +2237,8 @@
     testiPaused = !testiPaused;
     testiPause.classList.toggle('paused', testiPaused);
     testiPause.innerHTML = testiPaused ? '▶ Resume' : '⏸ Pause';
+    testiPause.setAttribute('aria-pressed', testiPaused ? 'true' : 'false');
+    testiPause.setAttribute('aria-label', testiPaused ? 'Resume testimonials' : 'Pause testimonials');
   });
   // Hover to pause
   if (testiWrapper) {
@@ -2488,6 +2522,7 @@
     const btn = document.querySelector('.a11y-toggle[data-a11y="' + feature + '"]');
     if (btn) {
       btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       btn.querySelector('.a11y-toggle-state').textContent = on ? 'On' : 'Off';
     }
     if (on) a11yStore.set(feature, '1'); else a11yStore.rm(feature);
@@ -2495,6 +2530,7 @@
 
   a11yToggles.forEach(btn => {
     const feature = btn.dataset.a11y;
+    btn.setAttribute('aria-pressed', 'false');
     // Restore state
     if (a11yStore.get(feature, '0') === '1') applyToggle(feature, true);
     btn.addEventListener('click', () => {
