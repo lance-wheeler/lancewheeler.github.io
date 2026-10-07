@@ -331,6 +331,17 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
 .tab .count { position: absolute; top: 2px; left: 52%; min-width: 18px; height: 18px; border-radius: 9px; padding: 0 5px; background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 800; display: grid; place-items: center; }
 .tab .count:empty { display: none; }
 
+/* 3D renders */
+.thumb img { width: 86px; height: 86px; display: block; }
+.choice img { width: 54px; height: 54px; display: block; margin: 0 auto 2px; }
+.li .ic img { width: 42px; height: 42px; display: block; }
+.car img { width: 100%; height: auto; display: block; }
+.car-mini img { width: 100%; display: block; }
+.hero-wheel .spin.live { width: 100%; height: 100%; transform: none !important; }
+.hero-wheel .spin img.part3d { width: 230px; height: 230px; display: block; filter: drop-shadow(0 18px 24px rgba(0,0,0,.35)); }
+.scene .car.live { left: 0; right: 0; top: 46px; bottom: 0; }
+.scene .car.live ~ .callout { pointer-events: none; }
+
 /* Toast + splash */
 .toast { position: absolute; left: 20px; right: 20px; bottom: 96px; z-index: 40; padding: 13px 16px; border-radius: 16px; background: var(--text); color: var(--bg); font-weight: 650; font-size: 14px; display: flex; align-items: center; gap: 10px; transform: translateY(20px); opacity: 0; transition: .25s ease; pointer-events: none; }
 .toast.show { transform: none; opacity: 1; }
@@ -387,20 +398,20 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
           <button class="icon-btn" id="notif-btn" aria-label="Notifications, 1 new"><span data-icon="bell"></span><span class="dot"></span></button>
         </div>
       </div>
-      <button class="vehicle" data-go="garage" aria-label="My vehicle: 2005 Nissan 350Z, VIN verified. Open garage">
+      <button class="vehicle" data-go="garage" aria-label="My vehicle: 2021 Mustang GT, VIN verified. Open garage">
         <span class="label">My vehicle <span class="badge-ok"><span data-icon="check" data-size="14"></span>VIN verified</span></span>
         <span class="car-mini" id="mini-car"></span>
-        <span class="name">2005 Nissan 350Z</span>
+        <span class="name">2021 Mustang GT</span>
       </button>
       <div class="search" id="search-wrap">
         <span class="s-ico" data-icon="search"></span>
         <label class="sr" for="search">Search parts</label>
-        <input id="search" type="search" placeholder="Search parts that fit your Z" autocomplete="off" />
+        <input id="search" type="search" placeholder="Search parts that fit your Mustang" autocomplete="off" />
         <button class="clear" id="search-clear" aria-label="Clear search"><span data-icon="x"></span></button>
       </div>
       <div class="cats" id="cats" role="group" aria-label="Categories"></div>
       <div class="section-head">
-        <h2 id="list-title">Wheels that fit your Z</h2>
+        <h2 id="list-title">Wheels that fit your Mustang</h2>
         <button class="link sort" id="sort-btn" aria-label="Sort by best match. Change sort">Best match</button>
       </div>
       <div class="plist" id="plist"></div>
@@ -425,7 +436,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
         <div class="scan-line" aria-hidden="true"></div>
         <div class="ar-top">
           <button class="pill glass" data-back aria-label="Close preview"><span data-icon="x" data-size="16"></span>Close</button>
-          <span class="pill glass"><span class="live" aria-hidden="true"></span>Tracking your 350Z</span>
+          <span class="pill glass"><span class="live" aria-hidden="true"></span>Tracking your Mustang</span>
         </div>
         <span class="bracket tl" aria-hidden="true"></span><span class="bracket tr" aria-hidden="true"></span>
         <span class="bracket bl" aria-hidden="true"></span><span class="bracket br" aria-hidden="true"></span>
@@ -464,8 +475,8 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
         <div class="info">
           <div class="row between">
             <div>
-              <div class="name display" style="font-size:20px">2005 Nissan 350Z</div>
-              <div class="muted small">Track model · VQ35DE · 5×114.3</div>
+              <div class="name display" style="font-size:20px">2021 Mustang GT</div>
+              <div class="muted small">GT Performance Pack · 5.0L V8 · 5×114.3</div>
             </div>
             <span class="badge-ok"><span data-icon="check" data-size="14"></span>VIN verified</span>
           </div>
@@ -489,12 +500,12 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       <h1 class="display">Add a vehicle</h1>
       <p class="muted" style="margin-top:6px">Scan the VIN plate at the base of your windshield, or type it in. We use it to check fitment on every part.</p>
       <div class="viewfinder" id="viewfinder" aria-hidden="true">
-        <div class="plate"><small>VEHICLE IDENTIFICATION NUMBER</small><span id="plate-text">JN1AZ34D85M601337</span></div>
+        <div class="plate"><small>VEHICLE IDENTIFICATION NUMBER</small><span id="plate-text">1FA6P8CF5M5100437</span></div>
         <div class="laser"></div>
       </div>
       <div class="vin-field">
         <label for="vin">VIN</label>
-        <input id="vin" maxlength="17" value="JN1AZ34D85M601337" autocomplete="off" spellcheck="false" aria-describedby="vin-err" />
+        <input id="vin" maxlength="17" value="1FA6P8CF5M5100437" autocomplete="off" spellcheck="false" aria-describedby="vin-err" />
         <div class="err" id="vin-err" role="alert"></div>
       </div>
       <button class="btn btn-primary" id="vin-scan"><span data-icon="scan"></span>Scan and decode</button>
@@ -505,7 +516,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     <section class="screen" id="screen-feed" aria-label="Community builds">
       <div class="topbar">
         <h1 class="display">Builds</h1>
-        <span class="muted small">350Z owners near you</span>
+        <span class="muted small">Mustang owners near you</span>
       </div>
       <div id="feed"></div>
     </section>
@@ -552,6 +563,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   </div>
 </div>
 
+<script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
 <script>
 (() => {
   /* ---------------- Icons ---------------- */
@@ -672,6 +684,25 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       </g>
     </svg>`;
   }
+  const has3D = () => !!(window.GU3D && window.GU3D.ok);
+  function wheelArt(style, finish, label) {
+    if (!has3D()) return wheelSVG(style, finish, label);
+    return `<img src="${window.GU3D.wheelImage(style, finish)}" alt="${escapeHTML(label || '')}" draggable="false" />`;
+  }
+  function carArt(cfg) {
+    if (!has3D()) return carSVG(cfg);
+    const { paint, wheel, finish, drop } = cfg;
+    return `<img src="${window.GU3D.carImage({ paint, wheel, finish, drop: (drop || 0) * 5 })}" alt="${escapeHTML(cfg.label || '')}" draggable="false" />`;
+  }
+  function partArt(cat, label, cls = '') {
+    if (!has3D()) return partSVG(cat, label);
+    return `<img class="${cls}" src="${window.GU3D.partImage(cat)}" alt="${escapeHTML(label || '')}" draggable="false" />`;
+  }
+  let liveWheel = null, liveCar = null;
+  function stopLive(except) {
+    if (liveWheel && except !== 'detail') { liveWheel.destroy(); liveWheel = null; }
+    if (liveCar && except !== 'ar') { liveCar.destroy(); liveCar = null; }
+  }
   const PART_ICONS = {
     wheels: '<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="5"/><path d="M24 7v12M24 29v12M7 24h12M29 24h12"/>',
     exhaust: '<path d="M6 30h16a6 6 0 0 0 6-6v-6h8"/><path d="M36 13h6v10h-6z"/><path d="M6 25v10"/>',
@@ -691,36 +722,36 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   const PRODUCTS = [
     { id: 'te37', cat: 'wheels', brand: 'Volk Racing', name: 'TE37 Saga 18"', style: 'six', finish: 'bronze', finishes: ['bronze','black','gunmetal','silver'],
       price: 2380, was: 2560, rating: 4.9, reviews: 412, specs: [['Size','18×9.5'],['Offset','+22'],['Weight','17.8 lb']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Clears the Brembo calipers on your Track model. No spacers or rolling needed.' },
-      stores: [['Tire Rack', 2380, 'Free shipping', 'Ships in 2 days'], ['Concept Z Performance', 2412, '$35 shipping', 'In stock'], ['Summit Racing', 2499, 'Free shipping', 'Backordered 3 weeks']] },
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'Clears the Brembo calipers on your GT Performance Pack. No spacers or rolling needed.' },
+      stores: [['Tire Rack', 2380, 'Free shipping', 'Ships in 2 days'], ['AmericanMuscle', 2412, '$35 shipping', 'In stock'], ['Summit Racing', 2499, 'Free shipping', 'Backordered 3 weeks']] },
     { id: 'rpf1', cat: 'wheels', brand: 'Enkei', name: 'RPF1 18"', style: 'twin5', finish: 'silver', finishes: ['silver','black','gold','gunmetal'],
       price: 1460, was: 0, rating: 4.8, reviews: 1290, specs: [['Size','18×9.5'],['Offset','+15'],['Weight','16.2 lb']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Slight poke at +15. Fender rolling is optional on stock height.' },
-      stores: [['Summit Racing', 1460, 'Free shipping', 'In stock'], ['Tire Rack', 1496, 'Free shipping', 'In stock'], ['Concept Z Performance', 1520, '$35 shipping', 'In stock']] },
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'Slight poke at +15. Fender rolling is optional on stock height.' },
+      stores: [['Summit Racing', 1460, 'Free shipping', 'In stock'], ['Tire Rack', 1496, 'Free shipping', 'In stock'], ['AmericanMuscle', 1520, '$35 shipping', 'In stock']] },
     { id: 'cr', cat: 'wheels', brand: 'Work', name: 'Emotion CR Kiwami 18"', style: 'ten', finish: 'gunmetal', finishes: ['gunmetal','black','silver','bronze'],
       price: 1990, was: 2140, rating: 4.7, reviews: 238, specs: [['Size','18×9.5'],['Offset','+30'],['Weight','19.0 lb']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Tucks slightly at +30, a clean OEM-plus look.' },
-      stores: [['Concept Z Performance', 1990, '$35 shipping', 'In stock'], ['Tire Rack', 2060, 'Free shipping', 'Ships in 5 days']] },
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'Tucks slightly at +30, a clean OEM-plus look.' },
+      stores: [['AmericanMuscle', 1990, '$35 shipping', 'In stock'], ['Tire Rack', 2060, 'Free shipping', 'Ships in 5 days']] },
     { id: 'lm', cat: 'wheels', brand: 'BBS', name: 'LM 18"', style: 'mesh', finish: 'gold', finishes: ['gold','silver','black','gunmetal'],
       price: 4180, was: 0, rating: 4.9, reviews: 96, specs: [['Size','18×9'],['Offset','+35'],['Weight','20.1 lb']],
       fit: { status: 'spacer', title: 'Fits with 10 mm rear spacers', note: 'Rear needs 10 mm hub-centric spacers to clear the caliper. We add them to the cart for you.' },
       stores: [['Tire Rack', 4180, 'Free shipping', 'Ships in 10 days'], ['Summit Racing', 4260, 'Free shipping', 'In stock']] },
-    { id: 'coil', cat: 'suspension', brand: 'Fortune Auto', name: '500 Series Coilovers', price: 1695, was: 1795, rating: 4.8, reviews: 341,
+    { id: 'coil', cat: 'suspension', brand: 'BC Racing', name: 'BR Series Coilovers', price: 1695, was: 1795, rating: 4.8, reviews: 341,
       specs: [['Drop','0.5–3 in'],['Damping','32-way'],['Install','4 hrs']],
-      fit: { status: 'direct', title: 'Built for the Z33 chassis', note: 'Pair with any wheel above and preview the drop in AR.' },
-      stores: [['Concept Z Performance', 1695, 'Free shipping', 'In stock'], ['Summit Racing', 1749, 'Free shipping', 'In stock']] },
-    { id: 'q300', cat: 'exhaust', brand: 'Invidia', name: 'Q300 Cat-Back Exhaust', price: 689, was: 0, rating: 4.6, reviews: 527,
-      specs: [['Material','304 SS'],['Tips','Titanium'],['Gain','+8 hp']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Bolts to the factory mid-pipe. Resonated for a quieter cruise.' },
-      stores: [['Summit Racing', 689, 'Free shipping', 'In stock'], ['Concept Z Performance', 705, '$20 shipping', 'In stock']] },
-    { id: 'intake', cat: 'intake', brand: 'Injen', name: 'SP Cold Air Intake', price: 349, was: 389, rating: 4.5, reviews: 210,
+      fit: { status: 'direct', title: 'Built for the S550 chassis', note: 'Pair with any wheel above and preview the drop in AR.' },
+      stores: [['AmericanMuscle', 1695, 'Free shipping', 'In stock'], ['Summit Racing', 1749, 'Free shipping', 'In stock']] },
+    { id: 'q300', cat: 'exhaust', brand: 'Borla', name: 'S-Type Cat-Back Exhaust', price: 689, was: 0, rating: 4.6, reviews: 527,
+      specs: [['Material','304 SS'],['Tips','Polished'],['Gain','+8 hp']],
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'Bolts to the factory X-pipe. Aggressive at full throttle, civil on the highway.' },
+      stores: [['Summit Racing', 689, 'Free shipping', 'In stock'], ['AmericanMuscle', 705, '$20 shipping', 'In stock']] },
+    { id: 'intake', cat: 'intake', brand: 'Roush', name: 'Cold Air Intake', price: 349, was: 389, rating: 4.5, reviews: 210,
       specs: [['Filter','Dry'],['Finish','Polished'],['Gain','+10 hp']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Dual-intake design for the VQ35DE.' },
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'A larger filter and smoother tube for the 5.0L V8.' },
       stores: [['Summit Racing', 349, 'Free shipping', 'In stock']] },
-    { id: 'wing', cat: 'aero', brand: 'Seibon', name: 'Carbon Rear Spoiler', price: 520, was: 0, rating: 4.4, reviews: 58,
+    { id: 'wing', cat: 'aero', brand: 'Anderson Composites', name: 'Carbon Rear Spoiler', price: 520, was: 0, rating: 4.4, reviews: 58,
       specs: [['Material','Carbon fiber'],['Mount','Trunk lid'],['Install','1 hr']],
-      fit: { status: 'direct', title: 'Direct fit on your 350Z', note: 'Uses the factory spoiler mounting points.' },
-      stores: [['Concept Z Performance', 520, '$45 shipping', 'In stock']] }
+      fit: { status: 'direct', title: 'Direct fit on your Mustang', note: 'Uses the factory spoiler mounting points.' },
+      stores: [['AmericanMuscle', 520, '$45 shipping', 'In stock']] }
   ];
   const byId = id => PRODUCTS.find(p => p.id === id);
   const WHEELS = PRODUCTS.filter(p => p.cat === 'wheels');
@@ -743,7 +774,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     cart: [], saved: new Set(), liked: new Set(),
     build: ['q300', 'intake', 'coil'].slice(0, 0),
     installed: [ { id: 'q300', date: 'Installed Mar 2026' }, { id: 'intake', date: 'Installed Jan 2026' }, { id: 'coil', date: 'Installed Jan 2026' } ],
-    plan: [ { t: 'Wheels', s: 'Pick a set and preview in AR', done: false, cat: 'wheels' }, { t: 'Coilovers', s: 'Fortune Auto 500 installed', done: true }, { t: 'Exhaust', s: 'Invidia Q300 installed', done: true }, { t: 'Aero', s: 'Rear spoiler', done: false, cat: 'aero' } ]
+    plan: [ { t: 'Wheels', s: 'Pick a set and preview in AR', done: false, cat: 'wheels' }, { t: 'Coilovers', s: 'BC Racing BR installed', done: true }, { t: 'Exhaust', s: 'Borla S-Type installed', done: true }, { t: 'Aero', s: 'Rear spoiler', done: false, cat: 'aero' } ]
   };
   const SORTS = ['Best match', 'Price: low to high', 'Top rated'];
 
@@ -751,6 +782,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   const screens = [...document.querySelectorAll('.screen')];
   const TAB_FOR = { shop: 'shop', detail: 'shop', saved: 'shop', feed: 'feed', ar: 'ar', garage: 'garage', vin: 'garage', cart: 'cart', done: 'cart' };
   function show(name, { push = true, back = false } = {}) {
+    stopLive(name);
     const cur = state.stack[state.stack.length - 1];
     if (push && cur !== name) state.stack.push(name);
     screens.forEach(s => {
@@ -799,7 +831,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
 
   /* ---------------- Shop ---------------- */
   function thumb(p) {
-    return p.cat === 'wheels' ? wheelSVG(p.style, p.finish, `${p.brand} ${p.name} in ${FINISHES[p.finish].name}`) : partSVG(p.cat, p.name);
+    return p.cat === 'wheels' ? wheelArt(p.style, p.finish, `${p.brand} ${p.name} in ${FINISHES[p.finish].name}`) : partArt(p.cat, p.name);
   }
   function stars(p) { return `<span class="stars">${icon('star', 14)}${p.rating} <span>(${p.reviews.toLocaleString()})</span></span>`; }
   function fitTag(p) {
@@ -829,7 +861,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     if (state.sort === 1) items = [...items].sort((a, b) => a.price - b.price);
     if (state.sort === 2) items = [...items].sort((a, b) => b.rating - a.rating);
     const catName = (CATS.find(c => c.id === state.cat) || {}).name;
-    document.getElementById('list-title').textContent = q ? `Results for "${state.query.trim()}"` : `${catName} that fit your Z`;
+    document.getElementById('list-title').textContent = q ? `Results for "${state.query.trim()}"` : `${catName} that fit your Mustang`;
     document.getElementById('sort-btn').textContent = SORTS[state.sort];
     document.getElementById('sort-btn').setAttribute('aria-label', `Sorted by ${SORTS[state.sort]}. Change sort`);
     document.getElementById('plist').innerHTML = items.length ? items.map(prodRow).join('') :
@@ -865,7 +897,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     document.getElementById('detail').innerHTML = `
       <div class="hero-wheel" id="hero">
         <div class="hero-tools">${p.was ? `<span class="save">Save ${money(p.was - p.price)}</span>` : '<span></span>'}${isWheel ? `<span class="pill glass" style="height:30px">${icon('rotate', 15)}360°</span>` : ''}</div>
-        <div class="spin" id="spin">${isWheel ? wheelSVG(p.style, p.finish, `${p.brand} ${p.name}`) : partSVG(p.cat, p.name)}</div>
+        <div class="spin" id="spin" role="img" aria-label="${escapeHTML(`${p.brand} ${p.name}`)}">${isWheel ? wheelSVG(p.style, p.finish, '') : partArt(p.cat, '', 'part3d')}</div>
         <div class="floorshadow" aria-hidden="true"></div>
         ${isWheel ? '<div class="hero-hint">Drag to turn the wheel</div>' : ''}
       </div>
@@ -887,7 +919,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       </div>
       <div class="sticky-cta">
         <div class="${canAR ? 'btn-row' : ''}">
-          ${canAR ? `<button class="btn btn-ghost" id="see-ar">${icon('cube', 20)}See on my Z</button>` : ''}
+          ${canAR ? `<button class="btn btn-ghost" id="see-ar">${icon('cube', 20)}View in AR</button>` : ''}
           <button class="btn btn-primary" id="add-cart">${icon('cart', 20)}Add to cart</button>
         </div>
       </div>`;
@@ -895,6 +927,12 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     const saved = state.saved.has(p.id);
     save.setAttribute('aria-pressed', saved); save.style.color = saved ? 'var(--bad)' : '';
     save.querySelector('svg').setAttribute('fill', saved ? 'currentColor' : 'none');
+    if (liveWheel) { liveWheel.destroy(); liveWheel = null; }
+    if (isWheel && has3D()) {
+      const spinEl = document.getElementById('spin');
+      spinEl.classList.add('live');
+      liveWheel = window.GU3D.mountWheel(spinEl, { style: p.style, finish: p.finish });
+    }
     if (isWheel) setupSpin();
     document.querySelectorAll('[data-store]').forEach(b => b.addEventListener('click', () => { state.store[p.id] = b.dataset.store; renderDetail(); }));
     document.getElementById('add-cart').addEventListener('click', () => addToCart(p.id));
@@ -906,7 +944,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   }
   function setupSpin() {
     const hero = document.getElementById('hero'), spin = document.getElementById('spin'), range = document.getElementById('angle');
-    const apply = () => { spin.style.transform = `rotateY(${state.angle}deg) rotate(${state.angle * 1.5}deg)`; range.value = state.angle; };
+    const apply = () => { if (liveWheel) liveWheel.setYaw(state.angle); else spin.style.transform = `rotateY(${state.angle}deg) rotate(${state.angle * 1.5}deg)`; range.value = state.angle; };
     apply();
     let startX = null, startA = 0;
     hero.addEventListener('pointerdown', e => { startX = e.clientX; startA = state.angle; hero.classList.add('dragging'); hero.setPointerCapture(e.pointerId); });
@@ -954,7 +992,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     const n = state.cart.reduce((a, l) => a + l.qty, 0);
     document.getElementById('cart-count').textContent = n ? `${n} ${n === 1 ? 'item' : 'items'}` : '';
     if (!state.cart.length) {
-      el.innerHTML = `<div class="empty"><strong>Your cart is empty</strong><p class="muted small">Every part you add is checked against your 350Z first.</p><button class="btn btn-primary" data-go="shop" style="width:auto">Browse parts</button></div>`;
+      el.innerHTML = `<div class="empty"><strong>Your cart is empty</strong><p class="muted small">Every part you add is checked against your car first.</p><button class="btn btn-primary" data-go="shop" style="width:auto">Browse parts</button></div>`;
       return;
     }
     const groups = {};
@@ -963,7 +1001,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     el.innerHTML = Object.entries(groups).map(([store, lines]) => `
       <div class="cart-group"><h3>Ships from ${store}</h3><div class="list">
         ${lines.map(([l, i]) => { const p = lineProduct(l); return `<div class="li">
-          <span class="ic">${p.cat === 'wheels' && p.style ? wheelSVG(p.style, l.finish, p.name) : partSVG(p.cat, p.name)}</span>
+          <span class="ic">${p.cat === 'wheels' && p.style ? wheelArt(p.style, l.finish, p.name) : partArt(p.cat, p.name)}</span>
           <span><span class="t" style="display:block">${p.name}</span><span class="s">${l.finish ? FINISHES[l.finish].name + ' · ' : ''}${money(linePrice(l))}${l.id === 'spacers' ? ' · added for fitment' : ''}</span></span>
           <span class="qty"><button data-dec="${i}" aria-label="Decrease quantity of ${escapeHTML(p.name)}">${icon('minus', 16)}</button><span aria-label="Quantity">${l.qty}</span><button data-inc="${i}" aria-label="Increase quantity of ${escapeHTML(p.name)}">${icon('plus', 16)}</button></span>
         </div>`; }).join('')}
@@ -991,20 +1029,30 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   function renderAR() {
     const w = byId(state.ar.wheel);
     if (!w.finishes.includes(state.ar.finish)) state.ar.finish = w.finishes[0];
-    document.getElementById('ar-car').innerHTML = carSVG({ paint: '#c9cdd2', paint2: '#5b6066', wheel: w.style, finish: state.ar.finish, drop: state.ar.drop / 5, caliper: true, label: `Your 350Z with ${w.brand} ${w.name} in ${FINISHES[state.ar.finish].name}` });
+    const arLabel = `Your Mustang with ${w.brand} ${w.name} in ${FINISHES[state.ar.finish].name}`;
+    const arEl = document.getElementById('ar-car');
+    if (has3D()) {
+      const cfg = { paint: '#9aa1a9', wheel: w.style, finish: state.ar.finish, drop: state.ar.drop };
+      if (!liveCar) { arEl.classList.add('live'); liveCar = window.GU3D.mountCar(arEl, cfg); }
+      else liveCar.update(cfg);
+      arEl.setAttribute('role', 'img'); arEl.setAttribute('aria-label', arLabel);
+    } else {
+      arEl.innerHTML = carSVG({ paint: '#9aa1a9', paint2: '#5b6066', wheel: w.style, finish: state.ar.finish, drop: state.ar.drop / 5, caliper: true, label: arLabel });
+    }
     document.getElementById('ar-brand').textContent = w.brand;
     document.getElementById('ar-name').textContent = w.name;
     document.getElementById('ar-price').textContent = money(w.price);
     document.getElementById('callout-size').innerHTML = `<b>${w.specs[0][1]}</b> · ${w.specs[1][1]}`;
     document.getElementById('callout-fit').innerHTML = w.fit.status === 'direct' ? `<span style="color:#45d69a">●</span> Clears brakes` : `<span style="color:#ffab4a">●</span> 10 mm spacers`;
     document.getElementById('ar-wheels').innerHTML = WHEELS.map(p => `<button class="choice" role="radio" aria-checked="${p.id === state.ar.wheel}" data-wheel="${p.id}">
-      ${wheelSVG(p.style, p.id === state.ar.wheel ? state.ar.finish : p.finish, '')}${p.brand === 'Volk Racing' ? 'Volk' : p.brand}<span class="cp">${money(p.price)}</span></button>`).join('');
+      ${wheelArt(p.style, p.id === state.ar.wheel ? state.ar.finish : p.finish, '')}${p.brand === 'Volk Racing' ? 'Volk' : p.brand}<span class="cp">${money(p.price)}</span></button>`).join('');
     document.getElementById('ar-finishes').innerHTML = w.finishes.map(f => `<button class="sw" role="radio" aria-checked="${f === state.ar.finish}" aria-label="${FINISHES[f].name}" data-finish="${f}"><span style="background:${FINISHES[f].swatch}"></span></button>`).join('');
     document.getElementById('finish-name').textContent = FINISHES[state.ar.finish].name;
     const d = document.getElementById('drop'); d.value = state.ar.drop;
     document.getElementById('drop-val').textContent = state.ar.drop ? `Lowered ${(state.ar.drop / 10).toFixed(1)} in` : 'Stock';
   }
   function rollWheels() {
+    if (has3D()) return;
     const car = document.getElementById('ar-car'); car.classList.remove('rolling'); void car.offsetWidth; car.classList.add('rolling');
   }
   function radioKeys(container, attr, apply) {
@@ -1031,9 +1079,9 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
 
   /* ---------------- Garage ---------------- */
   function renderGarage() {
-    document.getElementById('garage-car').innerHTML = carSVG({ paint: '#c9cdd2', paint2: '#5b6066', wheel: 'ten', finish: 'gunmetal', drop: 3, label: 'Your 2005 Nissan 350Z' });
+    document.getElementById('garage-car').innerHTML = carArt({ paint: '#9aa1a9', paint2: '#5b6066', wheel: 'ten', finish: 'gunmetal', drop: 3, label: 'Your 2021 Mustang GT' });
     document.getElementById('build-list').innerHTML = state.installed.map(m => { const p = byId(m.id); return `<button class="li" data-product="${p.id}">
-      <span class="ic">${partSVG(p.cat, p.name)}</span><span><span class="t" style="display:block">${p.brand} ${p.name}</span><span class="s">${m.date}</span></span><span class="tagline">${money(p.price)}</span></button>`; }).join('');
+      <span class="ic">${partArt(p.cat, p.name)}</span><span><span class="t" style="display:block">${p.brand} ${p.name}</span><span class="s">${m.date}</span></span><span class="tagline">${money(p.price)}</span></button>`; }).join('');
     const done = state.plan.filter(x => x.done).length;
     document.getElementById('plan-progress').textContent = `${done} of ${state.plan.length} done`;
     document.getElementById('plan-bar').style.width = (done / state.plan.length * 100) + '%';
@@ -1045,7 +1093,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
     document.getElementById('g-spent').textContent = money(spent);
     document.getElementById('g-mods').textContent = state.installed.length;
   }
-  document.getElementById('share-build').addEventListener('click', () => { copy('https://gearup.app/b/350z-lw'); toast('Build link copied'); });
+  document.getElementById('share-build').addEventListener('click', () => { copy('https://gearup.app/b/mustang-gt'); toast('Build link copied'); });
 
   /* ---------------- VIN ---------------- */
   const VIN_RE = /^[A-HJ-NPR-Z0-9]{17}$/;
@@ -1063,7 +1111,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       vinInput.focus(); return;
     }
     const vf = document.getElementById('viewfinder'); vf.classList.add('scanning');
-    const steps = [['Make and model', 'Nissan 350Z'], ['Year and trim', '2005 · Track'], ['Engine', 'VQ35DE 3.5L V6'], ['Wheel fitment', '5×114.3 · Brembo brakes']];
+    const steps = [['Make and model', 'Ford Mustang GT'], ['Year and trim', '2021 · Performance Pack'], ['Engine', '5.0L Coyote V8'], ['Wheel fitment', '5×114.3 · Brembo brakes']];
     const box = document.getElementById('decode');
     box.innerHTML = steps.map(s => `<div class="li"><span class="ic">${icon('check', 20)}</span><span><span class="t" style="display:block">${s[1]}</span><span class="s">${s[0]}</span></span><span></span></div>`).join('');
     const rows = box.querySelectorAll('.li');
@@ -1073,7 +1121,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       if (i === rows.length - 1) {
         vf.classList.remove('scanning');
         box.insertAdjacentHTML('beforeend', `<button class="btn btn-primary" id="vin-save" style="margin-top:6px">Save to garage</button>`);
-        document.getElementById('vin-save').addEventListener('click', () => { toast('2005 Nissan 350Z is in your garage'); goTab('garage'); });
+        document.getElementById('vin-save').addEventListener('click', () => { toast('2021 Mustang GT is in your garage'); goTab('garage'); });
       }
     }, reduce ? 0 : 420 * (i + 1)));
   });
@@ -1085,7 +1133,7 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
       return `<article class="post" aria-label="Build by ${p.user}">
         <div class="post-head"><span class="avatar" style="background:${p.color}" aria-hidden="true">${p.user[0]}</span>
           <span><strong style="display:block;font-size:14.5px">${p.user}</strong><span class="muted small">@${p.handle} · ${p.ago}</span></span></div>
-        <div class="post-stage" style="background:linear-gradient(180deg,var(--scene-top),var(--scene-bottom))"><div class="car">${carSVG({ paint: p.paint, paint2: p.paint2, wheel: p.wheel, finish: p.finish, drop: p.drop, label: `${p.user}'s 350Z` })}</div></div>
+        <div class="post-stage" style="background:linear-gradient(180deg,var(--scene-top),var(--scene-bottom))"><div class="car">${carArt({ paint: p.paint, paint2: p.paint2, wheel: p.wheel, finish: p.finish, drop: p.drop, label: `${p.user}'s Mustang` })}</div></div>
         <div class="post-body">
           <p style="font-size:14.5px;line-height:1.45">${p.text}</p>
           <div class="tags">${p.parts.map(id => { const x = byId(id); return `<button class="tag" data-product="${id}">${icon('link', 14)}${x.name}</button>`; }).join('')}</div>
@@ -1116,11 +1164,22 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
 
   /* ---------------- Init ---------------- */
   hydrateIcons();
-  document.getElementById('mini-car').innerHTML = carSVG({ paint: '#c9cdd2', paint2: '#5b6066', wheel: 'ten', finish: 'gunmetal', drop: 3, label: '' }).replace('role="img" aria-label=""', 'aria-hidden="true"');
+  function renderMini() {
+    document.getElementById('mini-car').innerHTML = carArt({ paint: '#9aa1a9', paint2: '#5b6066', wheel: 'ten', finish: 'gunmetal', drop: 3, label: '' }).replace('role="img" aria-label=""', 'aria-hidden="true"');
+  }
+  renderMini();
   screens.forEach(s => { s.inert = !s.classList.contains('active'); });
   renderShop(); updateBadge();
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   setTimeout(() => document.getElementById('splash').classList.add('hide'), reduce ? 0 : 900);
+
+  window.addEventListener('gu3d-ready', () => {
+    if (!has3D()) return;
+    renderMini();
+    const cur = state.stack[state.stack.length - 1];
+    RENDER[cur] && RENDER[cur]();
+  });
+  if (window.GU3D && 'ok' in window.GU3D) window.dispatchEvent(new Event('gu3d-ready'));
 
   /* ---------------- Theme sync with parent page ---------------- */
   function applyTheme(t) { document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark'); }
@@ -1140,5 +1199,6 @@ input[type=range].drop { width: 100%; margin-top: 8px; accent-color: var(--accen
   }
 })();
 </script>
+<script type="module" src="gearup-3d.js"></script>
 </body>
 </html>
