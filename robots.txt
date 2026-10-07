@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /gearup-prototype-v1.html
+Disallow: /index-preview.html
 
 Sitemap: https://lancewheeler.co/sitemap.xml
