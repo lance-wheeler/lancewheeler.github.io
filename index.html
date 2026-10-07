@@ -52,12 +52,12 @@
     --border: #e4e1d9;
     --text: #1a1a1a;
     --text-soft: #4a4a4a;
-    --muted: #6a6a6a;
+    --muted: #575757;
     --subtle: #c0bdb4;
-    --orange: #d54e1a;
-    --orange-dim: rgba(213,78,26,0.1);
-    --teal: #1d96a5;
-    --teal-dim: rgba(29,150,165,0.08);
+    --orange: #a63a0b;
+    --orange-dim: rgba(166,58,11,0.1);
+    --teal: #0b6672;
+    --teal-dim: rgba(11,102,114,0.08);
     --shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
   :root {
@@ -399,7 +399,7 @@
   .feature-card:hover { border-color: var(--orange); }
   .feature-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--orange), var(--teal)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
   .feature-card:hover::after { transform: scaleX(1); }
-  .feature-num { font-family: var(--font-display); font-size: 48px; color: var(--border); line-height: 1; margin-bottom: 8px; }
+  .feature-num { font-family: var(--font-display); font-size: 48px; color: #6b6b6b; line-height: 1; margin-bottom: 8px; }
   .feature-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .feature-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; }
 
@@ -457,8 +457,19 @@
   .gearup-features { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .gu-tag { font-family: var(--font-mono); font-size: 10px; padding: 5px 12px; border: 1px solid var(--orange); color: var(--orange); letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
   .gu-tag:hover { background: var(--orange); color: var(--bg); }
+  .gearup-v2-note { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; margin-top: 10px; max-width: 46ch; }
+  .gearup-v2-note a { color: var(--orange); }
   .gearup-tryit { font-family: var(--font-mono); font-size: 11px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-top: 28px; animation: pulseHint 2.4s ease-in-out infinite; }
   @keyframes pulseHint { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  /* Light theme: AA contrast for text on and in orange, kanban tags, decorative numerals */
+  :root[data-theme="light"] .btn-primary, :root[data-theme="light"] .cert-btn.primary, :root[data-theme="light"] .contact-link.primary,
+  :root[data-theme="light"] .chat-msg.user, :root[data-theme="light"] .chat-send, :root[data-theme="light"] .chat-launcher .badge { color: #fff; }
+  :root[data-theme="light"] ::selection { color: #fff; }
+  :root[data-theme="light"] .feature-num { color: #8f8b82; }
+  :root[data-theme="light"] .tag-bug { color: #a51f1f; }
+  :root[data-theme="light"] .tag-research { color: #5b3cc4; }
+  :root[data-theme="light"] [data-col="done"] .col-header { color: #157a3d !important; }
+  .gearup-tryit { animation: none; }
 
   /* PROTOTYPE IFRAME — embeds the live GearUp app */
   .prototype-stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
@@ -1451,7 +1462,7 @@
       </div>
       <div class="kanban-col" data-col="done">
         <div class="col-header" style="color:#4ade80">Done <span class="col-count" id="count-done">1</span></div>
-        <div class="kanban-card" draggable="true" style="opacity:0.6"><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker — guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
+        <div class="kanban-card" draggable="true" ><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker — guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
       </div>
     </div>
     <div class="demo-note">Drag cards between columns (on mobile, press and hold a card; with a keyboard, focus a card and use the left and right arrow keys). This backlog is from a real product concept built during A-CSPO training.</div>
@@ -1490,7 +1501,8 @@
       <div class="gearup-features">
         <span class="gu-tag">VIN Fitment</span><span class="gu-tag">AR Visualization</span><span class="gu-tag">Price Compare</span><span class="gu-tag">My Garage</span><span class="gu-tag">Community Feed</span><span class="gu-tag">Affiliate Model</span>
       </div>
-      <p class="gearup-tryit">↓ Try it live — fully interactive prototype</p>
+      <p class="gearup-tryit">↓ Try it live: the refined v2</p>
+      <p class="gearup-v2-note">I rebuilt this version after the course with a new design system, a live AR wheel and ride-height preview, VIN decoding, and price comparison. The original prototype from class is still up: <a href="gearup-prototype-v1.html" target="_blank" rel="noopener">see the 20-minute build</a>.</p>
     </div>
     <div class="prototype-stage">
       <div class="prototype-live-badge">
