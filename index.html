@@ -131,7 +131,7 @@
     pointer-events: none; white-space: nowrap; letter-spacing: 4px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; scroll-padding-bottom: 110px; }
   body {
     background: var(--bg); color: var(--text);
     font-family: var(--font-body); font-size: 16px; line-height: 1.6;
@@ -413,6 +413,10 @@
   .kanban-card { background: var(--surface); border: 1px solid var(--border); padding: 14px; margin-bottom: 10px; cursor: grab; transition: all 0.2s; }
   .kanban-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: var(--shadow); }
   .kanban-card.dragging { opacity: 0.4; cursor: grabbing; }
+  .card-move { display: flex; justify-content: flex-end; gap: 6px; margin-top: 10px; }
+  .card-move button { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--border); color: var(--text-soft); cursor: pointer; padding: 0; transition: border-color 0.2s, color 0.2s; }
+  .card-move button:hover { border-color: var(--orange); color: var(--orange); }
+  .card-move button[hidden] { display: none; }
   .card-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.02em;  padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
   .tag-feature { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(232,98,42,0.2); }
   .tag-bug { background: rgba(200,42,42,0.15); color: #e85a5a; border: 1px solid rgba(200,42,42,0.2); }
@@ -991,7 +995,7 @@
   <div class="hero-stats">
     <div class="stat-item"><div class="stat-num" data-target="4" data-suffix="×">4×</div><div class="stat-label">Promoted at Stellar MLS</div></div>
     <div class="stat-item"><div class="stat-num" data-target="80" data-suffix="K+">80K+</div><div class="stat-label">Professionals served</div></div>
-    <div class="stat-item"><div class="stat-num" data-target="9" data-suffix="">9</div><div class="stat-label">Products owned</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="9" data-suffix="">9</div><div class="stat-label">Products in portfolio</div></div>
     <div class="stat-item"><div class="stat-num" data-target="4" data-suffix="+">4+</div><div class="stat-label">Years of growth</div></div>
   </div>
   <div class="hero-actions">
@@ -1018,9 +1022,9 @@
     </div>
     <div class="timeline reveal">
       <div class="tl-item"><div class="tl-date">Feb 2017 – Mar 2022</div><div class="tl-title">Lead IT Specialist, Elite Realty Inc.</div><div class="tl-desc">Go-to internal IT resource. Hardware, software, networking, and daily operations for a real estate office environment.</div></div>
-      <div class="tl-item"><div class="tl-date">Sep 2022</div><div class="tl-title">Joined Stellar MLS, Support Center Technician</div><div class="tl-desc">Started on the front lines, learning the platforms, the users, and the gaps between them.</div></div>
-      <div class="tl-item"><div class="tl-date">2023</div><div class="tl-title">Growing Ownership Across Products</div><div class="tl-desc">Began taking on product ownership responsibilities, QA, documentation, and release coordination across multiple platforms.</div><span class="promo-badge">Promotions 1–3</span></div>
-      <div class="tl-item"><div class="tl-date">2024 – Present</div><div class="tl-title">Product Owner, 9-Product Portfolio</div><div class="tl-desc">3 primary + 6 secondary products. Leading NAR compliance, AI chatbot governance, billing systems, and more across platforms serving 80,000+ professionals.</div><span class="promo-badge">Promotion 4</span></div>
+      <div class="tl-item"><div class="tl-date">Sep 2022 – May 2023</div><div class="tl-title">Joined Stellar MLS, Support Center Technician</div><div class="tl-desc">Started on the front lines, learning the platforms, the users, and the gaps between them. Promoted to Tier 2 support.</div><span class="promo-badge">Promotion 1</span></div>
+      <div class="tl-item"><div class="tl-date">May 2023 – Aug 2025</div><div class="tl-title">Product Specialist, then Product Specialist II</div><div class="tl-desc">Took on product ownership work: QA, documentation, release coordination, AI initiatives, and the 2024 NAR settlement compliance rollout.</div><span class="promo-badge">Promotions 2 & 3</span></div>
+      <div class="tl-item"><div class="tl-date">Aug 2025 – Present</div><div class="tl-title">Product Owner, 9-Product Portfolio</div><div class="tl-desc">3 primary + 6 secondary products. Billing systems, AI chatbot governance, data standards, and association onboardings across platforms serving 80,000+ professionals.</div><span class="promo-badge">Promotion 4</span></div>
       <div class="tl-item"><div class="tl-date">April 2026</div><div class="tl-title">A-CSPO Certified</div><div class="tl-desc">Advanced Certified Scrum Product Owner® earned through Scrum Alliance. Earned AI for Product Owners microcredential the same week.</div><span class="promo-badge" style="background:var(--teal-dim);border-color:rgba(42,184,200,0.3);color:var(--teal);">Dual credential</span></div>
       <div class="tl-item"><div class="tl-date">September 2026</div><div class="tl-title">SAFe® POPM Certified</div><div class="tl-desc">Certified AI-Empowered SAFe® 6 Product Owner/Product Manager through Scaled Agile, adding scaled agile and AI-assisted product practices to my Scrum foundation.</div></div>
     </div>
@@ -1214,7 +1218,7 @@
         <div class="kanban-card" draggable="true" ><div><span class="card-tag tag-feature">Feature</span></div><div class="card-title">VIN checker, guaranteed fitment validation on load</div><div class="card-points"><span>Core</span><span class="points-badge">✓ 8 pts</span></div></div>
       </div>
     </div>
-    <div class="demo-note">Drag cards between columns (on mobile, press and hold a card; with a keyboard, focus a card and use the left and right arrow keys). This backlog is from a real product concept built during A-CSPO training.</div>
+    <div class="demo-note">Drag cards between columns, or use the arrow buttons on each card (they work with a mouse, touch, or keyboard). This backlog is from a real product concept built during A-CSPO training.</div>
   </div>
 </section>
 
@@ -1520,6 +1524,7 @@
       const el = document.getElementById('count-' + col.dataset.col);
       if (el) el.textContent = col.querySelectorAll('.kanban-card').length;
     });
+    if (window.syncKanbanCard) document.querySelectorAll('.kanban-card').forEach(window.syncKanbanCard);
   }
   document.querySelectorAll('.kanban-card').forEach(card => {
     card.addEventListener('dragstart', () => { draggedCard = card; setTimeout(() => card.classList.add('dragging'), 0); });
@@ -1539,25 +1544,40 @@
     live.setAttribute('aria-live', 'polite');
     live.className = 'sr-only';
     document.getElementById('kanban')?.after(live);
-    const label = card => {
-      const title = card.querySelector('.card-title')?.textContent || 'Card';
-      card.setAttribute('aria-label', title + '. In ' + colName(card.closest('.kanban-col')) + '. Use left and right arrow keys to move.');
-    };
+    const svg = d => `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+    function sync(card) {
+      const i = cols.indexOf(card.closest('.kanban-col'));
+      const title = card.querySelector('.card-title')?.textContent || 'card';
+      const [prev, next] = card.querySelectorAll('.card-move button');
+      prev.hidden = i <= 0; next.hidden = i >= cols.length - 1;
+      if (!prev.hidden) prev.setAttribute('aria-label', `Move "${title}" to ${colName(cols[i - 1])}`);
+      if (!next.hidden) next.setAttribute('aria-label', `Move "${title}" to ${colName(cols[i + 1])}`);
+    }
+    window.syncKanbanCard = sync;
+    function move(card, dir, fromBtn) {
+      const i = cols.indexOf(card.closest('.kanban-col'));
+      const target = cols[i + dir];
+      if (!target) return;
+      target.appendChild(card);
+      updateCounts();
+      sync(card);
+      const [prev, next] = card.querySelectorAll('.card-move button');
+      if (fromBtn) ((dir > 0 ? next : prev).hidden ? (dir > 0 ? prev : next) : (dir > 0 ? next : prev)).focus();
+      live.textContent = 'Moved to ' + colName(target) + '.';
+    }
     document.querySelectorAll('.kanban-card').forEach(card => {
-      card.tabIndex = 0;
-      label(card);
-      card.addEventListener('keydown', e => {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        e.preventDefault();
-        const i = cols.indexOf(card.closest('.kanban-col'));
-        const target = cols[i + (e.key === 'ArrowRight' ? 1 : -1)];
-        if (!target) return;
-        target.appendChild(card);
-        updateCounts();
-        label(card);
-        card.focus();
-        live.textContent = 'Moved to ' + colName(target) + '.';
+      const bar = document.createElement('div');
+      bar.className = 'card-move';
+      bar.innerHTML = `<button type="button">${svg('M15 18l-6-6 6-6')}</button><button type="button">${svg('M9 18l6-6-6-6')}</button>`;
+      const [prev, next] = bar.querySelectorAll('button');
+      prev.addEventListener('click', e => { e.stopPropagation(); move(card, -1, true); });
+      next.addEventListener('click', e => { e.stopPropagation(); move(card, 1, true); });
+      bar.querySelectorAll('button').forEach(btn => {
+        btn.setAttribute('draggable', 'false');
+        ['touchstart', 'mousedown', 'dragstart'].forEach(ev => btn.addEventListener(ev, e => e.stopPropagation(), { passive: ev !== 'dragstart' }));
       });
+      card.appendChild(bar);
+      sync(card);
     });
   })();
 
@@ -1735,7 +1755,7 @@
 
     // === IDENTITY ===
     { keywords: ['what is your name','what\'s your name','your name','full name','first name','last name','whats your name'], answer: "Lance Wheeler, Product Owner at Stellar MLS. Nice to meet you!" },
-    { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself','what does lance do','where does lance work','what is lance','what do you do','where do you work'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Joined in 2022 and promoted 4 times by 2024, from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Recently earned my SAFe POPM, hold A-CSPO and 11 certifications total, and care more about delivering real value than shipping features for the sake of it." },
+    { keywords: ['who are you','tell me about yourself','your background','who is lance','tell me about lance','introduce yourself','what does lance do','where does lance work','what is lance','what do you do','where do you work'], answer: "I'm Lance Wheeler, a Product Owner at Stellar MLS in Altamonte Springs, Florida. Joined in 2022 and promoted 4 times by 2025, from the support desk to managing a 9-product portfolio serving 80,000+ real estate professionals. Recently earned my SAFe POPM, hold A-CSPO and 11 certifications total, and care more about delivering real value than shipping features for the sake of it." },
     { keywords: ['where do you live','where are you located','where are you based','your location','what city','what state','where based','live in','live now'], answer: "I'm based in Florida, working at Stellar MLS in Altamonte Springs (just north of Orlando). Stellar serves real estate professionals across all of Florida and beyond." },
     { keywords: ['altamonte springs','near orlando'], answer: "Yep, based in Florida, working at Stellar MLS headquartered in Altamonte Springs (just north of Orlando)." },
     { keywords: ['education','college','degree','university','your school','where did you go to school','what school'], answer: "I have a high school diploma from Lake Brantley High School. I've gotten where I am through hands-on experience and continuous certification: SAFe® POPM, A-CSPO, CSPO, CSM, AI for POs, CompTIA A+, Duke University AI Product Management cert, and three Google certificates. The work-and-learn path has worked well for me." },
@@ -1765,7 +1785,7 @@
     { keywords: ['what cert','your cert','your certif','your credent','list cert','all cert','how many cert','certifications you have','certifications do you have'], answer: "I hold 11 verifiable certifications: Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM), A-CSPO, AI for Product Owners microcredential, CSPO, CSM, CompTIA A+, Duke University AI Product Management Certificate, Google IT Support Professional, Google Cybersecurity Professional, Google + CompTIA A+ Dual Credential, and Google Analytics Individual Qualification. All independently verifiable on this site." },
     { keywords: ['a-cspo','acspo','advanced certified scrum','advanced scrum product'], answer: "I earned my Advanced Certified Scrum Product Owner (A-CSPO) on April 24, 2026 through APS AgileTraining, with Richard K. Cheng as my Certified Scrum Trainer. It builds on the CSPO and goes deeper into stakeholder management, advanced backlog techniques, business model assessment, and product strategy. Active through April 2028." },
     { keywords: ['ai for product owner','aipo','ai microcredential'], answer: "Earned the AI for Product Owners microcredential from Scrum Alliance on April 21, 2026. Covers prompt engineering, AI-supported backlog work, persona creation, story generation, estimation, roadmap integration, and how to use AI as a force multiplier in product work." },
-    { keywords: ['years of experience','years experience','how many years','how much experience','how long have you','how long has he','how long at stellar','tenure'], answer: "I've been at Stellar MLS since September 2022, so a little over four years, and I've held the Product Owner title since 2024. Before Stellar, I spent five years as Lead IT Specialist at Elite Realty, so I've worked in real estate technology since 2017." },
+    { keywords: ['years of experience','years experience','how many years','how much experience','how long have you','how long has he','how long at stellar','tenure'], answer: "I've been at Stellar MLS since September 2022, so a little over four years, and I've held the Product Owner title since August 2025. Before Stellar, I spent five years as Lead IT Specialist at Elite Realty, so I've worked in real estate technology since 2017." },
     { keywords: ['popm','scaled agile','safe cert','safe 6','about safe','safe®','your safe','the safe','safe experience','experience with safe','pi planning','pi-planning','program increment','release train','safe framework','safe agile','in safe'], answer: "I earned the Certified AI-Empowered SAFe® 6 Product Owner/Product Manager (POPM) through Scaled Agile on September 25, 2026. It covers PO/PM work at scale, PI planning, and using AI across the product role. To be straightforward: I haven't worked inside a formal Agile Release Train yet, but it rounds out my Scrum foundation for teams that scale. The certificate is in the credentials section." },
     { keywords: ['cspo certification','certified scrum product owner','cspo','about cspo','tell me about cspo'], answer: "I earned my Certified Scrum Product Owner (CSPO) on October 2, 2024 through Scrum Alliance. That was my first formal product certification and the foundation I built A-CSPO on top of." },
     { keywords: ['csm','scrummaster','scrum master'], answer: "Certified ScrumMaster (CSM) earned November 22, 2023 through Scrum Alliance, trained by Cathy Simpson. While my work is PO-focused, having CSM gives me a deep understanding of how the whole Scrum team operates, which makes me a better PO." },
@@ -1779,7 +1799,7 @@
     { keywords: ['richard cheng','your trainer','cspo trainer','acspo trainer'], answer: "Richard K. Cheng was my A-CSPO trainer through APS AgileTraining (April 23-24, 2026). He's a Certified Scrum Trainer and one of the best instructors I've had. He specifically praised my GearUp prototype, which meant a lot." },
 
     // === CAREER PROGRESSION ===
-    { keywords: ['promot','your career','your journey','climbed','progression','career path','your path'], answer: "I started at Stellar MLS in September 2022 as a Support Center Technician. Since then I've been promoted 4 times, Support Tech → Tier 2 → Product Specialist → Product Owner. The path was built on showing up, owning outcomes, and stepping into gaps before being asked. I moved into the Product Owner title in 2024 and have been growing the role since." },
+    { keywords: ['promot','your career','your journey','climbed','progression','career path','your path'], answer: "I started at Stellar MLS in September 2022 as a Support Center Technician. Since then I've been promoted 4 times: Support Tech → Tier 2 → Product Specialist → Product Specialist II → Product Owner. The path was built on showing up, owning outcomes, and stepping into gaps before being asked. I moved into the Product Owner title in August 2025 and have been growing the role since." },
     { keywords: ['help desk','support desk','support center','first job stellar','starting job'], answer: "Yes, I started at the Stellar MLS support desk in September 2022. Front-line tickets, customer calls, troubleshooting. That foundation matters: today as a PO, I know exactly what users hit, where they get stuck, and how the systems actually behave in the real world. You can't fake that perspective." },
     { keywords: ['previous job','before stellar','prior work','elite realty','last job'], answer: "Before Stellar MLS I was Lead Information Technology Specialist at Elite Realty Inc. from February 2017 to March 2022. Internal IT for a real estate office, PCs, mobile devices, networking, software, daily operational support. That's where I first got real estate industry exposure." },
     { keywords: ['why product','why became po','why product owner','transition to product'], answer: "I came at it sideways. Started in IT support, moved to Stellar's support center, kept volunteering for cross-functional work, QA documentation, release coordination, vendor calls. Eben Moran (Operations Executive) noticed and said in his recommendation: 'After a few months in customer support, it became evident that Lance would excel in the product management group.' Honestly, product was the natural fit for how I already thought." },
@@ -1824,7 +1844,7 @@
 
     // === MOTION / SPEED ===
     { keywords: ['fastest','quickest','how fast','speed of work'], answer: "I ship. Earned A-CSPO and AI for Product Owners in the same week. Built a working app prototype inside a 20-minute sticky-note exercise. Built this entire portfolio site in a weekend. I don't sit on ideas, I move." },
-    { keywords: ['fast growth','rapid promotion','quick promotion'], answer: "Four promotions at Stellar MLS between 2022 and 2024, Support Tech → Tier 2 → Product Specialist → Product Owner. Fast, but earned. I took on cross-functional work, owned outcomes, and built a track record before each role change." }
+    { keywords: ['fast growth','rapid promotion','quick promotion'], answer: "Four promotions at Stellar MLS between 2022 and 2025: Support Tech → Tier 2 → Product Specialist → Product Specialist II → Product Owner. Fast, but earned. I took on cross-functional work, owned outcomes, and built a track record before each role change." }
   ];
 
   function findFAQ(question) {
